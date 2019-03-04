@@ -344,7 +344,7 @@ As seen above, the following are recognized, read and used:
 
   .. Note:: GOMC does not sample bond stretch. To ignore the relative bond energy, set the :math:`K_b` to a large value i.e. "999999999999". 
 
-  .. figure:: _static/bonds.png
+  .. figure:: static/bonds.png
 
     Oscillations about the equilibrium bond length
 
@@ -353,21 +353,21 @@ As seen above, the following are recognized, read and used:
   
   .. Note:: To fix any angle and ignore the related angle energy, set the :math:`K_\theta` to a large value i.e. "999999999999".
 
-  .. figure:: _static/angle.png
+  .. figure:: static/angle.png
 
     Oscillations of 3 atoms about an equilibrium bond angle
 
 - ``DIHEDRALS``
   - Describes crankshaft-like rotation behavior about a central bond in a series of three consecutive bonds (rotation is given as :math:`\phi`).
 
-  .. figure:: _static/dihedrals.png
+  .. figure:: static/dihedrals.png
 
     Torsional rotation of 4 atoms about a central bond
 
 - ``NONBONDED``
   - This tag name only should be used if CHARMM force files are being used. This section describes 12-6 (Lennard-Jones) non-bonded interactions. Non-bonded parameters are assigned by specifying atom type name followed by polarizabilities (which will be ignored), minimum energy, and (minimum radius)/2. In order to modify 1-4 interaction, a second polarizability (again, will be ignored), minimum energy, and (minimum radius)/2 need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.
 
-  .. figure:: _static/nonbonded.png
+  .. figure:: static/nonbonded.png
 
     Non-bonded energy terms (electrostatics and Lennard-Jones)
 

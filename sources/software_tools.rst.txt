@@ -22,13 +22,13 @@ http://www.ks.uiuc.edu/Research/vmd/
 
 Although GOMC uses the same fundamental file types, PDB (coordinates) and PSF (topology) as VMD, it uses some special tricks to obey certain rules of those file formats. One useful purpose of VMD is visualization and analyze your systems.
 
-.. figure:: _static/vmd.png
+.. figure:: static/vmd.png
 
   A system of united atom isobutane molecules
 
 Nonetheless, the most critical part of VMD is a tool called PSFGen. PSFGen uses a tcl or python script to generate a PDB and PSF file for a system of one or more molecules. It is, perhaps, the most convenient way to generate a compliant PSF file.
 
-.. figure:: _static/psfgen.png
+.. figure:: static/psfgen.png
 
   An overview of the PSFGen file generation process and its relationship to VMD/NAMD
 

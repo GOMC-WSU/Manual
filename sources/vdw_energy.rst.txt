@@ -58,7 +58,7 @@ This option forces the potential energy to be zero at ``Rcut`` distance.
 
     W_{ij}(\texttt{shift}) = 6C_{n_{ij}} \epsilon_{ij} \bigg[\frac{n_{ij}}{6} \times \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}^2}
 
-  .. figure:: _static/VDW_SHIFT.png
+  .. figure:: static/VDW_SHIFT.png
 
     Graph of Van der Waals potential with and without the application of the ``SHIFT`` function. With the ``SHIFT`` function active, the potential by force was reduced to 0.0 at the ``Rcut`` distance. With the ``SHIFT`` function, there is a discontinuity where the potential is truncated.
 
@@ -108,7 +108,7 @@ This option in ``CHARMM`` or ``EXOTIC`` force field smoothly forces the potentia
       0 & r_{ij} \geq r_{cut}
     \end{cases}
 
-  .. figure:: _static/SWITCH.png
+  .. figure:: static/SWITCH.png
 
     Graph of Van der Waals potential with and without the application of the ``SWITCH`` function. With the ``SWITCH`` function active, the potential is smoothly reduced to 0.0 at the ``Rcut`` distance.
 
@@ -169,6 +169,6 @@ This option in ``MARTINI`` force field smoothly forces the potential energy to b
       0 & r_{ij} \geq r_{cut}
     \end{cases}
 
-  .. figure:: _static/MARTINI.png
+  .. figure:: static/MARTINI.png
 
     Graph of Van der Waals potential with and without the application of the ``SWITCH`` function in ``MARTINI`` force field. With the ``SWITCH`` function active, the potential is smoothly reduced to 0.0 at the ``Rcut`` distance.
