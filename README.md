@@ -5,15 +5,23 @@
    $ pip install -U Sphinx
    ```
 
-3. To build simply execute the following command in your terminal:
+3. To build the HTML files execute the following command in your terminal: 
    ```bash
-    $ sphinx-build <sourcedir> <outputdir>
+   $ sphinx-build src docs
    ```
-4. To build the HTML files execute the following command in your terminal: 
+   After the process is complete go to `docs` directory.
    ```bash
-   $ sphinx-build  -b  html  src  build
+   $ cd docs
    ```
-5. To build PDF first execute the following command in your terminal:
+   Then rename all three directories.
+   ```bash
+   $ mv _images images
+   $ mv _sources sources
+   $ mv _static static
+   ```
+   Then for each file inside docs, replace the same strings. `_images`, `_sources`, and `_static` to `images`, `sources`, `static`.
+   
+4. To build PDF first execute the following command in your terminal:
    ```bash
     $ sphinx-build  -b latex  src  build
    ```
