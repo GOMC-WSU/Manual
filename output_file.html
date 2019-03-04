@@ -17,23 +17,23 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script type="text/javascript" src="static/jquery.js"></script>
+        <script type="text/javascript" src="static/underscore.js"></script>
+        <script type="text/javascript" src="static/doctools.js"></script>
+        <script type="text/javascript" src="static/language_data.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+    <script type="text/javascript" src="static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Putting it all together: Running a GOMC Simulation" href="putting_all_together.html" />
@@ -152,7 +152,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/output_file.rst.txt" rel="nofollow"> View page source</a>
+            <a href="sources/output_file.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -264,15 +264,15 @@
 </div>
 <p>The first section of this console output typically includes some information relating the system, CPU, GPU, and RAM. In continue, console output includes information regarding the input file (configuration file), force field reading, summary of the structure of the molecule, bonded and non-bonded parameters, and minimum and maximum coordinate of molecules. This output is important; it may contain text relating to issues encountered if there was an error in the current run (e.g. a bad parameter, unknown keyword, missing parameters in the configuration file, etc.)</p>
 <div class="figure" id="id1">
-<img alt="_images/out1.png" src="_images/out1.png" />
+<img alt="images/out1.png" src="images/out1.png" />
 <p class="caption"><span class="caption-text">Printing summary of configuration file.</span></p>
 </div>
 <div class="figure" id="id2">
-<img alt="_images/out2.png" src="_images/out2.png" />
+<img alt="images/out2.png" src="images/out2.png" />
 <p class="caption"><span class="caption-text">Reading parameter file and printing the summary of the force field.</span></p>
 </div>
 <div class="figure" id="id3">
-<img alt="_images/out3.png" src="_images/out3.png" />
+<img alt="images/out3.png" src="images/out3.png" />
 <p class="caption"><span class="caption-text">Reading the PDB files for each box, printing the min and max coordinates.</span></p>
 </div>
 <p>Next, the energy and statistic title, initial energy and statistic of the system’s starting configuration will print:</p>
@@ -281,11 +281,11 @@
 <p class="last">If total energy of simulation is greater that <span class="math notranslate nohighlight">\(1.0e^{12}\)</span>, System Total Energy Calculation will be performed at EqSteps to preserve energy value.</p>
 </div>
 <div class="figure" id="id4">
-<img alt="_images/out4.png" src="_images/out4.png" />
+<img alt="images/out4.png" src="images/out4.png" />
 <p class="caption"><span class="caption-text">Printing initial energy of the system and statistical values.</span></p>
 </div>
 <p>After the simulation starts, move, energy, and statistical title, followed by their values for each simulation box, will print:</p>
-<img alt="_images/out5.png" src="_images/out5.png" />
+<img alt="images/out5.png" src="images/out5.png" />
 <p>At the end of the run, Monte Carlo move acceptance for each molecule kind and simulation box, total amount of time spent on each Monte Carlo move, total timing information, and other wrap up info will be printed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
