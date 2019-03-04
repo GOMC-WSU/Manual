@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Putting it all together: Running a GOMC Simulation &mdash; GOMC 2.40 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Intermolecular Energy and Virial Function (Van der Waals)" href="vdw_energy.html" />
+    <link rel="prev" title="GOMC’s Output Files, Terminal Output" href="output_file.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GOMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files, Terminal Output</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Putting it all together: Running a GOMC Simulation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/putting_all_together.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="putting-it-all-together-running-a-gomc-simulation">
+<h1>Putting it all together: Running a GOMC Simulation<a class="headerlink" href="#putting-it-all-together-running-a-gomc-simulation" title="Permalink to this headline">¶</a></h1>
+<p>It is strongly recommended that you download the test system provided at <a class="reference external" href="http://gomc.eng.wayne.edu/downloads.html">GOMC Website</a> or <a class="reference external" href="https://github.com/GOMC-WSU/GOMC_Examples/tree/master">Our Github Page</a></p>
+<p>Run different simulation types in order to become more familiar with different parameter and configuration files (*.conf).</p>
+<p>To recap the previous examples, a simulation of isobutane will be completed for a single temperature point on the saturated vapor-liquid coexistence curve.</p>
+<p>The general plan for running the simulation is:</p>
+<ol class="arabic simple">
+<li>Build GOMC (if not done already)</li>
+<li>Copy GOMC executable to build directory</li>
+<li>Create scripts, PDB, and topology file to build the system, plus in.dat file and parameter files to prepare for runtime</li>
+<li>Build finished PDBs and PSFs using the simulation.</li>
+<li>Run the simulation in the terminal.</li>
+<li>Analyze the output.</li>
+</ol>
+<p>Please, complete steps 1 and 2; then, traverse to the directory, which should now contain a single file “GOMC_CPU_GEMC”. Next, six files need to be made:</p>
+<ul class="simple">
+<li>PDB file for isobutane</li>
+<li>Topology file describing isobutane residue</li>
+<li>Two <code class="docutils literal notranslate"><span class="pre">*.inp</span></code> packmol scripts to pack two system boxes</li>
+<li>Two <em>TCL</em> scripts to input into <code class="docutils literal notranslate"><span class="pre">PSFGen</span></code> to generate the final configuration</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">isobutane.pdb</span></code></p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>REMARK   1 File  created   by  GaussView   5.0.8
+ATOM          1       C1  ISB          1   0.911   -0.313    0.000  C
+ATOM          2       C2  ISB          1   1.424   -1.765    0.000  C
+ATOM          3       C3  ISB          1  -0.629   -0.313    0.000  C
+ATOM          4       C4  ISB          1   1.424    0.413   -1.257  C
+END
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">Top_Branched_Alkane.inp</span></code></p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* Custom top file -- branched alkanes
+*
+MASS     1    CH3      15.035 C !
+MASS     2    CH1      13.019 C !
+
+AUTOGENERATE ANGLES DIHEDRALS
+
+RESI   ISB   0.00               !  isobutane { TraPPE }
+GROUP
+ATOM    C1    CH1       0.00    !  C3\
+ATOM    C2    CH3       0.00    !     C2-C1
+ATOM    C3    CH3       0.00    !  C4/
+ATOM    C4    CH3       0.00    !
+BOND    C1  C2   C1  C3   C1  C4
+PATCHING FIRS NONE LAST NONE
+END
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">pack_box_0.inp</span></code></p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tolerance   3.0
+filetype    pdb
+output      STEP2_ISB_packed_BOX_0.pdb
+
+structure     isobutane.pdb
+number        1000
+inside cube   0.  0.  0.  68.00
+end structure
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">pack_box_1.inp</span></code></p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tolerance   3.0
+filetype    pdb
+output      STEP2_ISB_packed_BOX_1.pdb
+
+structure     isobutane.pdb
+number        1000
+inside cube   0.  0.  0.  68.00
+end structure
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">build_box_0.inp</span></code></p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
+
+topology  ./Top Branched Alkane.inp segment ISB {
+  pdb     ./STEP2_ISB_packed_BOX_0.pdb
+  first   none
+  last    none
+}
+coordpdb  ./STEP2 ISB_packed_BOX_0.pdb ISB
+
+writepsf  ./STEP3_START_ISB_sys_BOX_0.psf
+writepdb  ./STEP3_START_ISB_sys_BOX_0.pdb
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">build_box_1.inp</span></code></p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
+
+topology  ./Top Branched Alkane.inp segment ISB {
+  pdb     ./STEP2_ISB_packed_BOX_1.pdb
+  first   none
+  last    none
+}
+coordpdb  ./STEP2 ISB_packed_BOX_1.pdb ISB
+
+writepsf  ./STEP3_START_ISB_sys_BOX_1.psf
+writepdb  ./STEP3_START_ISB_sys_BOX_1.pdb
+</pre></div>
+</div>
+</div></blockquote>
+<p>These files can be created with a standard Linux or Windows text editor. Please, also copy a Packmol executable into the working directory.</p>
+<p>Once those files are created, run in the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./packmol   &lt;   pack_box_0.inp
+$ ./packmol   &lt;   pack_box_1.inp
+</pre></div>
+</div>
+<p>This will create the intermediate PDBs.</p>
+<p>Then, run the PSFGen scripts to finish the system using the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd -dispdev text &lt; ./build_box_0.inp
+$ vmd -dispdev text &lt; ./build_box_1.inp
+</pre></div>
+</div>
+<p>This will create the intermediate PDBs.</p>
+<p>To run the code a few additional things will be needed:</p>
+<ul class="simple">
+<li>A GOMC Gibbs ensemble executable</li>
+<li>A control file</li>
+<li>Parameter files</li>
+</ul>
+<p>Enter the control file (in.conf) in the text editor in order to modify it. Example files for different simulation types can be found in previous section.</p>
+<p>Once these four files have been added to the output directory, the simulation is ready.</p>
+<p>Assuming the code is named GOMC_CPU_GEMC, run in the terminal using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./GOMC CPU GEMC in.conf &gt; out_ISB_T_330.00_K_RUN_0.log <span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>For running GOMC in parallel, using openmp, run in the terminal using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./GOMC CPU GEMC +p4 in.conf &gt; out_ISB_T_330.00_K_RUN_0.log<span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>Here, 4 defines the number of processors that will be used to run the simulation in parallel.</p>
+<p>Progress can be monitored in the terminal with the tail command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tail -f out_ISB.log
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Congratulations! You have examined a single-phase coexistence point on the saturated vapor-liquid curve using GOMC operating in the Gibbs ensemble.</p>
+</div>
+<div class="figure" id="id1">
+<img alt="_images/isobutane_result.png" src="_images/isobutane_result.png" />
+<p class="caption"><span class="caption-text">Repeating this process for multiple temperatures will allow you to obtain the following results.</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vdw_energy.html" class="btn btn-neutral float-right" title="Intermolecular Energy and Virial Function (Van der Waals)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="output_file.html" class="btn btn-neutral float-left" title="GOMC’s Output Files, Terminal Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, GOMC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

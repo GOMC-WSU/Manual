@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GOMC’s Output Files, Terminal Output &mdash; GOMC 2.40 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Putting it all together: Running a GOMC Simulation" href="putting_all_together.html" />
+    <link rel="prev" title="Input File Formats" href="input_file.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GOMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GOMC’s Output Files, Terminal Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#console-output">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#block-output-files">Block Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>GOMC’s Output Files, Terminal Output</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/output_file.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gomc-s-output-files-terminal-output">
+<h1>GOMC’s Output Files, Terminal Output<a class="headerlink" href="#gomc-s-output-files-terminal-output" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>GOMC currently supports several kinds of output:</dt>
+<dd><ul class="first last">
+<li><p class="first">STDIO (“console”) output</p>
+</li>
+<li><p class="first">File output</p>
+<p>– PDB</p>
+<p>– PSF</p>
+<p>– Block Averages</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p>GOMC output units:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Properties</th>
+<th class="head">Units</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Energy</td>
+<td><span class="math notranslate nohighlight">\(K\)</span></td>
+</tr>
+<tr class="row-odd"><td>Pressure, Pressure Tensor</td>
+<td>bar</td>
+</tr>
+<tr class="row-even"><td>Heat of vaporization</td>
+<td><span class="math notranslate nohighlight">\(KJ/mol\)</span></td>
+</tr>
+<tr class="row-odd"><td>Volume</td>
+<td><span class="math notranslate nohighlight">\(Å^3\)</span></td>
+</tr>
+<tr class="row-even"><td>Density</td>
+<td><span class="math notranslate nohighlight">\(kg/m^3\)</span></td>
+</tr>
+<tr class="row-odd"><td>Mol Density</td>
+<td><span class="math notranslate nohighlight">\(molecule/Å^3\)</span></td>
+</tr>
+<tr class="row-even"><td>Surface Tension</td>
+<td><span class="math notranslate nohighlight">\(mN/m\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="console-output">
+<h2>Console Output<a class="headerlink" href="#console-output" title="Permalink to this headline">¶</a></h2>
+<p>A variety of useful information relating to instantaneous statistical and thermodynamic data (move trials, acceptance rates, file I/O messages warnings, and other kinds of information) is printed to the STDIO, which, in Linux, will typically be displayed in the terminal. This output can be redirected into a log file in Linux using the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> operator.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ GOMC CPU NVT in.conf &gt; out_isobutane.log <span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>Statistical and thermodynamic information is provided in console output.</p>
+<ul>
+<li><p class="first">Energy</p>
+<p>– Intermolecular (LJ)</p>
+<p>– Intramolecular bonded</p>
+<p>– Intramolecular nonbonded</p>
+<p>– Tail corrections</p>
+<p>– Electrostatic real</p>
+<p>– Electrostatic Reciprocal</p>
+<p>– Electrostatic self</p>
+<p>– Electrostatic correction</p>
+<p>– Total electrostatic energy (sum of real, reciprocal, self, and correction)</p>
+<p>– Total Energy (sum of the all energies)</p>
+</li>
+<li><p class="first">Pressure, Pressure Tensor (<span class="math notranslate nohighlight">\(P_{xx},P_{yy},P_{zz}\)</span>)</p>
+</li>
+<li><p class="first">Volume</p>
+</li>
+<li><p class="first">Total molecule number</p>
+</li>
+<li><p class="first">Total Density</p>
+</li>
+<li><p class="first">Surface Tension</p>
+</li>
+<li><p class="first">Mole fraction of each species</p>
+</li>
+<li><p class="first">Mole density of each species</p>
+</li>
+</ul>
+<p>Detailed move, energy, and statistical or thermodynamic information for each simulation box will be printed in three different sections. Each section’s title will start with <code class="docutils literal notranslate"><span class="pre">MTITLE</span></code>, <code class="docutils literal notranslate"><span class="pre">ETITLE</span></code>, and <code class="docutils literal notranslate"><span class="pre">STITLE</span></code> for move, energy, and statistical information, respectively. The instantaneous values for each section will start with <code class="docutils literal notranslate"><span class="pre">MOVE_#</span></code>, <code class="docutils literal notranslate"><span class="pre">ENER_#</span></code>, and <code class="docutils literal notranslate"><span class="pre">STAT_#</span></code> for move, energy, and statistical values, respectively. Where, # is the simulation box number. In addition, if pressure calculation is activated and enabled to print, pressure tensor will be printed in the console output file. This section starts with <code class="docutils literal notranslate"><span class="pre">PRES_#</span></code> and print the diagonal value of pressure tensor <span class="math notranslate nohighlight">\(P_{xx}\)</span>, <span class="math notranslate nohighlight">\(P_{yy}\)</span>,and <span class="math notranslate nohighlight">\(P_{zz}\)</span>, respectively. The second element after the title of each section is the step number.</p>
+<p>In order to extract the desired information from the console file, “grep” and “awk” commands can be used with a proper title section. For example, in order to extract total energy of the system, the following command needs to be executed in terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grep <span class="s2">&quot;ENER_0&quot;</span> output_console.log <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span>
+</pre></div>
+</div>
+<p>Here, “output_console.log” is the console output file and “$3” represents the second element of the “ENERGY_BOX_0” section.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><em>Surface Tension is calculated using Virial method according to following equation</em>,</p>
+<div class="last math notranslate nohighlight">
+\[\gamma = \frac{1}{2A_{xy}} \int_{0}^{L} \bigg(P_{zz} - \frac{P_{xx} + P_{yy}}{2} \bigg) dz\]</div>
+</div>
+<p>The first section of this console output typically includes some information relating the system, CPU, GPU, and RAM. In continue, console output includes information regarding the input file (configuration file), force field reading, summary of the structure of the molecule, bonded and non-bonded parameters, and minimum and maximum coordinate of molecules. This output is important; it may contain text relating to issues encountered if there was an error in the current run (e.g. a bad parameter, unknown keyword, missing parameters in the configuration file, etc.)</p>
+<div class="figure" id="id1">
+<img alt="_images/out1.png" src="_images/out1.png" />
+<p class="caption"><span class="caption-text">Printing summary of configuration file.</span></p>
+</div>
+<div class="figure" id="id2">
+<img alt="_images/out2.png" src="_images/out2.png" />
+<p class="caption"><span class="caption-text">Reading parameter file and printing the summary of the force field.</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="_images/out3.png" src="_images/out3.png" />
+<p class="caption"><span class="caption-text">Reading the PDB files for each box, printing the min and max coordinates.</span></p>
+</div>
+<p>Next, the energy and statistic title, initial energy and statistic of the system’s starting configuration will print:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If total energy of simulation is greater that <span class="math notranslate nohighlight">\(1.0e^{12}\)</span>, System Total Energy Calculation will be performed at EqSteps to preserve energy value.</p>
+</div>
+<div class="figure" id="id4">
+<img alt="_images/out4.png" src="_images/out4.png" />
+<p class="caption"><span class="caption-text">Printing initial energy of the system and statistical values.</span></p>
+</div>
+<p>After the simulation starts, move, energy, and statistical title, followed by their values for each simulation box, will print:</p>
+<img alt="_images/out5.png" src="_images/out5.png" />
+<p>At the end of the run, Monte Carlo move acceptance for each molecule kind and simulation box, total amount of time spent on each Monte Carlo move, total timing information, and other wrap up info will be printed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Printed energy and statistical values are instantaneous values.</li>
+<li>In order to keep the format of console file consistent and print the calculated properties with high accuracy, scientific format is used.</li>
+<li>It’s important to watch the acceptance rates and adjust the move percentages and CBMC trial amounts to get the desired rate of move acceptance.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="block-output-files">
+<h2>Block Output Files<a class="headerlink" href="#block-output-files" title="Permalink to this headline">¶</a></h2>
+<p>GOMC tracks a number of thermodynamic variables of interest during the simulation and prints them all in one file for each box.</p>
+<ul>
+<li><p class="first">Energy</p>
+<p>– Intermolecular (LJ)</p>
+<p>– Intramolecular bonded</p>
+<p>– Intramolecular nonbonded</p>
+<p>– Tail corrections</p>
+<p>– Electrostatic real</p>
+<p>– Electrostatic Reciprocal</p>
+<p>– Total Energy (sum of the all energies)</p>
+</li>
+<li><p class="first">Virial</p>
+</li>
+<li><p class="first">Pressure</p>
+</li>
+<li><p class="first">Surface Tension (using virial method)</p>
+</li>
+<li><p class="first">Volume</p>
+</li>
+<li><p class="first">Total molecule number</p>
+</li>
+<li><p class="first">Total Density</p>
+</li>
+<li><p class="first">Mole fraction of each species</p>
+</li>
+<li><p class="first">Mole density of each species</p>
+</li>
+<li><p class="first">Heat of vaporization</p>
+</li>
+</ul>
+<p>At the beginning of each file, the title of each property followed by their average values is printed. Desired data can be extracted, as explained before, using the “awk” command. For example, in order to extract total density of the system, the following command need to be executed in terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat Blk_OutputName_BOX_0.dat <span class="p">|</span> awk <span class="s1">&#39;{print $13}&#39;</span>
+</pre></div>
+</div>
+<p>Here, “Blk_OutputName_BOX_0.dat” is the block-average file for simulation box 0 and “$13” represents the 13th column of the block file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to keep the format of BlockOutput file consistent and print the calculated properties with high accuracy, scientific format is used.</p>
+</div>
+</div>
+<div class="section" id="visualizing-simulation">
+<h2>Visualizing Simulation<a class="headerlink" href="#visualizing-simulation" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code> is enabled in configuration file, GOMC will output the molecule coordinates every specified stpes. The PDB and PSF output (merging of atom entries) has already been mentioned/explained in previous sections. To recap: The PDB file’s ATOM entries’ occupancy is used to represent the box the molecule is in for the current frame. All molecules are listed in order in which they were read (i.e. if box 0 has <span class="math notranslate nohighlight">\(1, 2, ..., N1\)</span> molecules and box 1 has <span class="math notranslate nohighlight">\(1, 2, ..., N2\)</span> molecules, then all of the molecules in box 0 are listed first and all the molecules in box 1, i.e. <span class="math notranslate nohighlight">\(1, 2 ,... ,N1\)</span>, <span class="math notranslate nohighlight">\(N1 + 1, ..., N1 + N2\)</span>). PDB frames are written as standard PDBs to consecutive file frames.</p>
+<p>To visualize, open the output PDB and PSF files by GOMC using VMD, type this command in the terminal:</p>
+<p>For all simulation except Gibbs ensemble that has one simulation box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+</pre></div>
+</div>
+<p>For Gibbs ensemble, visualizing the first box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+</pre></div>
+</div>
+<p>For Gibbs ensemble, visualizing the second box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_1.pdb
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Restart coordinate file (OutputName_BOX_0_restart.pdb) cannot be visualize using merged psf file, because atom number does not match. However, you can still open it in vmd using following command and vmd will automatically find the bonds of the molecule based on the coordinates.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_BOX_0_restart.pdb
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="putting_all_together.html" class="btn btn-neutral float-right" title="Putting it all together: Running a GOMC Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="input_file.html" class="btn btn-neutral float-left" title="Input File Formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, GOMC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

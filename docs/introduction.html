@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; GOMC 2.40 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Software Requirements" href="software_requirements.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GOMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gomc-supported-force-fields">GOMC supported force fields:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gomc-supported-molecules">GOMC supported molecules:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files, Terminal Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>GPU Optimized Monte Carlo (GOMC) is open-source software for simulating many-body molecular systems using the Metropolis Monte Carlo algorithm. GOMC is written in object oriented C++, which was chosen since it offers a good balance between code development time, interoperability with existing software elements, and code performance. The software may be compiled as a single-threaded application, a multi-threaded application using OpenMP, or to use many-core heterogeneous CPU-GPU architectures using OpenMP and CUDA. GOMC officially supports Windows 7 or newer and most modern distribution of GNU/Linux. This software has the ability to compile on recent versions of macOS; however, such a platform is not officially supported.</p>
+<p>GOMC employs widely-used simulation file types (PDB, PSF, CHARMM-style parameter file) and supports polar and non-polar linear and branched molecules. GOMC can be used to study vapor-liquid and liquid-liquid equilibria, adsorption in porous materials, surfactant self-assembly, and condensed phase structure for complex molecules.</p>
+<p>To cite GOMC software, please refer to <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2352711018301171">GOMC paper</a>.</p>
+<div class="section" id="gomc-supported-ensembles">
+<h2>GOMC supported ensembles:<a class="headerlink" href="#gomc-supported-ensembles" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Canonical (NVT)</li>
+<li>Isobaric-isothermal (NPT)</li>
+<li>Grand canonical (μVT)</li>
+<li>Constant volume Gibbs (NVT-Gibbs)</li>
+<li>Constant pressure Gibbs (NPT-Gibbs)</li>
+</ul>
+</div>
+<div class="section" id="gomc-supported-monte-carlo-moves">
+<h2>GOMC supported Monte Carlo moves:<a class="headerlink" href="#gomc-supported-monte-carlo-moves" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Rigid-body displacement</li>
+<li>Rigid-body rotation</li>
+<li>Regrowth using <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a></li>
+<li>Crankshaft using combination of <a class="reference external" href="https://aip.scitation.org/doi/abs/10.1063/1.438608">crankshaft</a> and <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a></li>
+<li>Intra-box swap using <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a></li>
+<li>Intra-box <a class="reference external" href="https://aip.scitation.org/doi/abs/10.1063/1.5025184">molecular exchange Monte Carlo</a></li>
+<li>Inter-box swap using <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a></li>
+<li>Inter-box <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0378381218305351">molecular exchange monter carlo</a></li>
+<li>Volume exchange (both isotropic and anisotropic)</li>
+</ul>
+</div>
+<div class="section" id="gomc-supported-force-fields">
+<h2>GOMC supported force fields:<a class="headerlink" href="#gomc-supported-force-fields" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>OPLS</li>
+<li>CHARMM</li>
+<li>TraPPE</li>
+<li>Mie</li>
+<li>Martini</li>
+</ul>
+</div>
+<div class="section" id="gomc-supported-molecules">
+<h2>GOMC supported molecules:<a class="headerlink" href="#gomc-supported-molecules" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Polar molecules (using Ewald summation)</li>
+<li>Non-polar molecules (standard LJ and Mie potential)</li>
+<li>Linear molecules (using <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a>)</li>
+<li>Branched molecules (using <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a>)</li>
+<li>Cyclic molecules (using combination of <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/jp984742e">coupled-decoupled configurational-bias</a> and <a class="reference external" href="https://aip.scitation.org/doi/abs/10.1063/1.3644939">crankshaft</a> to sample intramolecular degrees of freedom of cyclic molecules)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>It is important to start the simulation with correct molecular geometry such as correct bond length, angles, and dihedral.</li>
+<li>In GOMC if the defined bond length in <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> file is different from calculated bond length in <code class="docutils literal notranslate"><span class="pre">PDB</span></code> files by more than 0.02 <span class="math notranslate nohighlight">\(Å\)</span>, you will receive a warning message with detailed information (box, residue id, specified bond length, and calculated bond length)</li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<ul class="last simple">
+<li>Molecular geometry of <code class="docutils literal notranslate"><span class="pre">Linear</span></code> and <code class="docutils literal notranslate"><span class="pre">Branched</span></code> molecules will be corrected during the simulation by using the Monte Carlo moves that uses coupled-decoupled configurational-bias method, such as <code class="docutils literal notranslate"><span class="pre">Regrowth</span></code>, <code class="docutils literal notranslate"><span class="pre">Intra-box</span> <span class="pre">swap</span></code>, and <code class="docutils literal notranslate"><span class="pre">Inter-box</span> <span class="pre">swap</span></code>.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>Bond length of the <code class="docutils literal notranslate"><span class="pre">Cyclic</span></code> molecules that belong to the body of rings will never be changed. Incorrect bond length may result in incorrect simulation results.</li>
+<li>To sample the angles and dihedrals of a <code class="docutils literal notranslate"><span class="pre">Cyclic</span></code> molecule that belongs to the body of the ring, <code class="docutils literal notranslate"><span class="pre">Regrowth</span></code> or <code class="docutils literal notranslate"><span class="pre">Crankshaft</span></code> Monte Carlo move must be used.</li>
+<li>Any atom or group attached to the body of the ring, will uses coupled-decoupled configurational-bias to sample the molecular geometry.</li>
+<li>Flexible <code class="docutils literal notranslate"><span class="pre">Cyclic</span></code> molecules with multiple rings (3 or more) that share edges (e.g. tricyclic), are not supported in GOMC. This is due the fact that no <code class="docutils literal notranslate"><span class="pre">Crankshaft</span></code> move can alter the angle or dihedral of this atom, without changing the bond length.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="software_requirements.html" class="btn btn-neutral float-right" title="Software Requirements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, GOMC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

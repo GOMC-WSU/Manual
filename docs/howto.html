@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to? &mdash; GOMC 2.40 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get Help or Technical Support" href="help.html" />
+    <link rel="prev" title="Intermolecular Energy and Virial Function (Electrostatic)" href="electrostatic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GOMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files, Terminal Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-a-molecule-and-topology-file">Build a molecule and topology file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restart-recalculate">Restart / Recalculate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-pdb-and-psf-file">Build PDB and PSF file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adsorption-in-gcmc">Adsorption in GCMC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adsorption-in-npt-gemc">Adsorption in NPT-GEMC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>How to?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/howto.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to">
+<h1>How to?<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulaiton problem.</p>
+<div class="section" id="build-a-molecule-and-topology-file">
+<h2>Build a molecule and topology file<a class="headerlink" href="#build-a-molecule-and-topology-file" title="Permalink to this headline">¶</a></h2>
+<p>There are many open-source software that can build a molecule for you, such as <a class="reference external" href="https://avogadro.cc/docs/getting-started/drawing-molecules/">Avagadro</a> ,
+<a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/plugins/molefacture/">molefacture</a> in VMD and more. Here we use molefacture features to not only build a molecule,
+but also creating the topology file.</p>
+<p>First, make sure that VMD is installed on your computer. Then, to learn how to build a single PDB file and topology file for united atom butane molecule,
+please refer to this <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/NVT/butane/build/Molefacture.pdf">document</a> .</p>
+<p>We encourage to try to go through our workshop materials:</p>
+<ul>
+<li><p class="first">To try two days workshop, execute the following command in your terminal to clone the workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch master --single-branch
+$ <span class="nb">cd</span>   Workshop
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/master">GitHub</a> .</p>
+</li>
+<li><p class="first">To try two hours workshop, execute the following command in your terminal to clone the workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch AIChE --single-branch
+$ <span class="nb">cd</span>   Workshop
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/AIChE">GitHub</a> .</p>
+</li>
+</ul>
+</div>
+<div class="section" id="restart-recalculate">
+<h2>Restart / Recalculate<a class="headerlink" href="#restart-recalculate" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="restart-the-simulation">
+<h3>Restart the simulation<a class="headerlink" href="#restart-the-simulation" title="Permalink to this headline">¶</a></h3>
+<p>Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
+and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
+<p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</li>
+<li>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</li>
+<li>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</li>
+<li>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
+the cell basis information with the cell basis data from restart PDB file/files.</li>
+<li>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</li>
+</ol>
+<p>Here is the example of starting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Restart         true
+
+Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+
+#CellBasisVector1   0       45.00   0.00    0.00
+#CellBasisVector2   0       0.00    55.00   0.00
+#CellBasisVector3   0       0.00    0.00    45.00
+
+OutputName          dimethylether_NPT
+</pre></div>
+</div>
+<p>Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from equilibrated NVT simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Restart         true
+
+Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+Structure       1   dimethylether_NVT_merged.psf
+
+#CellBasisVector1   0       45.00   0.00    0.00
+#CellBasisVector2   0       0.00    55.00   0.00
+#CellBasisVector3   0       0.00    0.00    45.00
+
+#CellBasisVector1   1       45.00   0.00    0.00
+#CellBasisVector2   1       0.00    55.00   0.00
+#CellBasisVector3   1       0.00    0.00    45.00
+
+OutputName          dimethylether_NPT_GEMC
+</pre></div>
+</div>
+</div>
+<div class="section" id="recalculate-the-energy">
+<h3>Recalculate the energy<a class="headerlink" href="#recalculate-the-energy" title="Permalink to this headline">¶</a></h3>
+<p>GOMC is capable of recalculate the energy of previous simulation snapshot, with same or different force field. Simulation snapshot is the printed molecule’s
+coordinates at specific steps, which controls by <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code>. First, we need to make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code>
+was activated and the coordinates PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0.pdb) and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
+<p>In order to recalculate the energy from previous simulation we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</li>
+<li>Use the dumped coordinates PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</li>
+<li>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</li>
+<li>Set the <code class="docutils literal notranslate"><span class="pre">RunSteps</span></code> to zero to activare the energy recalculation.</li>
+<li>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the merged PSF files.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">GOMC only recalculated the energy terms and does not recalulate the thermodynamic properties. Hence, no output file, except merged PSF file, will be
+generated.</p>
+</div>
+<p>Here is the example of recalculating energy from previous NVT simulation snapshot:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Restart         true
+
+Coordinates     0   dimethylether_NVT_BOX_0.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+
+RunSteps        0
+
+OutputName          Recalculate
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="simulate-adsorption">
+<h2>Simulate adsorption<a class="headerlink" href="#simulate-adsorption" title="Permalink to this headline">¶</a></h2>
+<p>GOMC is capable of simulating gas adsorption in rigid framework using GCMC and NPT-GEMC simulation. In this section, we discuss how to generate PDB and PSF file,
+how to modify the configuration file to simulate adsorption.</p>
+<div class="section" id="build-pdb-and-psf-file">
+<h3>Build PDB and PSF file<a class="headerlink" href="#build-pdb-and-psf-file" title="Permalink to this headline">¶</a></h3>
+<p>Generating PDB and PSF file for reservoir is similar to generating PDB and PSF file for isobutane, explained before. Here, we are focusing on how to generate
+PDB and PSF file for adsorbent.
+As mensioned before, GOMC can only read PDB and PSF file as input file. If you are using “*.cif” file for your adsorbent, you need to perform few steps
+to extend the unit cell and export it as PDB file. There are two ways that you can prepare your adsorption simulation:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Using High Throughput Screening (HTS)</strong></p>
+<p>GOMC development group created a python code combined with Tcl scripting to automatically generate GOMC input files for adsorption simulation.
+In this code, we use CoRE-MOF repository created by <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/cm502594j">Snurr et al.</a> to prepare the simulation input file.</p>
+<p>To try this code, execute the following command in your terminal to clone the HTS repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch HTS --single-branch
+$ <span class="nb">cd</span>   Workshop
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/HTS">GitHub</a> .</p>
+<p>Make sure that you installed all <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/HTS/GOMC_Software_Requirements.pdb">GOMC software requirement</a>. Follow the
+“Readme.md” for more information.</p>
+</li>
+<li><p class="first"><strong>Manual preparation</strong></p>
+<p>To illustrate the steps that need to be taken to prepare the PDB and PSF file, we will use an example provided in one of our workshop. Make sure that you
+installed all <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/GOMC_Requirements.pdf">GOMC software requirement</a>.</p>
+<p>To clone the workshop, execute the following command in your terminal to clone the workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch master --single-branch
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/master">GitHub</a> .</p>
+<p>To show how to extend the unit cell of IRMOF-1 and build the PDB and PSF files, change your directory to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span>   Workshop/adsorption/GCMC/argon_IRMOF_1/build/base/.
+</pre></div>
+</div>
+<p>In this directory, there is a “README.txt” file, which provides detailed information of steps need to be taken. Here we just provide a summary of these steps:</p>
+<ul>
+<li><p class="first">Extend the unit cell of “EDUSIF_clean_min.cif” file using <a class="reference external" href="https://jp-minerals.org/vesta/en/download.html">VESTA</a>. To learn how to extend the
+unit cell, removing bonds, and export it as PDB file, please refere to this <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/adsorption/GCMC/argon_IRMOF_1/build/base/VESTA.pdf">documente</a> to generate “EDUSIF_clean_min.pdb” file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Generated PDB file does not provide all necessary information. Further modification must be made.</p>
+</div>
+</li>
+<li><p class="first">The easy way to generate PSF file is to treat each atom as a separate molecule kind to avoid defining bonds, angles, and dihedrals. To modify the “EDUSIF_clean_min.pdb” file (set the residue ID, resname, …), execute the following command to generate the
+“EDUSIF_clean_min_modified.pdb” file.</p>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vmd -dispdev text &lt; convert_VESTA_PDB.tcl
+</pre></div>
+</div>
+<ul class="simple">
+<li>Treating each atom as separate molecule kind will make it easy to generate topology file. Here is an example of topology file where each atom is treated
+as a separate residue kind:</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* Topology file for IRMOF-1 (Zn4O(BDC)3)
+!
+MASS   1  O     15.999      O  !
+MASS   2  C     12.011      C  !
+MASS   3  H      1.008      H  !
+MASS   4  ZN    65.380      ZN !
+
+DEFA FIRS none LAST none
+AUTOGENERATE ANGLES DIHEDRALS
+
+RESI    C         0.000
+GROUP
+ATOM    C   C     0.000
+PATCHING FIRS NONE LAST NONE
+
+RESI    H         0.000
+GROUP
+ATOM    H   H     0.000
+PATCHING FIRS NONE LAST NONE
+
+RESI    O          0.000
+GROUP
+ATOM    O   O      0.000
+PATCHING FIRS NONE LAST NONE
+
+RESI    Zn         0.000
+GROUP
+ATOM    Zn  ZN     0.000
+PATCHING FIRS NONE LAST NONE
+
+END
+</pre></div>
+</div>
+<ul class="simple">
+<li>To generate the PSF file, each molecule kind must be separated and stored in separate pdb file. Then we use VMD to generate the PSF file.
+All these process are scripted in “build_EDUSIF_auto.tcl” and we just need to execute the following command to generate the “IRMOF_1_BOX_0.pdb” and
+“IRMOF_1_BOX_0.psf” files.</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vmd -dispdev text &lt; build_EDUSIF_auto.tcl
+</pre></div>
+</div>
+<ul class="simple">
+<li>Last steps to fix the adsorbent atoms in their position. As mensioned in PDB section, setting the <code class="docutils literal notranslate"><span class="pre">Beta</span> <span class="pre">=</span> <span class="pre">1.00</span></code> value of a molecule in PDB file, will
+fix that molecule position. This can be done by a text editor but here we use another Tcl scrip to do that. Execute the following command in your terminal
+to set the <code class="docutils literal notranslate"><span class="pre">Beta</span></code> value of all atoms in “IRMOF_1_BOX_0.pdb” to 1.00.</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vmd -dispdev text &lt; setBeta.tcl
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="adsorption-in-gcmc">
+<h3>Adsorption in GCMC<a class="headerlink" href="#adsorption-in-gcmc" title="Permalink to this headline">¶</a></h3>
+<p>To simulation adsorption using GCMC ensemble, we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li>Use the generated PDB files for adsorbent and adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code>.</li>
+<li>Use the generated PSF files for adsorbent and adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code>.</li>
+<li>Calculate the cell basis vectors for each box and set the <code class="docutils literal notranslate"><span class="pre">CellBasisVector1,2,3</span></code> for each box.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To calculate the cell basis vector with cell length <span class="math notranslate nohighlight">\(\boldsymbol{a} , \boldsymbol{b}, \boldsymbol{c}\)</span> and cell angle
+<span class="math notranslate nohighlight">\(\alpha, \beta. \gamma\)</span> we use the following equations:</p>
+<p><span class="math notranslate nohighlight">\(a_x = \boldsymbol{a}\)</span></p>
+<p><span class="math notranslate nohighlight">\(a_y = 0.0\)</span></p>
+<p><span class="math notranslate nohighlight">\(a_z = 0.0\)</span></p>
+<p><span class="math notranslate nohighlight">\(b_x = \boldsymbol{b} \times cos(\gamma)\)</span></p>
+<p><span class="math notranslate nohighlight">\(b_y = \boldsymbol{b} \times sin(\gamma)\)</span></p>
+<p><span class="math notranslate nohighlight">\(c_x = \boldsymbol{c} \times cos(\beta)\)</span></p>
+<p><span class="math notranslate nohighlight">\(c_y = \boldsymbol{c} \times \frac{ cos(\alpha) - cos(\beta) \times cos(\gamma) } { sin(\gamma) }\)</span></p>
+<p><span class="math notranslate nohighlight">\(c_z = \boldsymbol{c} \times \sqrt {{sin(\beta)}^2 - { \bigg(\frac{ cos(\alpha) - cos(\beta) \times cos(\gamma) } { sin(\gamma) }} \bigg)^2}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">CellBasisVector1</span></code> = <span class="math notranslate nohighlight">\((a_x , a_y, a_z)\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">CellBasisVector2</span></code> = <span class="math notranslate nohighlight">\((b_x , b_y, b_z)\)</span></p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">CellBasisVector3</span></code> = <span class="math notranslate nohighlight">\((c_x , c_y, c_z)\)</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Set the <code class="docutils literal notranslate"><span class="pre">Fugacity</span></code> for adsorbate and include <code class="docutils literal notranslate"><span class="pre">Fugacity</span></code> for adsorbent with arbitrary value (e.g. 0.00).</li>
+</ol>
+<p>Here is the example of argon (AR) adsorption at 5 bar in IRMOF-1 using GCMC ensemble:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Coordinates     0   ../build/base/IRMOF_1_BOX_0.pdb
+Coordinates     1   ../build/reservoir/START_BOX_1.pdb
+
+Structure       0   ../build/base/IRMOF_1_BOX_0.psf
+Structure       1   ../build/reservoir/START_BOX_1.psf
+
+CellBasisVector1    0   36.8140   0.00     0.00
+CellBasisVector2    0   18.2583  31.9880   0.00
+CellBasisVector3    0   18.2712  10.5596  30.1748
+
+CellBasisVector1    1   40.00     0.00    0.00
+CellBasisVector2    1    0.00    40.00    0.00
+CellBasisVector3    1    0.00    00.00   40.00
+
+Fugacity    AR      5.0
+Fugacity    C       0.0
+Fugacity    H       0.0
+Fugacity    O       0.0
+Fugacity    ZN      0.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="adsorption-in-npt-gemc">
+<h3>Adsorption in NPT-GEMC<a class="headerlink" href="#adsorption-in-npt-gemc" title="Permalink to this headline">¶</a></h3>
+<p>To simulation adsorption using NPT-GEMC ensemble, simulaiton box 0 is used for adsorbent with fixed volume and simulaiton box 1 is used for adsorbate, where
+volume of this box is fluctuating at imposed pressure. To simulation adsorption in NPT-GEMC ensemble we need to perform the following steps to modify the
+config file:</p>
+<ol class="arabic simple">
+<li>Use the generated PDB file for adsorbent to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for box 0.</li>
+<li>Use the generated PDB file for adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for box 1.</li>
+<li>Use the generated PSF file for adsorbent to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for box 0.</li>
+<li>Use the generated PSF file for adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for box 1.</li>
+<li>Calculate the cell basis vectors for each box and set the <code class="docutils literal notranslate"><span class="pre">CellBasisVector1,2,3</span></code> for each box.</li>
+<li>Set the <code class="docutils literal notranslate"><span class="pre">GEMC</span></code> simulaiton type to “NPT”.</li>
+<li>Set the imposed <code class="docutils literal notranslate"><span class="pre">Pressure</span></code> (bar) for fluid phase.</li>
+<li>Keep the volume of box 0 constant by activating the <code class="docutils literal notranslate"><span class="pre">FixVolBox0</span></code>.</li>
+</ol>
+<p>Here is the example of argon (AR) adsorption at 5 bar in IRMOF-1 using NPT-GEMC ensemble:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Coordinates     0   ../build/base/IRMOF_1_BOX_0.pdb
+Coordinates     1   ../build/reservoir/START_BOX_1.pdb
+
+Structure       0   ../build/base/IRMOF_1_BOX_0.psf
+Structure       1   ../build/reservoir/START_BOX_1.psf
+
+CellBasisVector1    0   36.8140   0.00     0.00
+CellBasisVector2    0   18.2583  31.9880   0.00
+CellBasisVector3    0   18.2712  10.5596  30.1748
+
+CellBasisVector1    1   40.00     0.00    0.00
+CellBasisVector2    1    0.00    40.00    0.00
+CellBasisVector3    1    0.00    00.00   40.00
+
+GEMC        NPT
+
+Pressure    5.0
+
+FixVolBox0  true
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="help.html" class="btn btn-neutral float-right" title="Get Help or Technical Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="electrostatic.html" class="btn btn-neutral float-left" title="Intermolecular Energy and Virial Function (Electrostatic)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, GOMC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
