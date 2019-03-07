@@ -23,7 +23,7 @@ http://www.wwpdb.org/documentation/file-format-content/format33/sect2.html#HEADE
 http://www.wwpdb.org/documentation/file-format-content/format33/sect8.html#CRYST1 
 http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html#ATOM
 
-PDB contains foure major parts; ``REMARK``, ``CRYST1``, ``ATOM``, and ``END``. Here is the definition of each field and how GOMC is using them to get the information it requires.
+PDB contains four major parts; ``REMARK``, ``CRYST1``, ``ATOM``, and ``END``. Here is the definition of each field and how GOMC is using them to get the information it requires.
 
 - ``REMARK``:
   This header records present experimental  details, annotations, comments, and information not included in other records (for more information, 

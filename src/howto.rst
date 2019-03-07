@@ -4,12 +4,16 @@ How to?
 In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulaiton problem.
 
 
-Build a molecule and topology file
+Build molecule and topology file
 ----------------------------------
 
 There are many open-source software that can build a molecule for you, such as `Avagadro <https://avogadro.cc/docs/getting-started/drawing-molecules/>`__ ,
 `molefacture <http://www.ks.uiuc.edu/Research/vmd/plugins/molefacture/>`__ in VMD and more. Here we use molefacture features to not only build a molecule,
 but also creating the topology file.
+
+
+Regular molecule
+^^^^^^^^^^^^^^^^^
 
 First, make sure that VMD is installed on your computer. Then, to learn how to build a single PDB file and topology file for united atom butane molecule, 
 please refer to this `document <https://github.com/GOMC-WSU/Workshop/blob/master/NVT/butane/build/Molefacture.pdf>`__ .
@@ -20,8 +24,8 @@ We encourage to try to go through our workshop materials:
 
     .. code-block:: bash
 
-         $ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch master --single-branch
-         $ cd   Workshop
+        $ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch master --single-branch
+        $ cd   Workshop
 
     or simply download it from `GitHub <https://github.com/GOMC-WSU/Workshop/tree/master>`__ .
 
@@ -29,10 +33,134 @@ We encourage to try to go through our workshop materials:
 
     .. code-block:: bash
 
-         $ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch AIChE --single-branch
-         $ cd   Workshop
+        $ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch AIChE --single-branch
+        $ cd   Workshop
 
     or simply download it from `GitHub <https://github.com/GOMC-WSU/Workshop/tree/AIChE>`__ .
+
+
+Molecule with dummy atoms
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To simulate a molecule that includes one or more atoms with electrostatic interaction only and no LJ interaction (i.e. dummy atom near of the oxygen along 
+the bisector of the HOH angle in `TIP4P water model <http://dx.doi.org/10.1063/1.2121687>`__\), we must perform the following steps 
+to define the dummy atom/atoms:
+
+1.  Create a PDB file for single water molecule atoms (H1, O, H2) and a dummy atom (M, in this example), where dummy atom located at 0.150 Å of oxygen and along
+    the bisector of the H1-O-H2 angle.
+
+.. code-block:: text 
+
+    CRYST1    0.000    0.000    0.000  90.00  90.00  90.00 P 1           1
+    ATOM      1  O   TIP4    1      -0.189   1.073   0.000  0.00  0.00           O
+    ATOM      2  H1  TIP4    1       0.768   1.114   0.000  0.00  0.00           H
+    ATOM      3  H2  TIP4    1      -0.469   1.988   0.000  0.00  0.00           H
+    ATOM      4  M   TIP4    1      -0.102   1.195   0.000  0.00  0.00           D
+    END
+
+2.  Pack your desire number of TIP4 water molecule in a box using packmol, as explained before.
+
+3.  Include the dummy atom (M) and its charge in your topology file. Define a bond between oxygen and dummy atom.
+    Use vmd and build script to generate your PSF files.
+
+.. code-block:: text 
+
+    * Custom top file -- TIP4P water
+
+    MASS   1  OH    15.9994  O !
+    MASS   2  HO     1.0080  H !
+    MASS   3  MO     0.0000  D ! Dummy atom for TIP4P model
+
+    DEFA FIRS none LAST none
+    AUTOGENERATE ANGLES DIHEDRALS
+
+    RESI TIP4           0.0000 ! TIP4P water
+    GROUP
+    ATOM O      OH      0.0000 !        O
+    ATOM H1     HO      0.5564 !     /  |  \
+    ATOM H2     HO      0.5564 !    /   M   \
+    ATOM M      MO     −1.1128 !  H1        H2
+    BOND   O  H1   O  H2   O  M       
+    PATCHING FIRS NONE LAST NONE
+
+    END
+
+4.  Define all bonded parameters (bond, angles, and dihedral) and nonbonded parameters in your parameter file. 
+
+.. code-block:: text 
+
+    *parameteres for TIP4P
+
+    BONDS
+    !
+    !V(bond) = Kb(b - b0)**2
+    !
+    !atom type          Kb          b0   
+    OH   HO    99999999999       0.9572 ! TIP4P O-H bond length  
+    OH   MO    99999999999       0.1500 ! TIP4P M-O bond length
+
+
+    ANGLES
+    !
+    !V(angle) = Ktheta(Theta - Theta0)**2
+    !
+    !atom types         Ktheta       Theta0  
+    HO   OH   HO    9999999999999    104.52  ! H-O-H Fix Angle
+    HO   OH   MO    9999999999999     52.26  ! H-O-M Fix Angle
+
+
+    DIHEDRALS
+    !
+    !V(dihedral) = Kchi(1 + cos(n(chi) - delta))
+    !
+    !atom types             Kchi    n   delta
+
+
+    NONBONDED 
+    !
+    !V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+    !
+    !atom  ignored      epsilon      Rmin/2   ignored   eps,1-4    Rmin/2,1-4
+    HO      0.000000     0.00000    0.000000    0.0     0.0         0.0
+    MO      0.000000     0.00000    0.000000    0.0     0.0         0.0
+    OH      0.000000    -0.18521    1.772873    0.0     0.0         0.0
+
+
+
+Simulate rigid molecule
+------------------------
+
+Currently, GOMC can simulate rigid molecules for any molecular topology in NVT and NPT ensemble, if none of the Monte Carlo moves that lead to change in
+molecular configuration (e.g. ``Regrowth``, ``Crankshaft``, ``IntraSwap``, and etc.) was used.
+
+In general, GOMC can simulate rigid molecules in all ensembles for the following molecular topology:
+
+1.  Linear and branched molecules with no dihedrals. For instance, carbon dioxide, dimethyl ether, and all water models (SPC, SPC/E, TIP3P, TIP4P, etc).
+
+2.  Cyclic molecules, where at least two atoms in all defined angles, belong to the body of the ring. For instance, benzene, toluene, Xylene, and more.
+
+.. important::
+
+    1.  For linear and branched molecule, the molecule's bonds and angles  will be adjusted according to the equilibrium values, defined in parameter file.
+
+    2.  For cyclic molecules, the molecule's bonds and angles would not change! It is very important to create the initial molecule with correct bonds and angles. 
+
+
+Setup rigid  molecule
+^^^^^^^^^^^^^^^^^^^^^^
+
+To simulate the rigid molecules in GOMC, we need to perform the following steps:
+
+1.  Define all bonds in topology file and use **AUTOGENERATE ANGLES DIHEDRALS** in topology file to specify all angles and dihedral in PSF files.
+
+2.  Define all bond parameters in the parameter file. If you wish to not to include the bond energy in your simulation, set the 
+    the :math:`K_b` to a large value i.e. "999999999999".
+
+3.  Define all angle parameters in the parameter file. If you wish to not to include the bend energy in your simulation, set the
+    the :math:`K_{\theta}` to a large value i.e. "999999999999".
+
+4.  Define all dihedral parameters in parameter file. If you wish to not to include the dihedral energy in your simulation, set the all 
+    the :math:`C_n` to zero. **For cyclic molecules only**
 
 
 

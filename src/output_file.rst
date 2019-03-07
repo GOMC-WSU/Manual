@@ -91,15 +91,15 @@ Here, "output_console.log" is the console output file and "$3" represents the se
 
 The first section of this console output typically includes some information relating the system, CPU, GPU, and RAM. In continue, console output includes information regarding the input file (configuration file), force field reading, summary of the structure of the molecule, bonded and non-bonded parameters, and minimum and maximum coordinate of molecules. This output is important; it may contain text relating to issues encountered if there was an error in the current run (e.g. a bad parameter, unknown keyword, missing parameters in the configuration file, etc.)
 
-.. figure:: _static/out1.png
+.. figure:: static/out1.png
 
   Printing summary of configuration file.
 
-.. figure:: _static/out2.png
+.. figure:: static/out2.png
 
   Reading parameter file and printing the summary of the force field.
 
-.. figure:: _static/out3.png
+.. figure:: static/out3.png
 
   Reading the PDB files for each box, printing the min and max coordinates.
 
@@ -108,13 +108,13 @@ Next, the energy and statistic title, initial energy and statistic of the system
 .. note:: If total energy of simulation is greater that :math:`1.0e^{12}`, System Total Energy Calculation will be performed at EqSteps to preserve energy value.
 
 
-.. figure:: _static/out4.png
+.. figure:: static/out4.png
 
   Printing initial energy of the system and statistical values.
 
 After the simulation starts, move, energy, and statistical title, followed by their values for each simulation box, will print:
 
-.. image:: _static/out5.png
+.. image:: static/out5.png
 
 At the end of the run, Monte Carlo move acceptance for each molecule kind and simulation box, total amount of time spent on each Monte Carlo move, total timing information, and other wrap up info will be printed.
 

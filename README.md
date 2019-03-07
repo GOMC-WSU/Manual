@@ -7,6 +7,7 @@
 
 3. To build the HTML files execute the following command in your terminal: 
    ```bash
+   $ rm -r docs
    $ sphinx-build src docs
    ```
    After the process is complete go to `docs` directory.
@@ -15,11 +16,11 @@
    ```
    Then rename all three directories.
    ```bash
-   $ mv _images images
-   $ mv _sources sources
-   $ mv _static static
+   $ mv images images
+   $ mv sources sources
+   $ mv static static
    ```
-   Then for each file inside docs, replace the same strings. `_images`, `_sources`, and `_static` to `images`, `sources`, `static`.
+   Then for each file inside docs, replace the same strings. `images`, `sources`, and `static` to `images`, `sources`, `static`.
    
 4. To build PDF first execute the following command in your terminal:
    ```bash

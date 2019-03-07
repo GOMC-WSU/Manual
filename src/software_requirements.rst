@@ -34,9 +34,9 @@ C++11 Compliant Compiler
 
   *Help* (top tab) -> *About Microsoft Visual Studio*
 
-  .. image:: _static/vshelp.png
+  .. image:: static/vshelp.png
 
-  .. image:: _static/vsabout.png
+  .. image:: static/vsabout.png
 
 CMake
 -----
