@@ -99,8 +99,9 @@ Generating PDB file
 
 With that overview of the format in mind, the following steps describe how a PDB file is typically built.
 
-1. A single molecule PDB is obtained. In this example, the QM software package Gaussian was used to draw the molecule, which was then edited by hand to adhere 
-   to the PDB spec properly. The end result is a PDB for a single molecule:
+1. A single molecule PDB is obtained. In this example, the GaussView was used to draw the molecule, which was then edited by hand to adhere 
+   to the PDB spec properly. There are many open-source software that can build a molecule for you, such as `Avagadro <https://avogadro.cc/docs/getting-started/drawing-molecules/>`__ ,
+   `molefacture <http://www.ks.uiuc.edu/Research/vmd/plugins/molefacture/>`__ in VMD and more. The end result is a PDB for a single molecule:
 
   .. code-block:: text
 
@@ -228,7 +229,7 @@ planarity). Each section starts with a specific header described bellow:
 
   - The PSF file format is a highly redundant file format. It repeats identical topology of thousands of molecules of a common kind in some cases. GOMC follows the same approach as NAMD, allowing this excess information externally and compiling it in the code.
   - Other sections (e.g. cross terms) contain unsupported or legacy parameters and are ignored.
-  - Following the restrictions of VMD, the order of the PSF atoms must match the order in the.
+  - Following the restriction of VMD, the order of the atoms in PSF file must match the order of the atoms in the PDB file.
   - Improper entries are read and stored, but are not currently used. Support will eventually be added for this.
 
 Generating PSF file

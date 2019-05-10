@@ -24,7 +24,8 @@
         <script type="text/javascript" src="static/jquery.js"></script>
         <script type="text/javascript" src="static/underscore.js"></script>
         <script type="text/javascript" src="static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="static/js/theme.js"></script>
 
@@ -286,8 +287,9 @@ many codes. We recycle this legacy parameter by using it to denote, in our outpu
 <h3>Generating PDB file<a class="headerlink" href="#generating-pdb-file" title="Permalink to this headline">¶</a></h3>
 <p>With that overview of the format in mind, the following steps describe how a PDB file is typically built.</p>
 <ol class="arabic simple">
-<li>A single molecule PDB is obtained. In this example, the QM software package Gaussian was used to draw the molecule, which was then edited by hand to adhere
-to the PDB spec properly. The end result is a PDB for a single molecule:</li>
+<li>A single molecule PDB is obtained. In this example, the GaussView was used to draw the molecule, which was then edited by hand to adhere
+to the PDB spec properly. There are many open-source software that can build a molecule for you, such as <a class="reference external" href="https://avogadro.cc/docs/getting-started/drawing-molecules/">Avagadro</a> ,
+<a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/plugins/molefacture/">molefacture</a> in VMD and more. The end result is a PDB for a single molecule:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>REMARK   1 File created by GaussView 5.0.8
@@ -410,7 +412,7 @@ atom    mass
 <ul class="last simple">
 <li>The PSF file format is a highly redundant file format. It repeats identical topology of thousands of molecules of a common kind in some cases. GOMC follows the same approach as NAMD, allowing this excess information externally and compiling it in the code.</li>
 <li>Other sections (e.g. cross terms) contain unsupported or legacy parameters and are ignored.</li>
-<li>Following the restrictions of VMD, the order of the PSF atoms must match the order in the.</li>
+<li>Following the restriction of VMD, the order of the atoms in PSF file must match the order of the atoms in the PDB file.</li>
 <li>Improper entries are read and stored, but are not currently used. Support will eventually be added for this.</li>
 </ul>
 </div>

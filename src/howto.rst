@@ -1,7 +1,7 @@
 How to?
 =======
 
-In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulaiton problem.
+In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulation problem.
 
 
 Build molecule and topology file
