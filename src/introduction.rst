@@ -12,7 +12,7 @@ GOMC supported ensembles:
 
 - Canonical (NVT)
 - Isobaric-isothermal (NPT)
-- Grand canonical (μVT)
+- Grand canonical (:math:`\mu` VT)
 - Constant volume Gibbs (NVT-Gibbs) 
 - Constant pressure Gibbs (NPT-Gibbs)
 

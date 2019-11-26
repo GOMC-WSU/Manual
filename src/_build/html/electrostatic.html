@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Intermolecular Energy and Virial Function (Electrostatic) &#8212; GOMC 2.50 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Long-range Correction (Energy and Virial)" href="long_range_correction.html" />
+    <link rel="prev" title="Intermolecular Energy and Virial Function (Van der Waals)" href="vdw_energy.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/logo.png"></span>
+          GOMC</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Section <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#linux">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#topology-file">Topology File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#visualizing-simulation">Visualizing Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ewald">Ewald</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-rigid-molecule">Simulate rigid molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Sub-section <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li><a class="reference internal" href="#ewald">Ewald</a></li>
+<li><a class="reference internal" href="#vdw">VDW</a></li>
+<li><a class="reference internal" href="#exp6">EXP6</a></li>
+<li><a class="reference internal" href="#shift">SHIFT</a></li>
+<li><a class="reference internal" href="#switch">SWITCH</a></li>
+<li><a class="reference internal" href="#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="vdw_energy.html" title="Previous Chapter: Intermolecular Energy and Virial Function (Van der Waals)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Intermolecula...</span>
+    </a>
+  </li>
+  <li>
+    <a href="long_range_correction.html" title="Next Chapter: Long-range Correction (Energy and Virial)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Long-range Co... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="intermolecular-energy-and-virial-function-electrostatic">
+<h1>Intermolecular Energy and Virial Function (Electrostatic)<a class="headerlink" href="#intermolecular-energy-and-virial-function-electrostatic" title="Permalink to this headline">¶</a></h1>
+<p>In this section, the virial and energy equation of electrostatic interaction for different potential function are discussed in details.</p>
+<div class="section" id="ewald">
+<h2>Ewald<a class="headerlink" href="#ewald" title="Permalink to this headline">¶</a></h2>
+<p>This option calculate electrostatic energy using standard <em>Ewald Summation Method</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once this option is activated, it would override the the electrostatic calculation using <code class="docutils literal notranslate"><span class="pre">VDW</span></code>, <code class="docutils literal notranslate"><span class="pre">EXP6</span></code>, <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code>, and <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> functions.</p>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
+<div class="math notranslate nohighlight">
+\[E(\texttt{Ewald}) = E_{real} + E_{reciprocal} + E_{self} + E_{correction}\]</div>
+<p><span class="math notranslate nohighlight">\(E_{real}\)</span>: Defines the short range electrostatic energy according to</p>
+<div class="math notranslate nohighlight">
+\[E_{real} = \frac{1}{4\pi \epsilon_0} \frac{1}{2} \sum_{i =1}^{N} \sum_{j = 1}^{N} q_i q_j  \frac{erfc(\alpha r_{ij})}{r_{ij}}\]</div>
+<p>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is <code class="docutils literal notranslate"><span class="pre">Ewald</span></code> separation parameter according to</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \frac {\sqrt{-\log (Tolerance)}}{r_{cut}}\]</div>
+<p>, where <code class="docutils literal notranslate"><span class="pre">Tolerance</span></code> is a parameter, controlling the desired accuracy.</p>
+<p><span class="math notranslate nohighlight">\(E_{reciprocal}\)</span>: Defines the long range electrostatic energy according to,</p>
+<div class="math notranslate nohighlight">
+\[E_{reciprocal} = \frac{1}{\epsilon_0 V} \frac {1}{2} \sum_{\overrightarrow{k} \ne 0}^{} \frac {1}{\overrightarrow{k}^2}\exp\bigg(\frac {-\overrightarrow{k}^2}{4 \alpha^2}\bigg) \Bigg[ {\Big| R_{sum} \Big|}^2 + {\Big| I_{sum} \Big|}^2 \bigg]\]</div>
+<p>, where <span class="math notranslate nohighlight">\(\overrightarrow{k}\)</span> is reciprocal vector, <span class="math notranslate nohighlight">\(R_{sum}\)</span> and <span class="math notranslate nohighlight">\(I_{sum}\)</span> are,</p>
+<div class="math notranslate nohighlight">
+\[R_{sum} = \sum_{i=1}^{N} q_i \cos \big(\overrightarrow{k}.\overrightarrow{x_i}\big)\]</div>
+<div class="math notranslate nohighlight">
+\[I_{sum} = \sum_{i=1}^{N} q_i \sin \big(\overrightarrow{k}.\overrightarrow{x_i}\big)\]</div>
+<p><span class="math notranslate nohighlight">\(E_{self}\)</span>: Defines the self energy according to,</p>
+<div class="math notranslate nohighlight">
+\[E_{self} = -\frac{\alpha}{4\pi \epsilon_0 \sqrt{\pi}} \sum_{i=1}^{N} {q_i}^2\]</div>
+<p><span class="math notranslate nohighlight">\(E_{correction}\)</span>: Defines intra-molecule nonbonded energy,</p>
+<div class="math notranslate nohighlight">
+\[E_{correction} = -\frac{1}{4\pi \epsilon_0} \frac{1}{2} \sum_{j=1}^{N }\sum_{l =1}^{N_j} \sum_{m = 1}^{N_j} q_{j_l} q_{j_m}  \frac{erf(\alpha r_{j_l j_m})}{r_{j_l j_m}}\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance, Eq. 4. Coulomb force between atoms can be modeled as,</p>
+<div class="math notranslate nohighlight">
+\[W_{Ewald} = W_{real} + W_{reciprocal}\]</div>
+<p><span class="math notranslate nohighlight">\(W_{real}\)</span> defines the short range electrostatic and <span class="math notranslate nohighlight">\(W_{reciprocal}\)</span> defines the long range electrostatic force according to,</p>
+<div class="math notranslate nohighlight">
+\[W_{real} = \frac{1}{4\pi \epsilon_0} \frac{1}{2} \sum_{i =1}^{N} \sum_{j = 1}^{N} q_i q_j  \bigg[ \frac{erfc(\alpha r_{ij})}{r_{ij}} + \frac{2\alpha}{ \sqrt{\pi}} \exp(-\alpha^2 {r_{ij}}^2) \bigg] \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}^2}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+              W_{reciprocal} = \frac{1}{\epsilon_0 V} \frac {1}{2} \sum_{\overrightarrow{k} \ne 0}^{} \Bigg[\frac {1}{\overrightarrow{k}^2}\exp\bigg(\frac {-\overrightarrow{k}^2}{4 \alpha^2}\bigg) \bigg( {\Big| R_{sum} \Big|}^2 + {\Big| I_{sum} \Big|}^2 \bigg) \bigg(  1 - \frac{\overrightarrow{k}^2}{2\alpha^2} \bigg) \Bigg] +\\
+  \sum_{i=1}^{N} \frac{1}{\epsilon_0 V}  \sum_{\overrightarrow{k} \ne 0}^{} \Bigg[ \frac {q_i}{\overrightarrow{k}^2}\exp\bigg(\frac {-\overrightarrow{k}^2}{4 \alpha^2}\bigg) \bigg[ I_{sum} \times\cos(\overrightarrow{k}.\overrightarrow{x_i})  - R_{sum} \times \sin(\overrightarrow{k}.\overrightarrow{x_i}) \bigg] \Bigg] \times \big( \overrightarrow{k}.\overrightarrow{r_{ic}} \big)
+      \end{split}\end{split}\]</div>
+<p>, where <span class="math notranslate nohighlight">\(\overrightarrow{r_{ic}}\)</span> is the vector between atom and the center of the mass of the molecule.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="vdw">
+<h2>VDW<a class="headerlink" href="#vdw" title="Permalink to this headline">¶</a></h2>
+<p>Using <code class="docutils literal notranslate"><span class="pre">VDW</span></code> potential type without <code class="docutils literal notranslate"><span class="pre">Ewald</span></code> method, simply uses coulomb energy to calculate the electrostatic potential.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0 r_{ij}}\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{{r_{ij}}^2} \Big)\]</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="exp6">
+<h2>EXP6<a class="headerlink" href="#exp6" title="Permalink to this headline">¶</a></h2>
+<p>Using <code class="docutils literal notranslate"><span class="pre">EXP6</span></code> potential type without <code class="docutils literal notranslate"><span class="pre">Ewald</span></code> method, simply uses coulomb energy to calculate the electrostatic potential.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0 r_{ij}}\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{{r_{ij}}^2} \Big)\]</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="shift">
+<h2>SHIFT<a class="headerlink" href="#shift" title="Permalink to this headline">¶</a></h2>
+<p>This option forces the electrostatic energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{r_{ij}} - \frac{1}{r_{cut}} \Big)\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{{r_{ij}}^2} \Big)\]</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="switch">
+<h2>SWITCH<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h2>
+<p>This option in <code class="docutils literal notranslate"><span class="pre">CHARMM</span></code> or <code class="docutils literal notranslate"><span class="pre">EXOTIC</span></code> force field forces the electrostatic energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as,</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg)^2 \frac{1}{r_{ij}}\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Bigg[ \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg)^2 \frac{1}{{r_{ij}}^2} - \bigg( \frac{4}{{r_{cut}}^2} \bigg) \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg) \Bigg]\]</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="switch-martini">
+<h2>SWITCH (MARTINI)<a class="headerlink" href="#switch-martini" title="Permalink to this headline">¶</a></h2>
+<p>This option in <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field smoothly forces the potential energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance and starts modifying the potential at <code class="docutils literal notranslate"><span class="pre">Rswitch</span> <span class="pre">=</span> <span class="pre">0.0</span></code> distance.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as,</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{Elect}}(r_{ij})=\frac{q_i q_j}{4\pi\epsilon_0\epsilon_1}\bigg(\frac{1}{r_{ij}}+\varphi_{E, 1}(r_{ij})\bigg)\]</div>
+<p>, where <span class="math notranslate nohighlight">\(\epsilon_1\)</span> is the dielectric constant, which in <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field is equal to 15.0 and <span class="math notranslate nohighlight">\(\varphi_{E, \alpha = 1}(r_{ij})\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi_{E, \alpha}(r_{ij}) =
+\begin{cases}
+  -C_{\alpha} &amp; r_{ij} \leq r_{switch} \\
+  -\frac{A_{\alpha}}{3} (r_{ij} - r_{switch})^3 -\frac{B_{\alpha}}{4} (r_{ij} - r_{switch})^4 - C_{\alpha} &amp; r_{switch} &lt; r_{ij} &lt; r_{cut} \\
+  0 &amp; r_{ij} \geq r_{cut}
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[A_{\alpha} = \alpha \frac{(\alpha + 1) r_{switch} - (\alpha +4) r_{cut}} {{r_{cut}}^{(\alpha + 2)} {(r_{cut} - r_{switch})}^2}\]</div>
+<div class="math notranslate nohighlight">
+\[B_{\alpha} = \alpha \frac{(\alpha + 1) r_{switch} - (\alpha +3) r_{cut}} {{r_{cut}}^{(\alpha + 2)} {(r_{cut} - r_{switch})}^3}\]</div>
+<div class="math notranslate nohighlight">
+\[C_{\alpha} =  \frac{1}{{r_{cut}}^{\alpha}} -\frac{A_{\alpha}}{3} (r_{cut} - r_{switch})^3 -\frac{B_{\alpha}}{4} (r_{cut} - r_{switch})^4\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{Elect}}(r_{ij})=\frac{q_iq_j}{4\pi\epsilon_0\epsilon_1}\bigg(\frac{1}{{r_{ij}}^2}+\varphi_{F, 1}(r_{ij})\bigg)\]</div>
+<p>, where <span class="math notranslate nohighlight">\(\varphi_{F, \alpha = 1} (r_{ij})\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi_{F, \alpha}(r_{ij}) =
+\begin{cases}
+  0 &amp; r_{ij} \leq r_{switch} \\
+  A_{\alpha} (r_{ij} - r_{switch})^2 + B_{\alpha} (r_{ij} - r_{switch})^3 &amp; r_{switch} &lt; r_{ij} &lt; r_{cut} \\
+  0 &amp; r_{ij} \geq r_{cut}
+\end{cases}\end{split}\]</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="_sources/electrostatic.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

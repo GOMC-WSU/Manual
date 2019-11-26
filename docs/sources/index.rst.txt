@@ -21,5 +21,7 @@ Welcome to GOMC's documentation!
    putting_all_together
    vdw_energy
    electrostatic
+   long_range_correction
+   free_energy
    howto
    help

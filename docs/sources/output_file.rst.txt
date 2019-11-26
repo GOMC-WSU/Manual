@@ -1,15 +1,22 @@
-GOMC's Output Files, Terminal Output
-====================================
+GOMC's Output Files
+====================
 
 GOMC currently supports several kinds of output:
   - STDIO ("console") output
   - File output
 
-    – PDB
+    - PDB
 
-    – PSF
+    - PSF
 
-    – Block Averages
+    - Block Averages
+    
+    - Molecule distribution (GCMC only)
+    
+    - Energy histogram (GCMC only)
+    
+    - Free energy data (NVT and NPT only)
+
 
 GOMC output units:
 
@@ -23,6 +30,7 @@ Volume                       :math:`Å^3`
 Density                      :math:`kg/m^3`
 Mol Density                  :math:`molecule/Å^3`
 Surface Tension              :math:`mN/m`
+Free Energy                  :math:`Kcal/mol`
 ===========================  =================
 
 Console Output
@@ -58,19 +66,29 @@ Statistical and thermodynamic information is provided in console output.
   
   – Total Energy (sum of the all energies)
 
-- Pressure, Pressure Tensor (:math:`P_{xx},P_{yy},P_{zz}`) 
 
-- Volume
+- Pressure
 
-- Total molecule number
+  - Pressure Tensor (:math:`P_{xx},P_{yy},P_{zz}`) 
 
-- Total Density
+  - Total pressure
 
-- Surface Tension
 
-- Mole fraction of each species
+- Statistic
 
-- Mole density of each species
+  - Volume
+
+  - Pressure
+
+  - Total molecule number
+
+  - Total Density
+
+  - Surface Tension
+
+  - Mol fraction of each species
+
+  - Mol density of each species
 
 
 Detailed move, energy, and statistical or thermodynamic information for each simulation box will be printed in three different sections. Each section's title will start with ``MTITLE``, ``ETITLE``, and ``STITLE`` for move, energy, and statistical information, respectively. The instantaneous values for each section will start with ``MOVE_#``, ``ENER_#``, and ``STAT_#`` for move, energy, and statistical values, respectively. Where, # is the simulation box number. In addition, if pressure calculation is activated and enabled to print, pressure tensor will be printed in the console output file. This section starts with ``PRES_#`` and print the diagonal value of pressure tensor :math:`P_{xx}`, :math:`P_{yy}`,and :math:`P_{zz}`, respectively. The second element after the title of each section is the step number.
@@ -83,7 +101,9 @@ In order to extract the desired information from the console file, "grep" and "a
 
 Here, "output_console.log" is the console output file and "$3" represents the second element of the "ENERGY_BOX_0" section.
 
-.. note:: *Surface Tension is calculated using Virial method according to following equation*,
+.. note:: 
+
+  Surface Tension is calculated using Virial method according to following equation,
 
   .. math::
     
@@ -102,6 +122,7 @@ The first section of this console output typically includes some information rel
 .. figure:: static/out3.png
 
   Reading the PDB files for each box, printing the min and max coordinates.
+
 
 Next, the energy and statistic title, initial energy and statistic of the system's starting configuration will print:
 
@@ -149,21 +170,24 @@ GOMC tracks a number of thermodynamic variables of interest during the simulatio
 
 - Virial
 
-- Pressure
+- Statistic
 
-- Surface Tension (using virial method)
+  - Pressure
 
-- Volume
+  - Surface Tension (using virial method)
 
-- Total molecule number
+  - Volume
 
-- Total Density
+  - Total molecule number
 
-- Mole fraction of each species
+  - Total Density
 
-- Mole density of each species
+  - Mol fraction of each species
 
-- Heat of vaporization
+  - Mol density of each species
+
+  - Heat of vaporization
+
 
 At the beginning of each file, the title of each property followed by their average values is printed. Desired data can be extracted, as explained before, using the "awk" command. For example, in order to extract total density of the system, the following command need to be executed in terminal:
 

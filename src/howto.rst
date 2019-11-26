@@ -164,12 +164,14 @@ To simulate the rigid molecules in GOMC, we need to perform the following steps:
 
 
 
-Restart / Recalculate
+Restart the simulation
 ----------------------
 
-Restart the simulation
-^^^^^^^^^^^^^^^^^^^^^^
+Restart the simulation with ``Restart``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+If you intend to start a new simulation from previous simulation state, you can use this option. Restarting the simulation with ``Restart`` **would not** result in 
+an identitcal outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag ``RestartFreq`` was activated and the restart PDB file/files (``OutputName``\_BOX_0_restart.pdb) 
 and merged PSF file (``OutputName``\_merged.psf) were printed. 
 
@@ -232,9 +234,76 @@ Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from 
 
     OutputName          dimethylether_NPT_GEMC
 
+Restart the simulation with ``RestartCheckpoint``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with ``RestartCheckpoint`` would result in an 
+identitcal outcome, as if previous simulation was continued.
+Make sure that in the previous simulation config file, the flag ``RestartFreq`` and ``CheckpointFreq`` were activated and the restart PDB file/files (``OutputName``\_BOX_0_restart.pdb)
+, merged PSF file (``OutputName``\_merged.psf), and checkpoint file (``checkpoint.dat``) were printed. 
+
+In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:
+
+1.  Set the ``RestartCheckpoint`` to True.
+
+2.  Use the dumped restart PDB file to set the ``Coordinates`` for each box.
+
+3.  Use the dumped merged PSF file to set the ``Structure`` for both boxes.
+
+4.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
+    the cell basis information with the cell basis data from restart PDB file/files.
+
+5.  Use the different ``OutputName`` to avoid overwriting the output files.
+
+
+Here is the example of restarting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:
+
+.. code-block:: text
+
+    ########################################################
+    # Parameters need to be modified
+    ########################################################
+    RestartCheckpoint   true
+
+    Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+
+    Structure       0   dimethylether_NVT_merged.psf
+
+    #CellBasisVector1   0	45.00	0.00	0.00
+    #CellBasisVector2   0	0.00	55.00	0.00
+    #CellBasisVector3   0	0.00	0.00	45.00
+
+    OutputName          dimethylether_NPT
+
+
+Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, from equilibrated NVT simulation:
+
+.. code-block:: text
+
+    ########################################################
+    # Parameters need to be modified
+    ########################################################
+    RestartCheckpoint   true
+
+    Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+    Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
+
+    Structure       0   dimethylether_NVT_merged.psf
+    Structure       1   dimethylether_NVT_merged.psf
+
+    #CellBasisVector1   0	45.00	0.00	0.00
+    #CellBasisVector2   0	0.00	55.00	0.00
+    #CellBasisVector3   0	0.00	0.00	45.00
+
+    #CellBasisVector1   1	45.00	0.00	0.00
+    #CellBasisVector2   1	0.00	55.00	0.00
+    #CellBasisVector3   1	0.00	0.00	45.00
+
+    OutputName          dimethylether_NPT_GEMC
+
 
 Recalculate the energy 
-^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 GOMC is capable of recalculate the energy of previous simulation snapshot, with same or different force field. Simulation snapshot is the printed molecule's 
 coordinates at specific steps, which controls by ``CoordinatesFreq``. First, we need to make sure that in the previous simulation config file, the flag ``CoordinatesFreq`` 
@@ -305,11 +374,11 @@ to extend the unit cell and export it as PDB file. There are two ways that you c
 
     or simply download it from `GitHub <https://github.com/GOMC-WSU/Workshop/tree/HTS>`__ . 
 
-    Make sure that you installed all `GOMC software requirement <https://github.com/GOMC-WSU/Workshop/blob/HTS/GOMC_Software_Requirements.pdb>`__\. Follow the 
+    Make sure that you installed all `GOMC software requirement <https://github.com/GOMC-WSU/Workshop/blob/HTS/GOMC_Software_Requirements.pdf>`__\. Follow the 
     "Readme.md" for more information.
 
 
-2.  **Manual preparation**
+2.  **Manual Preparation**
 
     To illustrate the steps that need to be taken to prepare the PDB and PSF file, we will use an example provided in one of our workshop. Make sure that you 
     installed all `GOMC software requirement <https://github.com/GOMC-WSU/Workshop/blob/master/GOMC_Requirements.pdf>`__\.
@@ -401,7 +470,7 @@ to extend the unit cell and export it as PDB file. There are two ways that you c
 Adsorption in GCMC
 ^^^^^^^^^^^^^^^^^^
 
-To simulation adsorption using GCMC ensemble, we need to perform the following steps to modify the config file:
+To simulate adsorption using GCMC ensemble, we need to perform the following steps to modify the config file:
 
 1.  Use the generated PDB files for adsorbent and adsorbate to set the ``Coordinates``.
 
@@ -469,7 +538,7 @@ Here is the example of argon (AR) adsorption at 5 bar in IRMOF-1 using GCMC ense
 Adsorption in NPT-GEMC
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To simulation adsorption using NPT-GEMC ensemble, simulaiton box 0 is used for adsorbent with fixed volume and simulaiton box 1 is used for adsorbate, where
+To simulate adsorption using NPT-GEMC ensemble, simulaiton box 0 is used for adsorbent with fixed volume and simulaiton box 1 is used for adsorbate, where
 volume of this box is fluctuating at imposed pressure. To simulation adsorption in NPT-GEMC ensemble we need to perform the following steps to modify the 
 config file:
 
@@ -515,3 +584,194 @@ Here is the example of argon (AR) adsorption at 5 bar in IRMOF-1 using NPT-GEMC 
     Pressure    5.0
 
     FixVolBox0  true
+
+
+Calculate Solvation Free Energy 
+---------------------------------
+
+GOMC is capable of calcutating absolute solvation free energy in NVT or NPT ensemble. Here 
+we are focusing how to setup the GOMC simulation files to calculate absolute solvation free energy.
+
+GOMC outputs the required informations (:math:`\frac{dE_{\lambda}}{d\lambda}`, :math:`\Delta E_{\lambda}`) 
+to calculate solvation free energy with various estimators, such as TI, BAR, MBAR, and more.
+
+
+Setup Simulation Files
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1.  **Using FreeEnergy BASH Script**
+
+    GOMC development group created a BASH script combined with Tcl scripting to automatically 
+    generate GOMC input files for free energy simulations in NVT (master branch) or NPT (NPT branch) ensemble.
+
+    To try this script, execute the following command in your terminal to clone the FreeEnergy repository:
+
+    .. code-block:: bash
+
+         $ git  clone    https://github.com/msoroush/FreeEnergy.git
+         $ cd   FreeEnergy
+
+    or simply download it from `GitHub <https://github.com/msoroush/FreeEnergy.git>`__ . 
+
+    Make sure that you installed all `GOMC software requirement <https://github.com/GOMC-WSU/Workshop/blob/AIChE2019/GOMC_Requirements.pdf>`__\. Follow the 
+    `README <https://github.com/msoroush/FreeEnergy/blob/master/README.md>`__ for more information.
+
+
+2.  **Manual Preparation**
+
+    To simulate solvation free energy, we need to perform the following steps:
+
+    -   Generate the PDB and PSF files for a system containes 1 solulte + *N* solvent molecules. 
+
+        .. note:: Number of solvent molecules (*N*) must be determined by user, based on the system size. 
+
+    -   Equilibrate your system in NVT ensemble at specified ``Temperature``. 
+
+    -   Equilibrate your system in NPT ensemble at specified ``Temperature`` and ``Pressure``, using 
+        PDB and PSF ``restart`` files, generated from previous equilibration simulation.
+
+    -   Determine the number of intermediate states that lead to adequate overlaps between 
+        neighboring states.
+
+    -   For each intermediate state (:math:`\lambda_i`), create an unique directory and perform the following steps:
+
+        1.  Use the ``restart`` PDB file, generated from NPT equilibration simulation, to set the ``Coordinates``.
+
+        2.  Use the ``merged`` PSF files, generated from NPT equilibration simulation, to set the ``Structure``.
+
+        3.  Define the free energy parameters in ``config`` file:
+
+            -   Set the frequency of free energy calculation
+            
+            -   Set the solute molecule kind name (resname) and number (resid)
+
+            -   Set the soft-core parameters
+
+            -   Define the lambda vecotrs for ``VDW`` and ``Coulomb`` interaction
+
+            -   Set the index (:math:`i`) of the lambda vetor (:math:`\lambda`), at which solute-solvent interaction 
+                will be coupled with :math:`\lambda_i`, using ``InitialState`` keyword.
+
+
+            Here is the example of free energy parameters for CO2 (resid 1) solvation, 
+            with 9 intermediate states, where the solute-solvent interaction will be 
+            coupled with :math:`\lambda_{\texttt{VDW}}(6)= 1.0` , :math:`\lambda_{\texttt{Elect}}(6)= 0.50`.
+
+            .. code-block:: text
+
+                #################################
+                # FREE ENERGY PARAMETERS
+                #################################
+                FreeEnergyCalc true   1000
+                MoleculeType   CO2   1
+                InitialState   6 
+                ScalePower     2
+                ScaleAlpha     0.5
+                MinSigma       3.0
+                ScaleCoulomb   false     
+                #states        0    1    2    3    4    5    6    7    8
+                LambdaVDW      0.00 0.25 0.50 0.75 1.00 1.00 1.00 1.00 1.00
+                LambdaCoulomb  0.00 0.00 0.00 0.00 0.00 0.25 0.50 0.75 1.00
+
+        
+        4.  Equilibrate your system in NVT or NPT ensemble.
+
+        5.  Perform the production simulation in NVT or NPT ensemble.
+
+
+Process GOMC Free Energy Outputs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+I free energy perturbation method, the free energy difference between two states A 
+(:math:`\lambda = 0.0`) and B (:math:`\lambda = 1.0`), with N - 2 intermediate states is given by:
+
+.. math::
+
+  \Delta G(A \rightarrow B) = -\frac{1}{\beta} \sum_{i=0}^{N-1} \ln \big< \exp \big(- \beta \Delta E_{i, i+1} \big) \big>_i
+
+
+where :math:`\Delta E_{i, i+1} = E_{i+1} - E_{i}` is the energy difference of the system between states *i* and *i+1*, 
+and :math:`\big< \big>_i` is the ensemble average for simulation performed in intermediate state *i*.
+
+
+In thermodynamic integration, the free energy change is calculated from
+
+.. math::
+
+  \Delta G(A \rightarrow B) = \int_{\lambda = 0}^{\lambda = 1} \big< \frac{dU_{\lambda}}{d\lambda} \big>_{\lambda} d\lambda
+
+where :math:`\frac{dU_{\lambda}}{d\lambda}` is the derivative of energy with respect 
+to :math:`\lambda`, and :math:`\big< \big>_{\lambda}` is the ensemble average for a 
+simulation run at intermediate state :math:`\lambda`.
+
+
+GOMC outputs the raw informations, such as the lambda intermediate states,
+the derivative of energy with respective to current lambda (:math:`\frac{dE_{\lambda}}{d\lambda}`), 
+the energy different between current lambda state and all other neighboring lambda states 
+(:math:`\Delta E_{\lambda}`), which is essential to calculate solvation free energy 
+with various estimators, such as TI, BAR, MBAR, and more.
+
+
+.. figure:: static/FE-snapshot.png
+
+    Snapshot of GOMC free energy output file (Free_Energy_BOX_0\_ ``OutputName``.dat).
+
+
+
+There are variety of tools developed to caclulate free energy difference, including 
+`alchemlyb <https://github.com/alchemistry/alchemlyb>`__ and 
+`alchemical-analysis <https://github.com/MobleyLab/alchemical-analysis>`__ .
+
+1.  **Alchemlyb**
+
+    In `alchemlyb <https://alchemlyb.readthedocs.io/en/latest>`__ , a variety of methods can be 
+    used to estimate the free energy, including thermodynamic integration (TI), 
+    Bennett acceptance ratio (BAR), and multistate Bennett acceptance ratio (MBAR).
+    `alchemlyb <https://alchemlyb.readthedocs.io/en/latest>`__  is also capable of loading GOMC 
+    free energy output files (Free_Energy_BOX_0\_ ``OutputName``.dat).
+
+    To learn more about alchemlybe, please refere to `alchemlyb documentation <https://alchemlyb.readthedocs.io/en/latest>`__ 
+    or `alchemlyb GitHub <https://github.com/alchemistry/alchemlyb>`__ page.
+ 
+    .. note::
+
+        Currently, alchemlyb does not support the free energy plots, overlap analysis,
+        and free energy convergance analysis.
+
+
+    To use this tool, you must install python 3 and then execute the following command in 
+    your terminal to install alchemlyb:
+
+    .. code-block:: bash
+
+         $ pip install alchemlyb
+
+
+2.  **Alchemical Analysis**
+
+    The alchemical-analysis tools is developed by Mobley group at MIT, to Analyze alchemical free energy 
+    calculations conducted in GROMACS, AMBER or SIRE. Alchemical Analysis is still available but deprecated and
+    in the process of migrating all functionality to `alchemlyb <https://github.com/alchemistry/alchemlyb>`__ tool.
+
+    Alchemical Analysis tool handles analysis via a slate of free energy methods, including BAR, 
+    MBAR, TI, and the Zwanzig relationship (exponential averaging) among others, and provides a good deal 
+    of analysis of computed free energies and convergence in order to help you assess the quality of your results.
+
+    Since alchemical-analysis is no longer supported by its developers, the GOMC parser for this tool 
+    was implemented and stored in a separate `repository <https://github.com/msoroush/alchemical-analysis>`__. 
+
+    .. note::
+
+        We encourage user to use `alchemlyb GitHub <https://github.com/alchemistry/alchemlyb>`__ tools for plotting, 
+        once all the plotting features and free energy analysis was migrated. 
+ 
+
+    To use this tool, you must install python 2 and then execute the following command in 
+    your terminal to clone the alchemical-analysis repository:
+
+    .. code-block:: bash
+
+        $ git  clone    https://github.com/msoroush/alchemical-analysis.git
+        $ cd   alchemical-analysis
+        $ sudo python setup.py install
+
