@@ -529,7 +529,7 @@ Mie Potential
 
   E_{ij} = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]
 
-where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor such that the minimum of the potential remains at :math:`−\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
+where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor such that the minimum of the potential remains at :math:`-\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
 
 .. math:: 
   

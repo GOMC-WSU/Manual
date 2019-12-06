@@ -24,7 +24,7 @@ This option calculates potential energy using standard Lennard Jones (12-6) or M
     E_{\texttt{VDW}}(r) = C_{n} \epsilon \bigg[\bigg(\frac{\sigma}{r}\bigg)^{n} - \bigg(\frac{\sigma}{r}\bigg)^6\bigg]
 
   where :math:`N`, :math:`V`, :math:`r`, :math:`\epsilon`, and :math:`\sigma` are the number of molecule, volume of the system, separation, minimum potential, and collision diameter, respectively. 
-  The constant :math:`C_n` is a normalization factor such that the minimum of the potential remains at :math:`−\epsilon` for all :math:`n`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
+  The constant :math:`C_n` is a normalization factor such that the minimum of the potential remains at :math:`-\epsilon` for all :math:`n`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
 
   .. math:: 
     

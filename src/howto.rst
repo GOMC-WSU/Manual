@@ -118,7 +118,7 @@ to define the dummy atom/atoms:
     ATOM O      OH      0.0000 !        O
     ATOM H1     HO      0.5564 !     /  |  \
     ATOM H2     HO      0.5564 !    /   M   \
-    ATOM M      MO     −1.1128 !  H1        H2
+    ATOM M      MO     -1.1128 !  H1        H2
     BOND   O  H1   O  H2   O  M       
     PATCHING FIRS NONE LAST NONE
 

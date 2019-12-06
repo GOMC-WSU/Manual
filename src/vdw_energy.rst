@@ -9,13 +9,13 @@ VDW
 This option calculates potential energy without any truncation.
 
 ``Potential Calculation``
-  Interactions between atoms can be modeled with an n−6 potential, a Mie potential in which the attractive exponent is fixed. The Mie potential can be viewed as a generalized version of the 12-6 Lennard-Jones potential,
+  Interactions between atoms can be modeled with an n-6 potential, a Mie potential in which the attractive exponent is fixed. The Mie potential can be viewed as a generalized version of the 12-6 Lennard-Jones potential,
 
   .. math:: 
 
     E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]
 
-  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor such that the minimum of the potential remains at :math:`−\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
+  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor such that the minimum of the potential remains at :math:`-\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
 
   .. math:: 
     
@@ -28,7 +28,7 @@ This option calculates potential energy without any truncation.
 
     W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
 
-  Using n−6 LJ potential defined above:
+  Using n-6 LJ potential defined above:
 
   .. math::
 
@@ -42,7 +42,7 @@ EXP6
 This option calculates potential energy without any truncation.
 
 ``Potential Calculation``
-  Interactions between atoms can be modeled with an exp−6 (Buckingham) potential,
+  Interactions between atoms can be modeled with an exp-6 (Buckingham) potential,
 
   .. math:: 
 
@@ -66,7 +66,7 @@ This option calculates potential energy without any truncation.
 
     W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
 
-  Using exp−6 potential defined above:
+  Using exp-6 potential defined above:
 
   .. math::
     F_{\texttt{VDW}}(r_{ij}) =
@@ -87,13 +87,13 @@ SHIFT
 This option forces the potential energy to be zero at ``Rcut`` distance.
 
 ``Potential Calculation``
-  Interactions between atoms can be modeled with an n−6 potential,
+  Interactions between atoms can be modeled with an n-6 potential,
   
   .. math:: 
 
     E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg] - C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{cut}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{cut}}\bigg)^6\bigg]
 
-  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor according to Eq. 3, such that the minimum of the potential remains at :math:`−\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
+  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor according to Eq. 3, such that the minimum of the potential remains at :math:`-\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
 
 ``Virial Calculation``
   Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.
@@ -117,13 +117,13 @@ SWITCH
 This option in ``CHARMM`` or ``EXOTIC`` force field smoothly forces the potential energy to be zero at Rcut distance and starts modifying the potential at Rswitch distance.
 
 ``Potential Calculation``
-  Interactions between atoms can be modeled with an n−6 potential,
+  Interactions between atoms can be modeled with an n-6 potential,
 
   .. math::
   
     E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \varphi_E(r_{ij})
 
-  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor according to Eq. 3, such that the minimum of the potential remains at :math:`−\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
+  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor according to Eq. 3, such that the minimum of the potential remains at :math:`-\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
 
   The factor :math:`\varphi_E` is defined as:
 
@@ -172,13 +172,13 @@ SWITCH (MARTINI)
 This option in ``MARTINI`` force field smoothly forces the potential energy to be zero at Rcut distance and starts modifying the potential at ``Rswitch`` distance.
 
 ``Potential Calculation``
-  Potential Calculation: Interactions between atoms can be modeled with an n−6 potential. In standard MARTINI, :math:`n` is equal to 12,
+  Potential Calculation: Interactions between atoms can be modeled with an n-6 potential. In standard MARTINI, :math:`n` is equal to 12,
 
   .. math:: 
 
     E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}}\epsilon_{ij} \Bigg[ {\sigma_{ij}}^{n} \bigg(\frac{1}{{r_{ij}}^{n}} + \varphi_{E, n} (r_{ij}) \bigg) - {\sigma_{ij}}^{6} \bigg(\frac{1}{{r_{ij}}^{6}} + \varphi_{E, 6} (r_{ij}) \bigg) \Bigg]
 	
-  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor according to Eq. 3, such that the minimum of the potential remains at :math:`−\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
+  where :math:`r_{ij}`, :math:`\epsilon_{ij}`, and :math:`\sigma_{ij}` are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites :math:`i` and :math:`j`. The constant :math:`C_n` is a normalization factor according to Eq. 3, such that the minimum of the potential remains at :math:`-\epsilon_{ij}` for all :math:`n_{ij}`. In the 12-6 potential, :math:`C_n` reduces to the familiar value of 4.
 
   The factor :math:`\varphi_{E, \alpha}` and constants are defined as:
 
