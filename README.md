@@ -27,7 +27,6 @@
    ```bash
     $ sphinx-build  -b latex  src  build
    ```
-   Then add `\DeclareUnicodeCharacter{2212}{-}` before `\begin{document}` in `build/GOMC.tex` file:
    Then run:
    ```bash
     $ cd build
