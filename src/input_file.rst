@@ -1536,19 +1536,29 @@ This section contains all the values that control output in the control file. Fo
     OutputName  ISB_T_270_K
 
 ``CoordinatesFreq``
-  Controls output of PDB file (coordinates). If PDB outputing was enabled, one file for NVT or NPT and two files for Gibbs ensemble or GC ensemble will be outputed into ``OutputName``\_BOX_n.pdb, where n defines the box number.
+  Controls output of PDB file (coordinates). If PDB outputing was enabled, one file for NVT or NPT and 
+  two files for Gibbs ensemble or GC ensemble will be outputed into ``OutputName``\_BOX_n.pdb, where n defines the box number.
 
   - Value 1: Boolean - "true" enables outputing these files; "false" disables outputing.
 
-  - Value 2: Ulong - Steps per dump PDB frame. It should be less than or equal to RunSteps. If this keyword could not be found in configuration file, its value will be assigned a default value to dump 10 frames.
+  - Value 2: Ulong - Steps per dump PDB frame. It should be less than or equal to RunSteps. If this 
+    keyword could not be found in configuration file, its value will be assigned a default value to dump 10 frames.
 
   .. note:: 
-    - The PDB file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the box a molecule is currently in (e.g. 0.00 for box 0; 1.00 for box 1).
-    - At the beginning of simulation, a merged PSF file will be outputed into ``OutputName``\_merged.pdb, in which all boxes will be outputed. It also contains the topology for every molecule in both boxes, corresponding to the merged PDB format. Loading PDB files into merged PSF file in VMD allows the user to visualize and analyze the results. 
-    - In addition, this file can be used to load into GOMC once ``Restart`` simulation was active and ``RunSteps`` sets to 0 to recalculate the energy of stored snapshot of the previous simulation.
+    - The PDB file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a 
+      constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently 
+      in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the 
+      box a molecule is currently in (e.g. 0.00 for box 0; 1.00 for box 1).
+    - At the beginning of simulation, a merged PSF file will be outputed into ``OutputName``\_merged.psf, 
+      in which all boxes will be outputed. It also contains the topology for every molecule in both boxes, 
+      corresponding to the merged PDB format. Loading PDB files into merged PSF file in VMD allows the user 
+      to visualize and analyze the results. 
+    
 
 ``RestartFreq``
-  Controls the output of the last state of simulation at a specified step in PDB files (coordinates) ``OutputName``\_BOX_n_restart.pdb, where n defines the box number. Header part of this file contains important information and will be needed to restart the simulation:
+  Controls the output of the last state of simulation at a specified step in PDB files (coordinates) 
+  ``OutputName``\_BOX_n_restart.pdb, where n defines the box number. Header part of this file contains 
+  important information and will be needed to restart the simulation:
 
   - Simulation cell dimensions and angles.
   - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, and Volume move.
@@ -1610,7 +1620,9 @@ This section contains all the values that control output in the control file. Fo
     BlockAverageFreq  true 100000
     HistogramFreq     true 10000
 
-The next section controls the output of the energy/molecule sample file and the distribution file for molecule counts, commonly referred to as the "histogram" output. This section is only required if Grand Canonical ensemble simulation was used.
+The next section controls the output of the energy/molecule sample file and the distribution file f
+or molecule counts, commonly referred to as the "histogram" output. This section is only required 
+if Grand Canonical ensemble simulation was used.
 
 ``DistName``
   Sets short phrase to naming molecule distribution file.

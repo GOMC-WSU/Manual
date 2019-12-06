@@ -99,7 +99,11 @@
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#visualizing-simulation">Visualizing Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -133,6 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#simulate-rigid-molecule">Simulate rigid molecule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a></li>
@@ -156,6 +161,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">How to?</a><ul>
+<li><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
 <li><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a><ul>
 <li><a class="reference internal" href="#regular-molecule">Regular molecule</a></li>
 <li><a class="reference internal" href="#molecule-with-dummy-atoms">Molecule with dummy atoms</a></li>
@@ -228,6 +234,36 @@
   <div class="section" id="how-to">
 <h1>How to?<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
 <p>In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulation problem.</p>
+<div class="section" id="visualizing-simulation">
+<h2>Visualizing Simulation<a class="headerlink" href="#visualizing-simulation" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code> is enabled in configuration file, GOMC will output the molecule coordinates every
+specified stpes. The PDB and PSF output (merging of atom entries) has already been mentioned/explained in
+previous sections. To recap: The PDB file’s ATOM entries’ occupancy is used to represent the box the molecule
+is in for the current frame. All molecules are listed in order in which they were read (i.e. if box 0 has
+<span class="math notranslate nohighlight">\(1, 2, ..., N1\)</span> molecules and box 1 has <span class="math notranslate nohighlight">\(1, 2, ..., N2\)</span> molecules, then all of the molecules in
+box 0 are listed first and all the molecules in box 1, i.e. <span class="math notranslate nohighlight">\(1, 2 ,... ,N1\)</span>, <span class="math notranslate nohighlight">\(N1 + 1, ..., N1 + N2\)</span>).
+PDB frames are written as standard PDBs to consecutive file frames.</p>
+<p>To visualize, open the output PDB and PSF files by GOMC using VMD, type this command in the terminal:</p>
+<p>For all simulation except Gibbs ensemble that has one simulation box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+</pre></div>
+</div>
+<p>For Gibbs ensemble, visualizing the first box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+</pre></div>
+</div>
+<p>For Gibbs ensemble, visualizing the second box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_1.pdb
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Restart coordinate file (OutputName_BOX_0_restart.pdb) cannot be visualize using merged psf file, because atom number does not match. However, you can still open it in vmd using following command and vmd will automatically find the bonds of the molecule based on the coordinates.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_BOX_0_restart.pdb
+</pre></div>
+</div>
+</div>
 <div class="section" id="build-molecule-and-topology-file">
 <h2>Build molecule and topology file<a class="headerlink" href="#build-molecule-and-topology-file" title="Permalink to this headline">¶</a></h2>
 <p>There are many open-source software that can build a molecule for you, such as <a class="reference external" href="https://avogadro.cc/docs/getting-started/drawing-molecules/">Avagadro</a> ,

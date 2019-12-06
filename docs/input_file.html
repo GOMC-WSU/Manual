@@ -99,7 +99,11 @@
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#visualizing-simulation">Visualizing Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-files">Molecule Distribution Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -133,6 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-rigid-molecule">Simulate rigid molecule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#restart-the-simulation">Restart the simulation</a></li>
@@ -1807,21 +1812,30 @@ OutputName  ISB_T_270_K
 </pre></div>
 </div>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code></dt><dd><p>Controls output of PDB file (coordinates). If PDB outputing was enabled, one file for NVT or NPT and two files for Gibbs ensemble or GC ensemble will be outputed into <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_n.pdb, where n defines the box number.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code></dt><dd><p>Controls output of PDB file (coordinates). If PDB outputing was enabled, one file for NVT or NPT and
+two files for Gibbs ensemble or GC ensemble will be outputed into <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_n.pdb, where n defines the box number.</p>
 <ul class="simple">
 <li><p>Value 1: Boolean - “true” enables outputing these files; “false” disables outputing.</p></li>
-<li><p>Value 2: Ulong - Steps per dump PDB frame. It should be less than or equal to RunSteps. If this keyword could not be found in configuration file, its value will be assigned a default value to dump 10 frames.</p></li>
+<li><p>Value 2: Ulong - Steps per dump PDB frame. It should be less than or equal to RunSteps. If this
+keyword could not be found in configuration file, its value will be assigned a default value to dump 10 frames.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>The PDB file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the box a molecule is currently in (e.g. 0.00 for box 0; 1.00 for box 1).</p></li>
-<li><p>At the beginning of simulation, a merged PSF file will be outputed into <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.pdb, in which all boxes will be outputed. It also contains the topology for every molecule in both boxes, corresponding to the merged PDB format. Loading PDB files into merged PSF file in VMD allows the user to visualize and analyze the results.</p></li>
-<li><p>In addition, this file can be used to load into GOMC once <code class="docutils literal notranslate"><span class="pre">Restart</span></code> simulation was active and <code class="docutils literal notranslate"><span class="pre">RunSteps</span></code> sets to 0 to recalculate the energy of stored snapshot of the previous simulation.</p></li>
+<li><p>The PDB file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a
+constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently
+in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the
+box a molecule is currently in (e.g. 0.00 for box 0; 1.00 for box 1).</p></li>
+<li><p>At the beginning of simulation, a merged PSF file will be outputed into <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf,
+in which all boxes will be outputed. It also contains the topology for every molecule in both boxes,
+corresponding to the merged PDB format. Loading PDB files into merged PSF file in VMD allows the user
+to visualize and analyze the results.</p></li>
 </ul>
 </div>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code></dt><dd><p>Controls the output of the last state of simulation at a specified step in PDB files (coordinates) <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_n_restart.pdb, where n defines the box number. Header part of this file contains important information and will be needed to restart the simulation:</p>
+<dt><code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code></dt><dd><p>Controls the output of the last state of simulation at a specified step in PDB files (coordinates)
+<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_n_restart.pdb, where n defines the box number. Header part of this file contains
+important information and will be needed to restart the simulation:</p>
 <ul class="simple">
 <li><p>Simulation cell dimensions and angles.</p></li>
 <li><p>Maximum amount of displacement (Å), rotation (<span class="math notranslate nohighlight">\(\delta\)</span>), and volume (<span class="math notranslate nohighlight">\(Å^3\)</span>) that used in Displacement, Rotation, and Volume move.</p></li>
@@ -1890,7 +1904,9 @@ HistogramFreq     true 10000
 </div>
 </dd>
 </dl>
-<p>The next section controls the output of the energy/molecule sample file and the distribution file for molecule counts, commonly referred to as the “histogram” output. This section is only required if Grand Canonical ensemble simulation was used.</p>
+<p>The next section controls the output of the energy/molecule sample file and the distribution file f
+or molecule counts, commonly referred to as the “histogram” output. This section is only required
+if Grand Canonical ensemble simulation was used.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">DistName</span></code></dt><dd><p>Sets short phrase to naming molecule distribution file.</p>
 <ul class="simple">

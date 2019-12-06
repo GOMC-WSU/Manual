@@ -4,6 +4,45 @@ How to?
 In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulation problem.
 
 
+Visualizing Simulation
+----------------------
+
+If ``CoordinatesFreq`` is enabled in configuration file, GOMC will output the molecule coordinates every 
+specified stpes. The PDB and PSF output (merging of atom entries) has already been mentioned/explained in 
+previous sections. To recap: The PDB file's ATOM entries' occupancy is used to represent the box the molecule 
+is in for the current frame. All molecules are listed in order in which they were read (i.e. if box 0 has 
+:math:`1, 2, ..., N1` molecules and box 1 has :math:`1, 2, ..., N2` molecules, then all of the molecules in 
+box 0 are listed first and all the molecules in box 1, i.e. :math:`1, 2 ,... ,N1`, :math:`N1 + 1, ..., N1 + N2`). 
+PDB frames are written as standard PDBs to consecutive file frames.
+
+To visualize, open the output PDB and PSF files by GOMC using VMD, type this command in the terminal:
+
+For all simulation except Gibbs ensemble that has one simulation box:
+
+.. code-block:: bash
+
+  $ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+
+For Gibbs ensemble, visualizing the first box:
+
+.. code-block:: bash
+
+  $ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+
+For Gibbs ensemble, visualizing the second box:
+
+.. code-block:: bash
+
+  $ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_1.pdb
+
+.. note:: Restart coordinate file (OutputName_BOX_0_restart.pdb) cannot be visualize using merged psf file, because atom number does not match. However, you can still open it in vmd using following command and vmd will automatically find the bonds of the molecule based on the coordinates.
+
+.. code-block:: bash
+
+  $ vmd   ISB_T_270_k_BOX_0_restart.pdb
+
+
+
 Build molecule and topology file
 ----------------------------------
 
