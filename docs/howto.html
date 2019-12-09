@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>How to? &#8212; GOMC 2.50 documentation</title>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get Help or Technical Support" href="help.html" />
+    <link rel="prev" title="Coupling Interaction with \(\lambda\)" href="free_energy.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="static/logo.png"></span>
+          GOMC</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Section <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#linux">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#topology-file">Topology File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#ewald">Ewald</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-rigid-molecule">Simulate rigid molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Sub-section <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">How to?</a><ul>
+<li><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
+<li><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a><ul>
+<li><a class="reference internal" href="#regular-molecule">Regular molecule</a></li>
+<li><a class="reference internal" href="#molecule-with-dummy-atoms">Molecule with dummy atoms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simulate-rigid-molecule">Simulate rigid molecule</a><ul>
+<li><a class="reference internal" href="#setup-rigid-molecule">Setup rigid  molecule</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a><ul>
+<li><a class="reference internal" href="#restart-the-simulation-with-restart">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code></a></li>
+<li><a class="reference internal" href="#restart-the-simulation-with-restartcheckpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
+<li><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a><ul>
+<li><a class="reference internal" href="#build-pdb-and-psf-file">Build PDB and PSF file</a></li>
+<li><a class="reference internal" href="#adsorption-in-gcmc">Adsorption in GCMC</a></li>
+<li><a class="reference internal" href="#adsorption-in-npt-gemc">Adsorption in NPT-GEMC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a><ul>
+<li><a class="reference internal" href="#setup-simulation-files">Setup Simulation Files</a></li>
+<li><a class="reference internal" href="#process-gomc-free-energy-outputs">Process GOMC Free Energy Outputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="free_energy.html" title="Previous Chapter: Coupling Interaction with \(\lambda\)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Coupling Inte...</span>
+    </a>
+  </li>
+  <li>
+    <a href="help.html" title="Next Chapter: Get Help or Technical Support"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Get Help or T... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="how-to">
+<h1>How to?<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulation problem.</p>
+<div class="section" id="visualizing-simulation">
+<h2>Visualizing Simulation<a class="headerlink" href="#visualizing-simulation" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code> is enabled in configuration file, GOMC will output the molecule coordinates every
+specified stpes. The PDB and PSF output (merging of atom entries) has already been mentioned/explained in
+previous sections. To recap: The PDB file’s ATOM entries’ occupancy is used to represent the box the molecule
+is in for the current frame. All molecules are listed in order in which they were read (i.e. if box 0 has
+<span class="math notranslate nohighlight">\(1, 2, ..., N1\)</span> molecules and box 1 has <span class="math notranslate nohighlight">\(1, 2, ..., N2\)</span> molecules, then all of the molecules in
+box 0 are listed first and all the molecules in box 1, i.e. <span class="math notranslate nohighlight">\(1, 2 ,... ,N1\)</span>, <span class="math notranslate nohighlight">\(N1 + 1, ..., N1 + N2\)</span>).
+PDB frames are written as standard PDBs to consecutive file frames.</p>
+<p>To visualize, open the output PDB and PSF files by GOMC using VMD, type this command in the terminal:</p>
+<p>For all simulation except Gibbs ensemble that has one simulation box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+</pre></div>
+</div>
+<p>For Gibbs ensemble, visualizing the first box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_0.pdb
+</pre></div>
+</div>
+<p>For Gibbs ensemble, visualizing the second box:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_merged.psf  ISB_T_270_k_BOX_1.pdb
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Restart coordinate file (OutputName_BOX_0_restart.pdb) cannot be visualize using merged psf file, because atom number does not match. However, you can still open it in vmd using following command and vmd will automatically find the bonds of the molecule based on the coordinates.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vmd   ISB_T_270_k_BOX_0_restart.pdb
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-molecule-and-topology-file">
+<h2>Build molecule and topology file<a class="headerlink" href="#build-molecule-and-topology-file" title="Permalink to this headline">¶</a></h2>
+<p>There are many open-source software that can build a molecule for you, such as <a class="reference external" href="https://avogadro.cc/docs/getting-started/drawing-molecules/">Avagadro</a> ,
+<a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/plugins/molefacture/">molefacture</a> in VMD and more. Here we use molefacture features to not only build a molecule,
+but also creating the topology file.</p>
+<div class="section" id="regular-molecule">
+<h3>Regular molecule<a class="headerlink" href="#regular-molecule" title="Permalink to this headline">¶</a></h3>
+<p>First, make sure that VMD is installed on your computer. Then, to learn how to build a single PDB file and topology file for united atom butane molecule,
+please refer to this <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/NVT/butane/build/Molefacture.pdf">document</a> .</p>
+<p>We encourage to try to go through our workshop materials:</p>
+<ul>
+<li><p>To try two days workshop, execute the following command in your terminal to clone the workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch master --single-branch
+$ <span class="nb">cd</span>   Workshop
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/master">GitHub</a> .</p>
+</li>
+<li><p>To try two hours workshop, execute the following command in your terminal to clone the workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch AIChE --single-branch
+$ <span class="nb">cd</span>   Workshop
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/AIChE">GitHub</a> .</p>
+</li>
+</ul>
+</div>
+<div class="section" id="molecule-with-dummy-atoms">
+<h3>Molecule with dummy atoms<a class="headerlink" href="#molecule-with-dummy-atoms" title="Permalink to this headline">¶</a></h3>
+<p>To simulate a molecule that includes one or more atoms with electrostatic interaction only and no LJ interaction (i.e. dummy atom near of the oxygen along
+the bisector of the HOH angle in <a class="reference external" href="http://dx.doi.org/10.1063/1.2121687">TIP4P water model</a>), we must perform the following steps
+to define the dummy atom/atoms:</p>
+<ol class="arabic simple">
+<li><p>Create a PDB file for single water molecule atoms (H1, O, H2) and a dummy atom (M, in this example), where dummy atom located at 0.150 Å of oxygen and along
+the bisector of the H1-O-H2 angle.</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CRYST1    0.000    0.000    0.000  90.00  90.00  90.00 P 1           1
+ATOM      1  O   TIP4    1      -0.189   1.073   0.000  0.00  0.00           O
+ATOM      2  H1  TIP4    1       0.768   1.114   0.000  0.00  0.00           H
+ATOM      3  H2  TIP4    1      -0.469   1.988   0.000  0.00  0.00           H
+ATOM      4  M   TIP4    1      -0.102   1.195   0.000  0.00  0.00           D
+END
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Pack your desire number of TIP4 water molecule in a box using packmol, as explained before.</p></li>
+<li><p>Include the dummy atom (M) and its charge in your topology file. Define a bond between oxygen and dummy atom.
+Use vmd and build script to generate your PSF files.</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* Custom top file -- TIP4P water
+
+MASS   1  OH    15.9994  O !
+MASS   2  HO     1.0080  H !
+MASS   3  MO     0.0000  D ! Dummy atom for TIP4P model
+
+DEFA FIRS none LAST none
+AUTOGENERATE ANGLES DIHEDRALS
+
+RESI TIP4           0.0000 ! TIP4P water
+GROUP
+ATOM O      OH      0.0000 !        O
+ATOM H1     HO      0.5564 !     /  |  \
+ATOM H2     HO      0.5564 !    /   M   \
+ATOM M      MO     -1.1128 !  H1        H2
+BOND   O  H1   O  H2   O  M
+PATCHING FIRS NONE LAST NONE
+
+END
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Define all bonded parameters (bond, angles, and dihedral) and nonbonded parameters in your parameter file.</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*parameteres for TIP4P
+
+BONDS
+!
+!V(bond) = Kb(b - b0)**2
+!
+!atom type          Kb          b0
+OH   HO    99999999999       0.9572 ! TIP4P O-H bond length
+OH   MO    99999999999       0.1500 ! TIP4P M-O bond length
+
+
+ANGLES
+!
+!V(angle) = Ktheta(Theta - Theta0)**2
+!
+!atom types         Ktheta       Theta0
+HO   OH   HO    9999999999999    104.52  ! H-O-H Fix Angle
+HO   OH   MO    9999999999999     52.26  ! H-O-M Fix Angle
+
+
+DIHEDRALS
+!
+!V(dihedral) = Kchi(1 + cos(n(chi) - delta))
+!
+!atom types             Kchi    n   delta
+
+
+NONBONDED
+!
+!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+!
+!atom  ignored      epsilon      Rmin/2   ignored   eps,1-4    Rmin/2,1-4
+HO      0.000000     0.00000    0.000000    0.0     0.0         0.0
+MO      0.000000     0.00000    0.000000    0.0     0.0         0.0
+OH      0.000000    -0.18521    1.772873    0.0     0.0         0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="simulate-rigid-molecule">
+<h2>Simulate rigid molecule<a class="headerlink" href="#simulate-rigid-molecule" title="Permalink to this headline">¶</a></h2>
+<p>Currently, GOMC can simulate rigid molecules for any molecular topology in NVT and NPT ensemble, if none of the Monte Carlo moves that lead to change in
+molecular configuration (e.g. <code class="docutils literal notranslate"><span class="pre">Regrowth</span></code>, <code class="docutils literal notranslate"><span class="pre">Crankshaft</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraSwap</span></code>, and etc.) was used.</p>
+<p>In general, GOMC can simulate rigid molecules in all ensembles for the following molecular topology:</p>
+<ol class="arabic simple">
+<li><p>Linear and branched molecules with no dihedrals. For instance, carbon dioxide, dimethyl ether, and all water models (SPC, SPC/E, TIP3P, TIP4P, etc).</p></li>
+<li><p>Cyclic molecules, where at least two atoms in all defined angles, belong to the body of the ring. For instance, benzene, toluene, Xylene, and more.</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p>For linear and branched molecule, the molecule’s bonds and angles  will be adjusted according to the equilibrium values, defined in parameter file.</p></li>
+<li><p>For cyclic molecules, the molecule’s bonds and angles would not change! It is very important to create the initial molecule with correct bonds and angles.</p></li>
+</ol>
+</div>
+<div class="section" id="setup-rigid-molecule">
+<h3>Setup rigid  molecule<a class="headerlink" href="#setup-rigid-molecule" title="Permalink to this headline">¶</a></h3>
+<p>To simulate the rigid molecules in GOMC, we need to perform the following steps:</p>
+<ol class="arabic simple">
+<li><p>Define all bonds in topology file and use <strong>AUTOGENERATE ANGLES DIHEDRALS</strong> in topology file to specify all angles and dihedral in PSF files.</p></li>
+<li><p>Define all bond parameters in the parameter file. If you wish to not to include the bond energy in your simulation, set the
+the <span class="math notranslate nohighlight">\(K_b\)</span> to a large value i.e. “999999999999”.</p></li>
+<li><p>Define all angle parameters in the parameter file. If you wish to not to include the bend energy in your simulation, set the
+the <span class="math notranslate nohighlight">\(K_{\theta}\)</span> to a large value i.e. “999999999999”.</p></li>
+<li><p>Define all dihedral parameters in parameter file. If you wish to not to include the dihedral energy in your simulation, set the all
+the <span class="math notranslate nohighlight">\(C_n\)</span> to zero. <strong>For cyclic molecules only</strong></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="restart-the-simulation">
+<h2>Restart the simulation<a class="headerlink" href="#restart-the-simulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="restart-the-simulation-with-restart">
+<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code><a class="headerlink" href="#restart-the-simulation-with-restart" title="Permalink to this headline">¶</a></h3>
+<p>If you intend to start a new simulation from previous simulation state, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code> <strong>would not</strong> result in
+an identitcal outcome, as if previous simulation was continued.
+Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
+and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
+<p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</p></li>
+<li><p>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
+the cell basis information with the cell basis data from restart PDB file/files.</p></li>
+<li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
+</ol>
+<p>Here is the example of starting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Restart         true
+
+Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+
+#CellBasisVector1   0       45.00   0.00    0.00
+#CellBasisVector2   0       0.00    55.00   0.00
+#CellBasisVector3   0       0.00    0.00    45.00
+
+OutputName          dimethylether_NPT
+</pre></div>
+</div>
+<p>Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from equilibrated NVT simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Restart         true
+
+Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+Structure       1   dimethylether_NVT_merged.psf
+
+#CellBasisVector1   0       45.00   0.00    0.00
+#CellBasisVector2   0       0.00    55.00   0.00
+#CellBasisVector3   0       0.00    0.00    45.00
+
+#CellBasisVector1   1       45.00   0.00    0.00
+#CellBasisVector2   1       0.00    55.00   0.00
+#CellBasisVector3   1       0.00    0.00    45.00
+
+OutputName          dimethylether_NPT_GEMC
+</pre></div>
+</div>
+</div>
+<div class="section" id="restart-the-simulation-with-restartcheckpoint">
+<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-restartcheckpoint" title="Permalink to this headline">¶</a></h3>
+<p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code> would result in an
+identitcal outcome, as if previous simulation was continued.
+Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> and <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> were activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
+, merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf), and checkpoint file (<code class="docutils literal notranslate"><span class="pre">checkpoint.dat</span></code>) were printed.</p>
+<p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code> to True.</p></li>
+<li><p>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
+the cell basis information with the cell basis data from restart PDB file/files.</p></li>
+<li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
+</ol>
+<p>Here is the example of restarting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+RestartCheckpoint   true
+
+Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+
+#CellBasisVector1   0       45.00   0.00    0.00
+#CellBasisVector2   0       0.00    55.00   0.00
+#CellBasisVector3   0       0.00    0.00    45.00
+
+OutputName          dimethylether_NPT
+</pre></div>
+</div>
+<p>Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, from equilibrated NVT simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+RestartCheckpoint   true
+
+Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
+Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+Structure       1   dimethylether_NVT_merged.psf
+
+#CellBasisVector1   0       45.00   0.00    0.00
+#CellBasisVector2   0       0.00    55.00   0.00
+#CellBasisVector3   0       0.00    0.00    45.00
+
+#CellBasisVector1   1       45.00   0.00    0.00
+#CellBasisVector2   1       0.00    55.00   0.00
+#CellBasisVector3   1       0.00    0.00    45.00
+
+OutputName          dimethylether_NPT_GEMC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recalculate-the-energy">
+<h2>Recalculate the energy<a class="headerlink" href="#recalculate-the-energy" title="Permalink to this headline">¶</a></h2>
+<p>GOMC is capable of recalculate the energy of previous simulation snapshot, with same or different force field. Simulation snapshot is the printed molecule’s
+coordinates at specific steps, which controls by <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code>. First, we need to make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code>
+was activated and the coordinates PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0.pdb) and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
+<p>In order to recalculate the energy from previous simulation we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</p></li>
+<li><p>Use the dumped coordinates PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">RunSteps</span></code> to zero to activare the energy recalculation.</p></li>
+<li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the merged PSF files.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GOMC only recalculated the energy terms and does not recalulate the thermodynamic properties. Hence, no output file, except merged PSF file, will be
+generated.</p>
+</div>
+<p>Here is the example of recalculating energy from previous NVT simulation snapshot:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Restart         true
+
+Coordinates     0   dimethylether_NVT_BOX_0.pdb
+
+Structure       0   dimethylether_NVT_merged.psf
+
+RunSteps        0
+
+OutputName          Recalculate
+</pre></div>
+</div>
+</div>
+<div class="section" id="simulate-adsorption">
+<h2>Simulate adsorption<a class="headerlink" href="#simulate-adsorption" title="Permalink to this headline">¶</a></h2>
+<p>GOMC is capable of simulating gas adsorption in rigid framework using GCMC and NPT-GEMC simulation. In this section, we discuss how to generate PDB and PSF file,
+how to modify the configuration file to simulate adsorption.</p>
+<div class="section" id="build-pdb-and-psf-file">
+<h3>Build PDB and PSF file<a class="headerlink" href="#build-pdb-and-psf-file" title="Permalink to this headline">¶</a></h3>
+<p>Generating PDB and PSF file for reservoir is similar to generating PDB and PSF file for isobutane, explained before. Here, we are focusing on how to generate
+PDB and PSF file for adsorbent.
+As mensioned before, GOMC can only read PDB and PSF file as input file. If you are using “*.cif” file for your adsorbent, you need to perform few steps
+to extend the unit cell and export it as PDB file. There are two ways that you can prepare your adsorption simulation:</p>
+<ol class="arabic">
+<li><p><strong>Using High Throughput Screening (HTS)</strong></p>
+<p>GOMC development group created a python code combined with Tcl scripting to automatically generate GOMC input files for adsorption simulation.
+In this code, we use CoRE-MOF repository created by <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/cm502594j">Snurr et al.</a> to prepare the simulation input file.</p>
+<p>To try this code, execute the following command in your terminal to clone the HTS repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch HTS --single-branch
+$ <span class="nb">cd</span>   Workshop
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/HTS">GitHub</a> .</p>
+<p>Make sure that you installed all <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/HTS/GOMC_Software_Requirements.pdf">GOMC software requirement</a>. Follow the
+“Readme.md” for more information.</p>
+</li>
+<li><p><strong>Manual Preparation</strong></p>
+<p>To illustrate the steps that need to be taken to prepare the PDB and PSF file, we will use an example provided in one of our workshop. Make sure that you
+installed all <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/GOMC_Requirements.pdf">GOMC software requirement</a>.</p>
+<p>To clone the workshop, execute the following command in your terminal to clone the workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/GOMC-WSU/Workshop.git --branch master --single-branch
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/tree/master">GitHub</a> .</p>
+<p>To show how to extend the unit cell of IRMOF-1 and build the PDB and PSF files, change your directory to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span>   Workshop/adsorption/GCMC/argon_IRMOF_1/build/base/.
+</pre></div>
+</div>
+<p>In this directory, there is a “README.txt” file, which provides detailed information of steps need to be taken. Here we just provide a summary of these steps:</p>
+<ul>
+<li><p>Extend the unit cell of “EDUSIF_clean_min.cif” file using <a class="reference external" href="https://jp-minerals.org/vesta/en/download.html">VESTA</a>. To learn how to extend the
+unit cell, removing bonds, and export it as PDB file, please refere to this <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/adsorption/GCMC/argon_IRMOF_1/build/base/VESTA.pdf">documente</a> to generate “EDUSIF_clean_min.pdb” file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Generated PDB file does not provide all necessary information. Further modification must be made.</p>
+</div>
+</li>
+<li><p>The easy way to generate PSF file is to treat each atom as a separate molecule kind to avoid defining bonds, angles, and dihedrals. To modify the “EDUSIF_clean_min.pdb” file (set the residue ID, resname, …), execute the following command to generate the
+“EDUSIF_clean_min_modified.pdb” file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vmd -dispdev text &lt; convert_VESTA_PDB.tcl
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Treating each atom as separate molecule kind will make it easy to generate topology file. Here is an example of topology file where each atom is treated
+as a separate residue kind:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* Topology file for IRMOF-1 (Zn4O(BDC)3)
+!
+MASS   1  O     15.999      O  !
+MASS   2  C     12.011      C  !
+MASS   3  H      1.008      H  !
+MASS   4  ZN    65.380      ZN !
+
+DEFA FIRS none LAST none
+AUTOGENERATE ANGLES DIHEDRALS
+
+RESI    C         0.000
+GROUP
+ATOM    C   C     0.000
+PATCHING FIRS NONE LAST NONE
+
+RESI    H         0.000
+GROUP
+ATOM    H   H     0.000
+PATCHING FIRS NONE LAST NONE
+
+RESI    O          0.000
+GROUP
+ATOM    O   O      0.000
+PATCHING FIRS NONE LAST NONE
+
+RESI    Zn         0.000
+GROUP
+ATOM    Zn  ZN     0.000
+PATCHING FIRS NONE LAST NONE
+
+END
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To generate the PSF file, each molecule kind must be separated and stored in separate pdb file. Then we use VMD to generate the PSF file.
+All these process are scripted in “build_EDUSIF_auto.tcl” and we just need to execute the following command to generate the “IRMOF_1_BOX_0.pdb” and
+“IRMOF_1_BOX_0.psf” files.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vmd -dispdev text &lt; build_EDUSIF_auto.tcl
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Last steps to fix the adsorbent atoms in their position. As mensioned in PDB section, setting the <code class="docutils literal notranslate"><span class="pre">Beta</span> <span class="pre">=</span> <span class="pre">1.00</span></code> value of a molecule in PDB file, will
+fix that molecule position. This can be done by a text editor but here we use another Tcl scrip to do that. Execute the following command in your terminal
+to set the <code class="docutils literal notranslate"><span class="pre">Beta</span></code> value of all atoms in “IRMOF_1_BOX_0.pdb” to 1.00.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vmd -dispdev text &lt; setBeta.tcl
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="adsorption-in-gcmc">
+<h3>Adsorption in GCMC<a class="headerlink" href="#adsorption-in-gcmc" title="Permalink to this headline">¶</a></h3>
+<p>To simulate adsorption using GCMC ensemble, we need to perform the following steps to modify the config file:</p>
+<ol class="arabic simple">
+<li><p>Use the generated PDB files for adsorbent and adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code>.</p></li>
+<li><p>Use the generated PSF files for adsorbent and adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code>.</p></li>
+<li><p>Calculate the cell basis vectors for each box and set the <code class="docutils literal notranslate"><span class="pre">CellBasisVector1,2,3</span></code> for each box.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To calculate the cell basis vector with cell length <span class="math notranslate nohighlight">\(\boldsymbol{a} , \boldsymbol{b}, \boldsymbol{c}\)</span> and cell angle
+<span class="math notranslate nohighlight">\(\alpha, \beta. \gamma\)</span> we use the following equations:</p>
+<p><span class="math notranslate nohighlight">\(a_x = \boldsymbol{a}\)</span></p>
+<p><span class="math notranslate nohighlight">\(a_y = 0.0\)</span></p>
+<p><span class="math notranslate nohighlight">\(a_z = 0.0\)</span></p>
+<p><span class="math notranslate nohighlight">\(b_x = \boldsymbol{b} \times cos(\gamma)\)</span></p>
+<p><span class="math notranslate nohighlight">\(b_y = \boldsymbol{b} \times sin(\gamma)\)</span></p>
+<p><span class="math notranslate nohighlight">\(c_x = \boldsymbol{c} \times cos(\beta)\)</span></p>
+<p><span class="math notranslate nohighlight">\(c_y = \boldsymbol{c} \times \frac{ cos(\alpha) - cos(\beta) \times cos(\gamma) } { sin(\gamma) }\)</span></p>
+<p><span class="math notranslate nohighlight">\(c_z = \boldsymbol{c} \times \sqrt {{sin(\beta)}^2 - { \bigg(\frac{ cos(\alpha) - cos(\beta) \times cos(\gamma) } { sin(\gamma) }} \bigg)^2}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">CellBasisVector1</span></code> = <span class="math notranslate nohighlight">\((a_x , a_y, a_z)\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">CellBasisVector2</span></code> = <span class="math notranslate nohighlight">\((b_x , b_y, b_z)\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">CellBasisVector3</span></code> = <span class="math notranslate nohighlight">\((c_x , c_y, c_z)\)</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Fugacity</span></code> for adsorbate and include <code class="docutils literal notranslate"><span class="pre">Fugacity</span></code> for adsorbent with arbitrary value (e.g. 0.00).</p></li>
+</ol>
+<p>Here is the example of argon (AR) adsorption at 5 bar in IRMOF-1 using GCMC ensemble:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Coordinates     0   ../build/base/IRMOF_1_BOX_0.pdb
+Coordinates     1   ../build/reservoir/START_BOX_1.pdb
+
+Structure       0   ../build/base/IRMOF_1_BOX_0.psf
+Structure       1   ../build/reservoir/START_BOX_1.psf
+
+CellBasisVector1    0   36.8140   0.00     0.00
+CellBasisVector2    0   18.2583  31.9880   0.00
+CellBasisVector3    0   18.2712  10.5596  30.1748
+
+CellBasisVector1    1   40.00     0.00    0.00
+CellBasisVector2    1    0.00    40.00    0.00
+CellBasisVector3    1    0.00    00.00   40.00
+
+Fugacity    AR      5.0
+Fugacity    C       0.0
+Fugacity    H       0.0
+Fugacity    O       0.0
+Fugacity    ZN      0.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="adsorption-in-npt-gemc">
+<h3>Adsorption in NPT-GEMC<a class="headerlink" href="#adsorption-in-npt-gemc" title="Permalink to this headline">¶</a></h3>
+<p>To simulate adsorption using NPT-GEMC ensemble, simulaiton box 0 is used for adsorbent with fixed volume and simulaiton box 1 is used for adsorbate, where
+volume of this box is fluctuating at imposed pressure. To simulation adsorption in NPT-GEMC ensemble we need to perform the following steps to modify the
+config file:</p>
+<ol class="arabic simple">
+<li><p>Use the generated PDB file for adsorbent to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for box 0.</p></li>
+<li><p>Use the generated PDB file for adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for box 1.</p></li>
+<li><p>Use the generated PSF file for adsorbent to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for box 0.</p></li>
+<li><p>Use the generated PSF file for adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for box 1.</p></li>
+<li><p>Calculate the cell basis vectors for each box and set the <code class="docutils literal notranslate"><span class="pre">CellBasisVector1,2,3</span></code> for each box.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">GEMC</span></code> simulaiton type to “NPT”.</p></li>
+<li><p>Set the imposed <code class="docutils literal notranslate"><span class="pre">Pressure</span></code> (bar) for fluid phase.</p></li>
+<li><p>Keep the volume of box 0 constant by activating the <code class="docutils literal notranslate"><span class="pre">FixVolBox0</span></code>.</p></li>
+</ol>
+<p>Here is the example of argon (AR) adsorption at 5 bar in IRMOF-1 using NPT-GEMC ensemble:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
+# Parameters need to be modified
+########################################################
+Coordinates     0   ../build/base/IRMOF_1_BOX_0.pdb
+Coordinates     1   ../build/reservoir/START_BOX_1.pdb
+
+Structure       0   ../build/base/IRMOF_1_BOX_0.psf
+Structure       1   ../build/reservoir/START_BOX_1.psf
+
+CellBasisVector1    0   36.8140   0.00     0.00
+CellBasisVector2    0   18.2583  31.9880   0.00
+CellBasisVector3    0   18.2712  10.5596  30.1748
+
+CellBasisVector1    1   40.00     0.00    0.00
+CellBasisVector2    1    0.00    40.00    0.00
+CellBasisVector3    1    0.00    00.00   40.00
+
+GEMC        NPT
+
+Pressure    5.0
+
+FixVolBox0  true
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-solvation-free-energy">
+<h2>Calculate Solvation Free Energy<a class="headerlink" href="#calculate-solvation-free-energy" title="Permalink to this headline">¶</a></h2>
+<p>GOMC is capable of calcutating absolute solvation free energy in NVT or NPT ensemble. Here
+we are focusing how to setup the GOMC simulation files to calculate absolute solvation free energy.</p>
+<p>GOMC outputs the required informations (<span class="math notranslate nohighlight">\(\frac{dE_{\lambda}}{d\lambda}\)</span>, <span class="math notranslate nohighlight">\(\Delta E_{\lambda}\)</span>)
+to calculate solvation free energy with various estimators, such as TI, BAR, MBAR, and more.</p>
+<div class="section" id="setup-simulation-files">
+<h3>Setup Simulation Files<a class="headerlink" href="#setup-simulation-files" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><strong>Using FreeEnergy BASH Script</strong></p>
+<p>GOMC development group created a BASH script combined with Tcl scripting to automatically
+generate GOMC input files for free energy simulations in NVT (master branch) or NPT (NPT branch) ensemble.</p>
+<p>To try this script, execute the following command in your terminal to clone the FreeEnergy repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/msoroush/FreeEnergy.git
+$ <span class="nb">cd</span>   FreeEnergy
+</pre></div>
+</div>
+<p>or simply download it from <a class="reference external" href="https://github.com/msoroush/FreeEnergy.git">GitHub</a> .</p>
+<p>Make sure that you installed all <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/AIChE2019/GOMC_Requirements.pdf">GOMC software requirement</a>. Follow the
+<a class="reference external" href="https://github.com/msoroush/FreeEnergy/blob/master/README.md">README</a> for more information.</p>
+</li>
+<li><p><strong>Manual Preparation</strong></p>
+<p>To simulate solvation free energy, we need to perform the following steps:</p>
+<ul>
+<li><p>Generate the PDB and PSF files for a system containes 1 solulte + <em>N</em> solvent molecules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Number of solvent molecules (<em>N</em>) must be determined by user, based on the system size.</p>
+</div>
+</li>
+<li><p>Equilibrate your system in NVT ensemble at specified <code class="docutils literal notranslate"><span class="pre">Temperature</span></code>.</p></li>
+<li><p>Equilibrate your system in NPT ensemble at specified <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">Pressure</span></code>, using
+PDB and PSF <code class="docutils literal notranslate"><span class="pre">restart</span></code> files, generated from previous equilibration simulation.</p></li>
+<li><p>Determine the number of intermediate states that lead to adequate overlaps between
+neighboring states.</p></li>
+<li><p>For each intermediate state (<span class="math notranslate nohighlight">\(\lambda_i\)</span>), create an unique directory and perform the following steps:</p>
+<ol class="arabic">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">restart</span></code> PDB file, generated from NPT equilibration simulation, to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code>.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">merged</span></code> PSF files, generated from NPT equilibration simulation, to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code>.</p></li>
+<li><p>Define the free energy parameters in <code class="docutils literal notranslate"><span class="pre">config</span></code> file:</p>
+<ul class="simple">
+<li><p>Set the frequency of free energy calculation</p></li>
+<li><p>Set the solute molecule kind name (resname) and number (resid)</p></li>
+<li><p>Set the soft-core parameters</p></li>
+<li><p>Define the lambda vecotrs for <code class="docutils literal notranslate"><span class="pre">VDW</span></code> and <code class="docutils literal notranslate"><span class="pre">Coulomb</span></code> interaction</p></li>
+<li><p>Set the index (<span class="math notranslate nohighlight">\(i\)</span>) of the lambda vetor (<span class="math notranslate nohighlight">\(\lambda\)</span>), at which solute-solvent interaction
+will be coupled with <span class="math notranslate nohighlight">\(\lambda_i\)</span>, using <code class="docutils literal notranslate"><span class="pre">InitialState</span></code> keyword.</p></li>
+</ul>
+<p>Here is the example of free energy parameters for CO2 (resid 1) solvation,
+with 9 intermediate states, where the solute-solvent interaction will be
+coupled with <span class="math notranslate nohighlight">\(\lambda_{\texttt{VDW}}(6)= 1.0\)</span> , <span class="math notranslate nohighlight">\(\lambda_{\texttt{Elect}}(6)= 0.50\)</span>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#################################
+# FREE ENERGY PARAMETERS
+#################################
+FreeEnergyCalc true   1000
+MoleculeType   CO2   1
+InitialState   6
+ScalePower     2
+ScaleAlpha     0.5
+MinSigma       3.0
+ScaleCoulomb   false
+#states        0    1    2    3    4    5    6    7    8
+LambdaVDW      0.00 0.25 0.50 0.75 1.00 1.00 1.00 1.00 1.00
+LambdaCoulomb  0.00 0.00 0.00 0.00 0.00 0.25 0.50 0.75 1.00
+</pre></div>
+</div>
+</li>
+<li><p>Equilibrate your system in NVT or NPT ensemble.</p></li>
+<li><p>Perform the production simulation in NVT or NPT ensemble.</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="process-gomc-free-energy-outputs">
+<h3>Process GOMC Free Energy Outputs<a class="headerlink" href="#process-gomc-free-energy-outputs" title="Permalink to this headline">¶</a></h3>
+<p>I free energy perturbation method, the free energy difference between two states A
+(<span class="math notranslate nohighlight">\(\lambda = 0.0\)</span>) and B (<span class="math notranslate nohighlight">\(\lambda = 1.0\)</span>), with N - 2 intermediate states is given by:</p>
+<div class="math notranslate nohighlight">
+\[\Delta G(A \rightarrow B) = -\frac{1}{\beta} \sum_{i=0}^{N-1} \ln \big&lt; \exp \big(- \beta \Delta E_{i, i+1} \big) \big&gt;_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta E_{i, i+1} = E_{i+1} - E_{i}\)</span> is the energy difference of the system between states <em>i</em> and <em>i+1</em>,
+and <span class="math notranslate nohighlight">\(\big&lt; \big&gt;_i\)</span> is the ensemble average for simulation performed in intermediate state <em>i</em>.</p>
+<p>In thermodynamic integration, the free energy change is calculated from</p>
+<div class="math notranslate nohighlight">
+\[\Delta G(A \rightarrow B) = \int_{\lambda = 0}^{\lambda = 1} \big&lt; \frac{dU_{\lambda}}{d\lambda} \big&gt;_{\lambda} d\lambda\]</div>
+<p>where <span class="math notranslate nohighlight">\(\frac{dU_{\lambda}}{d\lambda}\)</span> is the derivative of energy with respect
+to <span class="math notranslate nohighlight">\(\lambda\)</span>, and <span class="math notranslate nohighlight">\(\big&lt; \big&gt;_{\lambda}\)</span> is the ensemble average for a
+simulation run at intermediate state <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>GOMC outputs the raw informations, such as the lambda intermediate states,
+the derivative of energy with respective to current lambda (<span class="math notranslate nohighlight">\(\frac{dE_{\lambda}}{d\lambda}\)</span>),
+the energy different between current lambda state and all other neighboring lambda states
+(<span class="math notranslate nohighlight">\(\Delta E_{\lambda}\)</span>), which is essential to calculate solvation free energy
+with various estimators, such as TI, BAR, MBAR, and more.</p>
+<div class="figure align-default" id="id1">
+<img alt="images/FE-snapshot.png" src="images/FE-snapshot.png" />
+<p class="caption"><span class="caption-text">Snapshot of GOMC free energy output file (Free_Energy_BOX_0_ <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>.dat).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>There are variety of tools developed to caclulate free energy difference, including
+<a class="reference external" href="https://github.com/alchemistry/alchemlyb">alchemlyb</a> and
+<a class="reference external" href="https://github.com/MobleyLab/alchemical-analysis">alchemical-analysis</a> .</p>
+<ol class="arabic">
+<li><p><strong>Alchemlyb</strong></p>
+<p>In <a class="reference external" href="https://alchemlyb.readthedocs.io/en/latest">alchemlyb</a> , a variety of methods can be
+used to estimate the free energy, including thermodynamic integration (TI),
+Bennett acceptance ratio (BAR), and multistate Bennett acceptance ratio (MBAR).
+<a class="reference external" href="https://alchemlyb.readthedocs.io/en/latest">alchemlyb</a>  is also capable of loading GOMC
+free energy output files (Free_Energy_BOX_0_ <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>.dat).</p>
+<p>To learn more about alchemlybe, please refere to <a class="reference external" href="https://alchemlyb.readthedocs.io/en/latest">alchemlyb documentation</a>
+or <a class="reference external" href="https://github.com/alchemistry/alchemlyb">alchemlyb GitHub</a> page.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, alchemlyb does not support the free energy plots, overlap analysis,
+and free energy convergance analysis.</p>
+</div>
+<p>To use this tool, you must install python 3 and then execute the following command in
+your terminal to install alchemlyb:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install alchemlyb
+</pre></div>
+</div>
+</li>
+<li><p><strong>Alchemical Analysis</strong></p>
+<p>The alchemical-analysis tools is developed by Mobley group at MIT, to Analyze alchemical free energy
+calculations conducted in GROMACS, AMBER or SIRE. Alchemical Analysis is still available but deprecated and
+in the process of migrating all functionality to <a class="reference external" href="https://github.com/alchemistry/alchemlyb">alchemlyb</a> tool.</p>
+<p>Alchemical Analysis tool handles analysis via a slate of free energy methods, including BAR,
+MBAR, TI, and the Zwanzig relationship (exponential averaging) among others, and provides a good deal
+of analysis of computed free energies and convergence in order to help you assess the quality of your results.</p>
+<p>Since alchemical-analysis is no longer supported by its developers, the GOMC parser for this tool
+was implemented and stored in a separate <a class="reference external" href="https://github.com/msoroush/alchemical-analysis">repository</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We encourage user to use <a class="reference external" href="https://github.com/alchemistry/alchemlyb">alchemlyb GitHub</a> tools for plotting,
+once all the plotting features and free energy analysis was migrated.</p>
+</div>
+<p>To use this tool, you must install python 2 and then execute the following command in
+your terminal to clone the alchemical-analysis repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git  clone    https://github.com/msoroush/alchemical-analysis.git
+$ <span class="nb">cd</span>   alchemical-analysis
+$ sudo python setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="sources/howto.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

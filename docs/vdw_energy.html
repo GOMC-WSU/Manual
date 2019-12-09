@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Intermolecular Energy and Virial Function (Van der Waals) &#8212; GOMC 2.50 documentation</title>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Intermolecular Energy and Virial Function (Electrostatic)" href="electrostatic.html" />
+    <link rel="prev" title="Putting it all together: Running a GOMC Simulation" href="putting_all_together.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="static/logo.png"></span>
+          GOMC</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Section <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#linux">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#topology-file">Topology File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#ewald">Ewald</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-rigid-molecule">Simulate rigid molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Sub-section <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
+<li><a class="reference internal" href="#vdw">VDW</a></li>
+<li><a class="reference internal" href="#exp6">EXP6</a></li>
+<li><a class="reference internal" href="#shift">SHIFT</a></li>
+<li><a class="reference internal" href="#switch">SWITCH</a></li>
+<li><a class="reference internal" href="#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="putting_all_together.html" title="Previous Chapter: Putting it all together: Running a GOMC Simulation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Putting it al...</span>
+    </a>
+  </li>
+  <li>
+    <a href="electrostatic.html" title="Next Chapter: Intermolecular Energy and Virial Function (Electrostatic)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Intermolecula... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="intermolecular-energy-and-virial-function-van-der-waals">
+<h1>Intermolecular Energy and Virial Function (Van der Waals)<a class="headerlink" href="#intermolecular-energy-and-virial-function-van-der-waals" title="Permalink to this headline">¶</a></h1>
+<p>In this section, the virial and energy equation of Van der Waals interaction for different potential function are discussed in details.</p>
+<div class="section" id="vdw">
+<h2>VDW<a class="headerlink" href="#vdw" title="Permalink to this headline">¶</a></h2>
+<p>This option calculates potential energy without any truncation.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Interactions between atoms can be modeled with an n-6 potential, a Mie potential in which the attractive exponent is fixed. The Mie potential can be viewed as a generalized version of the 12-6 Lennard-Jones potential,</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, and <span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. The constant <span class="math notranslate nohighlight">\(C_n\)</span> is a normalization factor such that the minimum of the potential remains at <span class="math notranslate nohighlight">\(-\epsilon_{ij}\)</span> for all <span class="math notranslate nohighlight">\(n_{ij}\)</span>. In the 12-6 potential, <span class="math notranslate nohighlight">\(C_n\)</span> reduces to the familiar value of 4.</p>
+<div class="math notranslate nohighlight">
+\[C_{n_{ij}} = \bigg(\frac{n_{ij}}{n_{ij} - 6} \bigg)\bigg(\frac{n_{ij}}{6} \bigg)^{6/(n_{ij} - 6)}\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<p>Using n-6 LJ potential defined above:</p>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{VDW}}(r_{ij}) = 6C_{n_{ij}} \epsilon_{ij} \bigg[\frac{n_{ij}}{6} \times \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \frac{1}{{r_{ij}}}\]</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This option only evaluates the energy up to specified <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance. Tail correction to energy and pressure can be specified to account for infinite cutoff distance.</p>
+</div>
+</div>
+<div class="section" id="exp6">
+<h2>EXP6<a class="headerlink" href="#exp6" title="Permalink to this headline">¶</a></h2>
+<p>This option calculates potential energy without any truncation.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Interactions between atoms can be modeled with an exp-6 (Buckingham) potential,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_{\texttt{VDW}}(r_{ij}) =
+\begin{cases}
+  \frac{\alpha_{ij}\epsilon_{ij}}{\alpha_{ij}-6} \bigg[\frac{6}{\alpha_{ij}} \exp\bigg(\alpha_{ij} \bigg[1-\frac{r_{ij}}{R_{min,ij}} \bigg]\bigg) - {\bigg(\frac{R_{min,ij}}{r_{ij}}\bigg)}^6 \bigg] &amp;  r_{ij} \geq R_{max,ij} \\
+  \infty &amp; r_{ij} &lt; R_{max,ij}
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, and <span class="math notranslate nohighlight">\(R_{min,ij}\)</span> are, respectively, the separation, minimum potential, and minimum potential distance for the pair of interaction sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.
+The constant <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> is an  exponential-6 parameter. The cutoff distance <span class="math notranslate nohighlight">\(R_{max,ij}\)</span> is the smallest positive value for which <span class="math notranslate nohighlight">\(\frac{dE_{\texttt{VDW}}(r_{ij})}{dr_{ij}}=0\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to use <code class="docutils literal notranslate"><span class="pre">Mie</span></code> or <code class="docutils literal notranslate"><span class="pre">Exotice</span></code> potential file format for <code class="docutils literal notranslate"><span class="pre">Buckingham</span></code> potential, instead of defining <span class="math notranslate nohighlight">\(R_{min}\)</span>, we define <span class="math notranslate nohighlight">\(\sigma\)</span> (collision diameter or the distance, where potential is zero)
+and GOMC will calculate the <span class="math notranslate nohighlight">\(R_{min}\)</span> and <span class="math notranslate nohighlight">\(R_{max}\)</span> using <code class="docutils literal notranslate"><span class="pre">Buckingham</span></code> potential equation.</p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<p>Using exp-6 potential defined above:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F_{\texttt{VDW}}(r_{ij}) =
+\begin{cases}
+  \frac{6 \alpha_{ij}\epsilon_{ij}}{r_{ij}\big(\alpha_{ij}-6\big)} \bigg[\frac{r_{ij}}{R{min,ij}} \exp\bigg(\alpha_{ij} \bigg[1-\frac{r_{ij}}{R_{min,ij}} \bigg]\bigg) - {\bigg(\frac{R_{min,ij}}{r_{ij}}\bigg)}^6 \bigg] &amp;  r_{ij} \geq R_{max,ij} \\
+  \infty &amp; r_{ij} &lt; R_{max,ij}
+\end{cases}\end{split}\]</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This option only evaluates the energy up to specified <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance. Tail correction to energy and pressure can be specified to account for infinite cutoff distance.</p>
+</div>
+<div class="figure align-default" id="id1">
+<img alt="images/VDW_Exp6.png" src="images/VDW_Exp6.png" />
+<p class="caption"><span class="caption-text">Graph of Van der Waals interaction for comparison of <code class="docutils literal notranslate"><span class="pre">VDW</span></code> and <code class="docutils literal notranslate"><span class="pre">EXP6</span></code> potentials.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="shift">
+<h2>SHIFT<a class="headerlink" href="#shift" title="Permalink to this headline">¶</a></h2>
+<p>This option forces the potential energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Interactions between atoms can be modeled with an n-6 potential,</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg] - C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{cut}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{cut}}\bigg)^6\bigg]\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, and <span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. The constant <span class="math notranslate nohighlight">\(C_n\)</span> is a normalization factor according to Eq. 3, such that the minimum of the potential remains at <span class="math notranslate nohighlight">\(-\epsilon_{ij}\)</span> for all <span class="math notranslate nohighlight">\(n_{ij}\)</span>. In the 12-6 potential, <span class="math notranslate nohighlight">\(C_n\)</span> reduces to the familiar value of 4.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> potential function defined above:</p>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{VDW}}(r_{ij}) = 6C_{n_{ij}} \epsilon_{ij} \bigg[\frac{n_{ij}}{6} \times \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \frac{1}{{r_{ij}}}\]</div>
+<div class="figure align-default" id="id2">
+<img alt="images/VDW_SHIFT.png" src="images/VDW_SHIFT.png" />
+<p class="caption"><span class="caption-text">Graph of Van der Waals potential with and without the application of the <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> function. With the <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> function active, the potential by force was reduced to 0.0 at the <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance. With the <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> function, there is a discontinuity where the potential is truncated.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="switch">
+<h2>SWITCH<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h2>
+<p>This option in <code class="docutils literal notranslate"><span class="pre">CHARMM</span></code> or <code class="docutils literal notranslate"><span class="pre">EXOTIC</span></code> force field smoothly forces the potential energy to be zero at Rcut distance and starts modifying the potential at Rswitch distance.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Interactions between atoms can be modeled with an n-6 potential,</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \varphi_E(r_{ij})\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, and <span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. The constant <span class="math notranslate nohighlight">\(C_n\)</span> is a normalization factor according to Eq. 3, such that the minimum of the potential remains at <span class="math notranslate nohighlight">\(-\epsilon_{ij}\)</span> for all <span class="math notranslate nohighlight">\(n_{ij}\)</span>. In the 12-6 potential, <span class="math notranslate nohighlight">\(C_n\)</span> reduces to the familiar value of 4.</p>
+<p>The factor <span class="math notranslate nohighlight">\(\varphi_E\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi_E(r_{ij}) =
+\begin{cases}
+  1 &amp; r_{ij} \leq r_{switch} \\
+  \frac{\big({r_{cut}}^2 - {r_{ij}}^2 \big)^2 \times \big({r_{cut}}^2 - 3{r_{switch}}^2 + 2{r_{ij}}^2 \big)}{\big({r_{cut}}^2 - {r_{switch}}^2 \big)^3} &amp; r_{switch} &lt; r_{ij} &lt; r_{cut} \\
+  0 &amp; r_{ij} \geq r_{cut}
+\end{cases}\end{split}\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<p>Using SWITCH potential function defined above:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}F_{\texttt{VDW}}(r_{ij}) = \Bigg[6 C_{n_{ij}} \epsilon_{ij} \bigg[\frac{n_{ij}}{6} \times \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \frac{\varphi_E(r_{ij})}{{r_{ij}}}  -\\C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg] \times \varphi_F(r_{ij}) \Bigg]\end{aligned}\end{align} \]</div>
+<p>The factor <span class="math notranslate nohighlight">\(\varphi_F\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi_F(r_{ij}) =
+\begin{cases}
+  0 &amp; r_{ij} \leq r_{switch} \\
+  \frac{12r_{ij}\big({r_{cut}}^2 - {r_{ij}}^2 \big) \times \big({r_{switch}}^2 - {r_{ij}}^2 \big)}{\big({r_{cut}}^2 - {r_{switch}}^2 \big)^3} &amp; r_{switch} &lt; r_{ij} &lt; r_{cut} \\
+  0 &amp; r_{ij} \geq r_{cut}
+\end{cases}\end{split}\]</div>
+<div class="figure align-default" id="id3">
+<img alt="images/SWITCH.png" src="images/SWITCH.png" />
+<p class="caption"><span class="caption-text">Graph of Van der Waals potential with and without the application of the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function. With the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function active, the potential is smoothly reduced to 0.0 at the <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="switch-martini">
+<h2>SWITCH (MARTINI)<a class="headerlink" href="#switch-martini" title="Permalink to this headline">¶</a></h2>
+<p>This option in <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field smoothly forces the potential energy to be zero at Rcut distance and starts modifying the potential at <code class="docutils literal notranslate"><span class="pre">Rswitch</span></code> distance.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Potential Calculation: Interactions between atoms can be modeled with an n-6 potential. In standard MARTINI, <span class="math notranslate nohighlight">\(n\)</span> is equal to 12,</p>
+<div class="math notranslate nohighlight">
+\[E_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}}\epsilon_{ij} \Bigg[ {\sigma_{ij}}^{n} \bigg(\frac{1}{{r_{ij}}^{n}} + \varphi_{E, n} (r_{ij}) \bigg) - {\sigma_{ij}}^{6} \bigg(\frac{1}{{r_{ij}}^{6}} + \varphi_{E, 6} (r_{ij}) \bigg) \Bigg]\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, and <span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. The constant <span class="math notranslate nohighlight">\(C_n\)</span> is a normalization factor according to Eq. 3, such that the minimum of the potential remains at <span class="math notranslate nohighlight">\(-\epsilon_{ij}\)</span> for all <span class="math notranslate nohighlight">\(n_{ij}\)</span>. In the 12-6 potential, <span class="math notranslate nohighlight">\(C_n\)</span> reduces to the familiar value of 4.</p>
+<p>The factor <span class="math notranslate nohighlight">\(\varphi_{E, \alpha}\)</span> and constants are defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi_{E, \alpha}(r_{ij}) =
+\begin{cases}
+  -C_{\alpha} &amp; r_{ij} \leq r_{switch} \\
+  -\frac{A_{\alpha}}{3} (r_{ij} - r_{switch})^3 -\frac{B_{\alpha}}{4} (r_{ij} - r_{switch})^4 - C_{\alpha} &amp; r_{switch} &lt; r_{ij} &lt; r_{cut} \\
+  0 &amp; r_{ij} \geq r_{cut}
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[A_{\alpha} = \alpha \frac{(\alpha + 1) r_{switch} - (\alpha +4) r_{cut}} {{r_{cut}}^{(\alpha + 2)} {(r_{cut} - r_{switch})}^2}\]</div>
+<div class="math notranslate nohighlight">
+\[B_{\alpha} = \alpha \frac{(\alpha + 1) r_{switch} - (\alpha +3) r_{cut}} {{r_{cut}}^{(\alpha + 2)} {(r_{cut} - r_{switch})}^3}\]</div>
+<div class="math notranslate nohighlight">
+\[C_{\alpha} =  \frac{1}{{r_{cut}}^{\alpha}} -\frac{A_{\alpha}}{3} (r_{cut} - r_{switch})^3 -\frac{B_{\alpha}}{4} (r_{cut} - r_{switch})^4\]</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Virial</span> <span class="pre">Calculation</span></code></dt><dd><p>Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.</p>
+<div class="math notranslate nohighlight">
+\[W_{\texttt{VDW}}(r_{ij}) = -\frac{dE_{\texttt{VDW}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{VDW}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}\]</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> potential function defined for <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field:</p>
+<div class="math notranslate nohighlight">
+\[F_{\texttt{VDW}}(r_{ij}) = C_{n_{ij}}\epsilon_{ij} \Bigg[ {\sigma_{ij}}^{n} \bigg(\frac{n}{{r_{ij}}^{(n+1)}} + \varphi_{F, n} (r_{ij}) \bigg) - {\sigma_{ij}}^{6} \bigg(\frac{6}{{r_{ij}}^{(6+1)}} + \varphi_{F, 6} (r_{ij}) \bigg) \Bigg]\]</div>
+<p>The constants defined in Eq. 14-16 and the factor <span class="math notranslate nohighlight">\(\varphi_{F, \alpha}\)</span> defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi_{F, \alpha}(r_{ij}) =
+\begin{cases}
+  0 &amp; r_{ij} \leq r_{switch} \\
+  A_{\alpha} (r_{ij} - r_{switch})^2 + B_{\alpha} (r_{ij} - r_{switch})^3 &amp; r_{switch} &lt; r_{ij} &lt; r_{cut} \\
+  0 &amp; r_{ij} \geq r_{cut}
+\end{cases}\end{split}\]</div>
+<div class="figure align-default" id="id4">
+<img alt="images/MARTINI.png" src="images/MARTINI.png" />
+<p class="caption"><span class="caption-text">Graph of Van der Waals potential with and without the application of the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function in <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field. With the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function active, the potential is smoothly reduced to 0.0 at the <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="sources/vdw_energy.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
