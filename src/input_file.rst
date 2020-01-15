@@ -880,7 +880,8 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
 
   - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
-  .. code-block:: text
+  
+.. code-block:: text
 
         #################################
         # SIMULATION CONDITION
@@ -1174,8 +1175,8 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     # Mol.  Name Fugacity (bar)
     #################################
     Fugacity  ISB   10.0     12.00     14.00     16.00
-    Fugacity  Si     0.0     1.0         2.0       3.0
-    Fugacity  O      0.0     0.5        0.75       1.0
+    Fugacity  Si     0.0       1.0       2.0       3.0
+    Fugacity  O      0.0       0.5      0.75       1.0
 
 .. Note:: To use more than one Fugacity, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one Fugacity is required.  To use only one Fugacity, use standard GOMC.
 
