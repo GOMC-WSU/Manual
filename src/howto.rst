@@ -818,39 +818,60 @@ Run a Multi-Sim
 ---------------
 
 GOMC can be used to run independent simulations at different temperatures.  To do so GOMC must be compiled in MPI mode, and a couple of parameters must be added to the conf file.
+To compile in MPI mode, navigate to the GOMC/ and issue the following commands:
+
+.. code-block:: bash
+
+  $ chmod u+x metamakeMPI.sh
+  $ ./metamakeMPI.sh
+
+Then once the compilation is complete, set up a simulation as you would a standard GOMC simulation.
+
+Finally, select one or more parameters (``Temperature``, ``Pressure``, ``ChemPot``, ``Fugacity``) and enter more than one value for such parameters separated by tab/space.
+
+  .. code-block:: text
+
+    #################################
+    # Mol.  Name Chem.  Pot.  (K)
+    #################################
+    ChemPot   ISB     -968     -974     -978     -982
+
+  .. code-block:: text
+
+    #################################
+    # Mol.  Name Chem.  Pot.  (K)
+    #################################
+    Fugacity   ISB     -968     -974     -978     -982
+
+  .. code-block:: text
+
+    #################################
+    # SIMULATION CONDITION
+    #################################
+    Temperature   270.00    280.00    290.00    300.00 
+
+  .. code-block:: text
+
+    #################################
+    # GEMC TYPE (DEFAULT IS NVT GEMC) 
+    #################################
+    GEMC        NPT
+    Pressure    5.76    5.80    5.84    5.88 
+
+.. Note:: GOMC will allow for more than one of these parameters (i.e. ChemPot and Temperature), but the number of values given must either match between parameters or be 1.
+For example, a simulation with 5 chemPots must have either 1 temperature or 5 temperatures.  A simulation with 5 temperatures couldn't have 3 pressures.  This would cause GOMC to exit.
 
 
-``MultiSimFolderName``
-  The name of the folder to be created which contains output from the multisim.
-
-  - Value 1: String - Name of the folder to contain output
+You may elect to choose the name of the folder to which the sub-folders for each replica are contained in.
+Enter this name as ``MultiSimFolderName``.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.
 
   .. code-block:: text
 
     MultiSimFolderName  outputFolderName
 
 
+.. Note:: To perform a multisim GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed  To perform a standard simulation, use standard GOMC.
 
-``Temperature``
-  Sets the temperature at which the system will run.
-
-  - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
-    .. code-block:: text
-
-        #################################
-        # SIMULATION CONDITION
-        #################################
-        Temperature   270.00
-
-  - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
-  .. code-block:: text
-
-        #################################
-        # SIMULATION CONDITION
-        #################################
-        Temperature   270.00    280.00    290.00    300.00 
-
-.. Note:: To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC
 
 The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
 
