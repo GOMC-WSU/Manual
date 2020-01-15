@@ -56,7 +56,7 @@ The minimum required version is 2.8. However, we recommend to use version 3.2 or
 
 CUDA Toolkit
 ------------
-CUDA is required to compile the GPU executable in both Windows and Linux. However, is not required to compile the CPU code. To download and install CUDA visit NVIDIA’s webpage:
+CUDA is required to compile the GPU executable in both Windows and Linux. However, it is not required to compile the CPU code. To download and install CUDA visit NVIDIA’s webpage:
 
 https://developer.nvidia.com/cuda-downloads
 
@@ -77,3 +77,23 @@ To check the version number:
   $ nvcc --version
 
 The GPU builds of the code requires NVIDIA’s CUDA 8.0 or newer.
+
+MPI (Optional for Standard; Required for MultiSim)
+--------------------------------------------------
+An MPI Library is required to compile the MPI version of GOMC in both Windows and Linux.  However, it is not required to compile standard GOMC.  There are a couple of options to install an MPI library.  
+
+1) We recommend the Intel MPI Library:
+
+  https://software.intel.com/en-us/mpi-library
+
+2) The alternative we recommend to Intel MPI is MPICH. MPICH binary packages are available in many UNIX distributions and for Windows. For example, you can search for it using “yum” (on Fedora), “apt” (Debian/Ubuntu), “pkg_add” (FreeBSD) or “port”/”brew” (Mac OS).
+  
+  .. code-block:: bash
+
+  $ sudo apt-get install mpich
+
+3) Another option is the OpenMPI library.
+  
+  .. code-block:: bash
+
+  $ sudo apt-get install openmpi-bin openmpi-common openssh-client openssh-server libopenmpi2 libopenmpi-dev
