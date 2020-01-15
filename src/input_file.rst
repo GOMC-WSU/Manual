@@ -820,6 +820,16 @@ In this section, input file names are listed. In addition, if you want to restar
     Structure   0   ISB_T_270_k_merged.psf
     Structure   1   ISB_T_270_k_merged.psf
 
+``MultiSimFolderName (MPI Compilation Required)``
+  The name of the folder to be created which contains output from the multisim.
+
+  - Value 1: String - Name of the folder to contain output
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
@@ -852,11 +862,33 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     GEMC        NPT
     Pressure    5.76
 
+  - List of Doubles - A list of Constant pressures in bar.
+
+  .. code-block:: text
+
+    #################################
+    # GEMC TYPE (DEFAULT IS NVT GEMC) 
+    #################################
+    GEMC        NPT
+    Pressure    5.76    5.80    5.84    5.88 
+
+.. Note:: To use more than one pressure, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one pressure is required.  To use only one pressure, use standard GOMC.
+
 ``Temperature``
   Sets the temperature at which the system will run.
 
   - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
 
+  - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00    280.00    290.00    300.00 
+
+.. Note:: To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC.
+  
 ``Rcut``
   Sets a specific radius that non-bonded interaction energy and force will be considered and calculated using defined potential function.
 
@@ -1093,6 +1125,23 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     #################################
     ChemPot   ISB     -968
 
+  - Value 1: String - The residue name to apply this chemical potential.
+  - Value 2: List of Doubles - A list of the chemical potential values in degrees Kelvin (should be negative).
+
+  .. note:: 
+    - For binary systems, include multiple copies of the tag (one per residue kind).
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue name.
+
+  .. code-block:: text
+
+    #################################
+    # Mol.  Name Chem.  Pot.  (K)
+    #################################
+    ChemPot   ISB     -968     -974     -978     -982
+
+.. Note:: To use more than one Chemical potential, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one Chemical potential is required.  To use only one Chemical potential, use standard GOMC.
+
+
 ``Fugacity``
   For Grand Canonical (GC) ensemble runs only: Fugacity at which simulation is run.
   
@@ -1111,6 +1160,24 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     Fugacity  ISB   10.0
     Fugacity  Si     0.0
     Fugacity  O      0.0
+
+  - Value 1: String - The residue to apply this fugacity.
+  - Value 2: List of Doubles - A list of the fugacity values in bar.
+
+  .. note:: 
+    - For binary systems, include multiple copies of the tag (one per residue kind).
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00) an arbitrary value e.g. 0.00 can be assigned to the residue name.
+
+  .. code-block:: text
+
+    #################################
+    # Mol.  Name Fugacity (bar)
+    #################################
+    Fugacity  ISB   10.0     12.00     14.00     16.00
+    Fugacity  Si     0.0     1.0         2.0       3.0
+    Fugacity  O      0.0     0.5        0.75       1.0
+
+.. Note:: To use more than one Fugacity, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one Fugacity is required.  To use only one Fugacity, use standard GOMC.
 
 ``DisFreq``
   Fractional percentage at which displacement move will occur.

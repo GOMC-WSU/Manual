@@ -814,3 +814,48 @@ There are variety of tools developed to caclulate free energy difference, includ
         $ cd   alchemical-analysis
         $ sudo python setup.py install
 
+Run a Multi-Sim
+---------------
+
+GOMC can be used to run independent simulations at different temperatures.  To do so GOMC must be compiled in MPI mode, and a couple of parameters must be added to the conf file.
+
+
+``MultiSimFolderName``
+  The name of the folder to be created which contains output from the multisim.
+
+  - Value 1: String - Name of the folder to contain output
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
+
+``Temperature``
+  Sets the temperature at which the system will run.
+
+  - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
+    .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00
+
+  - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00    280.00    290.00    300.00 
+
+.. Note:: To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC
+
+The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
+
+To initiate the multisimulation,
+
+    .. code-block:: bash
+
+       $ mpiexec -n #ofreplicas GOMC_xxx_yyyy <optional#ofthreads> conffile 
