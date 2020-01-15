@@ -820,7 +820,7 @@ In this section, input file names are listed. In addition, if you want to restar
     Structure   0   ISB_T_270_k_merged.psf
     Structure   1   ISB_T_270_k_merged.psf
 
-``MultiSimFolderName (MPI Compilation Required)``
+``MultiSimFolderName``
   The name of the folder to be created which contains output from the multisim.
 
   - Value 1: String - Name of the folder to contain output
@@ -879,9 +879,16 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
 
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00 
+
   - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
   
-.. code-block:: text
+  .. code-block:: text
 
         #################################
         # SIMULATION CONDITION

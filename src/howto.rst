@@ -341,6 +341,9 @@ Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, fro
     OutputName          dimethylether_NPT_GEMC
 
 
+.. Note:: As of right now, restarting is not supported for Multi-Sim.
+
+
 Recalculate the energy 
 -----------------------
 
@@ -817,17 +820,20 @@ There are variety of tools developed to caclulate free energy difference, includ
 Run a Multi-Sim
 ---------------
 
-GOMC can be used to run independent simulations at different temperatures.  To do so GOMC must be compiled in MPI mode, and a couple of parameters must be added to the conf file.
-To compile in MPI mode, navigate to the GOMC/ and issue the following commands:
+GOMC can automatically generate independent simulations with varying parameters from one input file.  
+This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode, 
+and a couple of parameters must be added to the conf file.
+
+To compile in MPI mode, navigate to the GOMC/ directory and issue the following commands:
 
 .. code-block:: bash
 
   $ chmod u+x metamakeMPI.sh
   $ ./metamakeMPI.sh
 
-Then once the compilation is complete, set up a simulation as you would a standard GOMC simulation.
+Then once the compilation is complete, set up the conf file as you would for a standard GOMC simulation.
 
-Finally, select one or more parameters (``Temperature``, ``Pressure``, ``ChemPot``, ``Fugacity``) and enter more than one value for such parameters separated by tab/space.
+Finally, select one or more of the following parameters (``Temperature``, ``Pressure``, ``ChemPot``, ``Fugacity``) and enter more than one value for such parameters separated by a tab or space.
 
   .. code-block:: text
 
@@ -858,19 +864,19 @@ Finally, select one or more parameters (``Temperature``, ``Pressure``, ``ChemPot
     GEMC        NPT
     Pressure    5.76    5.80    5.84    5.88 
 
-.. Note:: GOMC will allow for more than one of these parameters (i.e. ChemPot and Temperature), but the number of values given must either match between parameters or be 1.
-For example, a simulation with 5 chemPots must have either 1 temperature or 5 temperatures.  A simulation with 5 temperatures couldn't have 3 pressures.  This would cause GOMC to exit.
+.. Note:: GOMC will allow for more than one of these parameters (i.e. ChemPot and Temperature) to be greater than one, but the number of values given must either match between parameters or be one.  For example, a simulation with five chemPots must have either one temperature or five temperatures.  A simulation with five temperatures couldn't have three pressures.  This would cause GOMC to exit.
 
-
-You may elect to choose the name of the folder to which the sub-folders for each replica are contained in.
-Enter this name as ``MultiSimFolderName``.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.
+A folder will be created for the output of each simulation, and the name will be generated from the parameters you choose. 
+A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.  
+You may elect to choose the name of the folder in which the sub-folders for each replica are contained.
+Enter this name as a string following the ``MultiSimFolderName`` parameter.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.
 
   .. code-block:: text
 
     MultiSimFolderName  outputFolderName
 
 
-.. Note:: To perform a multisim GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed  To perform a standard simulation, use standard GOMC.
+.. Note:: To perform a multisim, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed.  To perform a standard simulation, use standard GOMC.
 
 
 The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
