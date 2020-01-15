@@ -557,3 +557,4 @@ To initiate the multisimulation,
 
        $ mpiexec -n #ofreplicas GOMC_xxx_yyyy <optional#ofthreads> conffile 
 
+.. Note:: As of right now, restarting is not supported for multisims. 
