@@ -870,7 +870,7 @@ Finally, select one or more of the following parameters (``Temperature``, ``Pres
 
 A folder will be created for the output of each simulation, and the name will be generated from the parameters you choose. 
 A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.  
-You may elect to choose the name of the folder in which the sub-folders for each replica are contained.
+You may elect to choose the name of the folder in which all the sub-folders for each replica are contained.
 Enter this name as a string following the ``MultiSimFolderName`` parameter.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.
 
   .. code-block:: text
@@ -883,8 +883,27 @@ Enter this name as a string following the ``MultiSimFolderName`` parameter.  If 
 
 The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
 
-To initiate the multisimulation,
+To initiate the multisimulation, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.
 
-    .. code-block:: bash
+.. code-block:: bash
 
-       $ mpiexec -n #ofreplicas GOMC_xxx_yyyy <optional#ofthreads> conffile 
+    $ mpiexec -n #ofreplicas GOMC_xxx_yyyy +p<#ofthreads>(optional) conffile 
+
+The number of MPI processes must equal the number of simulations you wish to run.  Each will by default be assigned one openMP thread; however, if you have leftover processors, you may assign them as openMP threads.
+There must be an equal amount of openMP threads assigned to each process.
+
+A formula to determine how many threads is as follows:
+
+.. math::
+  OpenMP Threads = floor[(Number Of Processors Available - Number Of MPI Processes) / Number Of MPI Processes]
+
+Floor[ ] - Rounds down a real number to the nearest integer.
+
+For example, if I have 7 processors and I wanted to run 2 simulations in my multi-sim.
+
+.. math::
+  OpenMP Threads= floor[(7 - 2) / 2] = floor[2.5] = 2
+
+.. code-block:: bash
+
+    $ mpiexec -n 2 GOMC_CPU_GEMC +p2 in.conf 

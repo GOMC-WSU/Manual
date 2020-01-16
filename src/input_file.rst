@@ -1132,12 +1132,12 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
     (MPI-GOMC Only)
 
-  - Value 1: String
+  - Value 1: String - The residue name to apply this chemical potential.
   - Value 2: List of Doubles - A list of the chemical potential values in degrees Kelvin (should be negative).
 
   .. note:: 
     - For binary systems, include multiple copies of the tag (one per residue kind).
-    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue name.
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue value.
 
   .. code-block:: text
 
@@ -1169,10 +1169,6 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   - Value 1: String - The residue to apply this fugacity.
   - Value 2: Double - The fugacity value in bar.
 
-  .. note:: 
-    - For binary systems, include multiple copies of the tag (one per residue kind).
-    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00) an arbitrary value e.g. 0.00 can be assigned to the residue name.
-
   .. code-block:: text
 
     #################################
@@ -1185,17 +1181,17 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
     (MPI-GOMC Only)
 
-  - Value 1: String
+  - Value 1: String - The residue to apply this fugacity.
   - Value 2: List of Doubles - A list of the fugacity values in bar.
 
   .. note:: 
     - For binary systems, include multiple copies of the tag (one per residue kind).
-    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue name.
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue value.
 
   .. code-block:: text
 
     #################################
-    # Mol.  Name Chem.  Pot.  (K)
+    # Mol.  Name Fugacity (bar)
     #################################
     Fugacity  ISB   10.0     12.00     14.00     16.00
     Fugacity  Si     0.0
@@ -1206,7 +1202,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   .. code-block:: text
 
     #################################
-    # Mol.  Name Chem.  Pot.  (K)
+    # Mol.  Name Fugacity (bar)
     #################################
     Fugacity  ISB   10.0     12.00     14.00     16.00
     Fugacity  Si     1.0       2.0       3.0       4.0
