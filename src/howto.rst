@@ -845,7 +845,7 @@ Finally, select one or more of the following parameters (``Temperature``, ``Pres
   .. code-block:: text
 
     #################################
-    # Mol.  Name Chem.  Pot.  (K)
+    # Mol.  Name Fugacity (bar)
     #################################
     Fugacity  ISB   10.0     12.00     14.00     16.00
     Fugacity  Si     0.0
@@ -866,7 +866,7 @@ Finally, select one or more of the following parameters (``Temperature``, ``Pres
     GEMC        NPT
     Pressure    5.76    5.80    5.84    5.88 
 
-.. Note:: GOMC will allow for more than one of these parameters (i.e. ChemPot and Temperature) to be greater than one, but the number of values given must either match between parameters or be one.  For example, a simulation with five chemPots must have either one temperature or five temperatures.  A simulation with five temperatures couldn't have three pressures.  This would cause GOMC to exit.
+.. Note:: GOMC will allow for more than one of these parameters (i.e. ChemPot and Temperature) to be greater than one, but the number of values given must either match between parameters or be one.  For example, a simulation with five chemPots must have either one temperature or five temperatures.  A simulation with five temperatures couldn't have three chemPots.  This would cause GOMC to exit.
 
 A folder will be created for the output of each simulation, and the name will be generated from the parameters you choose. 
 A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.  
