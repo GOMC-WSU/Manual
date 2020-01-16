@@ -862,7 +862,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     GEMC        NPT
     Pressure    5.76
 
-  - List of Doubles - A list of Constant pressures in bar.
+  - Value 1: List of Doubles - A list of Constant pressures in bar.
 
   .. code-block:: text
 
@@ -1133,7 +1133,10 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     #################################
     ChemPot   ISB     -968
 
-  - Value 1: String - The residue name to apply this chemical potential.
+
+    (MPI-GOMC Only)
+
+  - Value 1: String
   - Value 2: List of Doubles - A list of the chemical potential values in degrees Kelvin (should be negative).
 
   .. note:: 
@@ -1145,10 +1148,24 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     #################################
     # Mol.  Name Chem.  Pot.  (K)
     #################################
-    ChemPot   ISB     -968     -974     -978     -982
+    ChemPot  ISB   10.0     12.00     14.00     16.00
+    ChemPot  Si     0.0
+    ChemPot  O      0.0
 
-.. Note:: To use more than one Chemical potential, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one Chemical potential is required.  To use only one Chemical potential, use standard GOMC.
+  Or
 
+  .. code-block:: text
+
+    #################################
+    # Mol.  Name Chem.  Pot.  (K)
+    #################################
+    ChemPot  ISB   10.0     12.00     14.00     16.00
+    ChemPot  Si     1.0       2.0       3.0       4.0
+    ChemPot  O      0.0
+
+.. Note:: To use more than one ChemPot, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one ChemPot in at least one residue is required.  To use only one value of ChemPot in all residues, use standard GOMC.
+
+.. Note:: GOMC will allow for more than one residue to have a list of values greater than length one, but the number of values for each residue given must either match the greatest length list or be equal to one. For example, a simulation with five values for ISB must have either five value for Si (and/or O) or one. Failure to follow this convention will cause GOMC to exit.
 
 ``Fugacity``
   For Grand Canonical (GC) ensemble runs only: Fugacity at which simulation is run.
@@ -1169,23 +1186,39 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     Fugacity  Si     0.0
     Fugacity  O      0.0
 
-  - Value 1: String - The residue to apply this fugacity.
+
+    (MPI-GOMC Only)
+
+  - Value 1: String
   - Value 2: List of Doubles - A list of the fugacity values in bar.
 
   .. note:: 
     - For binary systems, include multiple copies of the tag (one per residue kind).
-    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00) an arbitrary value e.g. 0.00 can be assigned to the residue name.
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue name.
 
   .. code-block:: text
 
     #################################
-    # Mol.  Name Fugacity (bar)
+    # Mol.  Name Chem.  Pot.  (K)
     #################################
     Fugacity  ISB   10.0     12.00     14.00     16.00
     Fugacity  Si     0.0
     Fugacity  O      0.0
 
-.. Note:: To use more than one Fugacity, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one Fugacity is required.  To use only one Fugacity, use standard GOMC.
+  Or
+
+  .. code-block:: text
+
+    #################################
+    # Mol.  Name Chem.  Pot.  (K)
+    #################################
+    Fugacity  ISB   10.0     12.00     14.00     16.00
+    Fugacity  Si     1.0       2.0       3.0       4.0
+    Fugacity  O      0.0
+
+.. Note:: To use more than one fugacity, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one fugacity in at least one residue is required.  To use only one value of fugacity in all residues, use standard GOMC.
+
+.. Note:: GOMC will allow for more than one residue to have a list of values greater than length one, but the number of values for each residue given must either match the greatest length list or be equal to one. For example, a simulation with five values for ISB must have either five values for Si (and/or O) or one. Failure to follow this convention will cause GOMC to exit.
 
 ``DisFreq``
   Fractional percentage at which displacement move will occur.
