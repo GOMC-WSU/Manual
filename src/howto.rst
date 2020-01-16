@@ -883,7 +883,7 @@ Enter this name as a string following the ``MultiSimFolderName`` parameter.  If 
 
 The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
 
-To initiate the multisimulation, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.
+To initiate the multi-sim, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.
 
 .. code-block:: bash
 
