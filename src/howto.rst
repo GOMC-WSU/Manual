@@ -887,12 +887,12 @@ To initiate the multisimulation, first decide how many MPI processes and openMP 
 
 .. code-block:: bash
 
-    $ mpiexec -n #ofreplicas GOMC_xxx_yyyy +p<#ofthreads>(optional) conffile 
+    $ mpiexec -n #ofsimulations GOMC_xxx_yyyy +p<#ofthreads>(optional) conffile 
 
 The number of MPI processes must equal the number of simulations you wish to run.  Each will by default be assigned one openMP thread; however, if you have leftover processors, you may assign them as openMP threads.
 There must be an equal amount of openMP threads assigned to each process.
 
-A formula to determine how many threads is as follows:
+A formula to determine how many threads to use is as follows:
 
 .. math::
   OpenMP Threads = floor[(Number Of Processors Available - Number Of MPI Processes) / Number Of MPI Processes]
