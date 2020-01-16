@@ -1182,8 +1182,8 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     # Mol.  Name Fugacity (bar)
     #################################
     Fugacity  ISB   10.0     12.00     14.00     16.00
-    Fugacity  Si     0.0       1.0       2.0       3.0
-    Fugacity  O      0.0       0.5      0.75       1.0
+    Fugacity  Si     0.0
+    Fugacity  O      0.0
 
 .. Note:: To use more than one Fugacity, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one Fugacity is required.  To use only one Fugacity, use standard GOMC.
 

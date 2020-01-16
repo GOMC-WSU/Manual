@@ -847,8 +847,10 @@ Finally, select one or more of the following parameters (``Temperature``, ``Pres
     #################################
     # Mol.  Name Chem.  Pot.  (K)
     #################################
-    Fugacity   ISB     -968     -974     -978     -982
-
+    Fugacity  ISB   10.0     12.00     14.00     16.00
+    Fugacity  Si     0.0
+    Fugacity  O      0.0
+    
   .. code-block:: text
 
     #################################
