@@ -814,3 +814,67 @@ There are variety of tools developed to caclulate free energy difference, includ
         $ cd   alchemical-analysis
         $ sudo python setup.py install
 
+Run a Multi-Sim
+---------------
+
+GOMC can automatically generate independent simulations with varying temperatures from one input file.  
+This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode, 
+and a couple of parameters must be added to the conf file.
+
+To compile in MPI mode, navigate to the GOMC/ directory and issue the following commands:
+
+.. code-block:: bash
+
+  $ chmod u+x metamakeMPI.sh
+  $ ./metamakeMPI.sh
+
+Then once the compilation is complete, set up the conf file as you would for a standard GOMC simulation.
+
+Finally, enter more than one value for ``Temperature`` separated by a tab or space.
+    
+  .. code-block:: text
+
+    #################################
+    # SIMULATION CONDITION
+    #################################
+    Temperature   270.00    280.00    290.00    300.00 
+
+A folder will be created for the output of each simulation, and the name will be generated from the temperatures you choose. 
+A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.  
+You may elect to choose the name of the folder in which all the sub-folders for each replica are contained.
+Enter this name as a string following the ``MultiSimFolderName`` parameter.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
+.. Note:: To perform a multisim, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed.  To perform a standard simulation, use standard GOMC.
+
+
+The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
+
+To initiate the multi-sim, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.
+
+.. code-block:: bash
+
+    $ mpiexec -n #ofsimulations GOMC_xxx_yyyy +p<#ofthreads>(optional) conffile 
+
+The number of MPI processes must equal the number of simulations you wish to run.  Each will by default be assigned one openMP thread; however, if you have leftover processors, you may assign them as openMP threads.
+There must be an equal amount of openMP threads assigned to each process.
+
+A formula to determine how many threads to use is as follows:
+
+.. math::
+  OpenMP Threads = floor[(Number Of Processors Available - Number Of MPI Processes) / Number Of MPI Processes]
+
+Floor[ ] - Rounds down a real number to the nearest integer.
+
+For example, if I have 7 processors and I wanted to run 2 simulations in my multi-sim.
+
+.. math::
+  OpenMP Threads= floor[(7 - 2) / 2] = floor[2.5] = 2
+
+.. code-block:: bash
+
+    $ mpiexec -n 2 GOMC_CPU_GEMC +p2 in.conf 
