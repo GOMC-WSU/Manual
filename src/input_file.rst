@@ -820,6 +820,16 @@ In this section, input file names are listed. In addition, if you want to restar
     Structure   0   ISB_T_270_k_merged.psf
     Structure   1   ISB_T_270_k_merged.psf
 
+``MultiSimFolderName``
+  The name of the folder to be created which contains output from the multisim.
+
+  - Value 1: String - Name of the folder to contain output
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
