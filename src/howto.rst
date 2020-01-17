@@ -340,6 +340,8 @@ Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, fro
 
     OutputName          dimethylether_NPT_GEMC
 
+.. Note:: As of right now, restarting is not supported for Multi-Sim.
+
 
 Recalculate the energy 
 -----------------------
