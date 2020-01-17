@@ -857,6 +857,26 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
 
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00 
+
+  (MPI-GOMC Only)
+  
+  - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
+  
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00    280.00    290.00    300.00 
+
+.. Note:: To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC.
+  
 ``Rcut``
   Sets a specific radius that non-bonded interaction energy and force will be considered and calculated using defined potential function.
 
