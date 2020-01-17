@@ -14,14 +14,7 @@ First, navigate your command line to the GOMC base directory. To compile GOMC on
   $ chmod u+x metamake.sh
   $ ./metamake.sh
 
-Or to use MPI mode,
-
-.. code-block:: bash
-
-  $ chmod u+x metamakeMPI.sh
-  $ ./metamakeMPI.sh
-
-This script will create a bin (or bin_MPI) directory and run cmake file to compile the code as well. All executable files will be generated in the “bin” (or "bin_MPI") directory.
+This script will create a bin directory and run cmake file to compile the code as well. All executable files will be generated in the “bin” directory.
 
 Windows
 -------
