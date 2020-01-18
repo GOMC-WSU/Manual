@@ -340,7 +340,6 @@ Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, fro
 
     OutputName          dimethylether_NPT_GEMC
 
-
 .. Note:: As of right now, restarting is not supported for Multi-Sim.
 
 
@@ -820,7 +819,7 @@ There are variety of tools developed to caclulate free energy difference, includ
 Run a Multi-Sim
 ---------------
 
-GOMC can automatically generate independent simulations with varying parameters from one input file.  
+GOMC can automatically generate independent simulations with varying temperatures from one input file.  
 This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode, 
 and a couple of parameters must be added to the conf file.
 
@@ -833,23 +832,7 @@ To compile in MPI mode, navigate to the GOMC/ directory and issue the following 
 
 Then once the compilation is complete, set up the conf file as you would for a standard GOMC simulation.
 
-Finally, select one or more of the following parameters (``Temperature``, ``Pressure``, ``ChemPot``, ``Fugacity``) and enter more than one value for such parameters separated by a tab or space.
-
-  .. code-block:: text
-
-    #################################
-    # Mol.  Name Chem.  Pot.  (K)
-    #################################
-    ChemPot   ISB     -968     -974     -978     -982
-
-  .. code-block:: text
-
-    #################################
-    # Mol.  Name Fugacity (bar)
-    #################################
-    Fugacity  ISB   10.0     12.00     14.00     16.00
-    Fugacity  Si     0.0
-    Fugacity  O      0.0
+Finally, enter more than one value for ``Temperature`` separated by a tab or space.
     
   .. code-block:: text
 
@@ -858,17 +841,7 @@ Finally, select one or more of the following parameters (``Temperature``, ``Pres
     #################################
     Temperature   270.00    280.00    290.00    300.00 
 
-  .. code-block:: text
-
-    #################################
-    # GEMC TYPE (DEFAULT IS NVT GEMC) 
-    #################################
-    GEMC        NPT
-    Pressure    5.76    5.80    5.84    5.88 
-
-.. Note:: GOMC will allow for more than one of these parameters (i.e. ChemPot and Temperature) to be greater than one, but the number of values given must either match between parameters or be one.  For example, a simulation with five chemPots must have either one temperature or five temperatures.  A simulation with five temperatures couldn't have three chemPots.  This would cause GOMC to exit.
-
-A folder will be created for the output of each simulation, and the name will be generated from the parameters you choose. 
+A folder will be created for the output of each simulation, and the name will be generated from the temperatures you choose. 
 A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.  
 You may elect to choose the name of the folder in which all the sub-folders for each replica are contained.
 Enter this name as a string following the ``MultiSimFolderName`` parameter.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.

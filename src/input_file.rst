@@ -862,18 +862,6 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     GEMC        NPT
     Pressure    5.76
 
-  - Value 1: List of Doubles - A list of Constant pressures in bar.
-
-  .. code-block:: text
-
-    #################################
-    # GEMC TYPE (DEFAULT IS NVT GEMC) 
-    #################################
-    GEMC        NPT
-    Pressure    5.76    5.80    5.84    5.88 
-
-.. Note:: To use more than one pressure, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one pressure is required.  To use only one pressure, use standard GOMC.
-
 ``Temperature``
   Sets the temperature at which the system will run.
 
@@ -886,6 +874,8 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
         #################################
         Temperature   270.00 
 
+  (MPI-GOMC Only)
+  
   - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
   
   .. code-block:: text
@@ -1122,6 +1112,10 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   - Value 1: String - The residue name to apply this chemical potential.
   - Value 2: Double - The chemical potential value in degrees Kelvin (should be negative).
 
+  .. note:: 
+    - For binary systems, include multiple copies of the tag (one per residue kind).
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue name.
+
   .. code-block:: text
 
     #################################
@@ -1129,45 +1123,15 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     #################################
     ChemPot   ISB     -968
 
-
-    (MPI-GOMC Only)
-
-  - Value 1: String - The residue name to apply this chemical potential.
-  - Value 2: List of Doubles - A list of the chemical potential values in degrees Kelvin (should be negative).
-
-  .. note:: 
-    - For binary systems, include multiple copies of the tag (one per residue kind).
-    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue value.
-
-  .. code-block:: text
-
-    #################################
-    # Mol.  Name Chem.  Pot.  (K)
-    #################################
-    ChemPot  ISB   10.0     12.00     14.00     16.00
-    ChemPot  Si     0.0
-    ChemPot  O      0.0
-
-  Or
-
-  .. code-block:: text
-
-    #################################
-    # Mol.  Name Chem.  Pot.  (K)
-    #################################
-    ChemPot  ISB   10.0     12.00     14.00     16.00
-    ChemPot  Si     1.0       2.0       3.0       4.0
-    ChemPot  O      0.0
-
-.. Note:: To use more than one ChemPot, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one ChemPot in at least one residue is required.  To use only one value of ChemPot in all residues, use standard GOMC.
-
-.. Note:: GOMC will allow for more than one residue to have a list of values greater than length one, but the number of values for each residue given must either match the greatest length list or be equal to one. For example, a simulation with five values for ISB must have either five value for Si (and/or O) or one. Failure to follow this convention will cause GOMC to exit.
-
 ``Fugacity``
   For Grand Canonical (GC) ensemble runs only: Fugacity at which simulation is run.
   
   - Value 1: String - The residue to apply this fugacity.
   - Value 2: Double - The fugacity value in bar.
+
+  .. note:: 
+    - For binary systems, include multiple copies of the tag (one per residue kind).
+    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00) an arbitrary value e.g. 0.00 can be assigned to the residue name.
 
   .. code-block:: text
 
@@ -1177,40 +1141,6 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
     Fugacity  ISB   10.0
     Fugacity  Si     0.0
     Fugacity  O      0.0
-
-
-    (MPI-GOMC Only)
-
-  - Value 1: String - The residue to apply this fugacity.
-  - Value 2: List of Doubles - A list of the fugacity values in bar.
-
-  .. note:: 
-    - For binary systems, include multiple copies of the tag (one per residue kind).
-    - If there is a molecule kind that cannot be transfer between boxes (in PDB file the beta value is set to 1.00 or 2.00), an arbitrary value (e.g. 0.00) can be assigned to the residue value.
-
-  .. code-block:: text
-
-    #################################
-    # Mol.  Name Fugacity (bar)
-    #################################
-    Fugacity  ISB   10.0     12.00     14.00     16.00
-    Fugacity  Si     0.0
-    Fugacity  O      0.0
-
-  Or
-
-  .. code-block:: text
-
-    #################################
-    # Mol.  Name Fugacity (bar)
-    #################################
-    Fugacity  ISB   10.0     12.00     14.00     16.00
-    Fugacity  Si     1.0       2.0       3.0       4.0
-    Fugacity  O      0.0
-
-.. Note:: To use more than one fugacity, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one fugacity in at least one residue is required.  To use only one value of fugacity in all residues, use standard GOMC.
-
-.. Note:: GOMC will allow for more than one residue to have a list of values greater than length one, but the number of values for each residue given must either match the greatest length list or be equal to one. For example, a simulation with five values for ISB must have either five values for Si (and/or O) or one. Failure to follow this convention will cause GOMC to exit.
 
 ``DisFreq``
   Fractional percentage at which displacement move will occur.

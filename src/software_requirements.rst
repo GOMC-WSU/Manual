@@ -56,7 +56,7 @@ The minimum required version is 2.8. However, we recommend to use version 3.2 or
 
 CUDA Toolkit
 ------------
-CUDA is required to compile the GPU executable in both Windows and Linux. However, it is not required to compile the CPU code. To download and install CUDA visit NVIDIA’s webpage:
+CUDA is required to compile the GPU executable in both Windows and Linux. However, is not required to compile the CPU code. To download and install CUDA visit NVIDIA’s webpage:
 
 https://developer.nvidia.com/cuda-downloads
 
