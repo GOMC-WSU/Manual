@@ -90,10 +90,10 @@ An MPI Library is required to compile the MPI version of GOMC in both Windows an
   
   .. code-block:: bash
 
-  $ sudo apt-get install mpich
+    $ sudo apt-get install mpich
 
 3) Another option is the OpenMPI library.
   
   .. code-block:: bash
 
-  $ sudo apt-get install openmpi-bin openmpi-common openssh-client openssh-server libopenmpi2 libopenmpi-dev
+    $ sudo apt-get install openmpi-bin openmpi-common openssh-client openssh-server libopenmpi2 libopenmpi-dev
