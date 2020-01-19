@@ -879,4 +879,4 @@ For example, if I have 7 processors and I wanted to run 2 simulations in my mult
 
 .. code-block:: bash
 
-    $ mpiexec -n 2 GOMC_CPU_GEMC +p2 in.conf 
+    $ mpiexec -n 2 ./GOMC_CPU_GEMC +p2 in.conf 
