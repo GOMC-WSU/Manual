@@ -1,0 +1,100 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Overview}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Introduction}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}GOMC supported ensembles:}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}GOMC supported Monte Carlo moves:}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}GOMC supported force fields:}{4}{section.2.3}
+\contentsline {section}{\numberline {2.4}GOMC supported molecules:}{4}{section.2.4}
+\contentsline {chapter}{\numberline {3}Software Requirements}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}C++11 Compliant Compiler}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}CMake}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}CUDA Toolkit}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}MPI (Optional for Standard; Required for MultiSim)}{9}{section.3.4}
+\contentsline {chapter}{\numberline {4}Recommended Software Tools}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Packmol}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}VMD}{11}{section.4.2}
+\contentsline {chapter}{\numberline {5}How to get the software}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}GitHub}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}Website}{16}{section.5.2}
+\contentsline {chapter}{\numberline {6}Compiling GOMC}{19}{chapter.6}
+\contentsline {section}{\numberline {6.1}Linux}{19}{section.6.1}
+\contentsline {section}{\numberline {6.2}Windows}{19}{section.6.2}
+\contentsline {section}{\numberline {6.3}Configuring CMake}{20}{section.6.3}
+\contentsline {chapter}{\numberline {7}Input File Formats}{23}{chapter.7}
+\contentsline {section}{\numberline {7.1}PDB File}{23}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}What is PDB file}{23}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Generating PDB file}{25}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}PSF File}{26}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}What is PSF file}{26}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Generating PSF file}{27}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Topology File}{28}{section.7.3}
+\contentsline {section}{\numberline {7.4}Parameter File}{29}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}CHARMM format parameter file}{29}{subsection.7.4.1}
+\contentsline {subsection}{\numberline {7.4.2}BONDS}{30}{subsection.7.4.2}
+\contentsline {subsection}{\numberline {7.4.3}ANGLES}{32}{subsection.7.4.3}
+\contentsline {subsection}{\numberline {7.4.4}DIHEDRALS}{33}{subsection.7.4.4}
+\contentsline {subsection}{\numberline {7.4.5}IMPROPERS}{33}{subsection.7.4.5}
+\contentsline {subsection}{\numberline {7.4.6}NONBONDED}{33}{subsection.7.4.6}
+\contentsline {subsection}{\numberline {7.4.7}NBFIX}{34}{subsection.7.4.7}
+\contentsline {section}{\numberline {7.5}Exotic or Mie Parameter File}{34}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Mie Potential}{34}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Buckingham Potential (Exp\sphinxhyphen {}6)}{35}{subsection.7.5.2}
+\contentsline {section}{\numberline {7.6}Control File (*.conf)}{37}{section.7.6}
+\contentsline {subsection}{\numberline {7.6.1}Input/Simulation Setup}{37}{subsection.7.6.1}
+\contentsline {subsection}{\numberline {7.6.2}System Settings for During Run Setup}{40}{subsection.7.6.2}
+\contentsline {subsection}{\numberline {7.6.3}Output Controls}{54}{subsection.7.6.3}
+\contentsline {chapter}{\numberline {8}GOMC\IeC {\textquoteright }s Output Files}{59}{chapter.8}
+\contentsline {section}{\numberline {8.1}Console Output}{59}{section.8.1}
+\contentsline {section}{\numberline {8.2}Block Output Files}{61}{section.8.2}
+\contentsline {section}{\numberline {8.3}PDB Output Files}{67}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}1. Restart Trajectory}{67}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}2. Simulation Trajectories}{69}{subsection.8.3.2}
+\contentsline {section}{\numberline {8.4}PSF Output File}{70}{section.8.4}
+\contentsline {section}{\numberline {8.5}Molecule Distribution Output File}{72}{section.8.5}
+\contentsline {section}{\numberline {8.6}Histogram Output File}{74}{section.8.6}
+\contentsline {section}{\numberline {8.7}Free Energy Output File}{74}{section.8.7}
+\contentsline {chapter}{\numberline {9}Putting it all together: Running a GOMC Simulation}{77}{chapter.9}
+\contentsline {chapter}{\numberline {10}Intermolecular Energy and Virial Function (Van der Waals)}{81}{chapter.10}
+\contentsline {section}{\numberline {10.1}VDW}{81}{section.10.1}
+\contentsline {section}{\numberline {10.2}EXP6}{82}{section.10.2}
+\contentsline {section}{\numberline {10.3}SHIFT}{82}{section.10.3}
+\contentsline {section}{\numberline {10.4}SWITCH}{84}{section.10.4}
+\contentsline {section}{\numberline {10.5}SWITCH (MARTINI)}{85}{section.10.5}
+\contentsline {chapter}{\numberline {11}Intermolecular Energy and Virial Function (Electrostatic)}{89}{chapter.11}
+\contentsline {section}{\numberline {11.1}Ewald}{89}{section.11.1}
+\contentsline {section}{\numberline {11.2}VDW}{90}{section.11.2}
+\contentsline {section}{\numberline {11.3}EXP6}{91}{section.11.3}
+\contentsline {section}{\numberline {11.4}SHIFT}{91}{section.11.4}
+\contentsline {section}{\numberline {11.5}SWITCH}{91}{section.11.5}
+\contentsline {section}{\numberline {11.6}SWITCH (MARTINI)}{92}{section.11.6}
+\contentsline {chapter}{\numberline {12}Long\sphinxhyphen {}range Correction (Energy and Virial)}{93}{chapter.12}
+\contentsline {section}{\numberline {12.1}VDW}{93}{section.12.1}
+\contentsline {section}{\numberline {12.2}EXP6}{94}{section.12.2}
+\contentsline {chapter}{\numberline {13}Coupling Interaction with \(\lambda \)}{95}{chapter.13}
+\contentsline {section}{\numberline {13.1}VDW}{95}{section.13.1}
+\contentsline {subsection}{\numberline {13.1.1}Soft\sphinxhyphen {}core}{95}{subsection.13.1.1}
+\contentsline {section}{\numberline {13.2}Electrostatic}{95}{section.13.2}
+\contentsline {subsection}{\numberline {13.2.1}Hard\sphinxhyphen {}core}{95}{subsection.13.2.1}
+\contentsline {subsection}{\numberline {13.2.2}Soft\sphinxhyphen {}core}{96}{subsection.13.2.2}
+\contentsline {section}{\numberline {13.3}Long\sphinxhyphen {}range Correction (VDW)}{96}{section.13.3}
+\contentsline {section}{\numberline {13.4}Long\sphinxhyphen {}range Correction (Electrostatic)}{97}{section.13.4}
+\contentsline {chapter}{\numberline {14}How to?}{99}{chapter.14}
+\contentsline {section}{\numberline {14.1}Visualizing Simulation}{99}{section.14.1}
+\contentsline {section}{\numberline {14.2}Build molecule and topology file}{100}{section.14.2}
+\contentsline {subsection}{\numberline {14.2.1}Regular molecule}{100}{subsection.14.2.1}
+\contentsline {subsection}{\numberline {14.2.2}Molecule with dummy atoms}{100}{subsection.14.2.2}
+\contentsline {section}{\numberline {14.3}Simulate rigid molecule}{102}{section.14.3}
+\contentsline {subsection}{\numberline {14.3.1}Setup rigid molecule}{102}{subsection.14.3.1}
+\contentsline {section}{\numberline {14.4}Restart the simulation}{102}{section.14.4}
+\contentsline {subsection}{\numberline {14.4.1}Restart the simulation with \sphinxstyleliteralintitle {\sphinxupquote {Restart}}}{102}{subsection.14.4.1}
+\contentsline {subsection}{\numberline {14.4.2}Restart the simulation with \sphinxstyleliteralintitle {\sphinxupquote {RestartCheckpoint}}}{103}{subsection.14.4.2}
+\contentsline {section}{\numberline {14.5}Recalculate the energy}{105}{section.14.5}
+\contentsline {section}{\numberline {14.6}Simulate adsorption}{106}{section.14.6}
+\contentsline {subsection}{\numberline {14.6.1}Build PDB and PSF file}{106}{subsection.14.6.1}
+\contentsline {subsection}{\numberline {14.6.2}Adsorption in GCMC}{108}{subsection.14.6.2}
+\contentsline {subsection}{\numberline {14.6.3}Adsorption in NPT\sphinxhyphen {}GEMC}{109}{subsection.14.6.3}
+\contentsline {section}{\numberline {14.7}Calculate Solvation Free Energy}{109}{section.14.7}
+\contentsline {subsection}{\numberline {14.7.1}Setup Simulation Files}{110}{subsection.14.7.1}
+\contentsline {subsection}{\numberline {14.7.2}Process GOMC Free Energy Outputs}{111}{subsection.14.7.2}
+\contentsline {section}{\numberline {14.8}Run a Multi\sphinxhyphen {}Sim}{112}{section.14.8}
+\contentsline {chapter}{\numberline {15}Get Help or Technical Support}{115}{chapter.15}

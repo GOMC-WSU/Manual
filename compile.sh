@@ -1,9 +1,9 @@
 rm -r docs
 sphinx-build src docs
 cd docs
-mv _images images
-mv _sources sources
-mv _static static
-grep -rli '_images' * | xargs -n 1 sed -i '' -e "s/_images/images/g"
-grep -rli '_sources' * | xargs -n 1 sed -i '' -e "s/_sources/sources/g"
-grep -rli '_static' * | xargs -n 1 sed -i '' -e "s/_static/static/g"
+mv images images
+mv sources sources
+mv static static
+grep -rli 'images' * | xargs -n 1 sed -i '' -e "s/images/images/g"
+grep -rli 'sources' * | xargs -n 1 sed -i '' -e "s/sources/sources/g"
+grep -rli 'static' * | xargs -n 1 sed -i '' -e "s/static/static/g"
