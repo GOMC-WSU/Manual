@@ -3,7 +3,7 @@
 2. Install sphinx and the tempelate (it is included in anaconda) You can install it through pip:
    ```bash
    $ pip install -U Sphinx
-   $ pip install sphinx-bootstrap-theme
+   $ pip install sphinx_materialdesign_theme
    ```
 
 3. To build the HTML files execute the following command in your terminal: 
