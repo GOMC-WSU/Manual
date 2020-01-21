@@ -9,19 +9,19 @@
     
     <title>Intermolecular Energy and Virial Function (Van der Waals) &#8212; GOMC 2.50 documentation</title>
 
-    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
-    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
-    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="stylesheet" href="static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/language_data.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/sphinx_materialdesign_theme.js"></script>
+    <script type="text/javascript" src="static/sphinx_materialdesign_theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Intermolecular Energy and Virial Function (Electrostatic)" href="electrostatic.html" />
@@ -55,7 +55,7 @@
         
 <a id="button-show-source"
     class="mdl-button mdl-js-button mdl-button--icon"
-    href="_sources/vdw_energy.rst.txt" rel="nofollow">
+    href="sources/vdw_energy.rst.txt" rel="nofollow">
 <i class="material-icons">code</i>
 </a>
 <div class="mdl-tooltip" data-mdl-for="button-show-source">
@@ -220,7 +220,7 @@ and GOMC will calculate the <span class="math notranslate nohighlight">\(R_{min}
 <p>This option only evaluates the energy up to specified <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance. Tail correction to energy and pressure can be specified to account for infinite cutoff distance.</p>
 </div>
 <div class="figure align-center" id="id1" style="width: 100%">
-<a class="reference internal image-reference" href="_images/VDW_Exp6.png"><img alt="_images/VDW_Exp6.png" src="_images/VDW_Exp6.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="images/VDW_Exp6.png"><img alt="images/VDW_Exp6.png" src="images/VDW_Exp6.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-text">Graph of Van der Waals interaction for comparison of <code class="docutils literal notranslate"><span class="pre">VDW</span></code> and <code class="docutils literal notranslate"><span class="pre">EXP6</span></code> potentials.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -240,7 +240,7 @@ and GOMC will calculate the <span class="math notranslate nohighlight">\(R_{min}
 <div class="math notranslate nohighlight">
 \[F_{\texttt{VDW}}(r_{ij}) = 6C_{n_{ij}} \epsilon_{ij} \bigg[\frac{n_{ij}}{6} \times \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\times \frac{1}{{r_{ij}}}\]</div>
 <div class="figure align-default" id="id2">
-<img alt="_images/VDW_SHIFT.png" src="_images/VDW_SHIFT.png" />
+<img alt="images/VDW_SHIFT.png" src="images/VDW_SHIFT.png" />
 <p class="caption"><span class="caption-text">Graph of Van der Waals potential with and without the application of the <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> function. With the <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> function active, the potential by force was reduced to 0.0 at the <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance. With the <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> function, there is a discontinuity where the potential is truncated.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </dd>
@@ -278,7 +278,7 @@ and GOMC will calculate the <span class="math notranslate nohighlight">\(R_{min}
   0 &amp; r_{ij} \geq r_{cut}
 \end{cases}\end{split}\]</div>
 <div class="figure align-default" id="id3">
-<img alt="_images/SWITCH.png" src="_images/SWITCH.png" />
+<img alt="images/SWITCH.png" src="images/SWITCH.png" />
 <p class="caption"><span class="caption-text">Graph of Van der Waals potential with and without the application of the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function. With the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function active, the potential is smoothly reduced to 0.0 at the <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 </dd>
@@ -322,7 +322,7 @@ and GOMC will calculate the <span class="math notranslate nohighlight">\(R_{min}
   0 &amp; r_{ij} \geq r_{cut}
 \end{cases}\end{split}\]</div>
 <div class="figure align-default" id="id4">
-<img alt="_images/MARTINI.png" src="_images/MARTINI.png" />
+<img alt="images/MARTINI.png" src="images/MARTINI.png" />
 <p class="caption"><span class="caption-text">Graph of Van der Waals potential with and without the application of the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function in <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field. With the <code class="docutils literal notranslate"><span class="pre">SWITCH</span></code> function active, the potential is smoothly reduced to 0.0 at the <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </dd>
@@ -372,7 +372,7 @@ and GOMC will calculate the <span class="math notranslate nohighlight">\(R_{min}
   </div>
 <footer class="mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
-    <div class="mdl-logo">&copy; Copyright 2019, GOMC.</div>
+    <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
   </div>
 </footer>
 

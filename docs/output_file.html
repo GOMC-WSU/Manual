@@ -9,19 +9,19 @@
     
     <title>GOMC’s Output Files &#8212; GOMC 2.50 documentation</title>
 
-    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
-    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
-    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="stylesheet" href="static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/language_data.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/sphinx_materialdesign_theme.js"></script>
+    <script type="text/javascript" src="static/sphinx_materialdesign_theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Putting it all together: Running a GOMC Simulation" href="putting_all_together.html" />
@@ -55,7 +55,7 @@
         
 <a id="button-show-source"
     class="mdl-button mdl-js-button mdl-button--icon"
-    href="_sources/output_file.rst.txt" rel="nofollow">
+    href="sources/output_file.rst.txt" rel="nofollow">
 <i class="material-icons">code</i>
 </a>
 <div class="mdl-tooltip" data-mdl-for="button-show-source">
@@ -274,15 +274,15 @@ to be executed in terminal:</p>
 </div>
 <p>The first section of this console output typically includes some information relating the system, CPU, GPU, and RAM. In continue, console output includes information regarding the input file (configuration file), force field reading, summary of the structure of the molecule, bonded and non-bonded parameters, and minimum and maximum coordinate of molecules. This output is important; it may contain text relating to issues encountered if there was an error in the current run (e.g. a bad parameter, unknown keyword, missing parameters in the configuration file, etc.)</p>
 <div class="figure align-default" id="id1">
-<img alt="_images/out1.png" src="_images/out1.png" />
+<img alt="images/out1.png" src="images/out1.png" />
 <p class="caption"><span class="caption-text">Printing summary of configuration file.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id2">
-<img alt="_images/out2.png" src="_images/out2.png" />
+<img alt="images/out2.png" src="images/out2.png" />
 <p class="caption"><span class="caption-text">Reading parameter file and printing the summary of the force field.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id3">
-<img alt="_images/out3.png" src="_images/out3.png" />
+<img alt="images/out3.png" src="images/out3.png" />
 <p class="caption"><span class="caption-text">Reading the PDB files for each box, printing the min and max coordinates.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>Next, the energy and statistic title, initial energy and statistic of the system’s starting configuration will print:</p>
@@ -313,12 +313,12 @@ OutSurfaceTention false false
 Calculation will be performed at EqSteps to preserve energy value.</p>
 </div>
 <div class="figure align-default" id="id4">
-<img alt="_images/out4.png" src="_images/out4.png" />
+<img alt="images/out4.png" src="images/out4.png" />
 <p class="caption"><span class="caption-text">Printing initial energy of the system and statistical values.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>After the simulation starts, move, energy, and statistical title, followed by their values for each simulation box, will print:</p>
 <div class="figure align-default">
-<img alt="_images/out5.png" src="_images/out5.png" />
+<img alt="images/out5.png" src="images/out5.png" />
 </div>
 <p>At the end of the run, Monte Carlo move acceptance for each molecule kind and simulation box, total amount of time spent on each
 Monte Carlo move, total timing information, and other wrap up info will be printed.</p>
@@ -359,7 +359,7 @@ Monte Carlo move, total timing information, and other wrap up info will be print
 </li>
 </ul>
 <div class="figure align-default" id="id5">
-<img alt="_images/Blk.png" src="_images/Blk.png" />
+<img alt="images/Blk.png" src="images/Blk.png" />
 <p class="caption"><span class="caption-text">Printing the average energy of the system and statistical values.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>At the beginning of each file, the title of each property followed by their average values is printed.
@@ -419,11 +419,11 @@ Header part of this file contains important information and will be needed to re
 Rotation, and Volume move.</p></li>
 </ul>
 <div class="figure align-default" id="id6">
-<img alt="_images/pdb_restart_0.png" src="_images/pdb_restart_0.png" />
+<img alt="images/pdb_restart_0.png" src="images/pdb_restart_0.png" />
 <p class="caption"><span class="caption-text">The coordinates of isobutane molecules in simulation Box 0, at steps 30000, in <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb file.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id7">
-<img alt="_images/pdb_restart_1.png" src="_images/pdb_restart_1.png" />
+<img alt="images/pdb_restart_1.png" src="images/pdb_restart_1.png" />
 <p class="caption"><span class="caption-text">The coordinates of isobutane molecules in simulation Box 1, at steps 30000, in <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_1_restart.pdb file.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -448,11 +448,11 @@ parameter in configuration file.</p>
 one file for NVT or NPT and two files for Gibbs ensemble or grand canonical ensemble will be outputed.
 Header part of this file contains simulation cell dimensions and angles, frame number, and simulation steps.</p>
 <div class="figure align-default" id="id8">
-<img alt="_images/pdb_0.png" src="_images/pdb_0.png" />
+<img alt="images/pdb_0.png" src="images/pdb_0.png" />
 <p class="caption"><span class="caption-text">The coordinates of all isobutane molecules at beginning of the simulation, in <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0.pdb file.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id9">
-<img alt="_images/pdb_1.png" src="_images/pdb_1.png" />
+<img alt="images/pdb_1.png" src="images/pdb_1.png" />
 <p class="caption"><span class="caption-text">The coordinates of all isobutane molecules at beginning of the simulation, in <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_1.pdb file.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -486,13 +486,13 @@ Each section starts with a specific header described bellow:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">NTITLE</span></code>: Remarks on the file.</p>
 <div class="figure align-default" id="id10">
-<img alt="_images/merged_psf_remark.png" src="_images/merged_psf_remark.png" />
+<img alt="images/merged_psf_remark.png" src="images/merged_psf_remark.png" />
 <p class="caption"><span class="caption-text">Remaks generated by GOMC.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NATOM</span></code>: The atom names, residue name, atom types, and partial charges of each atom.</p>
 <div class="figure align-default" id="id11">
-<img alt="_images/merged_psf_atom.png" src="_images/merged_psf_atom.png" />
+<img alt="images/merged_psf_atom.png" src="images/merged_psf_atom.png" />
 <p class="caption"><span class="caption-text">Atom section, taken from a merged PSF file for isobutane. The fields in the atom section,
 from left to right are atom ID, segment name, residue ID, residue name, atom name, atom type,
 charge, mass, and an unused 0.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
@@ -500,19 +500,19 @@ charge, mass, and an unused 0.</span><a class="headerlink" href="#id11" title="P
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NBOND</span></code>: The covalent bond section lists four pairs of atoms per line.</p>
 <div class="figure align-default" id="id12">
-<img alt="_images/merged_psf_bond.png" src="_images/merged_psf_bond.png" />
+<img alt="images/merged_psf_bond.png" src="images/merged_psf_bond.png" />
 <p class="caption"><span class="caption-text">Bond section, taken from a merged PSF file for isobutane.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NTHETA</span></code>: The angle section lists three triples of atoms per line.</p>
 <div class="figure align-default" id="id13">
-<img alt="_images/merged_psf_angle.png" src="_images/merged_psf_angle.png" />
+<img alt="images/merged_psf_angle.png" src="images/merged_psf_angle.png" />
 <p class="caption"><span class="caption-text">Angle section, taken from a merged PSF file for isobutane.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NPHI</span></code>: The dihedral sections list two quadruples of atoms per line.</p>
 <div class="figure align-default" id="id14">
-<img alt="_images/merged_psf_dihedral.png" src="_images/merged_psf_dihedral.png" />
+<img alt="images/merged_psf_dihedral.png" src="images/merged_psf_dihedral.png" />
 <p class="caption"><span class="caption-text">Dihedral section, taken from a merged PSF file for isobutane.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 </li>
@@ -536,7 +536,7 @@ RunLetter  a
 </div>
 <p>GOMC will output the molecule distribution into “n1dis3a.dat” file.</p>
 <div class="figure align-default" id="id15">
-<img alt="_images/ndis.png" src="_images/ndis.png" />
+<img alt="images/ndis.png" src="images/ndis.png" />
 <p class="caption"><span class="caption-text">Molecule number distribution taken for isobutane simulation in GCMC simulation. The field in
 molecule distribution file, from left to right are number of molecule observed in the
 simulation and number of samples.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
@@ -576,7 +576,7 @@ RunLetter  a
 <p>The header of the histogram file contains information of the simulated system, such as temperature,
 number of molecule kind, chemical potential, and x, y, z dimensions of simulation box.</p>
 <div class="figure align-default" id="id16">
-<img alt="_images/hist.png" src="_images/hist.png" />
+<img alt="images/hist.png" src="images/hist.png" />
 <p class="caption"><span class="caption-text">The histogram taken for isobutane simulation in GCMC simulation. The field in
 histogram file, from left to right are number of molecule observed for the first molecule kind
 in the simulation and energy of the system (nonbonded + LRC).</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
@@ -617,7 +617,7 @@ which is essential to calculate solvation free energy with various estimators, s
 (<span class="math notranslate nohighlight">\(\Delta E_{{\lambda}_i \rightarrow {\lambda}_j} = E_{{\lambda}_j} - E_{{\lambda}_i}\)</span>)</p></li>
 </ul>
 <div class="figure align-center" id="id17" style="width: 100%">
-<a class="reference internal image-reference" href="_images/FE-snapshot.png"><img alt="_images/FE-snapshot.png" src="_images/FE-snapshot.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="images/FE-snapshot.png"><img alt="images/FE-snapshot.png" src="images/FE-snapshot.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-text">Snapshot of GOMC free energy output file (Free_Energy_BOX_0_ <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>.dat).</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition important">
@@ -680,7 +680,7 @@ additional column will be printed to represent <span class="math notranslate noh
   </div>
 <footer class="mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
-    <div class="mdl-logo">&copy; Copyright 2019, GOMC.</div>
+    <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
   </div>
 </footer>
 
