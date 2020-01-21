@@ -1,165 +1,207 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Putting it all together: Running a GOMC Simulation &mdash; GOMC 2.40 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-        <script type="text/javascript" src="static/jquery.js"></script>
-        <script type="text/javascript" src="static/underscore.js"></script>
-        <script type="text/javascript" src="static/doctools.js"></script>
-        <script type="text/javascript" src="static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Putting it all together: Running a GOMC Simulation &#8212; GOMC 2.50 documentation</title>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Intermolecular Energy and Virial Function (Van der Waals)" href="vdw_energy.html" />
-    <link rel="prev" title="GOMC’s Output Files, Terminal Output" href="output_file.html" /> 
-</head>
+    <link rel="prev" title="GOMC’s Output Files" href="output_file.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="static/bootstrap-sphinx.js "></script>
 
-<body class="wy-body-for-nav">
+  </head><body>
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="static/logo.png"></span>
+          GOMC</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
 
-          
-            <a href="index.html" class="icon icon-home"> GOMC
-          
-
-          
-          </a>
-
-          
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
             
             
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Section <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#linux">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#topology-file">Topology File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#ewald">Ewald</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-rigid-molecule">Simulate rigid molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Sub-section <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Putting it all together: Running a GOMC Simulation</a></li>
+</ul>
+</ul>
+</li>
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files, Terminal Output</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
-</ul>
-
+              
+                
+  <li>
+    <a href="output_file.html" title="Previous Chapter: GOMC’s Output Files"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; GOMC’s Output Files</span>
+    </a>
+  </li>
+  <li>
+    <a href="vdw_energy.html" title="Next Chapter: Intermolecular Energy and Virial Function (Van der Waals)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Intermolecula... &raquo;</span>
+    </a>
+  </li>
+              
             
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
           
         </div>
-      </div>
-    </nav>
+    </div>
+  </div>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">GOMC</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Putting it all together: Running a GOMC Simulation</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="sources/putting_all_together.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
   <div class="section" id="putting-it-all-together-running-a-gomc-simulation">
 <h1>Putting it all together: Running a GOMC Simulation<a class="headerlink" href="#putting-it-all-together-running-a-gomc-simulation" title="Permalink to this headline">¶</a></h1>
 <p>It is strongly recommended that you download the test system provided at <a class="reference external" href="http://gomc.eng.wayne.edu/downloads.html">GOMC Website</a> or <a class="reference external" href="https://github.com/GOMC-WSU/GOMC_Examples/tree/master">Our Github Page</a></p>
@@ -167,23 +209,22 @@
 <p>To recap the previous examples, a simulation of isobutane will be completed for a single temperature point on the saturated vapor-liquid coexistence curve.</p>
 <p>The general plan for running the simulation is:</p>
 <ol class="arabic simple">
-<li>Build GOMC (if not done already)</li>
-<li>Copy GOMC executable to build directory</li>
-<li>Create scripts, PDB, and topology file to build the system, plus in.dat file and parameter files to prepare for runtime</li>
-<li>Build finished PDBs and PSFs using the simulation.</li>
-<li>Run the simulation in the terminal.</li>
-<li>Analyze the output.</li>
+<li><p>Build GOMC (if not done already)</p></li>
+<li><p>Copy GOMC executable to build directory</p></li>
+<li><p>Create scripts, PDB, and topology file to build the system, plus in.dat file and parameter files to prepare for runtime</p></li>
+<li><p>Build finished PDBs and PSFs using the simulation.</p></li>
+<li><p>Run the simulation in the terminal.</p></li>
+<li><p>Analyze the output.</p></li>
 </ol>
 <p>Please, complete steps 1 and 2; then, traverse to the directory, which should now contain a single file “GOMC_CPU_GEMC”. Next, six files need to be made:</p>
 <ul class="simple">
-<li>PDB file for isobutane</li>
-<li>Topology file describing isobutane residue</li>
-<li>Two <code class="docutils literal notranslate"><span class="pre">*.inp</span></code> packmol scripts to pack two system boxes</li>
-<li>Two <em>TCL</em> scripts to input into <code class="docutils literal notranslate"><span class="pre">PSFGen</span></code> to generate the final configuration</li>
+<li><p>PDB file for isobutane</p></li>
+<li><p>Topology file describing isobutane residue</p></li>
+<li><p>Two <code class="docutils literal notranslate"><span class="pre">*.inp</span></code> packmol scripts to pack two system boxes</p></li>
+<li><p>Two <em>TCL</em> scripts to input into <code class="docutils literal notranslate"><span class="pre">PSFGen</span></code> to generate the final configuration</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">isobutane.pdb</span></code></p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>REMARK   1 File  created   by  GaussView   5.0.8
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>REMARK   1 File  created   by  GaussView   5.0.8
 ATOM          1       C1  ISB          1   0.911   -0.313    0.000  C
 ATOM          2       C2  ISB          1   1.424   -1.765    0.000  C
 ATOM          3       C3  ISB          1  -0.629   -0.313    0.000  C
@@ -191,10 +232,8 @@ ATOM          4       C4  ISB          1   1.424    0.413   -1.257  C
 END
 </pre></div>
 </div>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">Top_Branched_Alkane.inp</span></code></p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* Custom top file -- branched alkanes
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* Custom top file -- branched alkanes
 *
 MASS     1    CH3      15.035 C !
 MASS     2    CH1      13.019 C !
@@ -212,10 +251,8 @@ PATCHING FIRS NONE LAST NONE
 END
 </pre></div>
 </div>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">pack_box_0.inp</span></code></p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tolerance   3.0
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tolerance   3.0
 filetype    pdb
 output      STEP2_ISB_packed_BOX_0.pdb
 
@@ -225,10 +262,8 @@ inside cube   0.  0.  0.  68.00
 end structure
 </pre></div>
 </div>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">pack_box_1.inp</span></code></p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tolerance   3.0
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tolerance   3.0
 filetype    pdb
 output      STEP2_ISB_packed_BOX_1.pdb
 
@@ -238,10 +273,8 @@ inside cube   0.  0.  0.  68.00
 end structure
 </pre></div>
 </div>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">build_box_0.inp</span></code></p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
 
 topology  ./Top Branched Alkane.inp segment ISB {
   pdb     ./STEP2_ISB_packed_BOX_0.pdb
@@ -254,10 +287,8 @@ writepsf  ./STEP3_START_ISB_sys_BOX_0.psf
 writepdb  ./STEP3_START_ISB_sys_BOX_0.pdb
 </pre></div>
 </div>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">build_box_1.inp</span></code></p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
 
 topology  ./Top Branched Alkane.inp segment ISB {
   pdb     ./STEP2_ISB_packed_BOX_1.pdb
@@ -270,7 +301,6 @@ writepsf  ./STEP3_START_ISB_sys_BOX_1.psf
 writepdb  ./STEP3_START_ISB_sys_BOX_1.pdb
 </pre></div>
 </div>
-</div></blockquote>
 <p>These files can be created with a standard Linux or Windows text editor. Please, also copy a Packmol executable into the working directory.</p>
 <p>Once those files are created, run in the terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./packmol   &lt;   pack_box_0.inp
@@ -286,9 +316,9 @@ $ vmd -dispdev text &lt; ./build_box_1.inp
 <p>This will create the intermediate PDBs.</p>
 <p>To run the code a few additional things will be needed:</p>
 <ul class="simple">
-<li>A GOMC Gibbs ensemble executable</li>
-<li>A control file</li>
-<li>Parameter files</li>
+<li><p>A GOMC Gibbs ensemble executable</p></li>
+<li><p>A control file</p></li>
+<li><p>Parameter files</p></li>
 </ul>
 <p>Enter the control file (in.conf) in the text editor in order to modify it. Example files for different simulation types can be found in previous section.</p>
 <p>Once these four files have been added to the output directory, the simulation is ready.</p>
@@ -306,62 +336,38 @@ $ vmd -dispdev text &lt; ./build_box_1.inp
 </pre></div>
 </div>
 <div class="admonition attention">
-<p class="first admonition-title">Attention</p>
-<p class="last">Congratulations! You have examined a single-phase coexistence point on the saturated vapor-liquid curve using GOMC operating in the Gibbs ensemble.</p>
+<p class="admonition-title">Attention</p>
+<p>Congratulations! You have examined a single-phase coexistence point on the saturated vapor-liquid curve using GOMC operating in the Gibbs ensemble.</p>
 </div>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <img alt="images/isobutane_result.png" src="images/isobutane_result.png" />
-<p class="caption"><span class="caption-text">Repeating this process for multiple temperatures will allow you to obtain the following results.</span></p>
+<p class="caption"><span class="caption-text">Repeating this process for multiple temperatures will allow you to obtain the following results.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="vdw_energy.html" class="btn btn-neutral float-right" title="Intermolecular Energy and Virial Function (Van der Waals)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="output_file.html" class="btn btn-neutral float-left" title="GOMC’s Output Files, Terminal Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="sources/putting_all_together.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
     <p>
-        &copy; Copyright 2019, GOMC
-
+        &copy; Copyright 2019, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

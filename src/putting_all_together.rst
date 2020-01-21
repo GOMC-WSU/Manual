@@ -29,94 +29,95 @@ Please, complete steps 1 and 2; then, traverse to the directory, which should no
 
 ``isobutane.pdb``
 
-  .. code-block:: text
+.. code-block:: text
 
-    REMARK   1 File  created   by  GaussView   5.0.8
-    ATOM          1       C1  ISB          1   0.911   -0.313    0.000  C
-    ATOM          2       C2  ISB          1   1.424   -1.765    0.000  C
-    ATOM          3       C3  ISB          1  -0.629   -0.313    0.000  C
-    ATOM          4       C4  ISB          1   1.424    0.413   -1.257  C
-    END
+  REMARK   1 File  created   by  GaussView   5.0.8
+  ATOM          1       C1  ISB          1   0.911   -0.313    0.000  C
+  ATOM          2       C2  ISB          1   1.424   -1.765    0.000  C
+  ATOM          3       C3  ISB          1  -0.629   -0.313    0.000  C
+  ATOM          4       C4  ISB          1   1.424    0.413   -1.257  C
+  END
 
 ``Top_Branched_Alkane.inp``
 
-  .. code-block:: text
+.. code-block:: text
 
-    * Custom top file -- branched alkanes
-    *
-    MASS     1    CH3      15.035 C !
-    MASS     2    CH1      13.019 C !
+  * Custom top file -- branched alkanes
+  *
+  MASS     1    CH3      15.035 C !
+  MASS     2    CH1      13.019 C !
 
-    AUTOGENERATE ANGLES DIHEDRALS
+  AUTOGENERATE ANGLES DIHEDRALS
 
-    RESI   ISB   0.00               !  isobutane { TraPPE }
-    GROUP
-    ATOM    C1    CH1       0.00    !  C3\
-    ATOM    C2    CH3       0.00    !     C2-C1
-    ATOM    C3    CH3       0.00    !  C4/
-    ATOM    C4    CH3       0.00    !
-    BOND    C1  C2   C1  C3   C1  C4
-    PATCHING FIRS NONE LAST NONE
-    END
+  RESI   ISB   0.00               !  isobutane { TraPPE }
+  GROUP
+  ATOM    C1    CH1       0.00    !  C3\
+  ATOM    C2    CH3       0.00    !     C2-C1
+  ATOM    C3    CH3       0.00    !  C4/
+  ATOM    C4    CH3       0.00    !
+  BOND    C1  C2   C1  C3   C1  C4
+  PATCHING FIRS NONE LAST NONE
+  END
 
 
 ``pack_box_0.inp``
 
-  .. code-block:: text
+.. code-block:: text
 
-    tolerance   3.0
-    filetype    pdb
-    output      STEP2_ISB_packed_BOX_0.pdb
+  tolerance   3.0
+  filetype    pdb
+  output      STEP2_ISB_packed_BOX_0.pdb
 
-    structure     isobutane.pdb
-    number        1000
-    inside cube   0.  0.  0.  68.00
-    end structure
+  structure     isobutane.pdb
+  number        1000
+  inside cube   0.  0.  0.  68.00
+  end structure
 
 ``pack_box_1.inp``
 
-  .. code-block:: text
+.. code-block:: text
 
-    tolerance   3.0
-    filetype    pdb
-    output      STEP2_ISB_packed_BOX_1.pdb
+  tolerance   3.0
+  filetype    pdb
+  output      STEP2_ISB_packed_BOX_1.pdb
 
-    structure     isobutane.pdb
-    number        1000
-    inside cube   0.  0.  0.  68.00
-    end structure
+  structure     isobutane.pdb
+  number        1000
+  inside cube   0.  0.  0.  68.00
+  end structure
 
 ``build_box_0.inp``
 
-  .. code-block:: text
+.. code-block:: text
 
-    package require psfgen
+  package require psfgen
 
-    topology  ./Top Branched Alkane.inp segment ISB {
-      pdb     ./STEP2_ISB_packed_BOX_0.pdb
-      first   none
-      last    none
-    }
-    coordpdb  ./STEP2 ISB_packed_BOX_0.pdb ISB
+  topology  ./Top Branched Alkane.inp segment ISB {
+    pdb     ./STEP2_ISB_packed_BOX_0.pdb
+    first   none
+    last    none
+  }
+  coordpdb  ./STEP2 ISB_packed_BOX_0.pdb ISB
 
-    writepsf  ./STEP3_START_ISB_sys_BOX_0.psf
-    writepdb  ./STEP3_START_ISB_sys_BOX_0.pdb
+  writepsf  ./STEP3_START_ISB_sys_BOX_0.psf
+  writepdb  ./STEP3_START_ISB_sys_BOX_0.pdb
 
 ``build_box_1.inp``
 
-  .. code-block:: text
+.. code-block:: text
 
-    package require psfgen
+  package require psfgen
 
-    topology  ./Top Branched Alkane.inp segment ISB {
-      pdb     ./STEP2_ISB_packed_BOX_1.pdb
-      first   none
-      last    none
-    }
-    coordpdb  ./STEP2 ISB_packed_BOX_1.pdb ISB
+  topology  ./Top Branched Alkane.inp segment ISB {
+    pdb     ./STEP2_ISB_packed_BOX_1.pdb
+    first   none
+    last    none
+  }
+  coordpdb  ./STEP2 ISB_packed_BOX_1.pdb ISB
 
-    writepsf  ./STEP3_START_ISB_sys_BOX_1.psf
-    writepdb  ./STEP3_START_ISB_sys_BOX_1.pdb
+  writepsf  ./STEP3_START_ISB_sys_BOX_1.psf
+  writepdb  ./STEP3_START_ISB_sys_BOX_1.pdb
+
 
 These files can be created with a standard Linux or Windows text editor. Please, also copy a Packmol executable into the working directory.
 

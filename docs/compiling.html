@@ -1,170 +1,212 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Compiling GOMC &mdash; GOMC 2.40 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-        <script type="text/javascript" src="static/jquery.js"></script>
-        <script type="text/javascript" src="static/underscore.js"></script>
-        <script type="text/javascript" src="static/doctools.js"></script>
-        <script type="text/javascript" src="static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Compiling GOMC &#8212; GOMC 2.50 documentation</title>
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Input File Formats" href="input_file.html" />
-    <link rel="prev" title="How to get the software" href="download.html" /> 
-</head>
+    <link rel="prev" title="How to get the software" href="download.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="static/bootstrap-sphinx.js "></script>
 
-<body class="wy-body-for-nav">
+  </head><body>
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="static/logo.png"></span>
+          GOMC</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
 
-          
-            <a href="index.html" class="icon icon-home"> GOMC
-          
-
-          
-          </a>
-
-          
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
             
             
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Section <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Compiling GOMC</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-cmake">Configuring CMake</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files, Terminal Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#topology-file">Topology File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#ewald">Ewald</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-rigid-molecule">Simulate rigid molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
-
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Sub-section <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Compiling GOMC</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+<li><a class="reference internal" href="#configuring-cmake">Configuring CMake</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
             
+            
+              
+                
+  <li>
+    <a href="download.html" title="Previous Chapter: How to get the software"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; How to get th...</span>
+    </a>
+  </li>
+  <li>
+    <a href="input_file.html" title="Next Chapter: Input File Formats"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Input File Formats &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
           
         </div>
-      </div>
-    </nav>
+    </div>
+  </div>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">GOMC</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Compiling GOMC</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="sources/compiling.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
   <div class="section" id="compiling-gomc">
 <h1>Compiling GOMC<a class="headerlink" href="#compiling-gomc" title="Permalink to this headline">¶</a></h1>
 <p>GOMC generates four executable files for CPU code; <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_GEMC</span></code> (Gibbs ensemble), <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_NVT</span></code> (NVT ensemble), <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_NPT</span></code> (isobaric-isothermal ensemble), and <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_GCMC</span></code> (Grand canonical ensemble). In case of installing CUDA Toolkit, GOMC will generate additional four executable files for GPU code; <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_GEMC</span></code>, <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_NVT</span></code>, <code class="docutils literal notranslate"><span class="pre">GOMC_GPU</span> <span class="pre">NPT</span></code>, and <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_GCMC</span></code>.</p>
@@ -182,18 +224,18 @@ $ ./metamake.sh
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <p>To compile GOMC on in Windows, follow these steps:</p>
 <ol class="arabic simple">
-<li>Open the Windows-compatible CMake GUI.</li>
-<li>Set the Source Folder to the GOMC root folder.</li>
-<li>Set the build Folder to your Build Folder.</li>
-<li>Click configure, select your compiler/environment</li>
-<li>Wait for CMake to finish the configuration.</li>
-<li>Click configure again and click generate.</li>
-<li>Open the CMake-generated project/solution etc. to the desired IDE (e.g Visual Studio).</li>
-<li>Using the solution in the IDE of choice build GOMC per the IDE’s standard release compilation/exe- cutable generation methods.</li>
+<li><p>Open the Windows-compatible CMake GUI.</p></li>
+<li><p>Set the Source Folder to the GOMC root folder.</p></li>
+<li><p>Set the build Folder to your Build Folder.</p></li>
+<li><p>Click configure, select your compiler/environment</p></li>
+<li><p>Wait for CMake to finish the configuration.</p></li>
+<li><p>Click configure again and click generate.</p></li>
+<li><p>Open the CMake-generated project/solution etc. to the desired IDE (e.g Visual Studio).</p></li>
+<li><p>Using the solution in the IDE of choice build GOMC per the IDE’s standard release compilation/exe- cutable generation methods.</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You can also use CMake from the Windows command line if its directory is added to the PATH environment variable.</p>
+<p class="admonition-title">Note</p>
+<p>You can also use CMake from the Windows command line if its directory is added to the PATH environment variable.</p>
 </div>
 </div>
 <div class="section" id="configuring-cmake">
@@ -201,9 +243,8 @@ $ ./metamake.sh
 <p>GOMC uses CMAKE to generate multi-platform intermediate files to compile the project. In this section, you can find all the information needed to configure CMake.
 We recommend using a different directory for the CMake output than the home directory of the project as CMake tend to generate lots of files.
 CMake has a ridiculously expansive set of options, so this document will only reproduce the most obviously relevant ones. When possible, options should be passed into CMake via command line options rather than the CMakeCached.txt file:</p>
-<dl class="docutils">
-<dt>CMAKE_BUILD_TYPE</dt>
-<dd><p class="first">To get the best performance you should build the project in release mode. In CMake GUI you can set the value of “CMAKE_BUILD_TYPE” to “Release” and in CMake command line you can add the following to the CMake:</p>
+<dl>
+<dt>CMAKE_BUILD_TYPE</dt><dd><p>To get the best performance you should build the project in release mode. In CMake GUI you can set the value of “CMAKE_BUILD_TYPE” to “Release” and in CMake command line you can add the following to the CMake:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
 </pre></div>
 </div>
@@ -211,91 +252,66 @@ CMake has a ridiculously expansive set of options, so this document will only re
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
 </pre></div>
 </div>
-<p class="last">Other options are “&lt;None | ReleaseWithDebInfo | MinSizeRel&gt;”.</p>
+<p>Other options are “&lt;None | ReleaseWithDebInfo | MinSizeRel&gt;”.</p>
 </dd>
-<dt>CMAKE_CXX_COMPILER</dt>
-<dd>This option will set the compiler. It is recommended to use the Intel Compiler and linking tools, if possible (icc/icpc/etc.). They significantly outperform the default GNU and Visual Studio compiler tools and are available for free for academic use with registration.</dd>
-<dt>CMAKE_CXX_FLAGS_RELEASE:STRING</dt>
-<dd><p class="first">To run the parallel version of CPU code, it needs to be compiled with openmp library. Open the file “CMakeCache.txt”, while still in the “bin” folder, and change the value from “-O3 -DNDEBUG” to “-O3 -qopenmp -DNDEBUG”. Recompile the GOMC by typing the command:</p>
-<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make
+<dt>CMAKE_CXX_COMPILER</dt><dd><p>This option will set the compiler. It is recommended to use the Intel Compiler and linking tools, if possible (icc/icpc/etc.). They significantly outperform the default GNU and Visual Studio compiler tools and are available for free for academic use with registration.</p>
+</dd>
+<dt>CMAKE_CXX_FLAGS_RELEASE:STRING</dt><dd><p>To run the parallel version of CPU code, it needs to be compiled with openmp library. Open the file “CMakeCache.txt”, while still in the “bin” folder, and change the value from “-O3 -DNDEBUG” to “-O3 -qopenmp -DNDEBUG”. Recompile the GOMC by typing the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make
 </pre></div>
 </div>
 </dd>
-<dt>ENSEMBLE_NVT</dt>
-<dd>You can turn the compilation of CPU version of NVT ensemble on or off using this option.
--DENSEMBLE_NVT=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_NPT</dt>
-<dd>You can turn the compilation of CPU version of NPT ensemble on or off using this option.
--DENSEMBLE_NPT=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_GCMC</dt>
-<dd>You can turn the compilation of CPU version of GCMC ensemble on or off using this option.
--DENSEMBLE_GCMC=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_GEMC</dt>
-<dd>You can turn the compilation of CPU version of GEMC ensemble on or off using this option.
--DENSEMBLE_GEMC=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_GPU_NVT</dt>
-<dd>You can turn the compilation of GPU version of NVT ensemble on or off using this option.
--DENSEMBLE_NVT=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_GPU_NPT</dt>
-<dd>You can turn the compilation of GPU version of NPT ensemble on or off using this option.
--DENSEMBLE_NPT=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_GPU_GCMC</dt>
-<dd>You can turn the compilation of GPU version of GCMC ensemble on or off using this option.
--DENSEMBLE_GCMC=&lt;On | Off&gt;</dd>
-<dt>ENSEMBLE_GPU_GEMC</dt>
-<dd>You can turn the compilation of GPU version of GEMC ensemble on or off using this option.
--DENSEMBLE_GEMC=&lt;On | Off&gt;</dd>
+<dt>ENSEMBLE_NVT</dt><dd><p>You can turn the compilation of CPU version of NVT ensemble on or off using this option.
+-DENSEMBLE_NVT=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_NPT</dt><dd><p>You can turn the compilation of CPU version of NPT ensemble on or off using this option.
+-DENSEMBLE_NPT=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_GCMC</dt><dd><p>You can turn the compilation of CPU version of GCMC ensemble on or off using this option.
+-DENSEMBLE_GCMC=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_GEMC</dt><dd><p>You can turn the compilation of CPU version of GEMC ensemble on or off using this option.
+-DENSEMBLE_GEMC=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_GPU_NVT</dt><dd><p>You can turn the compilation of GPU version of NVT ensemble on or off using this option.
+-DENSEMBLE_NVT=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_GPU_NPT</dt><dd><p>You can turn the compilation of GPU version of NPT ensemble on or off using this option.
+-DENSEMBLE_NPT=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_GPU_GCMC</dt><dd><p>You can turn the compilation of GPU version of GCMC ensemble on or off using this option.
+-DENSEMBLE_GCMC=&lt;On | Off&gt;</p>
+</dd>
+<dt>ENSEMBLE_GPU_GEMC</dt><dd><p>You can turn the compilation of GPU version of GEMC ensemble on or off using this option.
+-DENSEMBLE_GEMC=&lt;On | Off&gt;</p>
+</dd>
 </dl>
 </div>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="input_file.html" class="btn btn-neutral float-right" title="Input File Formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="download.html" class="btn btn-neutral float-left" title="How to get the software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="sources/compiling.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
     <p>
-        &copy; Copyright 2019, GOMC
-
+        &copy; Copyright 2019, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

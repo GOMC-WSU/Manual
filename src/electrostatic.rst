@@ -7,7 +7,7 @@ Ewald
 -----
 This option calculate electrostatic energy using standard *Ewald Summation Method*.
 
-.. note:: Once this option is activated, it would override the the electrostatic calculation using ``VDW``, ``SHIFT``, and ``SWITCH`` functions.
+.. note:: Once this option is activated, it would override the the electrostatic calculation using ``VDW``, ``EXP6``, ``SHIFT``, and ``SWITCH`` functions.
 
 ``Potential Calculation``
   Coulomb interactions between atoms can be modeled as
@@ -80,6 +80,52 @@ This option calculate electrostatic energy using standard *Ewald Summation Metho
 	
   , where :math:`\overrightarrow{r_{ic}}` is the vector between atom and the center of the mass of the molecule.
 
+VDW 
+----
+
+Using ``VDW`` potential type without ``Ewald`` method, simply uses coulomb energy to calculate the electrostatic potential.
+
+``Potential Calculation``
+  Coulomb interactions between atoms can be modeled as
+	
+  .. math::
+		
+    E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0 r_{ij}}
+	
+``Virial Calculation``
+  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.
+
+  .. math:: 
+
+    W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
+  
+  .. math::
+
+		F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{{r_{ij}}^2} \Big)
+
+EXP6 
+----
+
+Using ``EXP6`` potential type without ``Ewald`` method, simply uses coulomb energy to calculate the electrostatic potential.
+
+``Potential Calculation``
+  Coulomb interactions between atoms can be modeled as
+	
+  .. math::
+		
+    E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0 r_{ij}}
+	
+``Virial Calculation``
+  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.
+
+  .. math:: 
+
+    W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
+  
+  .. math::
+
+		F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{{r_{ij}}^2} \Big)
+
 SHIFT
 -----
 
@@ -90,14 +136,18 @@ This option forces the electrostatic energy to be zero at ``Rcut`` distance.
 	
   .. math::
 		
-    E(\texttt{SHIFT}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{r_{ij}} - \frac{1}{r_{cut}} \Big)
+    E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{r_{ij}} - \frac{1}{r_{cut}} \Big)
 	
 ``Virial Calculation``
-  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance, Eq. 4. Coulomb force between atoms can be modeled as,
+  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.
 
-	.. math::
+  .. math:: 
 
-		W(\texttt{SHIFT}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{r_{ij}} \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}^2} \Big)
+    W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
+
+  .. math::
+
+		F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Big( \frac{1}{{r_{ij}}^2} \Big)
 	
 SWITCH
 ------
@@ -109,14 +159,18 @@ This option in ``CHARMM`` or ``EXOTIC`` force field forces the electrostatic ene
 	
   .. math::
 
-		E(\texttt{SWITCH}) = \frac{q_i q_j}{4\pi \epsilon_0} \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg)^2 \frac{1}{r_{ij}}
+		E_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg)^2 \frac{1}{r_{ij}}
 	
 ``Virial Calculation``
-  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance, Eq. 4. Coulomb force between atoms can be modeled as,
-	
+  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.
+
+  .. math:: 
+
+    W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
+
   .. math::
 
-		W(\texttt{SWITCH}) = \frac{q_i q_j}{4\pi \epsilon_0} \Bigg[ \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg)^2 \frac{1}{{r_{ij}}^2} - \bigg( \frac{4}{{r_{cut}}^2} \bigg) \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg) \Bigg] \times \frac{\overrightarrow{r_{ij}}}{r_{ij}}
+		F_{\texttt{Elect}}(r_{ij}) = \frac{q_i q_j}{4\pi \epsilon_0} \Bigg[ \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg)^2 \frac{1}{{r_{ij}}^2} - \bigg( \frac{4}{{r_{cut}}^2} \bigg) \bigg( \Big(\frac{r_{ij}}{r_{cut}} \Big)^2 - 1.0\bigg) \Bigg]
 	
 SWITCH (MARTINI)
 ----------------
@@ -128,18 +182,50 @@ This option in ``MARTINI`` force field smoothly forces the potential energy to b
 	
   .. math::
 
-		E(\texttt{SWITCH})=\frac{q_i q_j}{4\pi\epsilon_0\epsilon_1}\bigg(\frac{1}{r_{ij}}+\varphi_{1}(r_{ij})\bigg)
+	E_{\texttt{Elect}}(r_{ij})=\frac{q_i q_j}{4\pi\epsilon_0\epsilon_1}\bigg(\frac{1}{r_{ij}}+\varphi_{E, 1}(r_{ij})\bigg)
 	
-	
-  , where :math:`\epsilon_1` is the dielectric constant, which in ``MARTINI`` force field is equal to 15.0 and :math:`\varphi_{\alpha}(r_{ij})` is defined in Eq. 13-16.
-	
-``Virial Calculation``
-  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance, Eq. 4. Coulomb force between atoms can be modeled as,
-	
+  , where :math:`\epsilon_1` is the dielectric constant, which in ``MARTINI`` force field is equal to 15.0 and :math:`\varphi_{E, \alpha = 1}(r_{ij})` is defined as:
+
   .. math::
 
-	  W(\texttt{SWITCH})=\frac{q_iq_j}{4\pi\epsilon_0\epsilon_1}\bigg(\frac{1}{{r_{ij}}^2}+d\varphi_1(r_{ij})\bigg)\times\frac{\overrightarrow{r_{ij}}}{r_{ij}}
+    \varphi_{E, \alpha}(r_{ij}) = 
+    \begin{cases}
+      -C_{\alpha} & r_{ij} \leq r_{switch} \\
+      -\frac{A_{\alpha}}{3} (r_{ij} - r_{switch})^3 -\frac{B_{\alpha}}{4} (r_{ij} - r_{switch})^4 - C_{\alpha} & r_{switch} < r_{ij} < r_{cut} \\
+      0 & r_{ij} \geq r_{cut}
+    \end{cases}
+
+  .. math::
+
+    A_{\alpha} = \alpha \frac{(\alpha + 1) r_{switch} - (\alpha +4) r_{cut}} {{r_{cut}}^{(\alpha + 2)} {(r_{cut} - r_{switch})}^2}
+
+  .. math::
+
+    B_{\alpha} = \alpha \frac{(\alpha + 1) r_{switch} - (\alpha +3) r_{cut}} {{r_{cut}}^{(\alpha + 2)} {(r_{cut} - r_{switch})}^3}
+
+  .. math::
+
+    C_{\alpha} =  \frac{1}{{r_{cut}}^{\alpha}} -\frac{A_{\alpha}}{3} (r_{cut} - r_{switch})^3 -\frac{B_{\alpha}}{4} (r_{cut} - r_{switch})^4
+	
+``Virial Calculation``
+  Virial is basically the negative derivative of energy with respect to distance, multiplied by distance.
+
+  .. math:: 
+
+    W_{\texttt{Elect}}(r_{ij}) = -\frac{dE_{\texttt{Elect}}(r_{ij})}{r_{ij}}\times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}} = F_{\texttt{Elect}}(r_{ij}) \times \frac{\overrightarrow{r_{ij}}}{{r_{ij}}}
+
+  .. math::
+
+	  F_{\texttt{Elect}}(r_{ij})=\frac{q_iq_j}{4\pi\epsilon_0\epsilon_1}\bigg(\frac{1}{{r_{ij}}^2}+\varphi_{F, 1}(r_{ij})\bigg)
   
 
-  , where :math:`d\varphi_1 (r_{ij})` is defined in Eq. 18.
+  , where :math:`\varphi_{F, \alpha = 1} (r_{ij})` is defined as:
 
+  .. math::
+
+    \varphi_{F, \alpha}(r_{ij}) = 
+    \begin{cases}
+      0 & r_{ij} \leq r_{switch} \\
+      A_{\alpha} (r_{ij} - r_{switch})^2 + B_{\alpha} (r_{ij} - r_{switch})^3 & r_{switch} < r_{ij} < r_{cut} \\
+      0 & r_{ij} \geq r_{cut}
+    \end{cases}

@@ -12,7 +12,7 @@ GOMC supported ensembles:
 
 - Canonical (NVT)
 - Isobaric-isothermal (NPT)
-- Grand canonical (μVT)
+- Grand canonical (:math:`\mu` VT)
 - Constant volume Gibbs (NVT-Gibbs) 
 - Constant pressure Gibbs (NPT-Gibbs)
 
@@ -20,6 +20,7 @@ GOMC supported Monte Carlo moves:
 ---------------------------------
 - Rigid-body displacement
 - Rigid-body rotation
+- `Multiparticle <https://aip.scitation.org/doi/full/10.1063/1.2745293>`__ move (Rigid-body displacement or rotation of all molecules)
 - Regrowth using `coupled-decoupled configurational-bias <https://pubs.acs.org/doi/abs/10.1021/jp984742e>`__
 - Crankshaft using combination of `crankshaft <https://aip.scitation.org/doi/abs/10.1063/1.438608>`_ and `coupled-decoupled configurational-bias <https://pubs.acs.org/doi/abs/10.1021/jp984742e>`__
 - Intra-box swap using `coupled-decoupled configurational-bias <https://pubs.acs.org/doi/abs/10.1021/jp984742e>`__
