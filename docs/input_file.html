@@ -69,6 +69,7 @@
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
@@ -144,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
@@ -1019,6 +1021,14 @@ Structure   1   ISB_T_270_k_merged.psf
 </pre></div>
 </div>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">MultiSimFolderName</span></code></dt><dd><p>The name of the folder to be created which contains output from the multisim.</p>
+<ul class="simple">
+<li><p>Value 1: String - Name of the folder to contain output</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MultiSimFolderName  outputFolderName
+</pre></div>
+</div>
+</dd>
 </dl>
 </div>
 <div class="section" id="system-settings-for-during-run-setup">
@@ -1057,7 +1067,29 @@ Pressure    5.76
 <ul class="simple">
 <li><p>Value 1: Double - Constant temperature of simulation in degrees Kelvin.</p></li>
 </ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#################################
+# SIMULATION CONDITION
+#################################
+Temperature   270.00
+</pre></div>
+</div>
+<p>(MPI-GOMC Only)</p>
+<ul class="simple">
+<li><p>Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#################################
+# SIMULATION CONDITION
+#################################
+Temperature   270.00    280.00    290.00    300.00
+</pre></div>
+</div>
 </dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC.</p>
+</div>
+<dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Rcut</span></code></dt><dd><p>Sets a specific radius that non-bonded interaction energy and force will be considered and calculated using defined potential function.</p>
 <ul class="simple">
 <li><p>Value 1: Double - The distance to truncate the Lennard-Jones potential at.</p></li>
@@ -2034,7 +2066,7 @@ OutSurfaceTention false false
     </p>
     <p>
         &copy; Copyright 2019, GOMC.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.<br/>
     </p>
   </div>
 </footer>

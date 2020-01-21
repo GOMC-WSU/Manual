@@ -820,6 +820,16 @@ In this section, input file names are listed. In addition, if you want to restar
     Structure   0   ISB_T_270_k_merged.psf
     Structure   1   ISB_T_270_k_merged.psf
 
+``MultiSimFolderName``
+  The name of the folder to be created which contains output from the multisim.
+
+  - Value 1: String - Name of the folder to contain output
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
@@ -857,6 +867,26 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
 
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00 
+
+  (MPI-GOMC Only)
+  
+  - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
+  
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00    280.00    290.00    300.00 
+
+.. Note:: To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC.
+  
 ``Rcut``
   Sets a specific radius that non-bonded interaction energy and force will be considered and calculated using defined potential function.
 

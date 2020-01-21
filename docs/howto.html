@@ -69,6 +69,7 @@
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
@@ -144,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
@@ -188,6 +190,7 @@
 <li><a class="reference internal" href="#process-gomc-free-energy-outputs">Process GOMC Free Energy Outputs</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 </ul>
@@ -518,6 +521,10 @@ Structure       1   dimethylether_NVT_merged.psf
 
 OutputName          dimethylether_NPT_GEMC
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of right now, restarting is not supported for Multi-Sim.</p>
 </div>
 </div>
 </div>
@@ -902,6 +909,57 @@ $ sudo python setup.py install
 </ol>
 </div>
 </div>
+<div class="section" id="run-a-multi-sim">
+<h2>Run a Multi-Sim<a class="headerlink" href="#run-a-multi-sim" title="Permalink to this headline">¶</a></h2>
+<p>GOMC can automatically generate independent simulations with varying temperatures from one input file.
+This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode,
+and a couple of parameters must be added to the conf file.</p>
+<p>To compile in MPI mode, navigate to the GOMC/ directory and issue the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod u+x metamakeMPI.sh
+$ ./metamakeMPI.sh
+</pre></div>
+</div>
+<p>Then once the compilation is complete, set up the conf file as you would for a standard GOMC simulation.</p>
+<p>Finally, enter more than one value for <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> separated by a tab or space.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#################################
+# SIMULATION CONDITION
+#################################
+Temperature   270.00    280.00    290.00    300.00
+</pre></div>
+</div>
+</div></blockquote>
+<p>A folder will be created for the output of each simulation, and the name will be generated from the temperatures you choose.
+A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.
+You may elect to choose the name of the folder in which all the sub-folders for each replica are contained.
+Enter this name as a string following the <code class="docutils literal notranslate"><span class="pre">MultiSimFolderName</span></code> parameter.  If you don’t provide this parameter, the default “MultiSimFolderName” will be used.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MultiSimFolderName  outputFolderName
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To perform a multisim, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed.  To perform a standard simulation, use standard GOMC.</p>
+</div>
+<p>The rest of the conf file should be similar to how you would set up a standard GOMC simulation.</p>
+<p>To initiate the multi-sim, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n <span class="c1">#ofsimulations GOMC_xxx_yyyy +p&lt;#ofthreads&gt;(optional) conffile</span>
+</pre></div>
+</div>
+<p>The number of MPI processes must equal the number of simulations you wish to run.  Each will by default be assigned one openMP thread; however, if you have leftover processors, you may assign them as openMP threads.
+There must be an equal amount of openMP threads assigned to each process.</p>
+<p>A formula to determine how many threads to use is as follows:</p>
+<div class="math notranslate nohighlight">
+\[OpenMP Threads = floor[(Number Of Processors Available - Number Of MPI Processes) / Number Of MPI Processes]\]</div>
+<p>Floor[ ] - Rounds down a real number to the nearest integer.</p>
+<p>For example, if I have 7 processors and I wanted to run 2 simulations in my multi-sim.</p>
+<div class="math notranslate nohighlight">
+\[OpenMP Threads= floor[(7 - 2) / 2] = floor[2.5] = 2\]</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n <span class="m">2</span> ./GOMC_CPU_GEMC +p2 in.conf
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -924,7 +982,7 @@ $ sudo python setup.py install
     </p>
     <p>
         &copy; Copyright 2019, GOMC.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.<br/>
     </p>
   </div>
 </footer>
