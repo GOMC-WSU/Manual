@@ -656,6 +656,11 @@ In this section, input file names are listed. In addition, if you want to restar
 
   - Value 1: Boolean - True if restart, false otherwise.
 
+``ExpertMode``
+  Determines whether to perform error checking of move selection to ensure correct ensemble is sampled.  This allows the user to run a simulation with no volume moves in NPT, NPT-GEMC; no molecule transfers in GCMC, GEMC.
+
+  - Value 1: Boolean - True if enable expert mode; false otherwise.
+
 ``Checkpoint``
   Determines whether to restart the simulation from checkpoint file or not. Restarting the simulation with would result in
   an identitcal outcome, as if previous simulation was continued.  This is required for hybrid Monte-Carlo Molecular Dyanamics in open-ensembles (GCMC/GEMC) to concatenate trajectory files since the molecular transfers rearranges the order of the molecules.  Checkpointing will ensure the molecules are loaded in the same order each cycle.
@@ -1211,6 +1216,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   
   - Value 1: Ulong - Total run steps
 
+  .. Note:: RunSteps is a delta.
   .. important:: Seting the ``RunSteps`` to zero, and activating ``Restart`` simulation, will recalculate the energy of stored simulation's snapshots.
 
 ``EqSteps``
@@ -1218,12 +1224,20 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   - Value 1: Ulong - Equilibration steps
 
+  .. Note:: EqSteps is not a delta.  If restarting a simulation with a start step greater than EqSteps, no equilibration is performed.
   .. note:: In GCMC simulation, the ``Histogram`` files will be outputed at ``EqSteps``.
 
 ``AdjSteps``
   Sets the number of steps per adjustment of the parameter associated with each move (e.g. maximum translate distance, maximum rotation, maximum volume exchange, etc.)
   
   - Value 1: Ulong - Number of steps per move adjustment
+
+``InitStep``
+  Sets the first step of the simulation.
+  
+  - Value 1: Ulong - Number of first step of simulation.
+
+  .. Note::  Hybrid Monte-Carlo Molecular Dynamics (py-MCMD) requires resetting start step to 0 for combination of NAMD and GOMC data.
 
     .. code-block:: text
 
@@ -1233,6 +1247,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
       RunSteps    25000000
       EqSteps     5000000
       AdjSteps    1000
+      InitStep    0
 
 ``ChemPot``
   For Grand Canonical (GC) ensemble runs only: Chemical potential at which simulation is run.
@@ -1287,6 +1302,13 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   .. note:: The default value for ``IntraSwapFreq`` is 0.000
 
+``IntraTargetedSwapFreq``
+  Fractional percentage at which molecule will be removed from a box and inserted into a subvolume in the same box using coupled-decoupled configurational-bias algorithm.
+
+  - Value 1: Double - % Intra molecule swap
+
+  .. note:: The default value for ``IntraTargetedSwapFreq`` is 0.000
+
 ``RegrowthFreq``
   Fractional percentage at which part of the molecule will be deleted and then regrown using coupled-decoupled configurational-bias algorithm.
 
@@ -1309,6 +1331,53 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   - Value 1: Double - % Multiparticle
 
   .. note:: The default value for ``MultiParticleFreq`` is 0.000
+
+``MultiParticleBrownianFreq``
+  Fractional percentage at which multi-particle brownian move will occur. In this move, all molecules in the selected simulation box will be rigidly rotated or displaced 
+  simultaneously, along the calculated torque or force, respectively. 
+
+  - Value 1: Double - % Multiparticle
+
+  .. note:: The default value for ``MultiParticleBrownianFreq`` is 0.000
+
+``NeMTMCFreq``
+  Fractional percentage at which non-equilibrium molecule transfer move will occur. In this move, a molecule is gradually transferred from the selected simulation box to the destination box, with the multi-particle move or multi-particle brownian move used to relax the system.
+
+  - Value 1: Double - % Non-equilibrium molecule transfer
+
+  .. note:: The default value for ``NeMTMCFreq`` is 0.000
+  .. note:: The number of RelaxingSteps per NeMTMC move must be defined.
+  .. note:: Either MultiParticleRelaxing or MultiParticleBrownianRelaxing must be enabled if NeMTMC move is to be used.
+  .. note:: ScalePower, ScaleAlpha, MinSigma, ScaleCoulomb parameters discussed in Free Energy section are used by NeMTMC moves.
+
+``RelaxingSteps``
+  Sets the total number of relaxing steps to run (one MP or BMP is performed for each step) to relax the system.
+  
+  - Value 1: Ulong - Total relaxing steps per NeMTMC move
+
+  .. Note:: 
+
+``MultiParticleRelaxing``
+  Relax NeMTMC using force-biased Monte Carlo algorithm.
+
+  - Value 1: Boolean
+
+  .. note:: MultiParticleFreq must be non-zero if NeMTMC with MultiParticleRelaxing is to be used.
+
+``MultiParticleBrownianRelaxing``
+  Relax NeMTMC using brownian motion.
+
+  - Value 1: Boolean
+
+  .. note:: MultiParticleBrownianFreq must be non-zero if NeMTMC with MultiParticleBrownianRelaxing is to be used.
+
+``SampleConfFreq``
+  Intra-Swap/Regrowth Frequency in NeMTMC Relaxing Steps
+
+  - Value 1: Double
+
+``LambdaVDWLimit``
+  Lambda VDW limit for Intra-Swap move in NeMTMC Relaxing Steps
 
 ``IntraMEMC-1Freq``
   Fractional percentage at which specified number of small molecule kind will be exchanged with a specified large molecule kind in defined sub-volume within same simulation box.
@@ -1375,6 +1444,11 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   For Gibbs and Grand Canonical (GC) ensemble runs only: Fractional percentage at which molecule swap move will occur using coupled-decoupled configurational-bias.
 
   - Value 1: Double - % Molecule swaps
+
+``TargetedSwapFreq``
+  For Gibbs and Grand Canonical (GC) ensemble runs only: Fractional percentage at which targeted molecule swap move will occur using coupled-decoupled configurational-bias in the sub-volumes specified.
+
+  - Value 1: Double - % Molecule targeted swaps
 
 ``VolFreq``
   For isobaric-isothermal ensemble and Gibbs ensemble runs only: Fractional percentage at which molecule will be removed from one box and inserted into the other box using configurational bias algorithm.
@@ -1493,6 +1567,74 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
   ExchangeSmallKind   C1P
   LargeKindBackBone   Xe Xe
   SmallKindBackBone   C1 C1
+
+
+``SubVolumeBox``
+Define which box the dynamic subvolume occupies.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Integer - Sets box number (first box is box '0'). 
+
+``SubVolumeCenter``
+Define which box the dynamic subvolume occupies.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Double - x value of SubVolumeCenter :math:`Å`.
+  - Value 3: Double - y value of SubVolumeCenter :math:`Å`.
+  - Value 4: Double - z value of SubVolumeCenter :math:`Å`.
+
+``SubVolumePBC``
+Define which dimensions periodic box wrapping is applied in the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - X (optional)
+  - Value 3: String - Y (optional)
+  - Value 4: String - Z (optional)
+
+``SubVolumeCenterList``
+Define the center of the subvolume by defining the atoms to use for the geometric mean calculation.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Integer Range - Atom indices used to calculate geometric center of subvolume.
+
+``SubVolumeDim``
+Define the dimensions of the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Double - x value of SubVolumeDim :math:`Å`.
+  - Value 3: Double - y value of SubVolumeDim :math:`Å`.
+  - Value 4: Double - z value of SubVolumeDim :math:`Å`.
+
+``SubVolumeResidueKind``
+Define which residue kinds can be inserted or deleted from the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - Residue kind inserted/deleted from subvolume
+  - Value .: String - Residue kind inserted/deleted from subvolume
+  - Value .: String - Residue kind inserted/deleted from subvolume
+  - Value N: String - Residue kind inserted/deleted from subvolume
+
+``SubVolumeRigidSwap``
+Define whether molecules are held rigid or the geometry is sampled per the coupled-decoupled CBMC scheme.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Boolean - If true the molecule is held rigid.  If false, geometry is sampled when inserting in the subvolume.
+
+``SubVolumeChemPot``
+Define the chemical potential of a residue kind in the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - Residue kind
+  - Value 3: Double - Chemical potential
+
+``SubVolumeFugacity``
+Define the fugacity of a residue kind in the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - Residue kind
+  - Value 3: Double - Chemical potential
+
+.. code-block:: text
+
+  ######################################################################
+  # TARGETED SWAP (Dynamic subVolume)
+  ######################################################################
+  SubVolumeBox     		1       0         
+  SubVolumeCenterList  		1   	1-402
+  SubVolumeDim     		1       35 35 5
+  SubVolumeResidueKind 		1   	TIP3       
+  SubVolumeRigidSwap   		1   	false 
 
 
 ``useConstantArea``
