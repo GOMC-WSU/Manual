@@ -1303,7 +1303,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   .. note:: The default value for ``IntraSwapFreq`` is 0.000
 
 ``IntraTargetedSwapFreq``
-  Fractional percentage at which molecule will be removed from a box and inserted into a subvolume in the same box using coupled-decoupled configurational-bias algorithm.
+  Fractional percentage at which molecule will be removed from the box and inserted into a subvolume within the same box, or deleted from the subvolume and inserted into the same box using coupled-decoupled configurational-bias algorithm.
 
   - Value 1: Double - % Intra molecule swap
 
@@ -1575,7 +1575,7 @@ Define which box the dynamic subvolume occupies.
   - Value 2: Integer - Sets box number (first box is box '0'). 
 
 ``SubVolumeCenter``
-Define which box the dynamic subvolume occupies.
+Define the center of the dynamic subvolume.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Double - x value of SubVolumeCenter :math:`Å`.
   - Value 3: Double - y value of SubVolumeCenter :math:`Å`.
@@ -1584,9 +1584,7 @@ Define which box the dynamic subvolume occupies.
 ``SubVolumePBC``
 Define which dimensions periodic box wrapping is applied in the subvolume.
   - Value 1: Integer - Sub-volume id.
-  - Value 2: String - X (optional)
-  - Value 3: String - Y (optional)
-  - Value 4: String - Z (optional)
+  - Value 2: String - X, Y, Z, XY, XZ, YZ, XYZ (Axes should have no spaced between them)
 
 ``SubVolumeCenterList``
 Define the center of the subvolume by defining the atoms to use for the geometric mean calculation.
@@ -1614,13 +1612,13 @@ Define whether molecules are held rigid or the geometry is sampled per the coupl
   - Value 2: Boolean - If true the molecule is held rigid.  If false, geometry is sampled when inserting in the subvolume.
 
 ``SubVolumeChemPot``
-Define the chemical potential of a residue kind in the subvolume.
+Define the chemical potential of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
   - Value 1: Integer - Sub-volume id.
   - Value 2: String - Residue kind
   - Value 3: Double - Chemical potential
 
 ``SubVolumeFugacity``
-Define the fugacity of a residue kind in the subvolume.
+Define the fugacity of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
   - Value 1: Integer - Sub-volume id.
   - Value 2: String - Residue kind
   - Value 3: Double - Chemical potential

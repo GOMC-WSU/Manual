@@ -23,5 +23,6 @@ Welcome to GOMC's documentation!
    electrostatic
    long_range_correction
    free_energy
+   hybrid_MC_MD
    howto
    help
