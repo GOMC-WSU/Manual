@@ -8,6 +8,19 @@ In order to run simulation in GOMC, the following files need to be provided:
 - Parameter file
 - Input file "NAME.conf" (proprietary control file)
 
+In order to restart a simulation in GOMC from exactly where it left off, the following files also need to be provided:
+
+- XSC file(s)
+- COOR file(s)
+- CHK file
+
+In order to run a hybrid MCMD simulation, the following files also need to be provided:
+
+- XSC file(s)
+- COOR file(s)
+- VEL files(s)
+- CHK file
+
 PDB File
 --------
 GOMC requires only one PDB file for NVT and NPT ensembles. However, GOMC requires two PDB files for GEMC and GCMC ensembles.
@@ -961,6 +974,24 @@ In this section, input file names are listed. In addition, if you want to restar
   .. code-block:: text
 
     MultiSimFolderName  outputFolderName
+
+XSC (eXtended System Configuration file) File
+--------
+GOMC allows the box dimensions to be defined in one of three ways:
+
+- In the control file
+- In the header of restart PDB file
+- In a binary XSC file
+
+The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.
+
+COOR (binary coordinates) File
+--------
+GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.
+
+VEL (binary velocity) File
+--------
+GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.
 
 
 System Settings for During Run Setup
