@@ -65,18 +65,31 @@ To define two control volumes forming a gradient from the left to the right of t
 
   .. code-block:: text
 
-SubVolumeBox     		0       0         
-SubVolumeDim     		0       left_one_fifth y_dim_box_0 z_dim_box_0
-SubVolumeResidueKind 		0   	DIOX       
-SubVolumeRigidSwap   		0   	true 
-SubVolumeCenter			0	left_center y_origin_box z_origin_box
-SubVolumePBC			0	XYZ
-SubVolumeChemPot		0	DIOX	-2000
+  SubVolumeBox     		0       0         
 
-SubVolumeBox     		1       0         
-SubVolumeDim     		1       right_one_fifth  y_dim_box_0 z_dim_box_0
-SubVolumeResidueKind 		1   	DIOX       
-SubVolumeRigidSwap   		1   	true 
-SubVolumeCenter			1	right_center y_origin_box z_origin_box
-SubVolumePBC			1	XYZ
-SubVolumeChemPot		1	DIOX	-4000
+  SubVolumeDim     		0       left_one_fifth y_dim_box_0 z_dim_box_0
+
+  SubVolumeResidueKind 		0   	DIOX       
+
+  SubVolumeRigidSwap   		0   	true 
+
+  SubVolumeCenter		0	left_center y_origin_box z_origin_box
+
+  SubVolumePBC			0	XYZ
+
+  SubVolumeChemPot		0	DIOX	-2000
+
+
+  SubVolumeBox     		1       0         
+
+  SubVolumeDim     		1       right_one_fifth  y_dim_box_0 z_dim_box_0
+
+  SubVolumeResidueKind 		1   	DIOX       
+
+  SubVolumeRigidSwap   		1   	true 
+
+  SubVolumeCenter		1	right_center y_origin_box z_origin_box
+
+  SubVolumePBC			1	XYZ
+
+  SubVolumeChemPot		1	DIOX	-4000
