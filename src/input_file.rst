@@ -976,7 +976,7 @@ In this section, input file names are listed. In addition, if you want to restar
     MultiSimFolderName  outputFolderName
 
 XSC (eXtended System Configuration file) File
---------
+-------------------------------------------------
 GOMC allows the box dimensions to be defined in one of three ways:
 
 - In the control file
@@ -986,14 +986,30 @@ GOMC allows the box dimensions to be defined in one of three ways:
 The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.
 
 COOR (binary coordinates) File
---------
+------------------------------------
 GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.
 
 VEL (binary velocity) File
---------
+------------------------------------
 GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.
 
+CHK (checkpoint) File
+-------------------------------------------------
+GOMC contains several variables which, if not accounted for, will produce different outputs even if the initial conditions are exactly the same.  These variables are contained in the checkpoint file, and allow the user to pick up a GOMC simulation where it left off without altering the course of the simulation.  Also, the checkpoint file is essential for MCMD as molecules are treated as distinguishable in molecular dynamics due to the fact that MD is a continuous trajectory through time.  The checkpoint file contains the original atom order of the molecules, and coordinates and velocities are loaded into this order to ensure the trajectories are consistently arranged.
 
+Checkpoint file contents:
+
+  - Last simulation step that saved into checkpoint file (Start step can be overriden).
+  - True number of simulation steps that have been run.
+  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
+  - Number of Monte Carlo move trial and acceptance.
+  - Random number sequence.
+  - Molecule lookup object.
+  - Original pdb atoms object to reload new positions into.
+  - Original molecule setup object generated from parsing first PSF files.
+  - Accessory data for coordinating loading the restart coordinates into the original ordering.
+  - If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.
+  
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
@@ -1920,25 +1936,13 @@ This section contains all the values that control output in the control file. Fo
   - Simulation cell dimensions and angles.
 
   - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, and Volume move.
- 
-  Checkpoint file contents:
 
-  - Last simulation step that saved into checkpoint file (Start step can be overriden).
-  - True number of simulation steps that have been run.
-  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
-  - Number of Monte Carlo move trial and acceptance.
-  - Random number sequence.
-  - Molecule lookup object.
-  - Original pdb atoms object to reload new positions into.
-  - Original molecule setup object generated from parsing first PSF files.
-  - Accessory data for coordinating loading the restart coordinates into the original ordering.
-  - If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.
-  
 .. note:: 
-    - The restart PDB/PSF/COOR/VEL files contains only ATOM that exist in each boxes at specified steps.  This allows the user to load a box into NAMD and run molecular dynamics in Hybrid Monte-Carlo Molecular Dynamics (py-MCMD).
+    - The restart PDB/PSF/COOR/VEL files contains only ATOM that exist in each boxes at specified steps.  These box restart files allows the user to load a box into NAMD and run molecular dynamics in Hybrid Monte-Carlo Molecular Dynamics (py-MCMD).
+    - When restarting the GOMC simulation from two restart files, the order of the molecules in the trajectory may differ preventing trajectory concatenation, unless the CHK file is loaded.
     - Only restart files must be used to begin a GOMC simulation with ``Restart`` simulation active.  The merged psf is NOT a restart file.
     - CoordinatesFreq must be a common multiple of RestartFreq or vice versa.
-
+ 
 ``ConsoleFreq``
   Controls the output to STDIO ("the console") of messages such as acceptance statistics, and run timing info. In addition, instantaneously-selected thermodynamic properties will be output to this file.
 
