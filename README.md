@@ -32,6 +32,7 @@
 
 4. To build PDF first execute the following command in your terminal:
    ```bash
+    $ cd ..
     $ sphinx-build  -b latex  src  build
    ```
    Then run:
