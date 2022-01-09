@@ -882,7 +882,7 @@ For example, if I have 7 processors and I wanted to run 2 simulations in my mult
     $ mpiexec -n 2 ./GOMC_CPU_GEMC +p2 in.conf 
 
 Run a Hybrid Monte Carlo-Molecular Dynamics Sim
----------------
+------------------------------------------------------------
 
 GOMC and NAMD produce compatible input/output files, which allow the system to alternate between Monte Carlo and Molecular Dynamics.
 The py-MCMD script automates the directory generation, running of GOMC and NAMD, and concatenation of the short alternating runs.

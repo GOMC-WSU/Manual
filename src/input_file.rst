@@ -1355,8 +1355,6 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   
   - Value 1: Ulong - Total relaxing steps per NeMTMC move
 
-  .. Note:: 
-
 ``MultiParticleRelaxing``
   Relax NeMTMC using force-biased Monte Carlo algorithm.
 
@@ -1570,36 +1568,36 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
 
 
 ``SubVolumeBox``
-Define which box the dynamic subvolume occupies.
+  Define which box the dynamic subvolume occupies.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Integer - Sets box number (first box is box '0'). 
 
 ``SubVolumeCenter``
-Define the center of the dynamic subvolume.
+  Define the center of the dynamic subvolume.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Double - x value of SubVolumeCenter :math:`Å`.
   - Value 3: Double - y value of SubVolumeCenter :math:`Å`.
   - Value 4: Double - z value of SubVolumeCenter :math:`Å`.
 
 ``SubVolumePBC``
-Define which dimensions periodic box wrapping is applied in the subvolume.
+  Define which dimensions periodic box wrapping is applied in the subvolume.
   - Value 1: Integer - Sub-volume id.
   - Value 2: String - X, Y, Z, XY, XZ, YZ, XYZ (Axes should have no spaced between them)
 
 ``SubVolumeCenterList``
-Define the center of the subvolume by defining the atoms to use for the geometric mean calculation.
+  Define the center of the subvolume by defining the atoms to use for the geometric mean calculation.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Integer Range - Atom indices used to calculate geometric center of subvolume.
 
 ``SubVolumeDim``
-Define the dimensions of the subvolume.
+  Define the dimensions of the subvolume.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Double - x value of SubVolumeDim :math:`Å`.
   - Value 3: Double - y value of SubVolumeDim :math:`Å`.
   - Value 4: Double - z value of SubVolumeDim :math:`Å`.
 
 ``SubVolumeResidueKind``
-Define which residue kinds can be inserted or deleted from the subvolume.
+  Define which residue kinds can be inserted or deleted from the subvolume.
   - Value 1: Integer - Sub-volume id.
   - Value 2: String - Residue kind inserted/deleted from subvolume
   - Value .: String - Residue kind inserted/deleted from subvolume
@@ -1607,18 +1605,18 @@ Define which residue kinds can be inserted or deleted from the subvolume.
   - Value N: String - Residue kind inserted/deleted from subvolume
 
 ``SubVolumeRigidSwap``
-Define whether molecules are held rigid or the geometry is sampled per the coupled-decoupled CBMC scheme.
+  Define whether molecules are held rigid or the geometry is sampled per the coupled-decoupled CBMC scheme.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Boolean - If true the molecule is held rigid.  If false, geometry is sampled when inserting in the subvolume.
 
 ``SubVolumeChemPot``
-Define the chemical potential of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
+  Define the chemical potential of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
   - Value 1: Integer - Sub-volume id.
   - Value 2: String - Residue kind
   - Value 3: Double - Chemical potential
 
 ``SubVolumeFugacity``
-Define the fugacity of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
+  Define the fugacity of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
   - Value 1: Integer - Sub-volume id.
   - Value 2: String - Residue kind
   - Value 3: Double - Chemical potential
@@ -1877,28 +1875,22 @@ This section contains all the values that control output in the control file. Fo
 ``RestartFreq``
   Controls the output of the last state of simulation at a specified step in 
 
-	PDB files (coordinates)
-	PSF files (structure)
-	XSC files (box dimensions)
-	COOR files (binary coordinates)
-	CHK files (checkpoint)
-	If provided as input:
-		VEL files (velocity)
+  - PDB files (coordinates)
+  - PSF files (structure)
+  - XSC files (box dimensions)
+  - COOR files (binary coordinates)
+  - CHK files (checkpoint)
+  - If provided as input: VEL files (velocity)
 
   ``OutputName``\_BOX_n_restart.*, where n defines the box number. Header part of this file contains 
   important information and will be needed to restart the simulation:
 
-
   Restart PDB files, one file for NVT or NPT and two files for Gibbs ensemble or GC ensemble, will be outputed with the following information.
   - Simulation cell dimensions and angles.
+
   - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, and Volume move.
  
-  .. note:: 
-    - The restart PDB/PSF/COOR/VEL files contains only ATOM that exist in each boxes at specified steps.  This allows the user to load a box into NAMD and run molecular dynamics in Hybrid Monte-Carlo Molecular Dynamics (py-MCMD).
-    - Only restart files must be used to begin a GOMC simulation with ``Restart`` simulation active.  The merged psf is NOT a restart file.
-    - CoordinatesFreq must be a common multiple of RestartFreq or vice versa.
-
-Checkpoint file contents:
+  Checkpoint file contents:
 
   - Last simulation step that saved into checkpoint file (Start step can be overriden).
   - True number of simulation steps that have been run.
@@ -1909,8 +1901,12 @@ Checkpoint file contents:
   - Original pdb atoms object to reload new positions into.
   - Original molecule setup object generated from parsing first PSF files.
   - Accessory data for coordinating loading the restart coordinates into the original ordering.
-  If built with MPI and parallel tempering was enabled:
-  - Random number sequence for parallel tempering.
+  - If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.
+  
+.. note:: 
+    - The restart PDB/PSF/COOR/VEL files contains only ATOM that exist in each boxes at specified steps.  This allows the user to load a box into NAMD and run molecular dynamics in Hybrid Monte-Carlo Molecular Dynamics (py-MCMD).
+    - Only restart files must be used to begin a GOMC simulation with ``Restart`` simulation active.  The merged psf is NOT a restart file.
+    - CoordinatesFreq must be a common multiple of RestartFreq or vice versa.
 
 ``ConsoleFreq``
   Controls the output to STDIO ("the console") of messages such as acceptance statistics, and run timing info. In addition, instantaneously-selected thermodynamic properties will be output to this file.

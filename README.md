@@ -22,7 +22,12 @@
    $ mv _static static
    ```
    Then for each file inside docs, replace the same strings. `_images`, `_sources`, and `_static` to `images`, `sources`, `static`.
+   $ find . -name \* -exec sed -i "s/_images/images/g" {} \;
+   $ find . -name \* -exec sed -i "s/_sources/sources/g" {} \;
+   $ find . -name \* -exec sed -i "s/_static/static/g" {} \;
    
+
+
 4. To build PDF first execute the following command in your terminal:
    ```bash
     $ sphinx-build  -b latex  src  build
