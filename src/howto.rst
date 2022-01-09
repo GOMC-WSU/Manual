@@ -273,26 +273,30 @@ Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from 
 
     OutputName          dimethylether_NPT_GEMC
 
-Restart the simulation with ``RestartCheckpoint``
+Restart the simulation with ``Checkpoint``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with ``RestartCheckpoint`` would result in an 
+If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with ``Checkpoint`` would result in an 
 identitcal outcome, as if previous simulation was continued.
-Make sure that in the previous simulation config file, the flag ``RestartFreq`` and ``CheckpointFreq`` were activated and the restart PDB file/files (``OutputName``\_BOX_0_restart.pdb)
-, merged PSF file (``OutputName``\_merged.psf), and checkpoint file (``checkpoint.dat``) were printed. 
+Make sure that in the previous simulation config file, the flag ``RestartFreq`` was activated and the restart PDB file/files (``OutputName``\_BOX_N_restart.pdb)
+, restart PSF file/files (``OutputName``\_BOX_N_restart.psf), binary coodinate file/files (``OutputName``\_BOX_N_restart.coor), XSC file/files (``OutputName``\_BOX_N_restart.xsc) , and checkpoint file (``OutputName``\_restart.chk) were printed. 
 
 In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:
 
-1.  Set the ``RestartCheckpoint`` to True.
+1.  Set the ``Checkpoint`` to True and provide the Checkpoint file.
 
-2.  Use the dumped restart PDB file to set the ``Coordinates`` for each box.
+2.  Use the dumped restart PDB files to set the ``Coordinates`` for each box.
 
-3.  Use the dumped merged PSF file to set the ``Structure`` for both boxes.
+3.  Use the dumped restart PSF files to set the ``Structure`` for both boxes.
 
-4.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
-    the cell basis information with the cell basis data from restart PDB file/files.
+4.  Use the dumped restart xsc files to set the ``extendedSystem`` for both boxes.
 
-5.  Use the different ``OutputName`` to avoid overwriting the output files.
+5.  Use the dumped restart coor files to set the ``binCoordinates`` for both boxes.
+
+6.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
+    the cell basis information with the cell basis data from XSC file/files.
+
+7.  Use the different ``OutputName`` to avoid overwriting the output files.
 
 
 Here is the example of restarting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:
@@ -302,11 +306,15 @@ Here is the example of restarting the NPT simulation of dimethyl ether, from equ
     ########################################################
     # Parameters need to be modified
     ########################################################
-    RestartCheckpoint   true
+    Checkpoint   true   dimethylether_NVT_restart.chk
 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
+    Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+    extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+
+    binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
@@ -322,13 +330,19 @@ Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, fro
     ########################################################
     # Parameters need to be modified
     ########################################################
-    RestartCheckpoint   true
+    Checkpoint   true   dimethylether_NVT_restart.chk
 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
     Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
-    Structure       1   dimethylether_NVT_merged.psf
+    Structure     0   dimethylether_NVT_BOX_0_restart.psf
+    Structure     1   dimethylether_NVT_BOX_1_restart.psf
+
+    extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+    extendedSystem   1   dimethylether_NVT_BOX_1_restart.xsc
+
+    binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
+    binCoordinates   1   dimethylether_NVT_BOX_1_restart.coor
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
