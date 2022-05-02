@@ -93,3 +93,24 @@ To define two control volumes forming a gradient from the left to the right of t
     SubVolumePBC		1	XYZ
 
     SubVolumeChemPot		1	DIOX	-4000
+
+Run a Hybrid Monte Carlo-Molecular Dynamics Sim
+------------------------------------------------------------
+
+GOMC and NAMD produce compatible input/output files, which allow the system to alternate between Monte Carlo and Molecular Dynamics.
+The py-MCMD script automates the directory generation, running of GOMC and NAMD, and concatenation of the short alternating runs.
+Simulating the Grand Canonical ensemble in GOMC with only molecule transfers, allows the MD simulations to continue where they left off, with a varying number of molecules.
+
+Refer to the section on Hybrid Monte Carlo-Molecular Dynamics in the manual and attached links.
+
+Link to documentation: https://py-mcmd.readthedocs.io/en/latest/
+
+Link to Github Repository: https://github.com/GOMC-WSU/py-MCMD
+
+.. code-block:: bash
+
+    $ git clone https://github.com/GOMC-WSU/py-MCMD.git
+    $ cd py-MCMD
+    $ python run_NAMD_GOMC.py -f user_input_NAMD_GOMC.json
+    $ python combine_data_NAMD_GOMC.py -f user_input_combine_data_NAMD_GOMC.json
+

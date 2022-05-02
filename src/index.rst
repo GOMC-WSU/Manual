@@ -11,6 +11,7 @@ Welcome to GOMC's documentation!
    :caption: Contents:
 
    overview
+   release_notes
    introduction
    software_requirements
    software_tools
