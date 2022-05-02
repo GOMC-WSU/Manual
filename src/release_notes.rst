@@ -1,11 +1,11 @@
 Release 2.75 Notes
 ==================
 
-Certain changes have been made which differ from previous GOMC behavior.  New features have been added to assist users and developers in compiling, running, and analyzing, improve reproducability, increase the capacity of GOMC to simulate biological molecules, perform Hybrid Monte-Carlo/Molecular Dynamics simulations, and increase performance.  A non-comprehensive list is provided below:
+Certain changes have been made which differ from previous GOMC behavior.  New features have been added to assist users and developers in compiling, running, and analyzing, improve reproducability, increase the capacity of GOMC to simulate biological molecules, perform Hybrid Monte-Carlo/Molecular Dynamics simulations, and increase performance.  A non-comprehensive list is provided below.
 
 Differing behavior:
 
-Previous GOMC versions used REMARKS in the PDB header to save box dimensions and random number generator state.  While this is still currently partially supported, it is in the process of being deprecated and Checkpointing should be used.  Secondly, restarting GOMC should no longer be performed using the merged files containing both boxes (\*.BOX_0.pdb, \*.merged.psf) which are produced solely for visualization.  Furthermore, The user should now use the box-specific restart files (pdb, psf, xsc, coor, chk) as input.  Finally, the pdb trajectory files (\*.BOX_0.pdb) are in the process of being deprecated and replaced by binary trajectory files (\*.BOX_0.dcd), though both are currently available.  
+    Previous GOMC versions used REMARKS in the PDB header to save box dimensions and random number generator state.  While this is still currently partially supported, it is in the process of being deprecated and checkpointing should be used.  Secondly, restarting GOMC should no longer be performed using the merged files containing both boxes (\*.BOX_0.pdb, \*.merged.psf) which are produced solely for visualization.  Furthermore, The user should now use the box-specific restart files (pdb, psf, xsc, coor, chk) as input.  Finally, the pdb trajectory files (\*.BOX_0.pdb) are in the process of being deprecated and replaced by binary trajectory files (\*.BOX_0.dcd), though both are currently available.  
 
 Updated Manual Sections:
 
