@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = u'GOMC'
-copyright = u'2019, GOMC'
+copyright = u'2022, GOMC'
 author = u'GOMC Development Groups'
 
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u'2.80'
+release = u'2.75'
 
 
 # -- General configuration ---------------------------------------------------
