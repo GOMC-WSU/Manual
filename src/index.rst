@@ -16,6 +16,7 @@ Welcome to GOMC's documentation!
    software_tools
    download
    compiling
+   gpu_acceleration
    input_file
    output_file
    putting_all_together
