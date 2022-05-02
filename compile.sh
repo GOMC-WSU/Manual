@@ -12,3 +12,4 @@ cd ..
 sphinx-build  -b latex  src  build
 cd build
 make
+mv GOMC.pdf ..
