@@ -14,10 +14,15 @@ Updated Manual Sections:
     GOMC supported Monte Carlo moves
 
         Force-biased Multiparticle move (Rigid-body displacement or rotation of all molecules)
+
         Brownian Motion Multiparticle move (Rigid-body displacement or rotation of all molecule
+
         Non-Equilibrium Molecule Transfer
+
         Inter-box subvolume targeted swap
+
         Intra-box subvolume targeted swap
+
 
     GOMC supported molecules
 
