@@ -59,7 +59,7 @@ Box origin must be centered at [box length/2, box length/2, box length/2]
 Dynamic Subvolumes for Dual Control Volume Molecular Dynamics
 -------------------------------------------------------------------
 
-To define a subvolume in the simulation, use the subvolume keywords to choose an subvolume id, center, either the geometric center of a list of atoms or absolute cartesian coordinate, and dimensions.  The residues that can be inserted/deleted in the subvolume, custom chemical potential, and periodicity of the subvolume may also be specified.  Fugacity can be replaced for chemical potential.  A chemical gradient can be established in the simulation by defining two or more subvolume with different chemical potentials of a given residue.  After the molecule is inserted/deleted within one subvolume, it diffuses out and is inserted/deleted from the other at a different chemical potential, forming a gradient.
+To define a subvolume in the simulation, use the subvolume keywords to choose an subvolume id, center, either the geometric center of a list of atoms (dynamic) or absolute cartesian coordinate (static), and dimensions.  The residues that can be inserted/deleted in the subvolume, custom chemical potential, and periodicity of the subvolume may also be specified.  Fugacity can be replaced for chemical potential.  A chemical gradient can be established in the simulation by defining two or more subvolume with different chemical potentials of a given residue.  After the molecule is inserted/deleted within one subvolume, it can diffuse to the low concentration subvolume where it is deleted maintaining the concentration gradient via two (2) difference chemical potentials.
 
 To define two control volumes forming a gradient from the left to the right of the box
 
@@ -111,6 +111,8 @@ Link to Github Repository: https://github.com/GOMC-WSU/py-MCMD
 
     $ git clone https://github.com/GOMC-WSU/py-MCMD.git
     $ cd py-MCMD
+    ### Run hybrid simulation
     $ python run_NAMD_GOMC.py -f user_input_NAMD_GOMC.json
+    ### Combine alternating GOMC/NAMD cycles into two single GOMC and NAMD data and trajectories.
     $ python combine_data_NAMD_GOMC.py -f user_input_combine_data_NAMD_GOMC.json
 

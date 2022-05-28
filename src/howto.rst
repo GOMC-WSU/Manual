@@ -239,7 +239,7 @@ Here is the example of starting the NPT simulation of dimethyl ether, from equil
 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
+    Structure       0   dimethylether_NVT_BOX_0_restart.psf
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
@@ -260,8 +260,8 @@ Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
     Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
-    Structure       1   dimethylether_NVT_merged.psf
+    Structure       0   dimethylether_NVT_BOX_0_restart.psf
+    Structure       1   dimethylether_NVT_BOX_1_restart.psf
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00

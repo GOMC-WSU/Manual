@@ -5,7 +5,7 @@ GOMC generates four executable files for CPU code; ``GOMC_CPU_GEMC`` (Gibbs ense
 
 Each ensemble has a respective unit test executable ``GOMC_GEMC_Test`` (Gibbs ensemble), ``GOMC_NVT_Test`` (NVT ensemble), ``GOMC_NPT_Test`` (isobaric-isothermal ensemble), and ``GOMC_GCMC_Test`` (Grand canonical ensemble).  In case of installing CUDA Toolkit, GOMC will generate additional four unit test executables for GPU code; ``GOMC_GPU_GEMC_Test``, ``GOMC_GPU_NVT_Test``, ``GOMC_GPU NPT`_Test`, and ``GOMC_GPU_GCMC_Test``.
 
-This section guid users to compile GOMC in Linux or Windows.
+This section guides users to compile GOMC in Linux or Windows.
 
 Linux
 -----

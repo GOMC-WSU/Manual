@@ -11,7 +11,7 @@ http://www.ime.unicamp.br/~martinez/packmol
 
 .. Warning:: One of Packmol’s limitations is that it is unaware of topology; it treats each molecule or group of molecules as a rigid set of points. It is highly suggested to used the optimized structure of the molecule as the input file to packmol.
 
-.. Warning:: Another more serious limitation is that it is not aware of periodic boundary conditions (PBC). As a result, when using Packmol to pack PDBs for GOMC, it is recommended to pack to a box 1 Angstroms smaller than the simulation box size. This prevents hard overlaps over the periodic boundary.
+.. Warning:: Another more serious limitation is that it is not aware of periodic boundary conditions (PBC). As a result, when using Packmol to pack PDBs for GOMC, it is recommended to pack to a box 1-2 Angstroms smaller than the simulation box size. This prevents hard overlaps over the periodic boundary.
 
 VMD
 ---
@@ -61,7 +61,9 @@ Link to Youtube tutorials : https://www.youtube.com/playlist?list=PLdxD0z6HRx8Y9
 
 Link to signac documentation: https://signac.io/
 
-The Molecular Simulation Design Framework (MosDeF) is a GOMC-compatible software that allows these simulations to be transparent and reproducible and permits the easy generation of all the required files to run a GOMC simulation (the forcefield, coordinate, and topology files GOMC control file).  The MoSDeF software also lowers the entry barrier for new users, minimizes the expert knowledge traditionally required to set up a simulation, and streamlines this process for more experienced users.  MoSDeF is comprised of several conda packages (mBuild, foyer, and gmso), which are stand-alone packages; however, they are designed to all work seamlessly together, which is the case with MoSDeF-GOMC.  
+Link to MosDef documentation: https://mosdef.org/
+
+The Molecular Simulation Design Framework (MosDeF) is a GOMC-compatible software that allows these simulations to be transparent and reproducible and permits the easy generation of all the required files to run a GOMC simulation (the forcefield, coordinate, topology and GOMC control files).  This mosdef-gomc package is available via conda.  The MoSDeF software also lowers the entry barrier for new users, minimizes the expert knowledge traditionally required to set up a simulation, and streamlines this process for more experienced users.  MoSDeF is comprised of several conda packages (mBuild, foyer, and gmso), which are stand-alone packages; however, they are designed to all work seamlessly together, which is the case with MoSDeF-GOMC.  
 
 In general, molecules imported or built using mBuild,  packed into a simulation box(s) and passed into the charmm writer function with additional parameters as arguments.  The charmm writer then atom-types the simulation box's molecules using foyer, obtaining the molecular force field parameters.  The next step utilizes the charmm writer to output the forcefield files, PDB/PSF, and GOMC control files, all the files needed to run a GOMC simulation.  This MoSDeF-GOMC software is fully scriptable and compatible with Signac, allowing a fully automated and reproducible workflow. 
  

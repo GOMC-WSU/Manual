@@ -48,7 +48,7 @@ PDB contains four major parts; ``REMARK``, ``CRYST1``, ``ATOM``, and ``END``. He
 
   - **Max Displacement** (Å)
   - **Max Rotation** (Degree)
-  - **Max volume exchange** (:math:`Å^3`)
+  - **Max volume exchange** (:math:`\AA^3`)
   - **Monte Carlo Steps** (MC)
 
 
@@ -367,7 +367,7 @@ As seen above, the following are recognized, read and used:
     Oscillations about the equilibrium bond length
 
 - ``ANGLES``
-  - Describe the conformational lbehavior of an angle (:math:`\delta`) between three atoms, one of which is shared branch point to the other two. 
+  - Describe the conformational behavior of an angle (:math:`\delta`) between three atoms, one of which is shared branch point to the other two. 
   
   .. Note:: To fix any angle and ignore the related angle energy, set the :math:`K_\theta` to a large value i.e. "999999999999".
 
@@ -393,6 +393,8 @@ As seen above, the following are recognized, read and used:
   - This tag name only should be used if CHARMM force field is being used. This section allows in- teraction between two pairs of atoms to be modified, done by specifying two atom type names followed by minimum energy and minimum radius. In order to modify 1-4 interaction, a second minimum energy and minimum radius need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.
 
   .. Note:: Please pay attention that in this section we define minimum radius, not (minimum radius)/2 as it is defined in the NONBONDED section.
+
+  .. Note:: This does not modify the 1-4 electrostatic interactions.
 
   Currently, supported sections of the ``CHARMM`` compliant file include ``BONDS``, ``ANGLES``, ``DIHEDRALS``, ``NONBONDED``, ``NBFIX``. Other sections such as ``CMAP`` are not currently read or supported.
 
@@ -762,6 +764,9 @@ In this section, input file names are listed. In addition, if you want to restar
     #################################
     ParaTypeCHARMM    yes
     Parameters        ../../common/Par_TraPPE_Alkanes.inp
+    Parameters        ../../common/Par_TIP4P.inp
+
+  .. note:: More than one parameter file can be provided.
 
 ``Coordinates``
   Defines the PDB file names (coordinates) and location for each box in the system.
@@ -975,6 +980,18 @@ In this section, input file names are listed. In addition, if you want to restar
 
     MultiSimFolderName  outputFolderName
 
+
+Binary input file types
+-----------------------
+Binary representations of the system.
+   - XSC
+   - COOR
+   - VEL
+   - CHK
+   - "NAMD uses a trivial double-precision binary file format for coordinates, velocities, and forces. Due to its high precision this is the default output and restart format. VMD refers to these files as the \`\`namdbin\'\' format. The file consists of the atom count as a 32-bit integer followed by all three position or velocity components for each atom as 64-bit double-precision floating point, i.e., NXYZXYZXYZXYZ\.\.\. where N is a 4-byte int and X, Y, and Z are 8-byte doubles. If the number of atoms the file contains is known then the atom count can be used to determine endianness. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the binary file was written, and the utility program flipbinpdb is also provided to reformat these files if needed. Positions in NAMD binary files are stored in Å. Velocities in NAMD binary files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in NAMD binary files are stored in kcal/mol/Å."
+
+    - source : https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html
+
 XSC (eXtended System Configuration file) File
 -------------------------------------------------
 GOMC allows the box dimensions to be defined in one of three ways:
@@ -1001,7 +1018,7 @@ Checkpoint file contents:
 
   - Last simulation step that saved into checkpoint file (Start step can be overriden).
   - True number of simulation steps that have been run.
-  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
+  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`\AA^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
   - Number of Monte Carlo move trial and acceptance.
   - Random number sequence.
   - Molecule lookup object.
@@ -1118,7 +1135,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
       
     .. note:: The default value for ``Exclude`` is "1-4".
 
-    .. note:: In CHARMM force field, the 1-4 interaction needs to be considered. Choosing "``Exclude`` 1-3" will modify 1-4 interaction based on 1-4 parameters in parameter file. If a kind force field is used, where 1-4 interaction needs to be ignored, such as TraPPE, either "``Exclude`` 1-4" needs to be chosen or 1-4 parameter needs to be assigned to zero in the parameter file.
+    .. note:: In CHARMM force field, the 1-4 interaction needs to be considered. Choosing "``Exclude`` 1-3" will modify 1-4 interaction based on 1-4 parameters in parameter file. If a kind of force field is used, where 1-4 interaction needs to be ignored, such as TraPPE, either "``Exclude`` 1-4" needs to be chosen or 1-4 parameter needs to be assigned to zero in the parameter file.
 
 ``Potential``
   Defines the potential function type to calculate non-bonded interaction energy and force between atoms.
@@ -1615,12 +1632,12 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
 
 
 ``SubVolumeBox``
-  Define which box the dynamic subvolume occupies.
+  Define which box the subvolume occupies.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Integer - Sets box number (first box is box '0'). 
 
 ``SubVolumeCenter``
-  Define the center of the dynamic subvolume.
+  Define the center of the static subvolume.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Double - x value of SubVolumeCenter :math:`Å`.
   - Value 3: Double - y value of SubVolumeCenter :math:`Å`.
@@ -1632,7 +1649,7 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
   - Value 2: String - X, Y, Z, XY, XZ, YZ, XYZ (Axes should have no spaced between them)
 
 ``SubVolumeCenterList``
-  Define the center of the subvolume by defining the atoms to use for the geometric mean calculation.
+  Define the center of the dynamic subvolume by defining the atoms to use for the geometric mean calculation.
   - Value 1: Integer - Sub-volume id.
   - Value 2: Integer Range - Atom indices used to calculate geometric center of subvolume.
 
@@ -1668,6 +1685,18 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
   - Value 2: String - Residue kind
   - Value 3: Double - Chemical potential
 
+
+.. code-block:: text
+
+  ######################################################################
+  # TARGETED SWAP (Static subVolume)
+  ######################################################################
+  SubVolumeBox     		1       0         
+  SubVolumeCenter  		1   	25.0 25.0 25.0
+  SubVolumeDim     		1       35 35 5
+  SubVolumeResidueKind 		1   	TIP3       
+  SubVolumeRigidSwap   		1   	false 
+  SubVolumeChemPot              1       TIP3    -800
 .. code-block:: text
 
   ######################################################################
@@ -1678,7 +1707,7 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
   SubVolumeDim     		1       35 35 5
   SubVolumeResidueKind 		1   	TIP3       
   SubVolumeRigidSwap   		1   	false 
-
+  SubVolumeChemPot              1       TIP3    -800
 
 ``useConstantArea``
   For Isobaric-Isothermal ensemble and Gibbs ensemble runs only: Considers to change the volume of the simulation box by fixing the cross-sectional area (x-y plane).
@@ -1785,6 +1814,10 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
 
     - Value 1: Integer - The index of ``LambdaCoulomb`` and ``LambdaVDW`` vectors.
 
+    .. note::
+
+      - Multiple initial states need to be run to perform a free energy analysis on the system.
+
   ``LambdaVDW``
     Sets the intermediate lambda states to which solute-solvent VDW interaction to be scaled.
 
@@ -1804,6 +1837,8 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
       - By default, the lambda values for Coulombic interaction will be set to zero if ``ElectroStatic`` or ``Ewald`` is **deactivated**.
       
       - By default, the lambda values for Coulombic interaction will be set to Lambda values for VDW interaction if ``ElectroStatic`` or ``Ewald`` is **activated**.
+
+      -The LambdaVDW and LambdaCoulomb lists must be equal in length.
 
   ``ScaleCoulomb``
     Determines to scale the Coulombic interaction non-linearly (soft-core scheme) or not.  
@@ -1889,7 +1924,7 @@ This section contains all the values that control output in the control file. Fo
 
   .. note:: 
     - DCDFreq should be used unless the low precision and slower PDB trajectory is needed, 
-      perhaps beta and occupancy values are desired.
+      perhaps beta and occupancy values are desired.  The PDB trajectory is much larger and consumes more disk space.
     - The PDB file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a 
       constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently 
       in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the 
@@ -1917,6 +1952,10 @@ This section contains all the values that control output in the control file. Fo
       in which all boxes will be outputed. It also contains the topology for every molecule in both boxes, 
       corresponding to the merged PDB format. Loading DCD files into merged PSF file in VMD allows the user 
       to visualize and analyze the results. 
+
+    - "The DCD files are single precision binary FORTRAN files, so are transportable between computer architectures. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the DCD file was written, and the utility program flipdcd is also provided to reformat these files if needed. The exact format of these files is very ugly but supported by a wide range of analysis and display programs. The timestep is stored in the DCD file in NAMD internal units and must be multiplied by TIMEFACTOR=48.88821 to convert to fs. Positions in DCD files are stored in Å. Velocities in DCD files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in DCD files are stored in kcal/mol/Å."
+    - source : https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html
+
     
 
 ``RestartFreq``
@@ -1924,10 +1963,10 @@ This section contains all the values that control output in the control file. Fo
 
   - PDB files (coordinates)
   - PSF files (structure)
-  - XSC files (box dimensions)
+  - XSC files (binary box dimensions)
   - COOR files (binary coordinates)
   - CHK files (checkpoint)
-  - If provided as input: VEL files (velocity)
+  - If provided as input: VEL files (binary velocity)
 
   ``OutputName``\_BOX_n_restart.*, where n defines the box number. Header part of this file contains 
   important information and will be needed to restart the simulation:
@@ -2044,4 +2083,4 @@ if Grand Canonical ensemble simulation was used.
     OutMolNum         true true
     OutDensity        true true
     OutVolume         true true
-    OutSurfaceTention false false
+    OutSurfaceTension false false
