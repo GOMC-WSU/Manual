@@ -1,9 +1,11 @@
 # How to build the manual
 1. Install anaconda 3 or python 3.
-2. Install sphinx and the tempelate (it is included in anaconda) You can install it through pip:
+2. Install sphinx, the template (it is included in anaconda), and latex writer.
+   You can install it through pip and apt-get:
    ```bash
-   $ pip install -U Sphinx
+   $ sudo apt-get install Sphinx
    $ pip install sphinx-bootstrap-theme
+   $ sudo apt-get install latexmk
    ```
 
 3. To build the HTML files execute the following command in your terminal: 
@@ -22,9 +24,15 @@
    $ mv _static static
    ```
    Then for each file inside docs, replace the same strings. `_images`, `_sources`, and `_static` to `images`, `sources`, `static`.
+   $ find . -name \* -exec sed -i "s/_images/images/g" {} \;
+   $ find . -name \* -exec sed -i "s/_sources/sources/g" {} \;
+   $ find . -name \* -exec sed -i "s/_static/static/g" {} \;
    
+
+
 4. To build PDF first execute the following command in your terminal:
    ```bash
+    $ cd ..
     $ sphinx-build  -b latex  src  build
    ```
    Then run:

@@ -8,6 +8,19 @@ In order to run simulation in GOMC, the following files need to be provided:
 - Parameter file
 - Input file "NAME.conf" (proprietary control file)
 
+In order to restart a simulation in GOMC from exactly where it left off, the following files also need to be provided:
+
+- XSC file(s)
+- COOR file(s)
+- CHK file
+
+In order to run a hybrid MCMD simulation, the following files also need to be provided:
+
+- XSC file(s)
+- COOR file(s)
+- VEL files(s)
+- CHK file
+
 PDB File
 --------
 GOMC requires only one PDB file for NVT and NPT ensembles. However, GOMC requires two PDB files for GEMC and GCMC ensembles.
@@ -35,7 +48,7 @@ PDB contains four major parts; ``REMARK``, ``CRYST1``, ``ATOM``, and ``END``. He
 
   - **Max Displacement** (Å)
   - **Max Rotation** (Degree)
-  - **Max volume exchange** (:math:`Å^3`)
+  - **Max volume exchange** (:math:`\AA^3`)
   - **Monte Carlo Steps** (MC)
 
 
@@ -354,7 +367,7 @@ As seen above, the following are recognized, read and used:
     Oscillations about the equilibrium bond length
 
 - ``ANGLES``
-  - Describe the conformational lbehavior of an angle (:math:`\delta`) between three atoms, one of which is shared branch point to the other two. 
+  - Describe the conformational behavior of an angle (:math:`\delta`) between three atoms, one of which is shared branch point to the other two. 
   
   .. Note:: To fix any angle and ignore the related angle energy, set the :math:`K_\theta` to a large value i.e. "999999999999".
 
@@ -380,6 +393,8 @@ As seen above, the following are recognized, read and used:
   - This tag name only should be used if CHARMM force field is being used. This section allows in- teraction between two pairs of atoms to be modified, done by specifying two atom type names followed by minimum energy and minimum radius. In order to modify 1-4 interaction, a second minimum energy and minimum radius need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.
 
   .. Note:: Please pay attention that in this section we define minimum radius, not (minimum radius)/2 as it is defined in the NONBONDED section.
+
+  .. Note:: This does not modify the 1-4 electrostatic interactions.
 
   Currently, supported sections of the ``CHARMM`` compliant file include ``BONDS``, ``ANGLES``, ``DIHEDRALS``, ``NONBONDED``, ``NBFIX``. Other sections such as ``CMAP`` are not currently read or supported.
 
@@ -656,11 +671,21 @@ In this section, input file names are listed. In addition, if you want to restar
 
   - Value 1: Boolean - True if restart, false otherwise.
 
-``RestartCheckpoint``
-  Determines whether to restart the simulation from checkpoint file (`checkpoint.dat`) or not. Restarting the simulation with `checkpoint.dat` would result in
-  an identitcal outcome, as if previous simulation was continued.
+``ExpertMode``
+  Determines whether to perform error checking of move selection to ensure correct ensemble is sampled.  This allows the user to run a simulation with no volume moves in NPT, NPT-GEMC; no molecule transfers in GCMC, GEMC.
+
+  - Value 1: Boolean - True if enable expert mode; false otherwise.
+
+``Checkpoint``
+  Determines whether to restart the simulation from checkpoint file or not. Restarting the simulation with would result in
+  an identitcal outcome, as if previous simulation was continued.  This is required for hybrid Monte-Carlo Molecular Dyanamics in open-ensembles (GCMC/GEMC) to concatenate trajectory files since the molecular transfers rearranges the order of the molecules.  Checkpointing will ensure the molecules are loaded in the same order each cycle.
 
   - Value 1: Boolean - True if restart with checkpoint file, false otherwise.
+  - Value 2: String - Sets the name of the checkpoint file.
+
+    .. code-block:: text
+
+       Checkpoint   true	AR_KR_continued.chk
 
 ``PRNG``
   Dictates how to start the pseudo-random number generator (PRNG)
@@ -739,6 +764,9 @@ In this section, input file names are listed. In addition, if you want to restar
     #################################
     ParaTypeCHARMM    yes
     Parameters        ../../common/Par_TraPPE_Alkanes.inp
+    Parameters        ../../common/Par_TIP4P.inp
+
+  .. note:: More than one parameter file can be provided.
 
 ``Coordinates``
   Defines the PDB file names (coordinates) and location for each box in the system.
@@ -768,7 +796,7 @@ In this section, input file names are listed. In addition, if you want to restar
     Coordinates   0   STEP3_START_ISB_sys_BOX_0.pdb
     Coordinates   1   STEP3_START_ISB_sys_BOX_1.pdb
 
-  .. note:: In case of ``Restart`` or ``RestartCheckpoint`` true, the restart PDB output file from GOMC (``OutputName``\_BOX_0_restart.pdb) can be used for each box.
+  .. note:: In case of ``Restart`` true, the restart PDB output file from GOMC (``OutputName``\_BOX_N_restart.pdb) can be used for each box.
 
   Example of Gibbs ensemble when Restart mode is active:
 
@@ -808,7 +836,7 @@ In this section, input file names are listed. In addition, if you want to restar
     Structure   0   STEP3_START_ISB_sys_BOX_0.psf
     Structure   1   STEP3_START_ISB_sys_BOX_1.psf
 
-  .. note:: In case of ``Restart`` or ``RestartCheckpoint`` true, the PSF output file from GOMC (``OutputName``\_merged.psf) can be used for both boxes.
+  .. note:: In case of ``Restart`` true, the PSF output file from GOMC (``OutputName``\_BOX_N_restart.psf) can be used for both boxes.
 
   Example of Gibbs ensemble when ``Restart`` mode is active:
 
@@ -817,8 +845,131 @@ In this section, input file names are listed. In addition, if you want to restar
     #################################
     # INPUT PSF FILES
     #################################
-    Structure   0   ISB_T_270_k_merged.psf
-    Structure   1   ISB_T_270_k_merged.psf
+    Structure   0   ISB_T_270_k_BOX_0_restart.psf
+    Structure   1   ISB_T_270_k_BOX_1_restart.psf
+
+``binCoordinates``
+  Defines the DCD file names (coordinates) and location for each box in the system.
+
+  - Value 1: Integer - Sets box number (starts from '0').
+
+  - Value 2: String - Sets the name of PDB file.
+
+  .. note:: NVT and NPT ensembles requires only one DCD file and GEMC/GCMC requires only one PDB files, although loading two is supported. This is different from PDB files, for which two are required in GEMC/GCMC.  This allows the user to only load binary coordinates for one box.
+
+  Example of NVT or NPT ensemble:
+
+  .. code-block:: text
+
+    #############################################
+    # INPUT PDB FILES - NVT or NPT ensemble
+    #############################################
+    binCoordinates   0   STEP3_START_ISB_sys.coor
+
+  Example of Gibbs or GC ensemble:
+
+  .. code-block:: text
+
+    #############################################
+    # INPUT PDB FILES - Gibbs or GCMC ensemble
+    #############################################
+    binCoordinates   0   STEP3_START_ISB_sys_BOX_0.coor
+    binCoordinates   1   STEP3_START_ISB_sys_BOX_1.coor
+
+  .. note:: In case of ``Restart``, the restart DCD output file from GOMC (``OutputName``\_BOX_N_restart.coor) can be used for each box.
+
+  Example of Gibbs ensemble when Restart mode is active:
+
+  .. code-block:: text
+
+    #################################
+    # INPUT PDB FILES
+    #################################
+    binCoordinates   0   ISB_T_270_k_BOX_0_restart.coor
+    binCoordinates   1   ISB_T_270_k_BOX_1_restart.coor
+
+``binVelocities``
+  Defines the VEL file names (velocities) and location for each box in the system.
+
+  - Value 1: Integer - Sets box number (starts from '0').
+
+  - Value 2: String - Sets the name of VEL file.
+
+  .. note:: Originate from a Molecular Dynamics softwrae such as NAMD.  GOMC will only output a velocity restart file if it is provided one using this keyword.
+
+  .. note:: In hybrid Monte-Carlo Molecular Dynamics, the velocities of the atoms should be preserved across cycles to increase accuracy.  These files are not used internally by GOMC, only maintained.  If a molecular transfer occurs, a new velocity is generated by Langevin dynamics.
+
+  Example of NVT or NPT ensemble:
+
+  .. code-block:: text
+
+    #############################################
+    # INPUT PDB FILES - NVT or NPT ensemble
+    #############################################
+    binVelocities   0   STEP3_START_ISB_sys.vel
+
+  Example of Gibbs or GC ensemble:
+
+  .. code-block:: text
+
+    #############################################
+    # INPUT PDB FILES - Gibbs or GCMC ensemble
+    #############################################
+    binVelocities   0   STEP3_START_ISB_sys_BOX_0.vel
+    binVelocities   1   STEP3_START_ISB_sys_BOX_1.vel
+
+  .. note:: In case of ``Restart``, the restart VEL output file from GOMC (``OutputName``\_BOX_N_restart.vel) can be used for each box.
+
+  Example of Gibbs ensemble when Restart mode is active:
+
+  .. code-block:: text
+
+    #################################
+    # INPUT PDB FILES
+    #################################
+    binVelocities   0   ISB_T_270_k_BOX_0_restart.vel
+    binVelocities   1   ISB_T_270_k_BOX_1_restart.vel
+
+``extendedSystem``
+  Defines the XSC file names (box dimensions and origin) and location for each box in the system.
+
+  - Value 1: Integer - Sets box number (starts from '0').
+
+  - Value 2: String - Sets the name of XSC file.
+
+  .. note:: Previously, this information was stored in plain-text format at the top of restart PDB files.  This will be deprecated in favor of binary XSC.
+
+  Example of NVT or NPT ensemble:
+
+  .. code-block:: text
+
+    #############################################
+    # INPUT PDB FILES - NVT or NPT ensemble
+    #############################################
+    extendedSystem   0   STEP3_START_ISB_sys.xsc
+
+  Example of Gibbs or GC ensemble:
+
+  .. code-block:: text
+
+    #############################################
+    # INPUT PDB FILES - Gibbs or GCMC ensemble
+    #############################################
+    extendedSystem   0   STEP3_START_ISB_sys_BOX_0.xsc
+    extendedSystem   1   STEP3_START_ISB_sys_BOX_1.xsc
+
+  .. note:: In case of ``Restart``, the restart XSC output file from GOMC (``OutputName``\_BOX_N_restart.xsc) can be used for each box.
+
+  Example of Gibbs ensemble when Restart mode is active:
+
+  .. code-block:: text
+
+    #################################
+    # INPUT PDB FILES
+    #################################
+    extendedSystem   0   ISB_T_270_k_BOX_0_restart.xsc
+    extendedSystem   1   ISB_T_270_k_BOX_1_restart.xsc
+
 
 ``MultiSimFolderName``
   The name of the folder to be created which contains output from the multisim.
@@ -830,6 +981,52 @@ In this section, input file names are listed. In addition, if you want to restar
     MultiSimFolderName  outputFolderName
 
 
+Binary input file types
+-----------------------
+Binary representations of the system.
+   - XSC
+   - COOR
+   - VEL
+   - CHK
+   - "NAMD uses a trivial double-precision binary file format for coordinates, velocities, and forces. Due to its high precision this is the default output and restart format. VMD refers to these files as the \`\`namdbin\'\' format. The file consists of the atom count as a 32-bit integer followed by all three position or velocity components for each atom as 64-bit double-precision floating point, i.e., NXYZXYZXYZXYZ\.\.\. where N is a 4-byte int and X, Y, and Z are 8-byte doubles. If the number of atoms the file contains is known then the atom count can be used to determine endianness. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the binary file was written, and the utility program flipbinpdb is also provided to reformat these files if needed. Positions in NAMD binary files are stored in Å. Velocities in NAMD binary files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in NAMD binary files are stored in kcal/mol/Å."
+
+    - source : https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html
+
+XSC (eXtended System Configuration file) File
+-------------------------------------------------
+GOMC allows the box dimensions to be defined in one of three ways:
+
+- In the control file
+- In the header of restart PDB file
+- In a binary XSC file
+
+The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.
+
+COOR (binary coordinates) File
+------------------------------------
+GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.
+
+VEL (binary velocity) File
+------------------------------------
+GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.
+
+CHK (checkpoint) File
+-------------------------------------------------
+GOMC contains several variables which, if not accounted for, will produce different outputs even if the initial conditions are exactly the same.  These variables are contained in the checkpoint file, and allow the user to pick up a GOMC simulation where it left off without altering the course of the simulation.  Also, the checkpoint file is essential for MCMD as molecules are treated as distinguishable in molecular dynamics due to the fact that MD is a continuous trajectory through time.  The checkpoint file contains the original atom order of the molecules, and coordinates and velocities are loaded into this order to ensure the trajectories are consistently arranged.
+
+Checkpoint file contents:
+
+  - Last simulation step that saved into checkpoint file (Start step can be overriden).
+  - True number of simulation steps that have been run.
+  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`\AA^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
+  - Number of Monte Carlo move trial and acceptance.
+  - Random number sequence.
+  - Molecule lookup object.
+  - Original pdb atoms object to reload new positions into.
+  - Original molecule setup object generated from parsing first PSF files.
+  - Accessory data for coordinating loading the restart coordinates into the original ordering.
+  - If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.
+  
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
@@ -938,7 +1135,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
       
     .. note:: The default value for ``Exclude`` is "1-4".
 
-    .. note:: In CHARMM force field, the 1-4 interaction needs to be considered. Choosing "``Exclude`` 1-3" will modify 1-4 interaction based on 1-4 parameters in parameter file. If a kind force field is used, where 1-4 interaction needs to be ignored, such as TraPPE, either "``Exclude`` 1-4" needs to be chosen or 1-4 parameter needs to be assigned to zero in the parameter file.
+    .. note:: In CHARMM force field, the 1-4 interaction needs to be considered. Choosing "``Exclude`` 1-3" will modify 1-4 interaction based on 1-4 parameters in parameter file. If a kind of force field is used, where 1-4 interaction needs to be ignored, such as TraPPE, either "``Exclude`` 1-4" needs to be chosen or 1-4 parameter needs to be assigned to zero in the parameter file.
 
 ``Potential``
   Defines the potential function type to calculate non-bonded interaction energy and force between atoms.
@@ -1083,6 +1280,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   
   - Value 1: Ulong - Total run steps
 
+  .. Note:: RunSteps is a delta.
   .. important:: Seting the ``RunSteps`` to zero, and activating ``Restart`` simulation, will recalculate the energy of stored simulation's snapshots.
 
 ``EqSteps``
@@ -1090,12 +1288,20 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   - Value 1: Ulong - Equilibration steps
 
+  .. Note:: EqSteps is not a delta.  If restarting a simulation with a start step greater than EqSteps, no equilibration is performed.
   .. note:: In GCMC simulation, the ``Histogram`` files will be outputed at ``EqSteps``.
 
 ``AdjSteps``
   Sets the number of steps per adjustment of the parameter associated with each move (e.g. maximum translate distance, maximum rotation, maximum volume exchange, etc.)
   
   - Value 1: Ulong - Number of steps per move adjustment
+
+``InitStep``
+  Sets the first step of the simulation.
+  
+  - Value 1: Ulong - Number of first step of simulation.
+
+  .. Note::  Hybrid Monte-Carlo Molecular Dynamics (py-MCMD) requires resetting start step to 0 for combination of NAMD and GOMC data.
 
     .. code-block:: text
 
@@ -1105,6 +1311,7 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
       RunSteps    25000000
       EqSteps     5000000
       AdjSteps    1000
+      InitStep    0
 
 ``ChemPot``
   For Grand Canonical (GC) ensemble runs only: Chemical potential at which simulation is run.
@@ -1159,6 +1366,13 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   .. note:: The default value for ``IntraSwapFreq`` is 0.000
 
+``IntraTargetedSwapFreq``
+  Fractional percentage at which molecule will be removed from the box and inserted into a subvolume within the same box, or deleted from the subvolume and inserted into the same box using coupled-decoupled configurational-bias algorithm.
+
+  - Value 1: Double - % Intra molecule swap
+
+  .. note:: The default value for ``IntraTargetedSwapFreq`` is 0.000
+
 ``RegrowthFreq``
   Fractional percentage at which part of the molecule will be deleted and then regrown using coupled-decoupled configurational-bias algorithm.
 
@@ -1181,6 +1395,51 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   - Value 1: Double - % Multiparticle
 
   .. note:: The default value for ``MultiParticleFreq`` is 0.000
+
+``MultiParticleBrownianFreq``
+  Fractional percentage at which multi-particle brownian move will occur. In this move, all molecules in the selected simulation box will be rigidly rotated or displaced 
+  simultaneously, along the calculated torque or force, respectively. 
+
+  - Value 1: Double - % Multiparticle
+
+  .. note:: The default value for ``MultiParticleBrownianFreq`` is 0.000
+
+``NeMTMCFreq``
+  Fractional percentage at which non-equilibrium molecule transfer move will occur. In this move, a molecule is gradually transferred from the selected simulation box to the destination box, with the multi-particle move or multi-particle brownian move used to relax the system.
+
+  - Value 1: Double - % Non-equilibrium molecule transfer
+
+  .. note:: The default value for ``NeMTMCFreq`` is 0.000
+  .. note:: The number of RelaxingSteps per NeMTMC move must be defined.
+  .. note:: Either MultiParticleRelaxing or MultiParticleBrownianRelaxing must be enabled if NeMTMC move is to be used.
+  .. note:: ScalePower, ScaleAlpha, MinSigma, ScaleCoulomb parameters discussed in Free Energy section are used by NeMTMC moves.
+
+``RelaxingSteps``
+  Sets the total number of relaxing steps to run (one MP or BMP is performed for each step) to relax the system.
+  
+  - Value 1: Ulong - Total relaxing steps per NeMTMC move
+
+``MultiParticleRelaxing``
+  Relax NeMTMC using force-biased Monte Carlo algorithm.
+
+  - Value 1: Boolean
+
+  .. note:: MultiParticleFreq must be non-zero if NeMTMC with MultiParticleRelaxing is to be used.
+
+``MultiParticleBrownianRelaxing``
+  Relax NeMTMC using brownian motion.
+
+  - Value 1: Boolean
+
+  .. note:: MultiParticleBrownianFreq must be non-zero if NeMTMC with MultiParticleBrownianRelaxing is to be used.
+
+``SampleConfFreq``
+  Intra-Swap/Regrowth Frequency in NeMTMC Relaxing Steps
+
+  - Value 1: Double
+
+``LambdaVDWLimit``
+  Lambda VDW limit for Intra-Swap move in NeMTMC Relaxing Steps
 
 ``IntraMEMC-1Freq``
   Fractional percentage at which specified number of small molecule kind will be exchanged with a specified large molecule kind in defined sub-volume within same simulation box.
@@ -1247,6 +1506,11 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
   For Gibbs and Grand Canonical (GC) ensemble runs only: Fractional percentage at which molecule swap move will occur using coupled-decoupled configurational-bias.
 
   - Value 1: Double - % Molecule swaps
+
+``TargetedSwapFreq``
+  For Gibbs and Grand Canonical (GC) ensemble runs only: Fractional percentage at which targeted molecule swap move will occur using coupled-decoupled configurational-bias in the sub-volumes specified.
+
+  - Value 1: Double - % Molecule targeted swaps
 
 ``VolFreq``
   For isobaric-isothermal ensemble and Gibbs ensemble runs only: Fractional percentage at which molecule will be removed from one box and inserted into the other box using configurational bias algorithm.
@@ -1367,6 +1631,84 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
   SmallKindBackBone   C1 C1
 
 
+``SubVolumeBox``
+  Define which box the subvolume occupies.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Integer - Sets box number (first box is box '0'). 
+
+``SubVolumeCenter``
+  Define the center of the static subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Double - x value of SubVolumeCenter :math:`Å`.
+  - Value 3: Double - y value of SubVolumeCenter :math:`Å`.
+  - Value 4: Double - z value of SubVolumeCenter :math:`Å`.
+
+``SubVolumePBC``
+  Define which dimensions periodic box wrapping is applied in the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - X, Y, Z, XY, XZ, YZ, XYZ (Axes should have no spaced between them)
+
+``SubVolumeCenterList``
+  Define the center of the dynamic subvolume by defining the atoms to use for the geometric mean calculation.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Integer Range - Atom indices used to calculate geometric center of subvolume.
+
+``SubVolumeDim``
+  Define the dimensions of the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Double - x value of SubVolumeDim :math:`Å`.
+  - Value 3: Double - y value of SubVolumeDim :math:`Å`.
+  - Value 4: Double - z value of SubVolumeDim :math:`Å`.
+
+``SubVolumeResidueKind``
+  Define which residue kinds can be inserted or deleted from the subvolume.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - Residue kind inserted/deleted from subvolume
+  - Value .: String - Residue kind inserted/deleted from subvolume
+  - Value .: String - Residue kind inserted/deleted from subvolume
+  - Value N: String - Residue kind inserted/deleted from subvolume
+
+``SubVolumeRigidSwap``
+  Define whether molecules are held rigid or the geometry is sampled per the coupled-decoupled CBMC scheme.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: Boolean - If true the molecule is held rigid.  If false, geometry is sampled when inserting in the subvolume.
+
+``SubVolumeChemPot``
+  Define the chemical potential of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - Residue kind
+  - Value 3: Double - Chemical potential
+
+``SubVolumeFugacity``
+  Define the fugacity of a residue kind in the subvolume.  Only used in TargetedSwap, not IntraTargetedSwap.
+  - Value 1: Integer - Sub-volume id.
+  - Value 2: String - Residue kind
+  - Value 3: Double - Chemical potential
+
+
+.. code-block:: text
+
+  ######################################################################
+  # TARGETED SWAP (Static subVolume)
+  ######################################################################
+  SubVolumeBox     		1       0         
+  SubVolumeCenter  		1   	25.0 25.0 25.0
+  SubVolumeDim     		1       35 35 5
+  SubVolumeResidueKind 		1   	TIP3       
+  SubVolumeRigidSwap   		1   	false 
+  SubVolumeChemPot              1       TIP3    -800
+.. code-block:: text
+
+  ######################################################################
+  # TARGETED SWAP (Dynamic subVolume)
+  ######################################################################
+  SubVolumeBox     		1       0         
+  SubVolumeCenterList  		1   	1-402
+  SubVolumeDim     		1       35 35 5
+  SubVolumeResidueKind 		1   	TIP3       
+  SubVolumeRigidSwap   		1   	false 
+  SubVolumeChemPot              1       TIP3    -800
+
 ``useConstantArea``
   For Isobaric-Isothermal ensemble and Gibbs ensemble runs only: Considers to change the volume of the simulation box by fixing the cross-sectional area (x-y plane).
 
@@ -1415,7 +1757,7 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
     CellBasisVector2  1   00.00   60.00   00.00
     CellBasisVector3  1   00.00   00.00   60.00
 
-  .. warning:: If ``Restart`` or ``RestartCheckpoint`` was activated, box dimension does not need to be specified. If it is specified, program will read it but it will be ignored and replaced by the printed cell dimensions and angles in the restart PDB output file from GOMC (``OutputName``\_BOX_0_restart.pdb and ``OutputName``\_BOX_1_restart.pdb).
+  .. warning:: If ``Restart`` was activated, box dimension does not need to be specified. If it is specified, program will read it but it will be ignored and replaced by the printed cell dimensions and angles in the restart PDB output file from GOMC (``OutputName``\_BOX_0_restart.pdb and ``OutputName``\_BOX_1_restart.pdb).
 
 ``CBMC_First``
   Number of CD-CBMC trials to choose the first atom position (Lennard-Jones trials for first seed growth).
@@ -1472,6 +1814,10 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
 
     - Value 1: Integer - The index of ``LambdaCoulomb`` and ``LambdaVDW`` vectors.
 
+    .. note::
+
+      - Multiple initial states need to be run to perform a free energy analysis on the system.
+
   ``LambdaVDW``
     Sets the intermediate lambda states to which solute-solvent VDW interaction to be scaled.
 
@@ -1491,6 +1837,8 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
       - By default, the lambda values for Coulombic interaction will be set to zero if ``ElectroStatic`` or ``Ewald`` is **deactivated**.
       
       - By default, the lambda values for Coulombic interaction will be set to Lambda values for VDW interaction if ``ElectroStatic`` or ``Ewald`` is **activated**.
+
+      -The LambdaVDW and LambdaCoulomb lists must be equal in length.
 
   ``ScaleCoulomb``
     Determines to scale the Coulombic interaction non-linearly (soft-core scheme) or not.  
@@ -1575,6 +1923,8 @@ This section contains all the values that control output in the control file. Fo
     keyword could not be found in configuration file, its value will be assigned a default value to dump 10 frames.
 
   .. note:: 
+    - DCDFreq should be used unless the low precision and slower PDB trajectory is needed, 
+      perhaps beta and occupancy values are desired.  The PDB trajectory is much larger and consumes more disk space.
     - The PDB file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a 
       constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently 
       in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the 
@@ -1583,43 +1933,55 @@ This section contains all the values that control output in the control file. Fo
       in which all boxes will be outputed. It also contains the topology for every molecule in both boxes, 
       corresponding to the merged PDB format. Loading PDB files into merged PSF file in VMD allows the user 
       to visualize and analyze the results. 
+
+``DCDFreq``
+  Controls output of DCD file (binary coordinates). If DCD outputing was enabled, one file for NVT or NPT and 
+  two files for Gibbs ensemble or GC ensemble will be outputed into ``OutputName``\_BOX_n.dcd, where n defines the box number.
+
+  - Value 1: Boolean - "true" enables outputing these files; "false" disables outputing.
+
+  - Value 2: Ulong - Steps per dump PDB frame. It should be less than or equal to RunSteps. If this 
+    keyword could not be found in configuration file, its value will be assigned a default value to dump 10 frames.
+
+  .. note:: 
+    - The DCD file contains an entry for every ATOM, in all boxes read. This allows VMD (which requires a 
+      constant number of atoms) to properly parse frames, with a bit of help. Atoms that are not currently 
+      in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the 
+      box a molecule is currently in (e.g. 0.00 for box 0; 1.00 for box 1).
+    - At the beginning of simulation, a merged PSF file will be outputed into ``OutputName``\_merged.psf, 
+      in which all boxes will be outputed. It also contains the topology for every molecule in both boxes, 
+      corresponding to the merged PDB format. Loading DCD files into merged PSF file in VMD allows the user 
+      to visualize and analyze the results. 
+
+    - "The DCD files are single precision binary FORTRAN files, so are transportable between computer architectures. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the DCD file was written, and the utility program flipdcd is also provided to reformat these files if needed. The exact format of these files is very ugly but supported by a wide range of analysis and display programs. The timestep is stored in the DCD file in NAMD internal units and must be multiplied by TIMEFACTOR=48.88821 to convert to fs. Positions in DCD files are stored in Å. Velocities in DCD files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in DCD files are stored in kcal/mol/Å."
+    - source : https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html
+
     
 
 ``RestartFreq``
-  Controls the output of the last state of simulation at a specified step in PDB files (coordinates) 
-  ``OutputName``\_BOX_n_restart.pdb, where n defines the box number. Header part of this file contains 
+  Controls the output of the last state of simulation at a specified step in 
+
+  - PDB files (coordinates)
+  - PSF files (structure)
+  - XSC files (binary box dimensions)
+  - COOR files (binary coordinates)
+  - CHK files (checkpoint)
+  - If provided as input: VEL files (binary velocity)
+
+  ``OutputName``\_BOX_n_restart.*, where n defines the box number. Header part of this file contains 
   important information and will be needed to restart the simulation:
 
+  Restart PDB files, one file for NVT or NPT and two files for Gibbs ensemble or GC ensemble, will be outputed with the following information.
   - Simulation cell dimensions and angles.
+
   - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, and Volume move.
-  
-  If PDB output was enabled, one file for NVT or NPT and two files for Gibbs ensemble or GC ensemble will be outputed.
 
-  - Value 1: Boolean - "true" enables dumping these files; "false" disables outputing.
-  - Value 2: Ulong - Steps per dump last state of simulation to PDB files. It should be less than or equal to RunSteps. If this keyword could not be found in the configuration file, ``RestartFreq`` value will be assigned by default.
-
-  .. note:: 
-    - The restart PDB file contains only ATOM that exist in each boxes at specified steps. This allows the user to load this file into GOMC once ``Restart`` simulation was active.
+.. note:: 
+    - The restart PDB/PSF/COOR/VEL files contains only ATOM that exist in each boxes at specified steps.  These box restart files allows the user to load a box into NAMD and run molecular dynamics in Hybrid Monte-Carlo Molecular Dynamics (py-MCMD).
+    - When restarting the GOMC simulation from two restart files, the order of the molecules in the trajectory may differ preventing trajectory concatenation, unless the CHK file is loaded.
+    - Only restart files must be used to begin a GOMC simulation with ``Restart`` simulation active.  The merged psf is NOT a restart file.
     - CoordinatesFreq must be a common multiple of RestartFreq or vice versa.
-
-``CheckpointFreq``
-  Controls the output of the last state of simulation at a specified step, in a binary file format (checkpoint.dat). Checkpoint file contains the following information in full precision:
-
-  - Last simulation step that saved into checkpoint file.
-  - Simulation cell dimensions and angles.
-  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
-  - Number of Monte Carlo move trial and acceptance.
-  - All molecule's coordinates.
-  - Random number sequence.
-  
-  If checkpoint outputing was enabled, only one file will be outputed.
-
-  - Value 1: Boolean - "true" enables outputing checkpoint file; "false" disables the outputing.
-  - Value 2: Ulong - Steps per printing last state of simulation to checkpoint file. If this keyword could not be found in the configuration file, ``CheckpointFreq`` value will be disabled by default.
-
-  .. note:: 
-    - The checkpoint file contains the coordinates of all ATOM in the system. This allows the user to load this file into GOMC once ``RestartCheckpoint`` simulation was active.
-
+ 
 ``ConsoleFreq``
   Controls the output to STDIO ("the console") of messages such as acceptance statistics, and run timing info. In addition, instantaneously-selected thermodynamic properties will be output to this file.
 
@@ -1721,4 +2083,4 @@ if Grand Canonical ensemble simulation was used.
     OutMolNum         true true
     OutDensity        true true
     OutVolume         true true
-    OutSurfaceTention false false
+    OutSurfaceTension false false
