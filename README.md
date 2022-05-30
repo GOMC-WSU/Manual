@@ -1,9 +1,9 @@
 # How to build the manual
 1. Install anaconda 3 or python 3.
-2. Install sphinx, the tempelate (it is included in anaconda), and latex writer.
+2. Install sphinx, the template (it is included in anaconda), and latex writer.
    You can install it through pip and apt-get:
    ```bash
-   $ pip install -U Sphinx
+   $ sudo apt-get install Sphinx
    $ pip install sphinx-bootstrap-theme
    $ sudo apt-get install latexmk
    ```
