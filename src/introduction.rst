@@ -30,7 +30,10 @@ GOMC supported Monte Carlo moves:
 - Inter-box swap using `coupled-decoupled configurational-bias <https://pubs.acs.org/doi/abs/10.1021/jp984742e>`__
 - Inter-box targeted swap using `coupled-decoupled configurational-bias <https://pubs.acs.org/doi/abs/10.1021/jp984742e>`__
 - Inter-box `molecular exchange monter carlo <https://www.sciencedirect.com/science/article/pii/S0378381218305351>`__ 
-- Non-Equilibrium Molecule Transfer <https://journals.aps.org/pre/abstract/10.1103/PhysRevE.66.046705>`__
+
+  ..
+    - Non-Equilibrium Molecule Transfer <https://journals.aps.org/pre/abstract/10.1103/PhysRevE.66.046705>`__
+
 - Volume exchange (both isotropic and anisotropic)
 
 GOMC supported force fields:
