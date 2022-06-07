@@ -1404,42 +1404,45 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   .. note:: The default value for ``MultiParticleBrownianFreq`` is 0.000
 
-``NeMTMCFreq``
-  Fractional percentage at which non-equilibrium molecule transfer move will occur. In this move, a molecule is gradually transferred from the selected simulation box to the destination box, with the multi-particle move or multi-particle brownian move used to relax the system.
+    ..
+    
+    ``NeMTMCFreq``
+      Fractional percentage at which non-equilibrium molecule transfer move will occur. In this move, a molecule is gradually transferred from the selected simulation box to the destination box, with the multi-particle move or multi-particle brownian move used to relax the system.
 
-  - Value 1: Double - % Non-equilibrium molecule transfer
+      - Value 1: Double - % Non-equilibrium molecule transfer
 
-  .. note:: The default value for ``NeMTMCFreq`` is 0.000
-  .. note:: The number of RelaxingSteps per NeMTMC move must be defined.
-  .. note:: Either MultiParticleRelaxing or MultiParticleBrownianRelaxing must be enabled if NeMTMC move is to be used.
-  .. note:: ScalePower, ScaleAlpha, MinSigma, ScaleCoulomb parameters discussed in Free Energy section are used by NeMTMC moves.
+      .. note:: The default value for ``NeMTMCFreq`` is 0.000
+      .. note:: The number of RelaxingSteps per NeMTMC move must be defined.
+      .. note:: Either MultiParticleRelaxing or MultiParticleBrownianRelaxing must be enabled if NeMTMC move is to be used.
+      .. note:: ScalePower, ScaleAlpha, MinSigma, ScaleCoulomb parameters discussed in Free Energy section are used by NeMTMC moves.
 
-``RelaxingSteps``
-  Sets the total number of relaxing steps to run (one MP or BMP is performed for each step) to relax the system.
-  
-  - Value 1: Ulong - Total relaxing steps per NeMTMC move
+    ``RelaxingSteps``
+      Sets the total number of relaxing steps to run (one MP or BMP is performed for each step) to relax the system.
+      
+      - Value 1: Ulong - Total relaxing steps per NeMTMC move
 
-``MultiParticleRelaxing``
-  Relax NeMTMC using force-biased Monte Carlo algorithm.
+    ``MultiParticleRelaxing``
+      Relax NeMTMC using force-biased Monte Carlo algorithm.
 
-  - Value 1: Boolean
+      - Value 1: Boolean
 
-  .. note:: MultiParticleFreq must be non-zero if NeMTMC with MultiParticleRelaxing is to be used.
+      .. note:: MultiParticleFreq must be non-zero if NeMTMC with MultiParticleRelaxing is to be used.
 
-``MultiParticleBrownianRelaxing``
-  Relax NeMTMC using brownian motion.
+    ``MultiParticleBrownianRelaxing``
+      Relax NeMTMC using brownian motion.
 
-  - Value 1: Boolean
+      - Value 1: Boolean
 
-  .. note:: MultiParticleBrownianFreq must be non-zero if NeMTMC with MultiParticleBrownianRelaxing is to be used.
+      .. note:: MultiParticleBrownianFreq must be non-zero if NeMTMC with MultiParticleBrownianRelaxing is to be used.
 
-``SampleConfFreq``
-  Intra-Swap/Regrowth Frequency in NeMTMC Relaxing Steps
+    ``SampleConfFreq``
+      Intra-Swap/Regrowth Frequency in NeMTMC Relaxing Steps
 
-  - Value 1: Double
+      - Value 1: Double
 
-``LambdaVDWLimit``
-  Lambda VDW limit for Intra-Swap move in NeMTMC Relaxing Steps
+    ``LambdaVDWLimit``
+      Lambda VDW limit for Intra-Swap move in NeMTMC Relaxing Steps
+
 
 ``IntraMEMC-1Freq``
   Fractional percentage at which specified number of small molecule kind will be exchanged with a specified large molecule kind in defined sub-volume within same simulation box.
