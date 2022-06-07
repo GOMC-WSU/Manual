@@ -1,6 +1,8 @@
 Release 2.75 Notes
 ==================
 
+The GPL 3.0 License has been replaced by the MIT License. Users should upgrade only if they are comfortable with running code under this new license.
+
 Certain changes have been made which differ from previous GOMC behavior.  New features have been added to assist users and developers in compiling, running, and analyzing, improve reproducability, increase the capacity of GOMC to simulate biological molecules, perform Hybrid Monte-Carlo/Molecular Dynamics simulations, and increase performance.  A non-comprehensive list is provided below.
 
 Differing behavior:
