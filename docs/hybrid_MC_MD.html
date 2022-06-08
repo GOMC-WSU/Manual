@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get Help or Technical Support &#8212; GOMC 2.75 documentation</title>
+    <title>Hybrid Monte Carlo-Molecular Dynamics (MCMD) &#8212; GOMC 2.75 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -13,7 +13,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="How to?" href="howto.html" />
+    <link rel="next" title="How to?" href="howto.html" />
+    <link rel="prev" title="Coupling Interaction with \(\lambda\)" href="free_energy.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -143,11 +144,11 @@
 <li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#gomc-requirements">GOMC Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#namd-requirements">NAMD Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gomc-requirements">GOMC Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#namd-requirements">NAMD Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
@@ -161,7 +162,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Get Help or Technical Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
 </ul>
 </li>
@@ -175,7 +176,13 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Get Help or Technical Support</a></li>
+<li><a class="reference internal" href="#">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
+<li><a class="reference internal" href="#gomc-requirements">GOMC Requirements</a></li>
+<li><a class="reference internal" href="#namd-requirements">NAMD Requirements</a></li>
+<li><a class="reference internal" href="#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
+<li><a class="reference internal" href="#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -185,7 +192,11 @@
               
                 
   <li>
-    <a href="howto.html" title="Previous Chapter: How to?"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; How to?</span>
+    <a href="free_energy.html" title="Previous Chapter: Coupling Interaction with \(\lambda\)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Coupling Inte...</span>
+    </a>
+  </li>
+  <li>
+    <a href="howto.html" title="Next Chapter: How to?"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">How to? &raquo;</span>
     </a>
   </li>
               
@@ -213,15 +224,99 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="get-help-or-technical-support">
-<h1>Get Help or Technical Support<a class="headerlink" href="#get-help-or-technical-support" title="Permalink to this headline">¶</a></h1>
-<p>For get any help or technical support, please send message to GOMC gitter:</p>
-<p><a class="reference external" href="https://gitter.im/GOMC_WSU/Lobby">https://gitter.im/GOMC_WSU/Lobby</a></p>
-<p>or send email to:</p>
-<ul class="simple">
-<li><p>Jeffrey Potoff: <a class="reference external" href="mailto:jpotoff&#37;&#52;&#48;wayne&#46;edu">jpotoff<span>&#64;</span>wayne<span>&#46;</span>edu</a></p></li>
-<li><p>Loren Schwiebert: <a class="reference external" href="mailto:loren&#37;&#52;&#48;wayne&#46;edu">loren<span>&#64;</span>wayne<span>&#46;</span>edu</a></p></li>
-</ul>
+  <div class="section" id="hybrid-monte-carlo-molecular-dynamics-mcmd">
+<h1>Hybrid Monte Carlo-Molecular Dynamics (MCMD)<a class="headerlink" href="#hybrid-monte-carlo-molecular-dynamics-mcmd" title="Permalink to this headline">¶</a></h1>
+<p>In this section, the tips and tricks to get a hybrid MCMD simumlation with GOMC and NAMD running are discussed.
+Most of these issues will be handled by the scripts provided with py-MCMD, but the concerns are raised here for users interested in setting up custom systems.  Careful attention should be made to ensure the system is centered in the first octant of 3D space, originates at [boxlength/2, boxlength/2, boxlength/2], and the box length excedes the radius of gyration of all molecules.</p>
+<p>Link to documentation: <a class="reference external" href="https://py-mcmd.readthedocs.io/en/latest/">https://py-mcmd.readthedocs.io/en/latest/</a></p>
+<p>Link to Github Repository: <a class="reference external" href="https://github.com/GOMC-WSU/py-MCMD">https://github.com/GOMC-WSU/py-MCMD</a></p>
+<div class="section" id="gomc-requirements">
+<h2>GOMC Requirements<a class="headerlink" href="#gomc-requirements" title="Permalink to this headline">¶</a></h2>
+<p>GOMC currently requires that Box length / 2 excede the radius of gyration of all molecules in the system.</p>
+<p>Grand-Canonical Molecular Dynamics (GCMD) or Gibbs Ensemble with Molecular Dynamics changes the number of molecules in each box.  This will alter the ordering of the molecules, posing a challenge when the user tries to concatenate the trajectories or follow one atom through a trajectory.</p>
+<p>The GOMC checkpoint file will reload the molecules in the original order to ensure the GOMC trajectories (PDB/DCD) have a consistent ordering for analysis.  Atoms that are not currently in a specific box are given the coordinate (0.00, 0.00, 0.00). The occupancy value corresponds to the box a molecule is currently in (e.g. 0.00 for box 0; 1.00 for box 1).</p>
+<p>The restart binary coordinates, velocities, and box dimensions (xsc) from NAMD need to be loaded along with the checkpoint file, restart PDB, and restart PSF from the previous GOMC cycle.</p>
+<p>The python script from the py-MCMD git repository, combine_data_NAMD_GOMC.py, requires the GOMC step reset to 0 every cycle</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>InitStep          0
+</pre></div>
+</div>
+</div>
+<div class="section" id="namd-requirements">
+<h2>NAMD Requirements<a class="headerlink" href="#namd-requirements" title="Permalink to this headline">¶</a></h2>
+<p>GOMC outputs all the files needed to continue a simulation box in Molecule Dynamics (pdb, psf, xsc, coor, vel, xsc).  These files should all be used.</p>
+<p>There are certain flexibilities that NAMD allows for that GOMC doesn’t support.  To ensure the two systems are compatible the following settings in the NAMD configuration file are required:</p>
+<p>Rigid bonds, since GOMC doesn’t support bond length sampling.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rigidBonds          all
+</pre></div>
+</div>
+<p>Fixed volume, since GOMC maintains the origin of the box at [box length/2, box length/2, box length/2]</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Constant Pressure Control (variable volume)
+langevinPiston        off
+
+useGroupPressure      yes
+
+useFlexibleCell       no
+
+useConstantArea       no
+</pre></div>
+</div>
+<p>Box origin must be centered at [box length/2, box length/2, box length/2]</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cellOrigin        x_box length/2      y_box length/2          z_box length/2
+</pre></div>
+</div>
+</div>
+<div class="section" id="dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">
+<h2>Dynamic Subvolumes for Dual Control Volume Molecular Dynamics<a class="headerlink" href="#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>To define a subvolume in the simulation, use the subvolume keywords to choose an subvolume id, center, either the geometric center of a list of atoms (dynamic) or absolute cartesian coordinate (static), and dimensions.  The residues that can be inserted/deleted in the subvolume, custom chemical potential, and periodicity of the subvolume may also be specified.  Fugacity can be replaced for chemical potential.  A chemical gradient can be established in the simulation by defining two or more subvolume with different chemical potentials of a given residue.  After the molecule is inserted/deleted within one subvolume, it can diffuse to the low concentration subvolume where it is deleted maintaining the concentration gradient via two (2) difference chemical potentials.</p>
+<p>To define two control volumes forming a gradient from the left to the right of the box</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SubVolumeBox                0       0
+
+SubVolumeDim                0       left_one_fifth y_dim_box_0 z_dim_box_0
+
+SubVolumeResidueKind        0       DIOX
+
+SubVolumeRigidSwap          0       true
+
+SubVolumeCenter             0       left_center y_origin_box z_origin_box
+
+SubVolumePBC                0       XYZ
+
+SubVolumeChemPot            0       DIOX    -2000
+
+
+SubVolumeBox                1       0
+
+SubVolumeDim                1       right_one_fifth  y_dim_box_0 z_dim_box_0
+
+SubVolumeResidueKind        1       DIOX
+
+SubVolumeRigidSwap          1       true
+
+SubVolumeCenter             1       right_center y_origin_box z_origin_box
+
+SubVolumePBC                1       XYZ
+
+SubVolumeChemPot            1       DIOX    -4000
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-a-hybrid-monte-carlo-molecular-dynamics-sim">
+<h2>Run a Hybrid Monte Carlo-Molecular Dynamics Sim<a class="headerlink" href="#run-a-hybrid-monte-carlo-molecular-dynamics-sim" title="Permalink to this headline">¶</a></h2>
+<p>GOMC and NAMD produce compatible input/output files, which allow the system to alternate between Monte Carlo and Molecular Dynamics.
+The py-MCMD script automates the directory generation, running of GOMC and NAMD, and concatenation of the short alternating runs.
+Simulating the Grand Canonical ensemble in GOMC with only molecule transfers, allows the MD simulations to continue where they left off, with a varying number of molecules.</p>
+<p>Refer to the section on Hybrid Monte Carlo-Molecular Dynamics in the manual and attached links.</p>
+<p>Link to documentation: <a class="reference external" href="https://py-mcmd.readthedocs.io/en/latest/">https://py-mcmd.readthedocs.io/en/latest/</a></p>
+<p>Link to Github Repository: <a class="reference external" href="https://github.com/GOMC-WSU/py-MCMD">https://github.com/GOMC-WSU/py-MCMD</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/GOMC-WSU/py-MCMD.git
+$ <span class="nb">cd</span> py-MCMD
+<span class="c1">### Run hybrid simulation</span>
+$ python run_NAMD_GOMC.py -f user_input_NAMD_GOMC.json
+<span class="c1">### Combine alternating GOMC/NAMD cycles into two single GOMC and NAMD data and trajectories.</span>
+$ python combine_data_NAMD_GOMC.py -f user_input_combine_data_NAMD_GOMC.json
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -237,7 +332,7 @@
         <br/>
         
 <div id="sourcelink">
-  <a href="_sources/help.rst.txt"
+  <a href="_sources/hybrid_MC_MD.rst.txt"
      rel="nofollow">Source</a>
 </div>
       

@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Welcome to GOMC’s documentation! &#8212; GOMC 2.50 documentation</title>
-    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to GOMC’s documentation! &#8212; GOMC 2.75 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview" href="overview.html" />
@@ -19,10 +18,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="static/js/jquery-1.11.0.min.js "></script>
-<script type="text/javascript" src="static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -35,7 +34,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><span><img src="static/logo.png"></span>
+        <a class="navbar-brand" href="#"><span><img src="_static/logo.png"></span>
           GOMC</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
@@ -54,9 +53,10 @@
      href="#">Section <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+      aria-labelledby="dLabelGlobalToc"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
@@ -68,11 +68,13 @@
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#molecular-simulation-design-framework-mosdef">Molecular Simulation Design Framework (MoSDeF)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
@@ -86,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
@@ -93,6 +96,11 @@
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#binary-input-file-types">Binary input file types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#chk-checkpoint-file">CHK (checkpoint) File</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
@@ -135,6 +143,13 @@
 <li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#gomc-requirements">GOMC Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#namd-requirements">NAMD Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
@@ -143,6 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
@@ -200,9 +216,10 @@
   <div class="section" id="welcome-to-gomc-s-documentation">
 <h1>Welcome to GOMC’s documentation!<a class="headerlink" href="#welcome-to-gomc-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
@@ -214,11 +231,13 @@
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#molecular-simulation-design-framework-mosdef">Molecular Simulation Design Framework (MoSDeF)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
@@ -232,6 +251,7 @@
 <li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
@@ -239,6 +259,11 @@
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#binary-input-file-types">Binary input file types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#chk-checkpoint-file">CHK (checkpoint) File</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
@@ -281,6 +306,13 @@
 <li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#gomc-requirements">GOMC Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#namd-requirements">NAMD Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
@@ -289,6 +321,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
@@ -309,14 +342,14 @@
         <br/>
         
 <div id="sourcelink">
-  <a href="sources/index.rst.txt"
+  <a href="_sources/index.rst.txt"
      rel="nofollow">Source</a>
 </div>
       
     </p>
     <p>
-        &copy; Copyright 2019, GOMC.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+        &copy; Copyright 2022, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
     </p>
   </div>
 </footer>

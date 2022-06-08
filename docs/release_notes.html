@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get Help or Technical Support &#8212; GOMC 2.75 documentation</title>
+    <title>Release 2.75 Notes &#8212; GOMC 2.75 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -13,7 +13,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="How to?" href="howto.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -56,7 +57,7 @@
       aria-labelledby="dLabelGlobalToc"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
@@ -161,7 +162,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Get Help or Technical Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
 </ul>
 </li>
@@ -175,7 +176,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Get Help or Technical Support</a></li>
+<li><a class="reference internal" href="#">Release 2.75 Notes</a></li>
 </ul>
 </ul>
 </li>
@@ -185,7 +186,11 @@
               
                 
   <li>
-    <a href="howto.html" title="Previous Chapter: How to?"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; How to?</span>
+    <a href="overview.html" title="Previous Chapter: Overview"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Overview</span>
+    </a>
+  </li>
+  <li>
+    <a href="introduction.html" title="Next Chapter: Introduction"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Introduction &raquo;</span>
     </a>
   </li>
               
@@ -213,15 +218,69 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="get-help-or-technical-support">
-<h1>Get Help or Technical Support<a class="headerlink" href="#get-help-or-technical-support" title="Permalink to this headline">¶</a></h1>
-<p>For get any help or technical support, please send message to GOMC gitter:</p>
-<p><a class="reference external" href="https://gitter.im/GOMC_WSU/Lobby">https://gitter.im/GOMC_WSU/Lobby</a></p>
-<p>or send email to:</p>
-<ul class="simple">
-<li><p>Jeffrey Potoff: <a class="reference external" href="mailto:jpotoff&#37;&#52;&#48;wayne&#46;edu">jpotoff<span>&#64;</span>wayne<span>&#46;</span>edu</a></p></li>
-<li><p>Loren Schwiebert: <a class="reference external" href="mailto:loren&#37;&#52;&#48;wayne&#46;edu">loren<span>&#64;</span>wayne<span>&#46;</span>edu</a></p></li>
-</ul>
+  <div class="section" id="release-2-75-notes">
+<h1>Release 2.75 Notes<a class="headerlink" href="#release-2-75-notes" title="Permalink to this headline">¶</a></h1>
+<p>The GPL 3.0 License has been replaced by the MIT License. Users should upgrade only if they are comfortable with running code under this new license.</p>
+<p>Certain changes have been made which differ from previous GOMC behavior.  New features have been added to assist users and developers in compiling, running, and analyzing, improve reproducability, increase the capacity of GOMC to simulate biological molecules, perform Hybrid Monte-Carlo/Molecular Dynamics simulations, and increase performance.  A non-comprehensive list is provided below.</p>
+<p>Differing behavior:</p>
+<blockquote>
+<div><p>Previous GOMC versions used REMARKS in the PDB header to save box dimensions and random number generator state.  While this is still currently partially supported, it is in the process of being deprecated and checkpointing should be used.  Secondly, restarting GOMC should no longer be performed using the merged files containing both boxes (*.BOX_0.pdb, *.merged.psf) which are produced solely for visualization.  Furthermore, The user should now use the box-specific restart files (pdb, psf, xsc, coor, chk) as input.  Finally, the pdb trajectory files (*.BOX_0.pdb) are in the process of being deprecated and replaced by binary trajectory files (*.BOX_0.dcd), though both are currently available.</p>
+</div></blockquote>
+<p>Updated Manual Sections:</p>
+<ol class="arabic">
+<li><p>Introduction</p>
+<p>GOMC supported Monte Carlo moves</p>
+<blockquote>
+<div><p>Force-biased Multiparticle move (Rigid-body displacement or rotation of all molecules)</p>
+<p>Brownian Motion Multiparticle move (Rigid-body displacement or rotation of all molecule</p>
+</div></blockquote>
+<p>GOMC supported molecules</p>
+<blockquote>
+<div><p>Biological molecules which consist of multiple residues are now supported.  Care should be taken when generating the molecules such that all bonds, angles, and dihedrals are included in the PSF file.  Support for these molecules is experimental.</p>
+</div></blockquote>
+</li>
+<li><p>Recommended Software Tools</p>
+<p>Molecular Simulation Design Framework (MoSDeF)</p>
+</li>
+<li><p>Compiling GOMC</p>
+<p>./metamake.sh [OPTIONS] [ARGUMENTS]</p>
+<p>OPTIONS</p>
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-d</span></kbd></dt>
+<dd><p>Compile in debug mode.</p>
+</dd>
+<dt><kbd><span class="option">-g</span></kbd></dt>
+<dd><p>Compile with gcc.</p>
+</dd>
+<dt><kbd><span class="option">-m</span></kbd></dt>
+<dd><p>Compile with MPI enabled.</p>
+</dd>
+<dt><kbd><span class="option">-p</span></kbd></dt>
+<dd><p>Compile with NVTX profiling for CUDA</p>
+</dd>
+<dt><kbd><span class="option">-t</span></kbd></dt>
+<dd><p>Compile Google tests.</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>GPU-accelerated GOMC</p>
+<p>A section describing the GPU-accelerated regions of GOMC code is included.</p>
+</li>
+<li><p>Input File Formats</p>
+<p>Support for binary coordinates, trajectories, box dimensions, velocities, and checkpoint files are included.  Checkpoint files guaruntee trajectory files can be concatenated, along with ensuring no deviation from a single simulation’s results in a simulation which was interrupted and restarted.</p>
+<blockquote>
+<div><p>(5a) Restart a simulation from a checkpoint</p>
+<p>(5b) Restart from binary coordinates and box dimensions</p>
+<p>(5c) Target insertions to subvolumes</p>
+<p>(5d) Overwrite start step</p>
+</div></blockquote>
+</li>
+<li><p>Hybrid Monte Carlo-Molecular Dynamics (MCMD)</p>
+<p>Instructions on running an alternating Hybrid MCMD algorithm using GOMC and NAMD are included.</p>
+</li>
+</ol>
 </div>
 
 
@@ -237,7 +296,7 @@
         <br/>
         
 <div id="sourcelink">
-  <a href="_sources/help.rst.txt"
+  <a href="_sources/release_notes.rst.txt"
      rel="nofollow">Source</a>
 </div>
       

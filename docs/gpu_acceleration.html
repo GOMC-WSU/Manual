@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get Help or Technical Support &#8212; GOMC 2.75 documentation</title>
+    <title>GPU-Accelerated GOMC &#8212; GOMC 2.75 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -13,7 +13,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="How to?" href="howto.html" />
+    <link rel="next" title="Input File Formats" href="input_file.html" />
+    <link rel="prev" title="Compiling GOMC" href="compiling.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -88,7 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
@@ -161,7 +162,7 @@
 <li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Get Help or Technical Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
 </ul>
 </li>
@@ -175,7 +176,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Get Help or Technical Support</a></li>
+<li><a class="reference internal" href="#">GPU-Accelerated GOMC</a></li>
 </ul>
 </ul>
 </li>
@@ -185,7 +186,11 @@
               
                 
   <li>
-    <a href="howto.html" title="Previous Chapter: How to?"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; How to?</span>
+    <a href="compiling.html" title="Previous Chapter: Compiling GOMC"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Compiling GOMC</span>
+    </a>
+  </li>
+  <li>
+    <a href="input_file.html" title="Next Chapter: Input File Formats"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Input File Formats &raquo;</span>
     </a>
   </li>
               
@@ -213,15 +218,18 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="get-help-or-technical-support">
-<h1>Get Help or Technical Support<a class="headerlink" href="#get-help-or-technical-support" title="Permalink to this headline">¶</a></h1>
-<p>For get any help or technical support, please send message to GOMC gitter:</p>
-<p><a class="reference external" href="https://gitter.im/GOMC_WSU/Lobby">https://gitter.im/GOMC_WSU/Lobby</a></p>
-<p>or send email to:</p>
-<ul class="simple">
-<li><p>Jeffrey Potoff: <a class="reference external" href="mailto:jpotoff&#37;&#52;&#48;wayne&#46;edu">jpotoff<span>&#64;</span>wayne<span>&#46;</span>edu</a></p></li>
-<li><p>Loren Schwiebert: <a class="reference external" href="mailto:loren&#37;&#52;&#48;wayne&#46;edu">loren<span>&#64;</span>wayne<span>&#46;</span>edu</a></p></li>
+  <div class="section" id="gpu-accelerated-gomc">
+<h1>GPU-Accelerated GOMC<a class="headerlink" href="#gpu-accelerated-gomc" title="Permalink to this headline">¶</a></h1>
+<dl class="simple">
+<dt>All moves use the following general GPU-Accelerated kernels:</dt><dd><ul class="simple">
+<li><p>All-molecule Intermolecular Lennard Jones and Coulombic Energy</p></li>
+<li><p>All-molecule Intermolecular Reciprocal Space Energy</p></li>
+<li><p>Image calculation for Ewald Summation</p></li>
+<li><p>Minimum Image Calculation</p></li>
 </ul>
+</dd>
+<dt>GOMC currently supports several move-specific GPU-Accelerated kernels:</dt><dd></dd>
+</dl>
 </div>
 
 
@@ -237,7 +245,7 @@
         <br/>
         
 <div id="sourcelink">
-  <a href="_sources/help.rst.txt"
+  <a href="_sources/gpu_acceleration.rst.txt"
      rel="nofollow">Source</a>
 </div>
       
