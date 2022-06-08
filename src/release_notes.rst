@@ -20,6 +20,7 @@ Updated Manual Sections:
 
         Brownian Motion Multiparticle move (Rigid-body displacement or rotation of all molecule
 
+    ..
         Non-Equilibrium Molecule Transfer
 
         Inter-box subvolume targeted swap

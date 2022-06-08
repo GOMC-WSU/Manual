@@ -8,9 +8,13 @@ All moves use the following general GPU-Accelerated kernels:
     - Minimum Image Calculation
 
 GOMC currently supports several move-specific GPU-Accelerated kernels:
+  ..
     - Non-Equilibrium Molecule Transfer
+  ..
         - Single-molecule Reciprocal Space
+  ..
         - Single-molecule Energy Change
+
     - Multi-Particle Moves:
         - All-molecule Intermolecular Force (Lennard Jones and Coulombic)
         - All-molecule Intermolecular Reciprocal Space Force
