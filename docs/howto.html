@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>How to? &#8212; GOMC 2.50 documentation</title>
-    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to? &#8212; GOMC 2.75 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Get Help or Technical Support" href="help.html" />
-    <link rel="prev" title="Coupling Interaction with \(\lambda\)" href="free_energy.html" />
+    <link rel="prev" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" href="hybrid_MC_MD.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="static/js/jquery-1.11.0.min.js "></script>
-<script type="text/javascript" src="static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -36,7 +36,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><span><img src="static/logo.png"></span>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/logo.png"></span>
           GOMC</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
@@ -55,9 +55,10 @@
      href="index.html">Section <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+      aria-labelledby="dLabelGlobalToc"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
@@ -69,11 +70,13 @@
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_tools.html#molecular-simulation-design-framework-mosdef">Molecular Simulation Design Framework (MoSDeF)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
@@ -87,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
@@ -94,6 +98,11 @@
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#binary-input-file-types">Binary input file types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_file.html#chk-checkpoint-file">CHK (checkpoint) File</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
@@ -136,6 +145,13 @@
 <li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#gomc-requirements">GOMC Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#namd-requirements">NAMD Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a></li>
@@ -144,6 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
@@ -173,7 +190,7 @@
 </li>
 <li><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a><ul>
 <li><a class="reference internal" href="#restart-the-simulation-with-restart">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code></a></li>
-<li><a class="reference internal" href="#restart-the-simulation-with-restartcheckpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code></a></li>
+<li><a class="reference internal" href="#restart-the-simulation-with-checkpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
@@ -188,6 +205,7 @@
 <li><a class="reference internal" href="#process-gomc-free-energy-outputs">Process GOMC Free Energy Outputs</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +217,7 @@
               
                 
   <li>
-    <a href="free_energy.html" title="Previous Chapter: Coupling Interaction with \(\lambda\)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Coupling Inte...</span>
+    <a href="hybrid_MC_MD.html" title="Previous Chapter: Hybrid Monte Carlo-Molecular Dynamics (MCMD)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Hybrid Monte ...</span>
     </a>
   </li>
   <li>
@@ -431,7 +449,7 @@ Restart         true
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
+Structure       0   dimethylether_NVT_BOX_0_restart.psf
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -449,8 +467,8 @@ Restart         true
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
-Structure       1   dimethylether_NVT_merged.psf
+Structure       0   dimethylether_NVT_BOX_0_restart.psf
+Structure       1   dimethylether_NVT_BOX_1_restart.psf
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -464,30 +482,36 @@ OutputName          dimethylether_NPT_GEMC
 </pre></div>
 </div>
 </div>
-<div class="section" id="restart-the-simulation-with-restartcheckpoint">
-<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-restartcheckpoint" title="Permalink to this headline">¶</a></h3>
-<p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code> would result in an
+<div class="section" id="restart-the-simulation-with-checkpoint">
+<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-checkpoint" title="Permalink to this headline">¶</a></h3>
+<p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> would result in an
 identitcal outcome, as if previous simulation was continued.
-Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> and <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> were activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
-, merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf), and checkpoint file (<code class="docutils literal notranslate"><span class="pre">checkpoint.dat</span></code>) were printed.</p>
+Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.pdb)
+, restart PSF file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.psf), binary coodinate file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.coor), XSC file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.xsc) , and checkpoint file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_restart.chk) were printed.</p>
 <p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
-<li><p>Set the <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code> to True.</p></li>
-<li><p>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
-<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> to True and provide the Checkpoint file.</p></li>
+<li><p>Use the dumped restart PDB files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the dumped restart PSF files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Use the dumped restart xsc files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for both boxes.</p></li>
+<li><p>Use the dumped restart coor files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for both boxes.</p></li>
 <li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
-the cell basis information with the cell basis data from restart PDB file/files.</p></li>
+the cell basis information with the cell basis data from XSC file/files.</p></li>
 <li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
 </ol>
 <p>Here is the example of restarting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
-RestartCheckpoint   true
+Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
+Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+
+binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -500,13 +524,19 @@ OutputName          dimethylether_NPT
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
-RestartCheckpoint   true
+Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
-Structure       1   dimethylether_NVT_merged.psf
+Structure     0   dimethylether_NVT_BOX_0_restart.psf
+Structure     1   dimethylether_NVT_BOX_1_restart.psf
+
+extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+extendedSystem   1   dimethylether_NVT_BOX_1_restart.xsc
+
+binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
+binCoordinates   1   dimethylether_NVT_BOX_1_restart.coor
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -518,6 +548,10 @@ Structure       1   dimethylether_NVT_merged.psf
 
 OutputName          dimethylether_NPT_GEMC
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of right now, restarting is not supported for Multi-Sim.</p>
 </div>
 </div>
 </div>
@@ -851,7 +885,7 @@ the energy different between current lambda state and all other neighboring lamb
 (<span class="math notranslate nohighlight">\(\Delta E_{\lambda}\)</span>), which is essential to calculate solvation free energy
 with various estimators, such as TI, BAR, MBAR, and more.</p>
 <div class="figure align-default" id="id1">
-<img alt="images/FE-snapshot.png" src="images/FE-snapshot.png" />
+<img alt="_images/FE-snapshot.png" src="_images/FE-snapshot.png" />
 <p class="caption"><span class="caption-text">Snapshot of GOMC free energy output file (Free_Energy_BOX_0_ <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>.dat).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>There are variety of tools developed to caclulate free energy difference, including
@@ -902,6 +936,57 @@ $ sudo python setup.py install
 </ol>
 </div>
 </div>
+<div class="section" id="run-a-multi-sim">
+<h2>Run a Multi-Sim<a class="headerlink" href="#run-a-multi-sim" title="Permalink to this headline">¶</a></h2>
+<p>GOMC can automatically generate independent simulations with varying temperatures from one input file.
+This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode,
+and a couple of parameters must be added to the conf file.</p>
+<p>To compile in MPI mode, navigate to the GOMC/ directory and issue the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod u+x metamakeMPI.sh
+$ ./metamakeMPI.sh
+</pre></div>
+</div>
+<p>Then once the compilation is complete, set up the conf file as you would for a standard GOMC simulation.</p>
+<p>Finally, enter more than one value for <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> separated by a tab or space.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#################################
+# SIMULATION CONDITION
+#################################
+Temperature   270.00    280.00    290.00    300.00
+</pre></div>
+</div>
+</div></blockquote>
+<p>A folder will be created for the output of each simulation, and the name will be generated from the temperatures you choose.
+A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.
+You may elect to choose the name of the folder in which all the sub-folders for each replica are contained.
+Enter this name as a string following the <code class="docutils literal notranslate"><span class="pre">MultiSimFolderName</span></code> parameter.  If you don’t provide this parameter, the default “MultiSimFolderName” will be used.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MultiSimFolderName  outputFolderName
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To perform a multisim, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed.  To perform a standard simulation, use standard GOMC.</p>
+</div>
+<p>The rest of the conf file should be similar to how you would set up a standard GOMC simulation.</p>
+<p>To initiate the multi-sim, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n <span class="c1">#ofsimulations GOMC_xxx_yyyy +p&lt;#ofthreads&gt;(optional) conffile</span>
+</pre></div>
+</div>
+<p>The number of MPI processes must equal the number of simulations you wish to run.  Each will by default be assigned one openMP thread; however, if you have leftover processors, you may assign them as openMP threads.
+There must be an equal amount of openMP threads assigned to each process.</p>
+<p>A formula to determine how many threads to use is as follows:</p>
+<div class="math notranslate nohighlight">
+\[OpenMP Threads = floor[(Number Of Processors Available - Number Of MPI Processes) / Number Of MPI Processes]\]</div>
+<p>Floor[ ] - Rounds down a real number to the nearest integer.</p>
+<p>For example, if I have 7 processors and I wanted to run 2 simulations in my multi-sim.</p>
+<div class="math notranslate nohighlight">
+\[OpenMP Threads= floor[(7 - 2) / 2] = floor[2.5] = 2\]</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n <span class="m">2</span> ./GOMC_CPU_GEMC +p2 in.conf
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -917,14 +1002,14 @@ $ sudo python setup.py install
         <br/>
         
 <div id="sourcelink">
-  <a href="sources/howto.rst.txt"
+  <a href="_sources/howto.rst.txt"
      rel="nofollow">Source</a>
 </div>
       
     </p>
     <p>
-        &copy; Copyright 2019, GOMC.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+        &copy; Copyright 2022, GOMC.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
     </p>
   </div>
 </footer>
