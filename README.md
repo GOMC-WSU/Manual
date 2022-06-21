@@ -1,6 +1,6 @@
 # How to build the manual
 1. Install anaconda 3 or python 3.
-2. Install sphinx and the tempelate (it is included in anaconda) You can install it through pip:
+2. Install sphinx and the template (it is included in anaconda) You can install it through pip:
    ```bash
    $ pip install -U Sphinx
    $ pip install sphinx_materialdesign_theme
