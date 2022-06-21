@@ -172,5 +172,8 @@ Progress can be monitored in the terminal with the tail command:
 .. attention:: Congratulations! You have examined a single-phase coexistence point on the saturated vapor-liquid curve using GOMC operating in the Gibbs ensemble.
 
 .. figure:: static/isobutane_result.png
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
   Repeating this process for multiple temperatures will allow you to obtain the following results.

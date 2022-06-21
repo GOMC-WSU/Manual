@@ -11,11 +11,17 @@ The posted builds in Master branch are "frozen" versions of the code that have b
 
 .. _GOMC GitHub Repository: https://github.com/GOMC-WSU
 
-.. image:: static/github.png
+.. figure:: static/github.png
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
 GOMC and Examples repository can be found under the main page. Under GOMC repository, the code and manual can be found. Each repository can be downloaded by clicking on the Clone or download tab.
 
-.. image:: static/clone.png
+.. figure:: static/clone.png
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
 To clone the GOMC using git, execute the following command in your terminal:
 
@@ -39,7 +45,10 @@ To access the GOMC website, please click on the following link:
 
 The code can be found under the download tab, below and to the right of the logo. When new betas (or release builds) are announced, they will replace the prior code under the downloads tab. An announcement will be posted on the front page to notify users.
 
-.. image:: static/website.jpg
+.. figure:: static/website.jpg
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
 GOMC is distributed as a compressed folder, containing the source and build system. To compile the code after downloading it, the first step is to extract the compressed build folder.
 

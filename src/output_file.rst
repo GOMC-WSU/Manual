@@ -497,8 +497,11 @@ The header of Free_Energy_BOX_0\_ ``OutputName``.dat contains the following info
   (:math:`\Delta E_{{\lambda}_i \rightarrow {\lambda}_j} = E_{{\lambda}_j} - E_{{\lambda}_i}`)
 
 .. figure:: static/FE-snapshot.png
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
-    Snapshot of GOMC free energy output file (Free_Energy_BOX_0\_ ``OutputName``.dat).
+  Snapshot of GOMC free energy output file (Free_Energy_BOX_0\_ ``OutputName``.dat).
 
 .. Important::
 

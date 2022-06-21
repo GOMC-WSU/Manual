@@ -373,6 +373,9 @@ As seen above, the following are recognized, read and used:
   - This tag name only should be used if CHARMM force files are being used. This section describes 12-6 (Lennard-Jones) non-bonded interactions. Non-bonded parameters are assigned by specifying atom type name followed by polarizabilities (which will be ignored), minimum energy, and (minimum radius)/2. In order to modify 1-4 interaction, a second polarizability (again, will be ignored), minimum energy, and (minimum radius)/2 need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.
 
   .. figure:: static/nonbonded.png
+    :figwidth: 100%
+    :width: 100%
+    :align: center
 
     Non-bonded energy terms (electrostatics and Lennard-Jones)
 
@@ -820,6 +823,16 @@ In this section, input file names are listed. In addition, if you want to restar
     Structure   0   ISB_T_270_k_merged.psf
     Structure   1   ISB_T_270_k_merged.psf
 
+``MultiSimFolderName``
+  The name of the folder to be created which contains output from the multisim.
+
+  - Value 1: String - Name of the folder to contain output
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
@@ -857,6 +870,26 @@ Note that some tags, or entries for tags, are only used in certain ensembles (e.
 
   - Value 1: Double - Constant temperature of simulation in degrees Kelvin.
 
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00 
+
+  (MPI-GOMC Only)
+  
+  - Value 1: List of Doubles - A list of constant temperatures for simulations in degrees Kelvin.
+  
+  .. code-block:: text
+
+        #################################
+        # SIMULATION CONDITION
+        #################################
+        Temperature   270.00    280.00    290.00    300.00 
+
+.. Note:: To use more than one temperature, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, more than one temperature is required.  To use only one temperature, use standard GOMC.
+  
 ``Rcut``
   Sets a specific radius that non-bonded interaction energy and force will be considered and calculated using defined potential function.
 
@@ -1370,7 +1403,7 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
     CellBasisVector2  0   00.00   40.00   00.00
     CellBasisVector3  0   00.00   00.00   80.00
 
-  Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector :math:`a` and :math:`c` are perpendicular to each other (:math:`\alpha = 90, \beta = 90, \gamma = 120`), and making a non-orthogonal simulation cell with the cell length :math:`a = 39.91 Å, b = 39.91 Å, c = 76.98 Å`. In the second box, each vector is perpendicular to the other two (:math:`\alpha = 90, \beta = 90, \gamma = 90`), as indicated by a single x, y, or z value being specified by each and making a cubic box:
+  Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector :math:`a` and :math:`c` are perpendicular to each other (:math:`\alpha = 90, \beta = 90, \gamma = 120`), and making a non-orthogonal simulation cell with the cell length :math:`a = 36.91 Å, b = 36.91 Å, c = 76.98 Å`. In the second box, each vector is perpendicular to the other two (:math:`\alpha = 90, \beta = 90, \gamma = 90`), as indicated by a single x, y, or z value being specified by each and making a cubic box:
 
   .. code-block:: text
   

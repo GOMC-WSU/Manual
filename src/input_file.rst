@@ -386,6 +386,9 @@ As seen above, the following are recognized, read and used:
   - This tag name only should be used if CHARMM force files are being used. This section describes 12-6 (Lennard-Jones) non-bonded interactions. Non-bonded parameters are assigned by specifying atom type name followed by polarizabilities (which will be ignored), minimum energy, and (minimum radius)/2. In order to modify 1-4 interaction, a second polarizability (again, will be ignored), minimum energy, and (minimum radius)/2 need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.
 
   .. figure:: static/nonbonded.png
+    :figwidth: 100%
+    :width: 100%
+    :align: center
 
     Non-bonded energy terms (electrostatics and Lennard-Jones)
 
@@ -1745,7 +1748,7 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
     CellBasisVector2  0   00.00   40.00   00.00
     CellBasisVector3  0   00.00   00.00   80.00
 
-  Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector :math:`a` and :math:`c` are perpendicular to each other (:math:`\alpha = 90, \beta = 90, \gamma = 120`), and making a non-orthogonal simulation cell with the cell length :math:`a = 39.91 Å, b = 39.91 Å, c = 76.98 Å`. In the second box, each vector is perpendicular to the other two (:math:`\alpha = 90, \beta = 90, \gamma = 90`), as indicated by a single x, y, or z value being specified by each and making a cubic box:
+  Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector :math:`a` and :math:`c` are perpendicular to each other (:math:`\alpha = 90, \beta = 90, \gamma = 120`), and making a non-orthogonal simulation cell with the cell length :math:`a = 36.91 Å, b = 36.91 Å, c = 76.98 Å`. In the second box, each vector is perpendicular to the other two (:math:`\alpha = 90, \beta = 90, \gamma = 90`), as indicated by a single x, y, or z value being specified by each and making a cubic box:
 
   .. code-block:: text
   
