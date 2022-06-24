@@ -5,11 +5,12 @@ cd docs
 mv _images images
 mv _sources sources
 mv _static static
-find . -name \* -exec sed -i "s/images/images/g" {} \;
-find . -name \* -exec sed -i "s/sources/sources/g" {} \;
-find . -name \* -exec sed -i "s/static/static/g" {} \;
+grep -rli '_images' * | xargs -n 1 sed -i '' -e "s/_images/images/g"
+grep -rli '_sources' * | xargs -n 1 sed -i '' -e "s/_sources/sources/g"
+grep -rli '_static' * | xargs -n 1 sed -i '' -e "s/_static/static/g"
+# To build PDF 
 cd ..
 sphinx-build  -b latex  src  build
 cd build
 make
-mv GOMC.pdf ..
+mv GOMC.pdf ../GOMC_Manual_2.75.pdf

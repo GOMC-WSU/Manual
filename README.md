@@ -4,22 +4,11 @@
    You can install it through pip and apt-get:
    ```bash
    $ sudo apt-get install Sphinx
-   $ pip install sphinx-bootstrap-theme
+   $ pip install sphinx_materialdesign_theme
    $ sudo apt-get install latexmk
    ```
 
-3. To build the HTML files execute the following command in your terminal: 
+3. To build the HTML files and PDF Manual execute the following command in your terminal: 
    ```bash
    $ bash ./compile.sh  
-
-
-4. To build PDF first execute the following command in your terminal:
-   ```bash
-    $ cd ..
-    $ sphinx-build  -b latex  src  build
-   ```
-   Then run:
-   ```bash
-    $ cd build
-    $ make
    ```
