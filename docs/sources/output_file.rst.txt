@@ -20,12 +20,12 @@ Properties                   Units
 ===========================  =================
 Energy                       :math:`K`
 Pressure, Pressure Tensor    bar
-Heat of vaporization         :math:`KJ/mol`
-Volume                       :math:`Å^3`
+Heat of vaporization         :math:`kJ/mol`
+Volume                       :math:`\AA^3`
 Density                      :math:`kg/m^3`
 Mol Density                  :math:`molecule/Å^3`
 Surface Tension              :math:`mN/m`
-Free Energy                  :math:`KJ/mol`
+Free Energy                  :math:`kJ/mol`
 ===========================  =================
 
 Console Output
@@ -150,7 +150,7 @@ Next, the energy and statistic title, initial energy and statistic of the system
     OutMolNum         true  true
     OutDensity        true  true
     OutVolume         true  true
-    OutSurfaceTention false false
+    OutSurfaceTension false false
 
 .. note:: 
 
@@ -255,7 +255,7 @@ second column of the block file.
     OutMolNum         true  true
     OutDensity        true  true
     OutVolume         true  true
-    OutSurfaceTention false false
+    OutSurfaceTension false false
   
 .. note:: 
 
@@ -285,7 +285,7 @@ one file for NVT or NPT and two files for Gibbs ensemble or grand canonical ense
 Header part of this file contains important information and will be needed to restart the simulation:
 
 - Simulation cell dimensions and angles.
-- Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`Å^3`) that used in Displacement, 
+- Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`\AA^3`) that used in Displacement, 
   Rotation, and Volume move.
 
 .. figure:: static/pdb_restart_0.png

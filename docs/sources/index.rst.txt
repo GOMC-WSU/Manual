@@ -11,11 +11,13 @@ Welcome to GOMC's documentation!
    :caption: Contents:
 
    overview
+   release_notes
    introduction
    software_requirements
    software_tools
    download
    compiling
+   gpu_acceleration
    input_file
    output_file
    putting_all_together
@@ -23,5 +25,6 @@ Welcome to GOMC's documentation!
    electrostatic
    long_range_correction
    free_energy
+   hybrid_MC_MD
    howto
    help
