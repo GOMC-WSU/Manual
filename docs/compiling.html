@@ -3,29 +3,27 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>Compiling GOMC &#8212; GOMC 2.60 documentation</title>
+    <title>Compiling GOMC &#8212; GOMC 2.75 documentation</title>
 
-    <link rel="stylesheet" href="static/material-icons.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="static/material-icons.css" />
     <link rel="stylesheet" href="static/notosanscjkjp.css" type="text/css" />
     <link rel="stylesheet" href="static/roboto.css" type="text/css" />
     <link rel="stylesheet" href="static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
     <link rel="stylesheet" href="static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="static/sphinx_materialdesign_theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Input File Formats" href="input_file.html" />
+    <link rel="next" title="GPU-Accelerated GOMC" href="gpu_acceleration.html" />
     <link rel="prev" title="How to get the software" href="download.html" /> 
   </head>
 <body>
@@ -87,14 +85,16 @@ Show Source
         
             
             <nav class="mdl-navigation">
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -102,6 +102,7 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
@@ -130,14 +131,16 @@ Show Source
         
             
             <nav class="mdl-navigation">
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -145,6 +148,7 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
@@ -161,20 +165,61 @@ Show Source
   <div class="section" id="compiling-gomc">
 <h1>Compiling GOMC<a class="headerlink" href="#compiling-gomc" title="Permalink to this headline">¶</a></h1>
 <p>GOMC generates four executable files for CPU code; <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_GEMC</span></code> (Gibbs ensemble), <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_NVT</span></code> (NVT ensemble), <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_NPT</span></code> (isobaric-isothermal ensemble), and <code class="docutils literal notranslate"><span class="pre">GOMC_CPU_GCMC</span></code> (Grand canonical ensemble). In case of installing CUDA Toolkit, GOMC will generate additional four executable files for GPU code; <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_GEMC</span></code>, <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_NVT</span></code>, <code class="docutils literal notranslate"><span class="pre">GOMC_GPU</span> <span class="pre">NPT</span></code>, and <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_GCMC</span></code>.</p>
-<p>This section guid users to compile GOMC in Linux or Windows.</p>
+<p>Each ensemble has a respective unit test executable <code class="docutils literal notranslate"><span class="pre">GOMC_GEMC_Test</span></code> (Gibbs ensemble), <code class="docutils literal notranslate"><span class="pre">GOMC_NVT_Test</span></code> (NVT ensemble), <code class="docutils literal notranslate"><span class="pre">GOMC_NPT_Test</span></code> (isobaric-isothermal ensemble), and <code class="docutils literal notranslate"><span class="pre">GOMC_GCMC_Test</span></code> (Grand canonical ensemble).  In case of installing CUDA Toolkit, GOMC will generate additional four unit test executables for GPU code; <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_GEMC_Test</span></code>, <code class="docutils literal notranslate"><span class="pre">GOMC_GPU_NVT_Test</span></code>, <code class="docutils literal notranslate"><span class="pre">GOMC_GPU</span> <span class="pre">NPT`_Test`,</span> <span class="pre">and</span> <span class="pre">``GOMC_GPU_GCMC_Test</span></code>.</p>
+<p>This section guides users to compile GOMC in Linux or Windows.</p>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
-<p>First, navigate your command line to the GOMC base directory. To compile GOMC on Linux, give permission to “metamake.sh” by running the following command and execute it:</p>
+<p>First, navigate your command line to the GOMC base directory. To compile GOMC on Linux, give permission to “metamake.sh” by running the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod u+x metamake.sh
-$ ./metamake.sh
 </pre></div>
 </div>
-<p>Or to use MPI mode,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod u+x metamakeMPI.sh
-$ ./metamakeMPI.sh
-</pre></div>
-</div>
-<p>This script will create a bin (or bin_MPI) directory and run cmake file to compile the code as well. All executable files will be generated in the “bin” (or “bin_MPI”) directory.</p>
+<p>Metamake is the build script which creates a “bin” directory, configures and runs cmake file, and compiles the code as well. All executable files will be generated in the “bin” directory.  By default, GOMC compiles all ensembles with the Intel compiler (icc), if available.  Changes to this configuration can be made with options and arguments.</p>
+<p>./metamake.sh [OPTIONS] [ARGUMENTS]</p>
+<p>OPTIONS</p>
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-d</span></kbd></dt>
+<dd><p>Compile in debug mode.</p>
+</dd>
+<dt><kbd><span class="option">-g</span></kbd></dt>
+<dd><p>Compile with gcc.</p>
+</dd>
+<dt><kbd><span class="option">-m</span></kbd></dt>
+<dd><p>Compile with MPI enabled.</p>
+</dd>
+<dt><kbd><span class="option">-p</span></kbd></dt>
+<dd><p>Compile with NVTX profiling for CUDA</p>
+</dd>
+<dt><kbd><span class="option">-t</span></kbd></dt>
+<dd><p>Compile Google tests.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>ARGUMENTS</p>
+<blockquote>
+<div><p>NVT
+NPT
+GCMC
+GEMC</p>
+<p>If CUDA Toolkit found:</p>
+<blockquote>
+<div><p>GPU_NVT
+GPU_NPT
+GPU_GCMC
+GPU_GEMC</p>
+</div></blockquote>
+<p>If testing enabled:</p>
+<blockquote>
+<div><p>GOMC_NVT_Test
+GOMC_NPT_Test
+GOMC_GCMC_Test
+GOMC_GEMC_Test</p>
+<p>GOMC_GPU_NVT_Test
+GOMC_GPU_NPT_Test
+GOMC_GPU_GCMC_Test
+GOMC_GPU_GEMC_Test</p>
+</div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
@@ -197,8 +242,8 @@ $ ./metamakeMPI.sh
 <div class="section" id="configuring-cmake">
 <h2>Configuring CMake<a class="headerlink" href="#configuring-cmake" title="Permalink to this headline">¶</a></h2>
 <p>GOMC uses CMAKE to generate multi-platform intermediate files to compile the project. In this section, you can find all the information needed to configure CMake.
-We recommend using a different directory for the CMake output than the home directory of the project as CMake tend to generate lots of files.
-CMake has a ridiculously expansive set of options, so this document will only reproduce the most obviously relevant ones. When possible, options should be passed into CMake via command line options rather than the CMakeCached.txt file:</p>
+We recommend using a different directory for the CMake output than the home directory of the project as CMake tend to generate lots of files.</p>
+<p>We recommend configuring CMake through metamake.sh OPTIONS, but CMake has a ridiculously expansive set of options which are not all configurable through metamake.  This document will only reproduce the most obviously relevant ones.  When possible, options should be passed into CMake via command line options rather than the CMakeCached.txt file:</p>
 <dl>
 <dt>CMAKE_BUILD_TYPE</dt><dd><p>To get the best performance you should build the project in release mode. In CMake GUI you can set the value of “CMAKE_BUILD_TYPE” to “Release” and in CMake command line you can add the following to the CMake:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
@@ -275,11 +320,11 @@ CMake has a ridiculously expansive set of options, so this document will only re
             <div>How to get the software</div>
          </div>
      </a>
-     <a id="button-next" href="input_file.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="gpu_acceleration.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <i class="pagenation-arrow-R material-icons">arrow_forward</i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>Input File Formats</div>
+            <div>GPU-Accelerated GOMC</div>
         </div>
      </a>
   </div>

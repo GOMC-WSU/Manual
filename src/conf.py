@@ -20,14 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = u'GOMC'
-copyright = u'2020, GOMC'
+copyright = u'2022, GOMC'
 author = u'GOMC Development Groups'
 
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u'2.60'
-
+release = u'2.75'
 
 # -- General configuration ---------------------------------------------------
 
@@ -126,6 +125,7 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    'preamble': '\\global\\renewcommand{\\AA}{\\text{\\r{A}}}',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples

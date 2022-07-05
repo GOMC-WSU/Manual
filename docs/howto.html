@@ -3,30 +3,29 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>How to? &#8212; GOMC 2.60 documentation</title>
+    <title>How to? &#8212; GOMC 2.75 documentation</title>
 
-    <link rel="stylesheet" href="static/material-icons.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="static/material-icons.css" />
     <link rel="stylesheet" href="static/notosanscjkjp.css" type="text/css" />
     <link rel="stylesheet" href="static/roboto.css" type="text/css" />
     <link rel="stylesheet" href="static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
     <link rel="stylesheet" href="static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="static/sphinx_materialdesign_theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Get Help or Technical Support" href="help.html" />
-    <link rel="prev" title="Coupling Interaction with \(\lambda\)" href="free_energy.html" /> 
+    <link rel="prev" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" href="hybrid_MC_MD.html" /> 
   </head>
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
@@ -87,14 +86,16 @@ Show Source
         
             
             <nav class="mdl-navigation">
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -102,6 +103,7 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
@@ -130,14 +132,16 @@ Show Source
         
             
             <nav class="mdl-navigation">
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -145,6 +149,7 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
@@ -358,7 +363,7 @@ Restart         true
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
+Structure       0   dimethylether_NVT_BOX_0_restart.psf
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -376,8 +381,8 @@ Restart         true
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
-Structure       1   dimethylether_NVT_merged.psf
+Structure       0   dimethylether_NVT_BOX_0_restart.psf
+Structure       1   dimethylether_NVT_BOX_1_restart.psf
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -391,30 +396,36 @@ OutputName          dimethylether_NPT_GEMC
 </pre></div>
 </div>
 </div>
-<div class="section" id="restart-the-simulation-with-restartcheckpoint">
-<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-restartcheckpoint" title="Permalink to this headline">¶</a></h3>
-<p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code> would result in an
+<div class="section" id="restart-the-simulation-with-checkpoint">
+<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-checkpoint" title="Permalink to this headline">¶</a></h3>
+<p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> would result in an
 identitcal outcome, as if previous simulation was continued.
-Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> and <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> were activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
-, merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf), and checkpoint file (<code class="docutils literal notranslate"><span class="pre">checkpoint.dat</span></code>) were printed.</p>
+Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.pdb)
+, restart PSF file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.psf), binary coodinate file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.coor), XSC file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.xsc) , and checkpoint file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_restart.chk) were printed.</p>
 <p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
-<li><p>Set the <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code> to True.</p></li>
-<li><p>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
-<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> to True and provide the Checkpoint file.</p></li>
+<li><p>Use the dumped restart PDB files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the dumped restart PSF files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Use the dumped restart xsc files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for both boxes.</p></li>
+<li><p>Use the dumped restart coor files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for both boxes.</p></li>
 <li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
-the cell basis information with the cell basis data from restart PDB file/files.</p></li>
+the cell basis information with the cell basis data from XSC file/files.</p></li>
 <li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
 </ol>
 <p>Here is the example of restarting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
-RestartCheckpoint   true
+Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
+Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+
+binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -427,13 +438,19 @@ OutputName          dimethylether_NPT
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
-RestartCheckpoint   true
+Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-Structure       0   dimethylether_NVT_merged.psf
-Structure       1   dimethylether_NVT_merged.psf
+Structure     0   dimethylether_NVT_BOX_0_restart.psf
+Structure     1   dimethylether_NVT_BOX_1_restart.psf
+
+extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+extendedSystem   1   dimethylether_NVT_BOX_1_restart.xsc
+
+binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
+binCoordinates   1   dimethylether_NVT_BOX_1_restart.coor
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -908,7 +925,7 @@ There must be an equal amount of openMP threads assigned to each process.</p>
 </li>
 <li><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a><ul>
 <li><a class="reference internal" href="#restart-the-simulation-with-restart">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code></a></li>
-<li><a class="reference internal" href="#restart-the-simulation-with-restartcheckpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">RestartCheckpoint</span></code></a></li>
+<li><a class="reference internal" href="#restart-the-simulation-with-checkpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
@@ -934,11 +951,11 @@ There must be an equal amount of openMP threads assigned to each process.</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="free_energy.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="hybrid_MC_MD.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L material-icons">arrow_back</i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>Coupling Interaction with \(\lambda\)</div>
+            <div>Hybrid Monte Carlo-Molecular Dynamics (MCMD)</div>
          </div>
      </a>
      <a id="button-next" href="help.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">

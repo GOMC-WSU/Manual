@@ -3,25 +3,23 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>Recommended Software Tools &#8212; GOMC 2.60 documentation</title>
+    <title>Recommended Software Tools &#8212; GOMC 2.75 documentation</title>
 
-    <link rel="stylesheet" href="static/material-icons.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="static/material-icons.css" />
     <link rel="stylesheet" href="static/notosanscjkjp.css" type="text/css" />
     <link rel="stylesheet" href="static/roboto.css" type="text/css" />
     <link rel="stylesheet" href="static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
     <link rel="stylesheet" href="static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="static/sphinx_materialdesign_theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -87,14 +85,16 @@ Show Source
         
             
             <nav class="mdl-navigation">
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Recommended Software Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -102,6 +102,7 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
@@ -130,14 +131,16 @@ Show Source
         
             
             <nav class="mdl-navigation">
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Recommended Software Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -145,6 +148,7 @@ Show Source
 <li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
@@ -171,7 +175,7 @@ Show Source
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Another more serious limitation is that it is not aware of periodic boundary conditions (PBC). As a result, when using Packmol to pack PDBs for GOMC, it is recommended to pack to a box 1 Angstroms smaller than the simulation box size. This prevents hard overlaps over the periodic boundary.</p>
+<p>Another more serious limitation is that it is not aware of periodic boundary conditions (PBC). As a result, when using Packmol to pack PDBs for GOMC, it is recommended to pack to a box 1-2 Angstroms smaller than the simulation box size. This prevents hard overlaps over the periodic boundary.</p>
 </div>
 </div>
 <div class="section" id="vmd">
@@ -196,6 +200,17 @@ Show Source
 <p><a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/plugins/psfgen/ug.pdf">In-Depth Overview [PDF]</a></p>
 </div>
 </div>
+<div class="section" id="molecular-simulation-design-framework-mosdef">
+<h2>Molecular Simulation Design Framework (MoSDeF)<a class="headerlink" href="#molecular-simulation-design-framework-mosdef" title="Permalink to this headline">¶</a></h2>
+<p>In this section, the MosDef python interface for creating customized GOMC simulations are discussed.</p>
+<p>Link to documentation: <a class="reference external" href="https://mbuild.mosdef.org/en/stable/getting_started/writers/GOMC_file_writers.html">https://mbuild.mosdef.org/en/stable/getting_started/writers/GOMC_file_writers.html</a></p>
+<p>Link to MosDef Examples Repository: <a class="reference external" href="https://github.com/GOMC-WSU/GOMC-MoSDeF">https://github.com/GOMC-WSU/GOMC-MoSDeF</a></p>
+<p>Link to Youtube tutorials : <a class="reference external" href="https://www.youtube.com/playlist?list=PLdxD0z6HRx8Y9VhwcODxAHNQBBJDRvxMf">https://www.youtube.com/playlist?list=PLdxD0z6HRx8Y9VhwcODxAHNQBBJDRvxMf</a></p>
+<p>Link to signac documentation: <a class="reference external" href="https://signac.io/">https://signac.io/</a></p>
+<p>Link to MosDef documentation: <a class="reference external" href="https://mosdef.org/">https://mosdef.org/</a></p>
+<p>The Molecular Simulation Design Framework (MosDeF) is a GOMC-compatible software that allows these simulations to be transparent and reproducible and permits the easy generation of all the required files to run a GOMC simulation (the forcefield, coordinate, topology and GOMC control files).  This mosdef-gomc package is available via conda.  The MoSDeF software also lowers the entry barrier for new users, minimizes the expert knowledge traditionally required to set up a simulation, and streamlines this process for more experienced users.  MoSDeF is comprised of several conda packages (mBuild, foyer, and gmso), which are stand-alone packages; however, they are designed to all work seamlessly together, which is the case with MoSDeF-GOMC.</p>
+<p>In general, molecules imported or built using mBuild,  packed into a simulation box(s) and passed into the charmm writer function with additional parameters as arguments.  The charmm writer then atom-types the simulation box’s molecules using foyer, obtaining the molecular force field parameters.  The next step utilizes the charmm writer to output the forcefield files, PDB/PSF, and GOMC control files, all the files needed to run a GOMC simulation.  This MoSDeF-GOMC software is fully scriptable and compatible with Signac, allowing a fully automated and reproducible workflow.</p>
+</div>
 </div>
 
 
@@ -210,6 +225,7 @@ Show Source
 <li><a class="reference internal" href="#">Recommended Software Tools</a><ul>
 <li><a class="reference internal" href="#packmol">Packmol</a></li>
 <li><a class="reference internal" href="#vmd">VMD</a></li>
+<li><a class="reference internal" href="#molecular-simulation-design-framework-mosdef">Molecular Simulation Design Framework (MoSDeF)</a></li>
 </ul>
 </li>
 </ul>

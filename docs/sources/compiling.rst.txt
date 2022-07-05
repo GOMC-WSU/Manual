@@ -3,25 +3,61 @@ Compiling GOMC
 
 GOMC generates four executable files for CPU code; ``GOMC_CPU_GEMC`` (Gibbs ensemble), ``GOMC_CPU_NVT`` (NVT ensemble), ``GOMC_CPU_NPT`` (isobaric-isothermal ensemble), and ``GOMC_CPU_GCMC`` (Grand canonical ensemble). In case of installing CUDA Toolkit, GOMC will generate additional four executable files for GPU code; ``GOMC_GPU_GEMC``, ``GOMC_GPU_NVT``, ``GOMC_GPU NPT``, and ``GOMC_GPU_GCMC``.
 
-This section guid users to compile GOMC in Linux or Windows.
+Each ensemble has a respective unit test executable ``GOMC_GEMC_Test`` (Gibbs ensemble), ``GOMC_NVT_Test`` (NVT ensemble), ``GOMC_NPT_Test`` (isobaric-isothermal ensemble), and ``GOMC_GCMC_Test`` (Grand canonical ensemble).  In case of installing CUDA Toolkit, GOMC will generate additional four unit test executables for GPU code; ``GOMC_GPU_GEMC_Test``, ``GOMC_GPU_NVT_Test``, ``GOMC_GPU NPT`_Test`, and ``GOMC_GPU_GCMC_Test``.
+
+This section guides users to compile GOMC in Linux or Windows.
 
 Linux
 -----
-First, navigate your command line to the GOMC base directory. To compile GOMC on Linux, give permission to "metamake.sh" by running the following command and execute it:
+First, navigate your command line to the GOMC base directory. To compile GOMC on Linux, give permission to "metamake.sh" by running the following command:
 
 .. code-block:: bash
 
   $ chmod u+x metamake.sh
-  $ ./metamake.sh
 
-Or to use MPI mode,
 
-.. code-block:: bash
+Metamake is the build script which creates a "bin" directory, configures and runs cmake file, and compiles the code as well. All executable files will be generated in the “bin” directory.  By default, GOMC compiles all ensembles with the Intel compiler (icc), if available.  Changes to this configuration can be made with options and arguments.
 
-  $ chmod u+x metamakeMPI.sh
-  $ ./metamakeMPI.sh
+./metamake.sh [OPTIONS] [ARGUMENTS]
 
-This script will create a bin (or bin_MPI) directory and run cmake file to compile the code as well. All executable files will be generated in the “bin” (or "bin_MPI") directory.
+OPTIONS
+
+	-d
+		Compile in debug mode.
+	-g
+		Compile with gcc.
+	-m
+		Compile with MPI enabled.
+	-p
+		Compile with NVTX profiling for CUDA
+	-t
+		Compile Google tests.
+
+ARGUMENTS
+
+	NVT
+	NPT
+	GCMC
+	GEMC
+
+	If CUDA Toolkit found:
+	
+		GPU_NVT
+		GPU_NPT
+		GPU_GCMC
+		GPU_GEMC
+
+	If testing enabled:
+
+		GOMC_NVT_Test
+		GOMC_NPT_Test
+		GOMC_GCMC_Test
+		GOMC_GEMC_Test
+
+		GOMC_GPU_NVT_Test
+		GOMC_GPU_NPT_Test
+		GOMC_GPU_GCMC_Test
+		GOMC_GPU_GEMC_Test
 
 Windows
 -------
@@ -38,11 +74,12 @@ To compile GOMC on in Windows, follow these steps:
 
 .. Note:: You can also use CMake from the Windows command line if its directory is added to the PATH environment variable.
 
-Configuring CMake
+Configuring CMake 
 -----------------
 GOMC uses CMAKE to generate multi-platform intermediate files to compile the project. In this section, you can find all the information needed to configure CMake.
 We recommend using a different directory for the CMake output than the home directory of the project as CMake tend to generate lots of files.
-CMake has a ridiculously expansive set of options, so this document will only reproduce the most obviously relevant ones. When possible, options should be passed into CMake via command line options rather than the CMakeCached.txt file:
+
+We recommend configuring CMake through metamake.sh OPTIONS, but CMake has a ridiculously expansive set of options which are not all configurable through metamake.  This document will only reproduce the most obviously relevant ones.  When possible, options should be passed into CMake via command line options rather than the CMakeCached.txt file:
 
 
 CMAKE_BUILD_TYPE
