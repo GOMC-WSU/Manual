@@ -1,177 +1,110 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
-    <title>Coupling Interaction with \(\lambda\) &#8212; GOMC 2.75 documentation</title>
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/material-icons.css" />
-    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
-    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
-    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="_static/sphinx_materialdesign_theme.js"></script>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coupling Interaction with \(\lambda\) &mdash; GOMC 2.75 documentation</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" href="hybrid_MC_MD.html" />
     <link rel="prev" title="Long-range Correction (Energy and Virial)" href="long_range_correction.html" /> 
-  </head>
-<body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
-    <div class="mdl-layout__header-row">
-        
-        <nav class="mdl-navigation breadcrumb">
-            <a class="mdl-navigation__link is-active">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a>
-        </nav>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation">
-        
-<form class="form-inline pull-sm-right" action="search.html" method="get">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
-            <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
-          <input type="hidden" name="check_keywords" value="yes" />
-          <input type="hidden" name="area" value="default" />
-        </div>
-      </div>
-      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
-      Quick search
-      </div>
-</form>
-        
-<a id="button-show-source"
-    class="mdl-button mdl-js-button mdl-button--icon"
-    href="_sources/free_energy.rst.txt" rel="nofollow">
-<i class="material-icons">code</i>
-</a>
-<div class="mdl-tooltip" data-mdl-for="button-show-source">
-Show Source
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GOMC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-        </nav>
-    </div>
-    <div class="mdl-layout__header-row header-links">
-      <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vdw">VDW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#soft-core">Soft-core</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#electrostatic">Electrostatic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hard-core">Hard-core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Soft-core</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
       </nav>
-    </div>
-</header><header class="mdl-layout__drawer">
-    
-          <!-- Title -->
-      <span class="mdl-layout-title">
-          <a class="title" href="index.html">
-              <span class="title-text">
-                  GOMC
-              </span>
-          </a>
-      </span>
-    
-    
-      <div class="globaltoc">
-        <span class="mdl-layout-title toc">Table Of Contents</span>
-        
-        
-            
-            <nav class="mdl-navigation">
-                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
-</ul>
 
-            </nav>
-        
-        </div>
-    
-</header>
-        <main class="mdl-layout__content" tabIndex="0">
-<header class="mdl-layout__drawer">
-    
-          <!-- Title -->
-      <span class="mdl-layout-title">
-          <a class="title" href="index.html">
-              <span class="title-text">
-                  GOMC
-              </span>
-          </a>
-      </span>
-    
-    
-      <div class="globaltoc">
-        <span class="mdl-layout-title toc">Table Of Contents</span>
-        
-        
-            
-            <nav class="mdl-navigation">
-                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
-</ul>
-
-            </nav>
-        
-        </div>
-    
-</header>
-
-    <div class="document">
-        <div class="page-content">
-        
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="sources/free_energy.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="section" id="coupling-interaction-with-lambda">
-<h1>Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span><a class="headerlink" href="#coupling-interaction-with-lambda" title="Permalink to this headline">¶</a></h1>
+<h1>Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span><a class="headerlink" href="#coupling-interaction-with-lambda" title="Permalink to this headline"></a></h1>
 <p>In this section, the scaling nonbonded and long-range correction energies with <span class="math notranslate nohighlight">\(\lambda\)</span> is discussed in detailed.</p>
 <div class="math notranslate nohighlight">
 \[E_{\lambda} = E_{\lambda}(\texttt{VDW}) + E_{\lambda}(\texttt{Elect}) + E_{\lambda}(\texttt{LRC-VDW}) + E_{\lambda}(\texttt{LRC-Elect})\]</div>
 <div class="section" id="vdw">
-<h2>VDW<a class="headerlink" href="#vdw" title="Permalink to this headline">¶</a></h2>
+<h2>VDW<a class="headerlink" href="#vdw" title="Permalink to this headline"></a></h2>
 <div class="section" id="soft-core">
-<h3>Soft-core<a class="headerlink" href="#soft-core" title="Permalink to this headline">¶</a></h3>
+<h3>Soft-core<a class="headerlink" href="#soft-core" title="Permalink to this headline"></a></h3>
 <p>In free energy calculation, the <code class="docutils literal notranslate"><span class="pre">VDW</span></code> interaction between solute and solvent is scaled with <span class="math notranslate nohighlight">\(\lambda\)</span>, non-linearly (soft-core scheme), to avoid
 end-point catastrophe and numerical issue</p>
 <div class="math notranslate nohighlight">
@@ -189,9 +122,9 @@ respect to lambda (<span class="math notranslate nohighlight">\(\frac{dE_{\lambd
 </div>
 </div>
 <div class="section" id="electrostatic">
-<h2>Electrostatic<a class="headerlink" href="#electrostatic" title="Permalink to this headline">¶</a></h2>
+<h2>Electrostatic<a class="headerlink" href="#electrostatic" title="Permalink to this headline"></a></h2>
 <div class="section" id="hard-core">
-<h3>Hard-core<a class="headerlink" href="#hard-core" title="Permalink to this headline">¶</a></h3>
+<h3>Hard-core<a class="headerlink" href="#hard-core" title="Permalink to this headline"></a></h3>
 <p>In free energy calculation, the <code class="docutils literal notranslate"><span class="pre">Coulombic</span></code> interaction between solute and solvent can be scaled with <span class="math notranslate nohighlight">\(\lambda\)</span>, <strong>linearly</strong> (hard-core scheme),
 by setting the <code class="docutils literal notranslate"><span class="pre">ScaleCoulomb</span></code> to false.</p>
 <div class="math notranslate nohighlight">
@@ -208,7 +141,7 @@ on the <code class="docutils literal notranslate"><span class="pre">Coulombic</s
 </div>
 </div>
 <div class="section" id="id1">
-<h3>Soft-core<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Soft-core<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>In free energy calculation, the <code class="docutils literal notranslate"><span class="pre">Coulombic</span></code> interaction between solute and solvent can be scaled with <span class="math notranslate nohighlight">\(\lambda\)</span>, <strong>non-linearly</strong> (soft-core scheme), to avoid
 end-point catastrophe and numerical issue. This option can be activated by setting the <code class="docutils literal notranslate"><span class="pre">ScaleCoulomb</span></code> to true.</p>
 <div class="math notranslate nohighlight">
@@ -231,7 +164,7 @@ respect to lambda (<span class="math notranslate nohighlight">\(\frac{dE_{\lambd
 </div>
 </div>
 <div class="section" id="long-range-correction-vdw">
-<h2>Long-range Correction (VDW)<a class="headerlink" href="#long-range-correction-vdw" title="Permalink to this headline">¶</a></h2>
+<h2>Long-range Correction (VDW)<a class="headerlink" href="#long-range-correction-vdw" title="Permalink to this headline"></a></h2>
 <p>The effect of long-range corrections on predicted free energies were determined for <code class="docutils literal notranslate"><span class="pre">VDW</span></code> interactions via a linear coupling with <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[E_{\lambda}(\texttt{LRC-VDW}) = \lambda_{\texttt{VDW}} \Delta E_{\texttt{LRC(VDW)}}\]</div>
@@ -243,7 +176,7 @@ respect to lambda (<span class="math notranslate nohighlight">\(\frac{dE_{\lambd
 \[\frac{dE_{\lambda}(\texttt{LRC-VDW})}{d\lambda_{\texttt{VDW}}} = \Delta E_{\texttt{LRC(VDW)}}\]</div>
 </div>
 <div class="section" id="long-range-correction-electrostatic">
-<h2>Long-range Correction (Electrostatic)<a class="headerlink" href="#long-range-correction-electrostatic" title="Permalink to this headline">¶</a></h2>
+<h2>Long-range Correction (Electrostatic)<a class="headerlink" href="#long-range-correction-electrostatic" title="Permalink to this headline"></a></h2>
 <p>Using <em>Ewald Summation Method</em>, the effect of long-range corrections on predicted free energies were determined for <code class="docutils literal notranslate"><span class="pre">Coulombic</span></code> interactions
 via a linear coupling with <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -258,56 +191,40 @@ respect to lambda (<span class="math notranslate nohighlight">\(\frac{dE_{\lambd
 </div>
 
 
-        </div>
-        <div class="side-doc-outline">
-            <div class="side-doc-outline--content"> 
-<div class="localtoc">
-    <p class="caption">
-      <span class="caption-text">Table Of Contents</span>
-    </p>
-    <ul>
-<li><a class="reference internal" href="#">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
-<li><a class="reference internal" href="#vdw">VDW</a><ul>
-<li><a class="reference internal" href="#soft-core">Soft-core</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#electrostatic">Electrostatic</a><ul>
-<li><a class="reference internal" href="#hard-core">Hard-core</a></li>
-<li><a class="reference internal" href="#id1">Soft-core</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
-<li><a class="reference internal" href="#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
-</ul>
-</li>
-</ul>
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="long_range_correction.html" class="btn btn-neutral float-left" title="Long-range Correction (Energy and Virial)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hybrid_MC_MD.html" class="btn btn-neutral float-right" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
-</div>
-            </div>
-        </div>
+  <hr/>
 
-      <div class="clearer"></div>
-    </div><div class="pagenation">
-     <a id="button-prev" href="long_range_correction.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
-         <i class="pagenation-arrow-L material-icons">arrow_back</i>
-         <div class="pagenation-text">
-            <span class="pagenation-direction">Previous</span>
-            <div>Long-range Correction (Energy and Virial)</div>
-         </div>
-     </a>
-     <a id="button-next" href="hybrid_MC_MD.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
-        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
-        <div class="pagenation-text">
-            <span class="pagenation-direction">Next</span>
-            <div>Hybrid Monte Carlo-Molecular Dynamics (MCMD)</div>
-        </div>
-     </a>
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, GOMC.</p>
   </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
 <footer class="mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
     <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
   </div>
 </footer>
 
-  </body>
+
+</body>
 </html>

@@ -1,173 +1,101 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
-    <title>Intermolecular Energy and Virial Function (Electrostatic) &#8212; GOMC 2.75 documentation</title>
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/material-icons.css" />
-    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
-    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
-    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="_static/sphinx_materialdesign_theme.js"></script>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intermolecular Energy and Virial Function (Electrostatic) &mdash; GOMC 2.75 documentation</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Long-range Correction (Energy and Virial)" href="long_range_correction.html" />
     <link rel="prev" title="Intermolecular Energy and Virial Function (Van der Waals)" href="vdw_energy.html" /> 
-  </head>
-<body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
-    <div class="mdl-layout__header-row">
-        
-        <nav class="mdl-navigation breadcrumb">
-            <a class="mdl-navigation__link is-active">Intermolecular Energy and Virial Function (Electrostatic)</a>
-        </nav>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation">
-        
-<form class="form-inline pull-sm-right" action="search.html" method="get">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
-            <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
-          <input type="hidden" name="check_keywords" value="yes" />
-          <input type="hidden" name="area" value="default" />
-        </div>
-      </div>
-      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
-      Quick search
-      </div>
-</form>
-        
-<a id="button-show-source"
-    class="mdl-button mdl-js-button mdl-button--icon"
-    href="_sources/electrostatic.rst.txt" rel="nofollow">
-<i class="material-icons">code</i>
-</a>
-<div class="mdl-tooltip" data-mdl-for="button-show-source">
-Show Source
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GOMC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-        </nav>
-    </div>
-    <div class="mdl-layout__header-row header-links">
-      <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ewald">Ewald</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vdw">VDW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exp6">EXP6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shift">SHIFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switch">SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switch-martini">SWITCH (MARTINI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
       </nav>
-    </div>
-</header><header class="mdl-layout__drawer">
-    
-          <!-- Title -->
-      <span class="mdl-layout-title">
-          <a class="title" href="index.html">
-              <span class="title-text">
-                  GOMC
-              </span>
-          </a>
-      </span>
-    
-    
-      <div class="globaltoc">
-        <span class="mdl-layout-title toc">Table Of Contents</span>
-        
-        
-            
-            <nav class="mdl-navigation">
-                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
-</ul>
 
-            </nav>
-        
-        </div>
-    
-</header>
-        <main class="mdl-layout__content" tabIndex="0">
-<header class="mdl-layout__drawer">
-    
-          <!-- Title -->
-      <span class="mdl-layout-title">
-          <a class="title" href="index.html">
-              <span class="title-text">
-                  GOMC
-              </span>
-          </a>
-      </span>
-    
-    
-      <div class="globaltoc">
-        <span class="mdl-layout-title toc">Table Of Contents</span>
-        
-        
-            
-            <nav class="mdl-navigation">
-                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
-</ul>
-
-            </nav>
-        
-        </div>
-    
-</header>
-
-    <div class="document">
-        <div class="page-content">
-        
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Intermolecular Energy and Virial Function (Electrostatic)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="sources/electrostatic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="section" id="intermolecular-energy-and-virial-function-electrostatic">
-<h1>Intermolecular Energy and Virial Function (Electrostatic)<a class="headerlink" href="#intermolecular-energy-and-virial-function-electrostatic" title="Permalink to this headline">¶</a></h1>
+<h1>Intermolecular Energy and Virial Function (Electrostatic)<a class="headerlink" href="#intermolecular-energy-and-virial-function-electrostatic" title="Permalink to this headline"></a></h1>
 <p>In this section, the virial and energy equation of electrostatic interaction for different potential function are discussed in details.</p>
 <div class="section" id="ewald">
-<h2>Ewald<a class="headerlink" href="#ewald" title="Permalink to this headline">¶</a></h2>
+<h2>Ewald<a class="headerlink" href="#ewald" title="Permalink to this headline"></a></h2>
 <p>This option calculate electrostatic energy using standard <em>Ewald Summation Method</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -215,7 +143,7 @@ Show Source
 </dl>
 </div>
 <div class="section" id="vdw">
-<h2>VDW<a class="headerlink" href="#vdw" title="Permalink to this headline">¶</a></h2>
+<h2>VDW<a class="headerlink" href="#vdw" title="Permalink to this headline"></a></h2>
 <p>Using <code class="docutils literal notranslate"><span class="pre">VDW</span></code> potential type without <code class="docutils literal notranslate"><span class="pre">Ewald</span></code> method, simply uses coulomb energy to calculate the electrostatic potential.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
@@ -231,7 +159,7 @@ Show Source
 </dl>
 </div>
 <div class="section" id="exp6">
-<h2>EXP6<a class="headerlink" href="#exp6" title="Permalink to this headline">¶</a></h2>
+<h2>EXP6<a class="headerlink" href="#exp6" title="Permalink to this headline"></a></h2>
 <p>Using <code class="docutils literal notranslate"><span class="pre">EXP6</span></code> potential type without <code class="docutils literal notranslate"><span class="pre">Ewald</span></code> method, simply uses coulomb energy to calculate the electrostatic potential.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
@@ -247,7 +175,7 @@ Show Source
 </dl>
 </div>
 <div class="section" id="shift">
-<h2>SHIFT<a class="headerlink" href="#shift" title="Permalink to this headline">¶</a></h2>
+<h2>SHIFT<a class="headerlink" href="#shift" title="Permalink to this headline"></a></h2>
 <p>This option forces the electrostatic energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as</p>
@@ -263,7 +191,7 @@ Show Source
 </dl>
 </div>
 <div class="section" id="switch">
-<h2>SWITCH<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h2>
+<h2>SWITCH<a class="headerlink" href="#switch" title="Permalink to this headline"></a></h2>
 <p>This option in <code class="docutils literal notranslate"><span class="pre">CHARMM</span></code> or <code class="docutils literal notranslate"><span class="pre">EXOTIC</span></code> force field forces the electrostatic energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as,</p>
@@ -279,7 +207,7 @@ Show Source
 </dl>
 </div>
 <div class="section" id="switch-martini">
-<h2>SWITCH (MARTINI)<a class="headerlink" href="#switch-martini" title="Permalink to this headline">¶</a></h2>
+<h2>SWITCH (MARTINI)<a class="headerlink" href="#switch-martini" title="Permalink to this headline"></a></h2>
 <p>This option in <code class="docutils literal notranslate"><span class="pre">MARTINI</span></code> force field smoothly forces the potential energy to be zero at <code class="docutils literal notranslate"><span class="pre">Rcut</span></code> distance and starts modifying the potential at <code class="docutils literal notranslate"><span class="pre">Rswitch</span> <span class="pre">=</span> <span class="pre">0.0</span></code> distance.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Potential</span> <span class="pre">Calculation</span></code></dt><dd><p>Coulomb interactions between atoms can be modeled as,</p>
@@ -319,51 +247,40 @@ Show Source
 </div>
 
 
-        </div>
-        <div class="side-doc-outline">
-            <div class="side-doc-outline--content"> 
-<div class="localtoc">
-    <p class="caption">
-      <span class="caption-text">Table Of Contents</span>
-    </p>
-    <ul>
-<li><a class="reference internal" href="#">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
-<li><a class="reference internal" href="#ewald">Ewald</a></li>
-<li><a class="reference internal" href="#vdw">VDW</a></li>
-<li><a class="reference internal" href="#exp6">EXP6</a></li>
-<li><a class="reference internal" href="#shift">SHIFT</a></li>
-<li><a class="reference internal" href="#switch">SWITCH</a></li>
-<li><a class="reference internal" href="#switch-martini">SWITCH (MARTINI)</a></li>
-</ul>
-</li>
-</ul>
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vdw_energy.html" class="btn btn-neutral float-left" title="Intermolecular Energy and Virial Function (Van der Waals)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="long_range_correction.html" class="btn btn-neutral float-right" title="Long-range Correction (Energy and Virial)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
-</div>
-            </div>
-        </div>
+  <hr/>
 
-      <div class="clearer"></div>
-    </div><div class="pagenation">
-     <a id="button-prev" href="vdw_energy.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
-         <i class="pagenation-arrow-L material-icons">arrow_back</i>
-         <div class="pagenation-text">
-            <span class="pagenation-direction">Previous</span>
-            <div>Intermolecular Energy and Virial Function (Van der Waals)</div>
-         </div>
-     </a>
-     <a id="button-next" href="long_range_correction.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
-        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
-        <div class="pagenation-text">
-            <span class="pagenation-direction">Next</span>
-            <div>Long-range Correction (Energy and Virial)</div>
-        </div>
-     </a>
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, GOMC.</p>
   </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
 <footer class="mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
     <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
   </div>
 </footer>
 
-  </body>
+
+</body>
 </html>
