@@ -293,7 +293,7 @@ Restart the simulation with ``Checkpoint``
 If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with ``Checkpoint`` would result in an 
 identical outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag ``RestartFreq`` was activated and the restart PDB file/files (``OutputName``\_BOX_N_restart.pdb)
-, restart PSF file/files (``OutputName``\_BOX_N_restart.psf), binary coodinate file/files (``OutputName``\_BOX_N_restart.coor), XSC file/files (``OutputName``\_BOX_N_restart.xsc).
+, restart PSF file/files (``OutputName``\_BOX_N_restart.psf), binary coodinate file/files (``OutputName``\_BOX_N_restart.coor), XSC file/files (``OutputName``\_BOX_N_restart.xsc) was printed. 
 
 Make sure that in the previous simulation config file, the flag ``CheckpointFreq`` was activated and the checkpoint file (``OutputName``\_restart.chk) was printed. 
 
