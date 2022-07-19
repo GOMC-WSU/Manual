@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Requirements &mdash; GOMC 2.75 documentation</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+    <script src="static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Recommended Software Tools" href="software_tools.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GOMC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cmake">CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cuda-toolkit">CUDA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Software Requirements</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="sources/software_requirements.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="software-requirements">
+<h1>Software Requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline"></a></h1>
+<div class="section" id="c-11-compliant-compiler">
+<h2>C++11 Compliant Compiler<a class="headerlink" href="#c-11-compliant-compiler" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Linux/macOS</p>
+<ul>
+<li><p>icpc (Intel C++ Compiler)</p>
+<p>In Linux, the Intel compiler will generally produce the fastest CPU executables (when running on Intel Core processors). Type the following command in a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ icpc --version
+</pre></div>
+</div>
+<p>If gives a version number 16.0.3 (2016 Initial version) or later, you’re all set. Otherwise, we recommend upgrading.</p>
+</li>
+<li><p>g++</p>
+<p>Type the following command in a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ g++ --version
+</pre></div>
+</div>
+<p>If gives a version number 4.4 or later, you’re all set. Otherwise, we recommend upgrading.</p>
+</li>
+</ul>
+</li>
+<li><p>Windows</p>
+<p>Visual Studio Microsoft’s Visual Studio 2010 or later is recommended.</p>
+<p>To check the version:</p>
+<p><em>Help</em> (top tab) -&gt; <em>About Microsoft Visual Studio</em></p>
+<img alt="images/vshelp.png" src="images/vshelp.png" />
+<img alt="images/vsabout.png" src="images/vsabout.png" />
+</li>
+</ul>
+</div>
+<div class="section" id="cmake">
+<h2>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline"></a></h2>
+<p>To check if cmake is installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ which cmake
+</pre></div>
+</div>
+<p>To check the version number:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cmake --version
+</pre></div>
+</div>
+<p>The minimum required version is 2.8. However, we recommend to use version 3.2 or later.</p>
+</div>
+<div class="section" id="cuda-toolkit">
+<h2>CUDA Toolkit<a class="headerlink" href="#cuda-toolkit" title="Permalink to this headline"></a></h2>
+<p>CUDA is required to compile the GPU executable in both Windows and Linux. However, is not required to compile the CPU code. To download and install CUDA visit NVIDIA’s webpage:</p>
+<p><a class="reference external" href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a></p>
+<p><a class="reference external" href="https://developer.nvidia.com/cuda">https://developer.nvidia.com/cuda</a></p>
+<p>Please refer to CUDA Developer webpages to select an appropriate version for the desired platform. To install CUDA in Linux root/sudo, privileges are generally required. In Windows, administrative access is required.</p>
+<p>To check if nvcc is installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ which nvcc
+</pre></div>
+</div>
+<p>To check the version number:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ nvcc --version
+</pre></div>
+</div>
+<p>The GPU builds of the code requires NVIDIA’s CUDA 8.0 or newer.</p>
+</div>
+<div class="section" id="mpi-optional-for-standard-required-for-multisim">
+<h2>MPI (Optional for Standard; Required for MultiSim)<a class="headerlink" href="#mpi-optional-for-standard-required-for-multisim" title="Permalink to this headline"></a></h2>
+<p>An MPI Library is required to compile the MPI version of GOMC in both Windows and Linux.  However, it is not required to compile standard GOMC.  There are a couple of options to install an MPI library.</p>
+<ol class="arabic simple">
+<li><p>We recommend the Intel MPI Library:</p></li>
+</ol>
+<blockquote>
+<div><p><a class="reference external" href="https://software.intel.com/en-us/mpi-library">https://software.intel.com/en-us/mpi-library</a></p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>The alternative we recommend to Intel MPI is MPICH. MPICH binary packages are available in many UNIX distributions and for Windows. For example, you can search for it using “yum” (on Fedora), “apt” (Debian/Ubuntu), “pkg_add” (FreeBSD) or “port”/”brew” (Mac OS).</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install mpich
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Another option is the OpenMPI library.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openmpi-bin openmpi-common openssh-client openssh-server libopenmpi2 libopenmpi-dev
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="software_tools.html" class="btn btn-neutral float-right" title="Recommended Software Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, GOMC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
+  </div>
+</footer>
+
+
+</body>
+</html>
