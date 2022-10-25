@@ -56,10 +56,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#simulation-trajectories">2.  Simulation Trajectories</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#psf-output-file">PSF Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#psf-output-file">PSF Output File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#restart-psf">1.  Restart PSF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merged-psf">2.  Merged PSF</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#histogram-output-file">Histogram Output File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#free-energy-output-file">Free Energy Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checkpoint-output-file">Checkpoint Output File</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
@@ -109,6 +114,7 @@
 <li><p>Molecule distribution (GCMC only)</p></li>
 <li><p>Histogram (GCMC only)</p></li>
 <li><p>Free energy data (NVT and NPT only)</p></li>
+<li><p>Checkpoint</p></li>
 </ul>
 </li>
 </ul>
@@ -417,6 +423,19 @@ parameter in configuration file.</p>
 </div>
 <div class="section" id="psf-output-file">
 <h2>PSF Output File<a class="headerlink" href="#psf-output-file" title="Permalink to this headline"></a></h2>
+<div class="section" id="restart-psf">
+<h3>1.  Restart PSF<a class="headerlink" href="#restart-psf" title="Permalink to this headline"></a></h3>
+<p>The restart PSF file contains only ATOM that exist in each boxes at specified steps. This allows the
+user to load this file into GOMC once <code class="docutils literal notranslate"><span class="pre">Restart</span></code> simulation was active. If restart PSF output was enabled,
+one file for NVT or NPT and two files for Gibbs ensemble or grand canonical ensemble will be outputed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The frequency of printing restart PSF file is controlled by <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code>
+parameter in configuration file.</p>
+</div>
+</div>
+<div class="section" id="merged-psf">
+<h3>2.  Merged PSF<a class="headerlink" href="#merged-psf" title="Permalink to this headline"></a></h3>
 <p>At the beginning of the simulation, a merged PSF file will be outputed into <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf,
 It contains the topology for every molecule in all simulation boxes, corresponding to the merged PDB format.
 Loading PDB files into merged PSF file in VMD allows the user to visualize and analyze the results.</p>
@@ -456,6 +475,7 @@ charge, mass, and an unused 0.</span><a class="headerlink" href="#id11" title="P
 </div>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="molecule-distribution-output-file">
 <h2>Molecule Distribution Output File<a class="headerlink" href="#molecule-distribution-output-file" title="Permalink to this headline"></a></h2>
@@ -568,6 +588,10 @@ additional column will be printed to represent <span class="math notranslate noh
 <p class="admonition-title">Note</p>
 <p>The frequency of outputing free energy data is controlled by <code class="docutils literal notranslate"><span class="pre">FreeEnergyCalc</span></code> parameter in configuration file.</p>
 </div>
+</div>
+<div class="section" id="checkpoint-output-file">
+<h2>Checkpoint Output File<a class="headerlink" href="#checkpoint-output-file" title="Permalink to this headline"></a></h2>
+<p>GOMC has the ability to save the state to a file and continue as if no interruption occurred through the use of Checkpoint files.  The checkpoint file is not human-readable.</p>
 </div>
 </div>
 

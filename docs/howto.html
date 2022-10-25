@@ -84,6 +84,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-a-protein-as-a-fixed-body">Simulate a protein as a fixed body</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
@@ -293,14 +294,16 @@ the <span class="math notranslate nohighlight">\(C_n\)</span> to zero. <strong>F
 <div class="section" id="restart-the-simulation-with-restart">
 <h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code><a class="headerlink" href="#restart-the-simulation-with-restart" title="Permalink to this headline"></a></h3>
 <p>If you intend to start a new simulation from previous simulation state, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code> <strong>would not</strong> result in
-an identitcal outcome, as if previous simulation was continued.
+an identical outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
-and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
+and restart PSF file file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.psf) were printed.</p>
 <p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
 <li><p>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</p></li>
-<li><p>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
-<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Use the restart PDB file/files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the restart PSF file/files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for each box.</p></li>
+<li><p>Use the restart xsc file/files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for each box.</p></li>
+<li><p>Use the restart coor file/files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for each box.</p></li>
 <li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
 the cell basis information with the cell basis data from restart PDB file/files.</p></li>
 <li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
@@ -314,6 +317,10 @@ Restart         true
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
 Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+extendedSystem  0   dimethylether_NVT_BOX_0_restart.xsc
+
+binCoordinates  0   dimethylether_NVT_BOX_0_restart.coor
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -334,6 +341,12 @@ Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 Structure       0   dimethylether_NVT_BOX_0_restart.psf
 Structure       1   dimethylether_NVT_BOX_1_restart.psf
 
+extendedSystem  0   dimethylether_NVT_BOX_0_restart.xsc
+extendedSystem  1   dimethylether_NVT_BOX_1_restart.xsc
+
+binCoordinates  0   dimethylether_NVT_BOX_0_restart.coor
+binCoordinates  1   dimethylether_NVT_BOX_1_restart.coor
+
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
 #CellBasisVector3   0       0.00    0.00    45.00
@@ -349,16 +362,19 @@ OutputName          dimethylether_NPT_GEMC
 <div class="section" id="restart-the-simulation-with-checkpoint">
 <h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-checkpoint" title="Permalink to this headline"></a></h3>
 <p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> would result in an
-identitcal outcome, as if previous simulation was continued.
+identical outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.pdb)
-, restart PSF file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.psf), binary coodinate file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.coor), XSC file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.xsc) , and checkpoint file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_restart.chk) were printed.</p>
+, restart PSF file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.psf), binary coodinate file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.coor), XSC file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.xsc) was printed.</p>
+<p>Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> was activated and the checkpoint file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_restart.chk) was printed.</p>
+<p>Make sure that in the <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> equals the <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code>.</p>
 <p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</p></li>
 <li><p>Set the <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> to True and provide the Checkpoint file.</p></li>
-<li><p>Use the dumped restart PDB files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
-<li><p>Use the dumped restart PSF files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
-<li><p>Use the dumped restart xsc files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for both boxes.</p></li>
-<li><p>Use the dumped restart coor files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for both boxes.</p></li>
+<li><p>Use the restart PDB file/files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the restart PSF file/files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for each box.</p></li>
+<li><p>Use the restart xsc file/files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for each box.</p></li>
+<li><p>Use the restart coor file/files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for each box.</p></li>
 <li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
 the cell basis information with the cell basis data from XSC file/files.</p></li>
 <li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
@@ -367,6 +383,8 @@ the cell basis information with the cell basis data from XSC file/files.</p></li
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
+Restart         true
+
 Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
@@ -388,6 +406,8 @@ OutputName          dimethylether_NPT
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
+Restart         true
+
 Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
@@ -850,6 +870,24 @@ There must be an equal amount of openMP threads assigned to each process.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n <span class="m">2</span> ./GOMC_CPU_GEMC +p2 in.conf
 </pre></div>
 </div>
+</div>
+<div class="section" id="simulate-a-protein-as-a-fixed-body">
+<h2>Simulate a protein as a fixed body<a class="headerlink" href="#simulate-a-protein-as-a-fixed-body" title="Permalink to this headline"></a></h2>
+<p>GOMC supports simulating a protein as a fixed body for solvation in complex solvents.  There is experimental support for conformation sampling using the crankshaft and regrowth moves.</p>
+<blockquote>
+<div><p>To simulate a rigid protein in GOMC, we need to perform the following steps:</p>
+<ul>
+<li><p>Generate the PDB and PSF files for the system with protein centered in the box.</p></li>
+<li><p>Ensure the box length is larger than the two times the radius of gyration of the protein in each direction.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the protein is 20 angstroms long, the box must be greater than 40x40x40 angstroms.</p>
+</div>
+</li>
+<li><p>Ensure the beta values of all the atoms in the protein are set to 1 (indicating a fixed molecule).</p></li>
+<li><p>Run your GOMC simulation.</p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
