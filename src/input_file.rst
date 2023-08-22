@@ -386,6 +386,9 @@ As seen above, the following are recognized, read and used:
   - This tag name only should be used if CHARMM force files are being used. This section describes 12-6 (Lennard-Jones) non-bonded interactions. Non-bonded parameters are assigned by specifying atom type name followed by polarizabilities (which will be ignored), minimum energy, and (minimum radius)/2. In order to modify 1-4 interaction, a second polarizability (again, will be ignored), minimum energy, and (minimum radius)/2 need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.
 
   .. figure:: static/nonbonded.png
+    :figwidth: 100%
+    :width: 100%
+    :align: center
 
     Non-bonded energy terms (electrostatics and Lennard-Jones)
 
@@ -980,52 +983,6 @@ In this section, input file names are listed. In addition, if you want to restar
 
     MultiSimFolderName  outputFolderName
 
-
-Binary input file types
------------------------
-Binary representations of the system.
-   - XSC
-   - COOR
-   - VEL
-   - CHK
-   - "NAMD uses a trivial double-precision binary file format for coordinates, velocities, and forces. Due to its high precision this is the default output and restart format. VMD refers to these files as the \`\`namdbin\'\' format. The file consists of the atom count as a 32-bit integer followed by all three position or velocity components for each atom as 64-bit double-precision floating point, i.e., NXYZXYZXYZXYZ\.\.\. where N is a 4-byte int and X, Y, and Z are 8-byte doubles. If the number of atoms the file contains is known then the atom count can be used to determine endianness. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the binary file was written, and the utility program flipbinpdb is also provided to reformat these files if needed. Positions in NAMD binary files are stored in Å. Velocities in NAMD binary files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in NAMD binary files are stored in kcal/mol/Å."
-
-    - source : https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html
-
-XSC (eXtended System Configuration file) File
--------------------------------------------------
-GOMC allows the box dimensions to be defined in one of three ways:
-
-- In the control file
-- In the header of restart PDB file
-- In a binary XSC file
-
-The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.
-
-COOR (binary coordinates) File
-------------------------------------
-GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.
-
-VEL (binary velocity) File
-------------------------------------
-GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.
-
-CHK (checkpoint) File
--------------------------------------------------
-GOMC contains several variables which, if not accounted for, will produce different outputs even if the initial conditions are exactly the same.  These variables are contained in the checkpoint file, and allow the user to pick up a GOMC simulation where it left off without altering the course of the simulation.  Also, the checkpoint file is essential for MCMD as molecules are treated as distinguishable in molecular dynamics due to the fact that MD is a continuous trajectory through time.  The checkpoint file contains the original atom order of the molecules, and coordinates and velocities are loaded into this order to ensure the trajectories are consistently arranged.
-
-Checkpoint file contents:
-
-  - Last simulation step that saved into checkpoint file (Start step can be overriden).
-  - True number of simulation steps that have been run.
-  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`\AA^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
-  - Number of Monte Carlo move trial and acceptance.
-  - Random number sequence.
-  - Molecule lookup object.
-  - Original pdb atoms object to reload new positions into.
-  - Original molecule setup object generated from parsing first PSF files.
-  - Accessory data for coordinating loading the restart coordinates into the original ordering.
-  - If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.
   
 System Settings for During Run Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1745,7 +1702,7 @@ Here is the example of ``MEMC-2`` Monte Carlo moves, where 1 large-small molecul
     CellBasisVector2  0   00.00   40.00   00.00
     CellBasisVector3  0   00.00   00.00   80.00
 
-  Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector :math:`a` and :math:`c` are perpendicular to each other (:math:`\alpha = 90, \beta = 90, \gamma = 120`), and making a non-orthogonal simulation cell with the cell length :math:`a = 39.91 Å, b = 39.91 Å, c = 76.98 Å`. In the second box, each vector is perpendicular to the other two (:math:`\alpha = 90, \beta = 90, \gamma = 90`), as indicated by a single x, y, or z value being specified by each and making a cubic box:
+  Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector :math:`a` and :math:`c` are perpendicular to each other (:math:`\alpha = 90, \beta = 90, \gamma = 120`), and making a non-orthogonal simulation cell with the cell length :math:`a = 36.91 Å, b = 36.91 Å, c = 76.98 Å`. In the second box, each vector is perpendicular to the other two (:math:`\alpha = 90, \beta = 90, \gamma = 90`), as indicated by a single x, y, or z value being specified by each and making a cubic box:
 
   .. code-block:: text
   
@@ -1968,8 +1925,10 @@ This section contains all the values that control output in the control file. Fo
   - PSF files (structure)
   - XSC files (binary box dimensions)
   - COOR files (binary coordinates)
-  - CHK files (checkpoint)
   - If provided as input: VEL files (binary velocity)
+
+  - Value 1: Boolean - "true" enables printing block average; "false" disables it.
+  - Value 2: Ulong - Number of steps per checkpoint output file.
 
   ``OutputName``\_BOX_n_restart.*, where n defines the box number. Header part of this file contains 
   important information and will be needed to restart the simulation:
@@ -1984,6 +1943,15 @@ This section contains all the values that control output in the control file. Fo
     - When restarting the GOMC simulation from two restart files, the order of the molecules in the trajectory may differ preventing trajectory concatenation, unless the CHK file is loaded.
     - Only restart files must be used to begin a GOMC simulation with ``Restart`` simulation active.  The merged psf is NOT a restart file.
     - CoordinatesFreq must be a common multiple of RestartFreq or vice versa.
+
+``CheckpointFreq``
+  Controls the output of the checkpoint file containing values neccessary to continue a simulation as if it never ended.
+
+  - Value 1: Boolean - "true" enables printing block average; "false" disables it.
+  - Value 2: Ulong - Number of steps per checkpoint output file.
+
+.. note:: 
+    - RestartFreq must also be enabled, and CheckpointFreq must equal RestartFreq.
  
 ``ConsoleFreq``
   Controls the output to STDIO ("the console") of messages such as acceptance statistics, and run timing info. In addition, instantaneously-selected thermodynamic properties will be output to this file.
@@ -2087,3 +2055,49 @@ if Grand Canonical ensemble simulation was used.
     OutDensity        true true
     OutVolume         true true
     OutSurfaceTension false false
+
+Binary input file types
+-----------------------
+Binary representations of the system.
+   - XSC
+   - COOR
+   - VEL
+   - CHK
+   - "NAMD uses a trivial double-precision binary file format for coordinates, velocities, and forces. Due to its high precision this is the default output and restart format. VMD refers to these files as the \`\`namdbin\'\' format. The file consists of the atom count as a 32-bit integer followed by all three position or velocity components for each atom as 64-bit double-precision floating point, i.e., NXYZXYZXYZXYZ\.\.\. where N is a 4-byte int and X, Y, and Z are 8-byte doubles. If the number of atoms the file contains is known then the atom count can be used to determine endianness. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the binary file was written, and the utility program flipbinpdb is also provided to reformat these files if needed. Positions in NAMD binary files are stored in Å. Velocities in NAMD binary files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in NAMD binary files are stored in kcal/mol/Å."
+
+    - source : https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html
+
+XSC (eXtended System Configuration file) File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+GOMC allows the box dimensions to be defined in one of three ways:
+
+- In the control file
+- In the header of restart PDB file
+- In a binary XSC file
+
+The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.
+
+COOR (binary coordinates) File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.
+
+VEL (binary velocity) File
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.
+
+CHK (checkpoint) File
+^^^^^^^^^^^^^^^^^^^^^
+GOMC contains several variables which, if not accounted for, will produce different outputs even if the initial conditions are exactly the same.  These variables are contained in the checkpoint file, and allow the user to pick up a GOMC simulation where it left off without altering the course of the simulation.  Also, the checkpoint file is essential for MCMD as molecules are treated as distinguishable in molecular dynamics due to the fact that MD is a continuous trajectory through time.  The checkpoint file contains the original atom order of the molecules, and coordinates and velocities are loaded into this order to ensure the trajectories are consistently arranged.
+
+Checkpoint file contents:
+
+  - Last simulation step that saved into checkpoint file (Start step can be overriden).
+  - True number of simulation steps that have been run.
+  - Maximum amount of displacement (Å), rotation (:math:`\delta`), and volume (:math:`\AA^3`) that used in Displacement, Rotation, MultiParticle, and Volume move.
+  - Number of Monte Carlo move trial and acceptance.
+  - Random number sequence.
+  - Molecule lookup object.
+  - Original pdb atoms object to reload new positions into.
+  - Original molecule setup object generated from parsing first PSF files.
+  - Accessory data for coordinating loading the restart coordinates into the original ordering.
+  - If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.

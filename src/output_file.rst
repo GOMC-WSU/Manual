@@ -11,6 +11,7 @@ GOMC currently supports several kinds of output:
     - Molecule distribution (GCMC only)
     - Histogram (GCMC only)
     - Free energy data (NVT and NPT only)
+    - Checkpoint
 
 
 GOMC output units:
@@ -345,6 +346,22 @@ Header part of this file contains simulation cell dimensions and angles, frame n
 PSF Output File
 ---------------
 
+1.  Restart PSF
+^^^^^^^^^^^^^^^^^^^^^^
+
+The restart PSF file contains only ATOM that exist in each boxes at specified steps. This allows the 
+user to load this file into GOMC once ``Restart`` simulation was active. If restart PSF output was enabled, 
+one file for NVT or NPT and two files for Gibbs ensemble or grand canonical ensemble will be outputed.
+
+.. note::
+
+  The frequency of printing restart PSF file is controlled by ``RestartFreq`` 
+  parameter in configuration file.
+
+
+2.  Merged PSF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 At the beginning of the simulation, a merged PSF file will be outputed into ``OutputName``\_merged.psf, 
 It contains the topology for every molecule in all simulation boxes, corresponding to the merged PDB format. 
 Loading PDB files into merged PSF file in VMD allows the user to visualize and analyze the results. 
@@ -497,8 +514,11 @@ The header of Free_Energy_BOX_0\_ ``OutputName``.dat contains the following info
   (:math:`\Delta E_{{\lambda}_i \rightarrow {\lambda}_j} = E_{{\lambda}_j} - E_{{\lambda}_i}`)
 
 .. figure:: static/FE-snapshot.png
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
-    Snapshot of GOMC free energy output file (Free_Energy_BOX_0\_ ``OutputName``.dat).
+  Snapshot of GOMC free energy output file (Free_Energy_BOX_0\_ ``OutputName``.dat).
 
 .. Important::
 
@@ -508,4 +528,9 @@ The header of Free_Energy_BOX_0\_ ``OutputName``.dat contains the following info
 .. note:: 
 
   The frequency of outputing free energy data is controlled by ``FreeEnergyCalc`` parameter in configuration file.
+
+Checkpoint Output File
+----------------------
+
+GOMC has the ability to save the state to a file and continue as if no interruption occurred through the use of Checkpoint files.  The checkpoint file is not human-readable.
 

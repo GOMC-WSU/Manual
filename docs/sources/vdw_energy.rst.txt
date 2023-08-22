@@ -78,6 +78,9 @@ This option calculates potential energy without any truncation.
 .. note:: This option only evaluates the energy up to specified ``Rcut`` distance. Tail correction to energy and pressure can be specified to account for infinite cutoff distance.
 
 .. figure:: static/VDW_Exp6.png
+  :figwidth: 100%
+  :width: 100%
+  :align: center
 
   Graph of Van der Waals interaction for comparison of ``VDW`` and ``EXP6`` potentials.
 

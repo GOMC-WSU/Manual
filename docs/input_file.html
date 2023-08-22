@@ -1,267 +1,131 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Input File Formats &#8212; GOMC 2.75 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input File Formats &mdash; GOMC 2.75 documentation</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="GOMC’s Output Files" href="output_file.html" />
-    <link rel="prev" title="GPU-Accelerated GOMC" href="gpu_acceleration.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+    <link rel="prev" title="GPU-Accelerated GOMC" href="gpu_acceleration.html" /> 
+</head>
 
-  </head><body>
-
-  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html"><span><img src="_static/logo.png"></span>
-          GOMC</a>
-        <span class="navbar-text navbar-version pull-left"><b></b></span>
-      </div>
-
-        <div class="collapse navbar-collapse nav-collapse">
-          <ul class="nav navbar-nav">
-            
-                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
-            
-            
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="index.html">Section <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GOMC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_tools.html#molecular-simulation-design-framework-mosdef">Molecular Simulation Design Framework (MoSDeF)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="compiling.html#linux">Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiling.html#windows">Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Input File Formats</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pdb-file">PDB File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#psf-file">PSF File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pdb-file">PDB File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-pdb-file">What is PDB file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-pdb-file">Generating PDB file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#psf-file">PSF File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-psf-file">What is PSF file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-psf-file">Generating PSF file</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#topology-file">Topology File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#parameter-file">Parameter File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#control-file-conf">Control File (*.conf)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#binary-input-file-types">Binary input file types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chk-checkpoint-file">CHK (checkpoint) File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameter-file">Parameter File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#charmm-format-parameter-file">CHARMM format parameter file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bonds">BONDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angles">ANGLES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dihedrals">DIHEDRALS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impropers">IMPROPERS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nonbonded">NONBONDED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nbfix">NBFIX</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mie-potential">Mie Potential</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#buckingham-potential-exp-6">Buckingham Potential (Exp-6)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#control-file-conf">Control File (*.conf)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-simulation-setup">Input/Simulation Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-settings-for-during-run-setup">System Settings for During Run Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-controls">Output Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#binary-input-file-types">Binary input file types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chk-checkpoint-file">CHK (checkpoint) File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#exp6">EXP6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#shift">SHIFT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch">SWITCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch-martini">SWITCH (MARTINI)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#ewald">Ewald</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#exp6">EXP6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#shift">SHIFT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch">SWITCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch-martini">SWITCH (MARTINI)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#gomc-requirements">GOMC Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#namd-requirements">NAMD Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#visualizing-simulation">Visualizing Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#build-molecule-and-topology-file">Build molecule and topology file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-rigid-molecule">Simulate rigid molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#restart-the-simulation">Restart the simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#recalculate-the-energy">Recalculate the energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#simulate-adsorption">Simulate adsorption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#run-a-multi-sim">Run a Multi-Sim</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
-</ul>
-</li>
-              
-                <li class="dropdown">
-  <a role="button"
-     id="dLabelLocalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Sub-section <b class="caret"></b></a>
-  <ul class="dropdown-menu localtoc"
-      role="menu"
-      aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Input File Formats</a><ul>
-<li><a class="reference internal" href="#pdb-file">PDB File</a><ul>
-<li><a class="reference internal" href="#what-is-pdb-file">What is PDB file</a></li>
-<li><a class="reference internal" href="#generating-pdb-file">Generating PDB file</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#psf-file">PSF File</a><ul>
-<li><a class="reference internal" href="#what-is-psf-file">What is PSF file</a></li>
-<li><a class="reference internal" href="#generating-psf-file">Generating PSF file</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#topology-file">Topology File</a></li>
-<li><a class="reference internal" href="#parameter-file">Parameter File</a><ul>
-<li><a class="reference internal" href="#charmm-format-parameter-file">CHARMM format parameter file</a></li>
-<li><a class="reference internal" href="#bonds">BONDS</a></li>
-<li><a class="reference internal" href="#angles">ANGLES</a></li>
-<li><a class="reference internal" href="#dihedrals">DIHEDRALS</a></li>
-<li><a class="reference internal" href="#impropers">IMPROPERS</a></li>
-<li><a class="reference internal" href="#nonbonded">NONBONDED</a></li>
-<li><a class="reference internal" href="#nbfix">NBFIX</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a><ul>
-<li><a class="reference internal" href="#mie-potential">Mie Potential</a></li>
-<li><a class="reference internal" href="#buckingham-potential-exp-6">Buckingham Potential (Exp-6)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#control-file-conf">Control File (*.conf)</a><ul>
-<li><a class="reference internal" href="#input-simulation-setup">Input/Simulation Setup</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#binary-input-file-types">Binary input file types</a></li>
-<li><a class="reference internal" href="#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
-<li><a class="reference internal" href="#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
-<li><a class="reference internal" href="#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
-<li><a class="reference internal" href="#chk-checkpoint-file">CHK (checkpoint) File</a><ul>
-<li><a class="reference internal" href="#system-settings-for-during-run-setup">System Settings for During Run Setup</a></li>
-<li><a class="reference internal" href="#output-controls">Output Controls</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</ul>
-</li>
-              
-            
-            
-              
-                
-  <li>
-    <a href="gpu_acceleration.html" title="Previous Chapter: GPU-Accelerated GOMC"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; GPU-Accelerated GOMC</span>
-    </a>
-  </li>
-  <li>
-    <a href="output_file.html" title="Next Chapter: GOMC’s Output Files"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">GOMC’s Output Files &raquo;</span>
-    </a>
-  </li>
-              
-            
-            
-            
-            
-          </ul>
 
-          
-            
-<form class="navbar-form navbar-right" action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-          
         </div>
-    </div>
-  </div>
+      </div>
+    </nav>
 
-<div class="container">
-  <div class="row">
-    <div class="body col-md-12 content" role="main">
-      
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Input File Formats</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="sources/input_file.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="section" id="input-file-formats">
-<h1>Input File Formats<a class="headerlink" href="#input-file-formats" title="Permalink to this headline">¶</a></h1>
+<h1>Input File Formats<a class="headerlink" href="#input-file-formats" title="Permalink to this headline"></a></h1>
 <p>In order to run simulation in GOMC, the following files need to be provided:</p>
 <ul class="simple">
 <li><p>GOMC executable</p></li>
@@ -284,10 +148,10 @@
 <li><p>CHK file</p></li>
 </ul>
 <div class="section" id="pdb-file">
-<h2>PDB File<a class="headerlink" href="#pdb-file" title="Permalink to this headline">¶</a></h2>
+<h2>PDB File<a class="headerlink" href="#pdb-file" title="Permalink to this headline"></a></h2>
 <p>GOMC requires only one PDB file for NVT and NPT ensembles. However, GOMC requires two PDB files for GEMC and GCMC ensembles.</p>
 <div class="section" id="what-is-pdb-file">
-<h3>What is PDB file<a class="headerlink" href="#what-is-pdb-file" title="Permalink to this headline">¶</a></h3>
+<h3>What is PDB file<a class="headerlink" href="#what-is-pdb-file" title="Permalink to this headline"></a></h3>
 <p>The term PDB can refer to the Protein Data Bank (<a class="reference external" href="http://www.rcsb.org/pdb/">http://www.rcsb.org/pdb/</a>), to a data file provided there, or to any file following the PDB format.
 Files in the PDB include various information such as the name of the compound, the ATOM and HETATM records containing the coordinates of the molecules, and etc.
 PDB widely used by NAMD, GROMACS, CHARMM, ACEMD, and Amber. GOMC ignore everything in a PDB file except for the REMARK, CRYST1, ATOM, and END records.
@@ -367,7 +231,7 @@ many codes. We recycle this legacy parameter by using it to denote, in our outpu
 </div>
 </div>
 <div class="section" id="generating-pdb-file">
-<h3>Generating PDB file<a class="headerlink" href="#generating-pdb-file" title="Permalink to this headline">¶</a></h3>
+<h3>Generating PDB file<a class="headerlink" href="#generating-pdb-file" title="Permalink to this headline"></a></h3>
 <p>With that overview of the format in mind, the following steps describe how a PDB file is typically built.</p>
 <ol class="arabic simple">
 <li><p>A single molecule PDB is obtained. In this example, the GaussView was used to draw the molecule, which was then edited by hand to adhere
@@ -412,10 +276,10 @@ end     structure
 </div>
 </div>
 <div class="section" id="psf-file">
-<h2>PSF File<a class="headerlink" href="#psf-file" title="Permalink to this headline">¶</a></h2>
+<h2>PSF File<a class="headerlink" href="#psf-file" title="Permalink to this headline"></a></h2>
 <p>GOMC requires only one PSF file for NVT and NPT ensembles. However, GOMC requires two PSF files for GEMC and GCMC ensembles.</p>
 <div class="section" id="what-is-psf-file">
-<h3>What is PSF file<a class="headerlink" href="#what-is-psf-file" title="Permalink to this headline">¶</a></h3>
+<h3>What is PSF file<a class="headerlink" href="#what-is-psf-file" title="Permalink to this headline"></a></h3>
 <p>Protein structure file (PSF), contains all of the molecule-specific information needed to apply a particular force field to a molecular system.
 The CHARMM force field is divided into a topology file, which is needed to generate the PSF file, and a parameter file, which supplies specific numerical
 values for the generic CHARMM potential function. The topology file defines the atom types used in the force field; the atom names, types, bonds, and partial
@@ -494,7 +358,7 @@ atom    mass
 </div>
 </div>
 <div class="section" id="generating-psf-file">
-<h3>Generating PSF file<a class="headerlink" href="#generating-psf-file" title="Permalink to this headline">¶</a></h3>
+<h3>Generating PSF file<a class="headerlink" href="#generating-psf-file" title="Permalink to this headline"></a></h3>
 <p>The PSF file is typically generated using PSFGen. It is convenient to make a script, such as the example below, to do this:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>package require psfgen
 topology  ./Top_branched_Alaknes.inp
@@ -514,7 +378,7 @@ writepdb ./STEP3_START_ISB_sys_BOX_0.pdb
 </div>
 </div>
 <div class="section" id="topology-file">
-<h2>Topology File<a class="headerlink" href="#topology-file" title="Permalink to this headline">¶</a></h2>
+<h2>Topology File<a class="headerlink" href="#topology-file" title="Permalink to this headline"></a></h2>
 <p>A CHARMM forcefield topology file contains all of the information needed to convert a list of residue names into a complete PSF structure file. The topology is a whitespace separated file format, which contains a list of atoms and their corresponding masses, and a list of residue information (charges, composition, and topology). Essentially, it is a non-redundant lookup table equivalent to the PSF file.</p>
 <p>This is followed by a series of residues, which tell PSFGen what atoms are bonded to a given atom. Each residue is comprised of four key elements:</p>
 <ul class="simple">
@@ -566,7 +430,7 @@ END
 </div>
 </div>
 <div class="section" id="parameter-file">
-<h2>Parameter File<a class="headerlink" href="#parameter-file" title="Permalink to this headline">¶</a></h2>
+<h2>Parameter File<a class="headerlink" href="#parameter-file" title="Permalink to this headline"></a></h2>
 <p>Currently, GOMC uses a single parameter file and the user has the two kinds of parameter file choices:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CHARMM</span></code> (Chemistry at Harvard Molecular Mechanics) compatible parameter file</p></li>
@@ -575,7 +439,7 @@ END
 <p>If the parameter file type is not specified or if the chosen file is missing, an error will result.</p>
 <p>Both force field file options are whitespace separated files with sections preceded by a tag. When a known tag (representing a molecular interaction in the model) is encountered, reading of that section of the force field begins. Comments (anything after a <code class="docutils literal notranslate"><span class="pre">*</span></code> or <code class="docutils literal notranslate"><span class="pre">!</span></code>) and whitespace are ignored. Reading concludes when the end of the file is reached or another section tag is encountered.</p>
 <div class="section" id="charmm-format-parameter-file">
-<h3>CHARMM format parameter file<a class="headerlink" href="#charmm-format-parameter-file" title="Permalink to this headline">¶</a></h3>
+<h3>CHARMM format parameter file<a class="headerlink" href="#charmm-format-parameter-file" title="Permalink to this headline"></a></h3>
 <p>CHARMM contains a widely used model for describing energies in Monte Carlo and molecular dynamics simulations. It is intended to be compatible with other codes that use such a format, such as NAMD. See <a class="reference external" href="http://www.charmmtutorial.org/index.php/The_Energy_Function">here</a> for a general overview of the CHARMM force field.</p>
 <p>Here’s the basic CHARMM contributions that are supported in GOMC:</p>
 <div class="math notranslate nohighlight">
@@ -593,8 +457,8 @@ U_{\texttt{LJ}}&amp;=\sum_{\texttt{nonbonded}} \epsilon_{ij}\left[\left(\frac{R_
 <p>GOMC does not sample bond stretch. To ignore the relative bond energy, set the <span class="math notranslate nohighlight">\(K_b\)</span> to a large value i.e. “999999999999”.</p>
 </div>
 <div class="figure align-default" id="id1">
-<img alt="_images/bonds.png" src="_images/bonds.png" />
-<p class="caption"><span class="caption-text">Oscillations about the equilibrium bond length</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<img alt="images/bonds.png" src="images/bonds.png" />
+<p class="caption"><span class="caption-text">Oscillations about the equilibrium bond length</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ANGLES</span></code>
@@ -604,22 +468,22 @@ U_{\texttt{LJ}}&amp;=\sum_{\texttt{nonbonded}} \epsilon_{ij}\left[\left(\frac{R_
 <p>To fix any angle and ignore the related angle energy, set the <span class="math notranslate nohighlight">\(K_\theta\)</span> to a large value i.e. “999999999999”.</p>
 </div>
 <div class="figure align-default" id="id2">
-<img alt="_images/angle.png" src="_images/angle.png" />
-<p class="caption"><span class="caption-text">Oscillations of 3 atoms about an equilibrium bond angle</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<img alt="images/angle.png" src="images/angle.png" />
+<p class="caption"><span class="caption-text">Oscillations of 3 atoms about an equilibrium bond angle</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DIHEDRALS</span></code>
 - Describes crankshaft-like rotation behavior about a central bond in a series of three consecutive bonds (rotation is given as <span class="math notranslate nohighlight">\(\phi\)</span>).</p>
 <div class="figure align-default" id="id3">
-<img alt="_images/dihedrals.png" src="_images/dihedrals.png" />
-<p class="caption"><span class="caption-text">Torsional rotation of 4 atoms about a central bond</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<img alt="images/dihedrals.png" src="images/dihedrals.png" />
+<p class="caption"><span class="caption-text">Torsional rotation of 4 atoms about a central bond</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NONBONDED</span></code>
 - This tag name only should be used if CHARMM force files are being used. This section describes 12-6 (Lennard-Jones) non-bonded interactions. Non-bonded parameters are assigned by specifying atom type name followed by polarizabilities (which will be ignored), minimum energy, and (minimum radius)/2. In order to modify 1-4 interaction, a second polarizability (again, will be ignored), minimum energy, and (minimum radius)/2 need to be defined; otherwise, the same parameter will be considered for 1-4 interaction.</p>
-<div class="figure align-default" id="id4">
-<img alt="_images/nonbonded.png" src="_images/nonbonded.png" />
-<p class="caption"><span class="caption-text">Non-bonded energy terms (electrostatics and Lennard-Jones)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<div class="figure align-center" id="id4" style="width: 100%">
+<a class="reference internal image-reference" href="images/nonbonded.png"><img alt="images/nonbonded.png" src="images/nonbonded.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Non-bonded energy terms (electrostatics and Lennard-Jones)</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NBFIX</span></code>
@@ -637,7 +501,7 @@ U_{\texttt{LJ}}&amp;=\sum_{\texttt{nonbonded}} \epsilon_{ij}\left[\left(\frac{R_
 </ul>
 </div>
 <div class="section" id="bonds">
-<h3>BONDS<a class="headerlink" href="#bonds" title="Permalink to this headline">¶</a></h3>
+<h3>BONDS<a class="headerlink" href="#bonds" title="Permalink to this headline"></a></h3>
 <p>(“bond stretching”) is one key section of the CHARMM-compliant file. Units for the <span class="math notranslate nohighlight">\(K_b\)</span> variable in this section are in kcal/mol; the <span class="math notranslate nohighlight">\(b_0\)</span> section (which represents the equilibrium bond length for that kind of pair) is measured in Angstroms.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}U_{\texttt{bond}}&amp;=\sum_{\texttt{bonds}} K_b(b-b_0)^2\\\end{split}\]</div>
@@ -659,7 +523,7 @@ CH3   CH1   9999999999    1.540 !  TraPPE 2
 </div>
 </div>
 <div class="section" id="angles">
-<h3>ANGLES<a class="headerlink" href="#angles" title="Permalink to this headline">¶</a></h3>
+<h3>ANGLES<a class="headerlink" href="#angles" title="Permalink to this headline"></a></h3>
 <p>(“bond bending”), where <span class="math notranslate nohighlight">\(\theta\)</span> is the measured bond angle and <span class="math notranslate nohighlight">\(\theta_0\)</span> is the equilibrium bond angle for that kind of pair, are commonly measured in degrees and <span class="math notranslate nohighlight">\(K_\theta\)</span> is the force constant measured in kcal/mol/K. These values, in literature, are often expressed in Kelvin (K).</p>
 <p>To convert Kelvin to kcal/mol/K, multiply by the Boltzmann constant – <span class="math notranslate nohighlight">\(K_\theta\)</span>, 0.0019872041 kcal/mol. In order to fix the angle, it requires to set a large value for <span class="math notranslate nohighlight">\(K_\theta\)</span>. By assigning a large value like 9999999999, specified angle will be fixed and energy of that angle will considered to be zero.</p>
 <div class="math notranslate nohighlight">
@@ -684,7 +548,7 @@ CH3   CH1   CH3     62.100125     112.00 !  TraPPE 2
 <p>Some CHARMM ANGLES section entries include <code class="docutils literal notranslate"><span class="pre">Urey-Bradley</span></code> potentials (<span class="math notranslate nohighlight">\(K_{ub}\)</span>, <span class="math notranslate nohighlight">\(b_{ub}\)</span>), in addition to the standard quadratic angle potential. The constants related to this potential function are currently read, but the logic has not been added to calculate this potential function. Support for this potential function will be added in later versions of the code.</p>
 </div>
 <div class="section" id="dihedrals">
-<h3>DIHEDRALS<a class="headerlink" href="#dihedrals" title="Permalink to this headline">¶</a></h3>
+<h3>DIHEDRALS<a class="headerlink" href="#dihedrals" title="Permalink to this headline"></a></h3>
 <p>The final major bonded interactions section of the CHARMM compliant parameter file are the DIHEDRALS. Dihedral energies were represented by a cosine series where <span class="math notranslate nohighlight">\(\phi\)</span> is the dihedral angle, <span class="math notranslate nohighlight">\(C_n\)</span> are dihedral force constants, <span class="math notranslate nohighlight">\(n\)</span> is the multiplicity, and <span class="math notranslate nohighlight">\(\delta_n\)</span> is the phase shift.
 Often, there are 4 to 6 terms in a dihedral. Angles for the dihedrals’ deltas are given in degrees.</p>
 <div class="math notranslate nohighlight">
@@ -717,11 +581,11 @@ X   CH1   CH1   X     0.876894  3     0.0   !  TraPPE 2
 </div>
 </div>
 <div class="section" id="impropers">
-<h3>IMPROPERS<a class="headerlink" href="#impropers" title="Permalink to this headline">¶</a></h3>
+<h3>IMPROPERS<a class="headerlink" href="#impropers" title="Permalink to this headline"></a></h3>
 <p>Energy parameters used to describe out-of-plane rocking are currently read, but unused. The section is often blank. If it becomes necessary, algorithms to calculate the improper energy will need to be added.</p>
 </div>
 <div class="section" id="nonbonded">
-<h3>NONBONDED<a class="headerlink" href="#nonbonded" title="Permalink to this headline">¶</a></h3>
+<h3>NONBONDED<a class="headerlink" href="#nonbonded" title="Permalink to this headline"></a></h3>
 <p>The next section of the CHARMM style parameter file is the NONBONDED. The nonbonded energy in CHARMM is presented as 12-6 potential
 where, <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, <span class="math notranslate nohighlight">\({R_{min}}_{ij}\)</span> are the separation, minimum potential, and minimum potential distance, respectively.
 In order to use TraPPE this section of the CHARMM compliant file is critical.</p>
@@ -748,7 +612,7 @@ End
 </div>
 </div>
 <div class="section" id="nbfix">
-<h3>NBFIX<a class="headerlink" href="#nbfix" title="Permalink to this headline">¶</a></h3>
+<h3>NBFIX<a class="headerlink" href="#nbfix" title="Permalink to this headline"></a></h3>
 <p>The last section of the CHARMM style parameter file is the NBFIX. In this section, individual pair interaction will be modified. First, pseudo non-bonded parameters have to be defined in NONBONDED and modified in NBFIX. Here iss an example if it is required to modify interaction between CH3 and CH1 atoms:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>NBFIX
 !V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
@@ -765,10 +629,10 @@ End
 </div>
 </div>
 <div class="section" id="exotic-or-mie-parameter-file">
-<h2>Exotic or Mie Parameter File<a class="headerlink" href="#exotic-or-mie-parameter-file" title="Permalink to this headline">¶</a></h2>
+<h2>Exotic or Mie Parameter File<a class="headerlink" href="#exotic-or-mie-parameter-file" title="Permalink to this headline"></a></h2>
 <p>The Mie file is intended for use with nonstandard/specialty models of molecular interaction, which are not included in CHARMM standard.</p>
 <div class="section" id="mie-potential">
-<h3>Mie Potential<a class="headerlink" href="#mie-potential" title="Permalink to this headline">¶</a></h3>
+<h3>Mie Potential<a class="headerlink" href="#mie-potential" title="Permalink to this headline"></a></h3>
 <div class="math notranslate nohighlight">
 \[E_{ij} = C_{n_{ij}} \epsilon_{ij} \bigg[\bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^{n_{ij}} - \bigg(\frac{\sigma_{ij}}{r_{ij}}\bigg)^6\bigg]\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_{ij}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span>, and <span class="math notranslate nohighlight">\(\sigma_{ij}\)</span> are, respectively, the separation, minimum potential, and collision diameter for the pair of interaction sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. The constant <span class="math notranslate nohighlight">\(C_n\)</span> is a normalization factor such that the minimum of the potential remains at <span class="math notranslate nohighlight">\(-\epsilon_{ij}\)</span> for all <span class="math notranslate nohighlight">\(n_{ij}\)</span>. In the 12-6 potential, <span class="math notranslate nohighlight">\(C_n\)</span> reduces to the familiar value of 4.</p>
@@ -776,7 +640,7 @@ End
 \[C_{n_{ij}} = \bigg(\frac{n_{ij}}{n_{ij} - 6} \bigg)\bigg(\frac{n_{ij}}{6} \bigg)^{6/(n_{ij} - 6)}\]</div>
 </div>
 <div class="section" id="buckingham-potential-exp-6">
-<h3>Buckingham Potential (Exp-6)<a class="headerlink" href="#buckingham-potential-exp-6" title="Permalink to this headline">¶</a></h3>
+<h3>Buckingham Potential (Exp-6)<a class="headerlink" href="#buckingham-potential-exp-6" title="Permalink to this headline"></a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}E_{ij} =
 \begin{cases}
@@ -885,7 +749,7 @@ End
 </div>
 </div>
 <div class="section" id="control-file-conf">
-<h2>Control File (*.conf)<a class="headerlink" href="#control-file-conf" title="Permalink to this headline">¶</a></h2>
+<h2>Control File (*.conf)<a class="headerlink" href="#control-file-conf" title="Permalink to this headline"></a></h2>
 <p>The control file is GOMC’s proprietary input file. It contains key settings. The settings generally fall under three categories:</p>
 <ul class="simple">
 <li><p>Input/Simulation Setup</p></li>
@@ -897,7 +761,7 @@ End
 <p>The control file is designed to recognize logic values, such as “yes/true/on” or “no/false/off”. The keyword in control file is not case sensitive.</p>
 </div>
 <div class="section" id="input-simulation-setup">
-<h3>Input/Simulation Setup<a class="headerlink" href="#input-simulation-setup" title="Permalink to this headline">¶</a></h3>
+<h3>Input/Simulation Setup<a class="headerlink" href="#input-simulation-setup" title="Permalink to this headline"></a></h3>
 <p>In this section, input file names are listed. In addition, if you want to restart your simulation or use integer seed for running your simulation, you need to modify this section according to your purpose.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Restart</span></code></dt><dd><p>Determines whether to restart the simulation from restart file (<cite>*_restart.pdb</cite>) or not.</p>
@@ -1200,63 +1064,8 @@ extendedSystem   1   ISB_T_270_k_BOX_1_restart.xsc
 </dd>
 </dl>
 </div>
-</div>
-<div class="section" id="binary-input-file-types">
-<h2>Binary input file types<a class="headerlink" href="#binary-input-file-types" title="Permalink to this headline">¶</a></h2>
-<dl>
-<dt>Binary representations of the system.</dt><dd><ul class="simple">
-<li><p>XSC</p></li>
-<li><p>COOR</p></li>
-<li><p>VEL</p></li>
-<li><p>CHK</p></li>
-<li><p>“NAMD uses a trivial double-precision binary file format for coordinates, velocities, and forces. Due to its high precision this is the default output and restart format. VMD refers to these files as the ``namdbin'' format. The file consists of the atom count as a 32-bit integer followed by all three position or velocity components for each atom as 64-bit double-precision floating point, i.e., NXYZXYZXYZXYZ... where N is a 4-byte int and X, Y, and Z are 8-byte doubles. If the number of atoms the file contains is known then the atom count can be used to determine endianness. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the binary file was written, and the utility program flipbinpdb is also provided to reformat these files if needed. Positions in NAMD binary files are stored in Å. Velocities in NAMD binary files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in NAMD binary files are stored in kcal/mol/Å.”</p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>source : <a class="reference external" href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html">https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html</a></p></li>
-</ul>
-</div></blockquote>
-</dd>
-</dl>
-</div>
-<div class="section" id="xsc-extended-system-configuration-file-file">
-<h2>XSC (eXtended System Configuration file) File<a class="headerlink" href="#xsc-extended-system-configuration-file-file" title="Permalink to this headline">¶</a></h2>
-<p>GOMC allows the box dimensions to be defined in one of three ways:</p>
-<ul class="simple">
-<li><p>In the control file</p></li>
-<li><p>In the header of restart PDB file</p></li>
-<li><p>In a binary XSC file</p></li>
-</ul>
-<p>The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.</p>
-</div>
-<div class="section" id="coor-binary-coordinates-file">
-<h2>COOR (binary coordinates) File<a class="headerlink" href="#coor-binary-coordinates-file" title="Permalink to this headline">¶</a></h2>
-<p>GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.</p>
-</div>
-<div class="section" id="vel-binary-velocity-file">
-<h2>VEL (binary velocity) File<a class="headerlink" href="#vel-binary-velocity-file" title="Permalink to this headline">¶</a></h2>
-<p>GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.</p>
-</div>
-<div class="section" id="chk-checkpoint-file">
-<h2>CHK (checkpoint) File<a class="headerlink" href="#chk-checkpoint-file" title="Permalink to this headline">¶</a></h2>
-<p>GOMC contains several variables which, if not accounted for, will produce different outputs even if the initial conditions are exactly the same.  These variables are contained in the checkpoint file, and allow the user to pick up a GOMC simulation where it left off without altering the course of the simulation.  Also, the checkpoint file is essential for MCMD as molecules are treated as distinguishable in molecular dynamics due to the fact that MD is a continuous trajectory through time.  The checkpoint file contains the original atom order of the molecules, and coordinates and velocities are loaded into this order to ensure the trajectories are consistently arranged.</p>
-<p>Checkpoint file contents:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Last simulation step that saved into checkpoint file (Start step can be overriden).</p></li>
-<li><p>True number of simulation steps that have been run.</p></li>
-<li><p>Maximum amount of displacement (Å), rotation (<span class="math notranslate nohighlight">\(\delta\)</span>), and volume (<span class="math notranslate nohighlight">\(\AA^3\)</span>) that used in Displacement, Rotation, MultiParticle, and Volume move.</p></li>
-<li><p>Number of Monte Carlo move trial and acceptance.</p></li>
-<li><p>Random number sequence.</p></li>
-<li><p>Molecule lookup object.</p></li>
-<li><p>Original pdb atoms object to reload new positions into.</p></li>
-<li><p>Original molecule setup object generated from parsing first PSF files.</p></li>
-<li><p>Accessory data for coordinating loading the restart coordinates into the original ordering.</p></li>
-<li><p>If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.</p></li>
-</ul>
-</div></blockquote>
 <div class="section" id="system-settings-for-during-run-setup">
-<h3>System Settings for During Run Setup<a class="headerlink" href="#system-settings-for-during-run-setup" title="Permalink to this headline">¶</a></h3>
+<h3>System Settings for During Run Setup<a class="headerlink" href="#system-settings-for-during-run-setup" title="Permalink to this headline"></a></h3>
 <p>This section contains all the variables not involved in the output of data during the simulation, or in the reading of input files at the start of the simulation. In other words, it contains settings related to the moves, the thermodynamic constants (based on choice of ensemble), and the length of the simulation.
 Note that some tags, or entries for tags, are only used in certain ensembles (e.g. Gibbs ensemble). These cases are denoted with colored text.</p>
 <dl>
@@ -2008,7 +1817,7 @@ CellBasisVector2  0   00.00   40.00   00.00
 CellBasisVector3  0   00.00   00.00   80.00
 </pre></div>
 </div>
-<p>Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(c\)</span> are perpendicular to each other (<span class="math notranslate nohighlight">\(\alpha = 90, \beta = 90, \gamma = 120\)</span>), and making a non-orthogonal simulation cell with the cell length <span class="math notranslate nohighlight">\(a = 39.91 Å, b = 39.91 Å, c = 76.98 Å\)</span>. In the second box, each vector is perpendicular to the other two (<span class="math notranslate nohighlight">\(\alpha = 90, \beta = 90, \gamma = 90\)</span>), as indicated by a single x, y, or z value being specified by each and making a cubic box:</p>
+<p>Example for Gibbs ensemble and GC ensemble ensemble. In this example, In the first box, only vector <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(c\)</span> are perpendicular to each other (<span class="math notranslate nohighlight">\(\alpha = 90, \beta = 90, \gamma = 120\)</span>), and making a non-orthogonal simulation cell with the cell length <span class="math notranslate nohighlight">\(a = 36.91 Å, b = 36.91 Å, c = 76.98 Å\)</span>. In the second box, each vector is perpendicular to the other two (<span class="math notranslate nohighlight">\(\alpha = 90, \beta = 90, \gamma = 90\)</span>), as indicated by a single x, y, or z value being specified by each and making a cubic box:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>############################################
 # BOX DIMENSION #, X, Y, Z
 ############################################
@@ -2171,7 +1980,7 @@ LambdaCoulomb  0.00 0.00 0.00 0.50 1.00
 </div>
 </div>
 <div class="section" id="output-controls">
-<h3>Output Controls<a class="headerlink" href="#output-controls" title="Permalink to this headline">¶</a></h3>
+<h3>Output Controls<a class="headerlink" href="#output-controls" title="Permalink to this headline"></a></h3>
 <p>This section contains all the values that control output in the control file. For example, certain variables control the naming of files outputed of the block-averaged thermodynamic variables of interest, the PDB files, etc.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">OutputName</span></code></dt><dd><p>Unique name with no space for simulation used to name the block average, PDB, and PSF output files.</p>
@@ -2237,8 +2046,9 @@ to visualize and analyze the results.</p></li>
 <li><p>PSF files (structure)</p></li>
 <li><p>XSC files (binary box dimensions)</p></li>
 <li><p>COOR files (binary coordinates)</p></li>
-<li><p>CHK files (checkpoint)</p></li>
 <li><p>If provided as input: VEL files (binary velocity)</p></li>
+<li><p>Value 1: Boolean - “true” enables printing block average; “false” disables it.</p></li>
+<li><p>Value 2: Ulong - Number of steps per checkpoint output file.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_n_restart.*, where n defines the box number. Header part of this file contains
 important information and will be needed to restart the simulation:</p>
@@ -2256,6 +2066,20 @@ important information and will be needed to restart the simulation:</p>
 <li><p>When restarting the GOMC simulation from two restart files, the order of the molecules in the trajectory may differ preventing trajectory concatenation, unless the CHK file is loaded.</p></li>
 <li><p>Only restart files must be used to begin a GOMC simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code> simulation active.  The merged psf is NOT a restart file.</p></li>
 <li><p>CoordinatesFreq must be a common multiple of RestartFreq or vice versa.</p></li>
+</ul>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code></dt><dd><p>Controls the output of the checkpoint file containing values neccessary to continue a simulation as if it never ended.</p>
+<ul class="simple">
+<li><p>Value 1: Boolean - “true” enables printing block average; “false” disables it.</p></li>
+<li><p>Value 2: Ulong - Number of steps per checkpoint output file.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>RestartFreq must also be enabled, and CheckpointFreq must equal RestartFreq.</p></li>
 </ul>
 </div>
 <dl>
@@ -2397,31 +2221,98 @@ OutSurfaceTension false false
 </dl>
 </div>
 </div>
+<div class="section" id="binary-input-file-types">
+<h2>Binary input file types<a class="headerlink" href="#binary-input-file-types" title="Permalink to this headline"></a></h2>
+<dl>
+<dt>Binary representations of the system.</dt><dd><ul class="simple">
+<li><p>XSC</p></li>
+<li><p>COOR</p></li>
+<li><p>VEL</p></li>
+<li><p>CHK</p></li>
+<li><p>“NAMD uses a trivial double-precision binary file format for coordinates, velocities, and forces. Due to its high precision this is the default output and restart format. VMD refers to these files as the ``namdbin'' format. The file consists of the atom count as a 32-bit integer followed by all three position or velocity components for each atom as 64-bit double-precision floating point, i.e., NXYZXYZXYZXYZ... where N is a 4-byte int and X, Y, and Z are 8-byte doubles. If the number of atoms the file contains is known then the atom count can be used to determine endianness. The file readers in NAMD and VMD can detect and adapt to the endianness of the machine on which the binary file was written, and the utility program flipbinpdb is also provided to reformat these files if needed. Positions in NAMD binary files are stored in Å. Velocities in NAMD binary files are stored in NAMD internal units and must be multiplied by PDBVELFACTOR=20.45482706 to convert to Å/ps. Forces in NAMD binary files are stored in kcal/mol/Å.”</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>source : <a class="reference external" href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html">https://www.ks.uiuc.edu/Research/namd/2.9/ug/node11.html</a></p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<div class="section" id="xsc-extended-system-configuration-file-file">
+<h3>XSC (eXtended System Configuration file) File<a class="headerlink" href="#xsc-extended-system-configuration-file-file" title="Permalink to this headline"></a></h3>
+<p>GOMC allows the box dimensions to be defined in one of three ways:</p>
+<ul class="simple">
+<li><p>In the control file</p></li>
+<li><p>In the header of restart PDB file</p></li>
+<li><p>In a binary XSC file</p></li>
+</ul>
+<p>The XSC file contains the first step of the simulation, cell vectors, and cell origin.  Currently, GOMC only uses the cell vectors.</p>
+</div>
+<div class="section" id="coor-binary-coordinates-file">
+<h3>COOR (binary coordinates) File<a class="headerlink" href="#coor-binary-coordinates-file" title="Permalink to this headline"></a></h3>
+<p>GOMC allows the box coordinates to be overwritten by a binary coordinates file.  The COOR file should have the same number of atoms in it as the PDB file which it is overwriting.  The actual coordinates can vary dramatically, which allows the user to sample the coordinates with other engines (MCMD), or transform it however one sees fit.</p>
+</div>
+<div class="section" id="vel-binary-velocity-file">
+<h3>VEL (binary velocity) File<a class="headerlink" href="#vel-binary-velocity-file" title="Permalink to this headline"></a></h3>
+<p>GOMC allows the velocities associated with each atom to be maintained and output for continuing MD simulations.  In the event a molecule transfer occurs, all the atoms of the transferred molecule are given new velocities by Langevin dynamics.  These VEL files must originate from NAMD, as GOMC will not produce them without first being provided them.</p>
+</div>
+<div class="section" id="chk-checkpoint-file">
+<h3>CHK (checkpoint) File<a class="headerlink" href="#chk-checkpoint-file" title="Permalink to this headline"></a></h3>
+<p>GOMC contains several variables which, if not accounted for, will produce different outputs even if the initial conditions are exactly the same.  These variables are contained in the checkpoint file, and allow the user to pick up a GOMC simulation where it left off without altering the course of the simulation.  Also, the checkpoint file is essential for MCMD as molecules are treated as distinguishable in molecular dynamics due to the fact that MD is a continuous trajectory through time.  The checkpoint file contains the original atom order of the molecules, and coordinates and velocities are loaded into this order to ensure the trajectories are consistently arranged.</p>
+<p>Checkpoint file contents:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Last simulation step that saved into checkpoint file (Start step can be overriden).</p></li>
+<li><p>True number of simulation steps that have been run.</p></li>
+<li><p>Maximum amount of displacement (Å), rotation (<span class="math notranslate nohighlight">\(\delta\)</span>), and volume (<span class="math notranslate nohighlight">\(\AA^3\)</span>) that used in Displacement, Rotation, MultiParticle, and Volume move.</p></li>
+<li><p>Number of Monte Carlo move trial and acceptance.</p></li>
+<li><p>Random number sequence.</p></li>
+<li><p>Molecule lookup object.</p></li>
+<li><p>Original pdb atoms object to reload new positions into.</p></li>
+<li><p>Original molecule setup object generated from parsing first PSF files.</p></li>
+<li><p>Accessory data for coordinating loading the restart coordinates into the original ordering.</p></li>
+<li><p>If built with MPI and parallel tempering was enabled: Random number sequence for parallel tempering.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gpu_acceleration.html" class="btn btn-neutral float-left" title="GPU-Accelerated GOMC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="output_file.html" class="btn btn-neutral float-right" title="GOMC’s Output Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-      
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, GOMC.</p>
   </div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="_sources/input_file.rst.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2022, GOMC.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
-    </p>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
   </div>
 </footer>
-  </body>
+
+
+</body>
 </html>

@@ -210,22 +210,26 @@ Restart the simulation with ``Restart``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you intend to start a new simulation from previous simulation state, you can use this option. Restarting the simulation with ``Restart`` **would not** result in 
-an identitcal outcome, as if previous simulation was continued.
+an identical outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag ``RestartFreq`` was activated and the restart PDB file/files (``OutputName``\_BOX_0_restart.pdb) 
-and merged PSF file (``OutputName``\_merged.psf) were printed. 
+and restart PSF file file/files (``OutputName``\_BOX_0_restart.psf) were printed. 
 
 In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:
 
 1.  Set the ``Restart`` to True.
 
-2.  Use the dumped restart PDB file to set the ``Coordinates`` for each box.
+2.  Use the restart PDB file/files to set the ``Coordinates`` for each box.
 
-3.  Use the dumped merged PSF file to set the ``Structure`` for both boxes.
+3.  Use the restart PSF file/files to set the ``Structure`` for each box.
 
-4.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
+4.  Use the restart xsc file/files to set the ``extendedSystem`` for each box.
+
+5.  Use the restart coor file/files to set the ``binCoordinates`` for each box.
+
+6.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
     the cell basis information with the cell basis data from restart PDB file/files.
 
-5.  Use the different ``OutputName`` to avoid overwriting the output files.
+7.  Use the different ``OutputName`` to avoid overwriting the output files.
 
 
 Here is the example of starting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:
@@ -239,7 +243,11 @@ Here is the example of starting the NPT simulation of dimethyl ether, from equil
 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
+    Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+    extendedSystem  0   dimethylether_NVT_BOX_0_restart.xsc
+
+    binCoordinates  0   dimethylether_NVT_BOX_0_restart.coor
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
@@ -260,8 +268,14 @@ Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
     Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
-    Structure       1   dimethylether_NVT_merged.psf
+    Structure       0   dimethylether_NVT_BOX_0_restart.psf
+    Structure       1   dimethylether_NVT_BOX_1_restart.psf
+
+    extendedSystem  0   dimethylether_NVT_BOX_0_restart.xsc
+    extendedSystem  1   dimethylether_NVT_BOX_1_restart.xsc
+
+    binCoordinates  0   dimethylether_NVT_BOX_0_restart.coor
+    binCoordinates  1   dimethylether_NVT_BOX_1_restart.coor
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
@@ -273,26 +287,36 @@ Here is the example of starting the NPT-GEMC simulation of dimethyl ether, from 
 
     OutputName          dimethylether_NPT_GEMC
 
-Restart the simulation with ``RestartCheckpoint``
+Restart the simulation with ``Checkpoint``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with ``RestartCheckpoint`` would result in an 
-identitcal outcome, as if previous simulation was continued.
-Make sure that in the previous simulation config file, the flag ``RestartFreq`` and ``CheckpointFreq`` were activated and the restart PDB file/files (``OutputName``\_BOX_0_restart.pdb)
-, merged PSF file (``OutputName``\_merged.psf), and checkpoint file (``checkpoint.dat``) were printed. 
+If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with ``Checkpoint`` would result in an 
+identical outcome, as if previous simulation was continued.
+Make sure that in the previous simulation config file, the flag ``RestartFreq`` was activated and the restart PDB file/files (``OutputName``\_BOX_N_restart.pdb)
+, restart PSF file/files (``OutputName``\_BOX_N_restart.psf), binary coodinate file/files (``OutputName``\_BOX_N_restart.coor), XSC file/files (``OutputName``\_BOX_N_restart.xsc) was printed. 
+
+Make sure that in the previous simulation config file, the flag ``CheckpointFreq`` was activated and the checkpoint file (``OutputName``\_restart.chk) was printed. 
+
+Make sure that in the ``CheckpointFreq`` equals the ``RestartFreq``. 
 
 In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:
 
-1.  Set the ``RestartCheckpoint`` to True.
+1.  Set the ``Restart`` to True.
 
-2.  Use the dumped restart PDB file to set the ``Coordinates`` for each box.
+2.  Set the ``Checkpoint`` to True and provide the Checkpoint file.
 
-3.  Use the dumped merged PSF file to set the ``Structure`` for both boxes.
+3.  Use the restart PDB file/files to set the ``Coordinates`` for each box.
 
-4.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
-    the cell basis information with the cell basis data from restart PDB file/files.
+4.  Use the restart PSF file/files to set the ``Structure`` for each box.
 
-5.  Use the different ``OutputName`` to avoid overwriting the output files.
+5.  Use the restart xsc file/files to set the ``extendedSystem`` for each box.
+
+6.  Use the restart coor file/files to set the ``binCoordinates`` for each box.
+
+7.  It is a good practice to comment out the ``CellBasisVector`` by adding '#' at the beginning of each cell basis vector. However, GOMC will override 
+    the cell basis information with the cell basis data from XSC file/files.
+
+8.  Use the different ``OutputName`` to avoid overwriting the output files.
 
 
 Here is the example of restarting the NPT simulation of dimethyl ether, from equilibrated NVT simulation:
@@ -302,11 +326,17 @@ Here is the example of restarting the NPT simulation of dimethyl ether, from equ
     ########################################################
     # Parameters need to be modified
     ########################################################
-    RestartCheckpoint   true
+    Restart         true
+
+    Checkpoint   true   dimethylether_NVT_restart.chk
 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
+    Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+    extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+
+    binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
@@ -322,13 +352,21 @@ Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, fro
     ########################################################
     # Parameters need to be modified
     ########################################################
-    RestartCheckpoint   true
+    Restart         true
+
+    Checkpoint   true   dimethylether_NVT_restart.chk
 
     Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
     Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 
-    Structure       0   dimethylether_NVT_merged.psf
-    Structure       1   dimethylether_NVT_merged.psf
+    Structure     0   dimethylether_NVT_BOX_0_restart.psf
+    Structure     1   dimethylether_NVT_BOX_1_restart.psf
+
+    extendedSystem   0   dimethylether_NVT_BOX_0_restart.xsc
+    extendedSystem   1   dimethylether_NVT_BOX_1_restart.xsc
+
+    binCoordinates   0   dimethylether_NVT_BOX_0_restart.coor
+    binCoordinates   1   dimethylether_NVT_BOX_1_restart.coor
 
     #CellBasisVector1   0	45.00	0.00	0.00
     #CellBasisVector2   0	0.00	55.00	0.00
@@ -339,6 +377,8 @@ Here is the example of restarting the NPT-GEMC simulation of dimethyl ether, fro
     #CellBasisVector3   1	0.00	0.00	45.00
 
     OutputName          dimethylether_NPT_GEMC
+
+.. Note:: As of right now, restarting is not supported for Multi-Sim.
 
 
 Recalculate the energy 
@@ -813,4 +853,86 @@ There are variety of tools developed to caclulate free energy difference, includ
         $ git  clone    https://github.com/msoroush/alchemical-analysis.git
         $ cd   alchemical-analysis
         $ sudo python setup.py install
+
+Run a Multi-Sim
+---------------
+
+GOMC can automatically generate independent simulations with varying temperatures from one input file.  
+This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode, 
+and a couple of parameters must be added to the conf file.
+
+To compile in MPI mode, navigate to the GOMC/ directory and issue the following commands:
+
+.. code-block:: bash
+
+  $ chmod u+x metamakeMPI.sh
+  $ ./metamakeMPI.sh
+
+Then once the compilation is complete, set up the conf file as you would for a standard GOMC simulation.
+
+Finally, enter more than one value for ``Temperature`` separated by a tab or space.
+    
+  .. code-block:: text
+
+    #################################
+    # SIMULATION CONDITION
+    #################################
+    Temperature   270.00    280.00    290.00    300.00 
+
+A folder will be created for the output of each simulation, and the name will be generated from the temperatures you choose. 
+A parent folder containing all the child folders will be created so as to not overpopulate the initial directory.  
+You may elect to choose the name of the folder in which all the sub-folders for each replica are contained.
+Enter this name as a string following the ``MultiSimFolderName`` parameter.  If you don't provide this parameter, the default "MultiSimFolderName" will be used.
+
+  .. code-block:: text
+
+    MultiSimFolderName  outputFolderName
+
+
+.. Note:: To perform a multisim, GOMC must be compiled in MPI mode.  Also, if GOMC is compiled in MPI mode, a multisim must be performed.  To perform a standard simulation, use standard GOMC.
+
+
+The rest of the conf file should be similar to how you would set up a standard GOMC simulation.
+
+To initiate the multi-sim, first decide how many MPI processes and openMP threads you want to use and call GOMC with the following format.
+
+.. code-block:: bash
+
+    $ mpiexec -n #ofsimulations GOMC_xxx_yyyy +p<#ofthreads>(optional) conffile 
+
+The number of MPI processes must equal the number of simulations you wish to run.  Each will by default be assigned one openMP thread; however, if you have leftover processors, you may assign them as openMP threads.
+There must be an equal amount of openMP threads assigned to each process.
+
+A formula to determine how many threads to use is as follows:
+
+.. math::
+  OpenMP Threads = floor[(Number Of Processors Available - Number Of MPI Processes) / Number Of MPI Processes]
+
+Floor[ ] - Rounds down a real number to the nearest integer.
+
+For example, if I have 7 processors and I wanted to run 2 simulations in my multi-sim.
+
+.. math::
+  OpenMP Threads= floor[(7 - 2) / 2] = floor[2.5] = 2
+
+.. code-block:: bash
+
+    $ mpiexec -n 2 ./GOMC_CPU_GEMC +p2 in.conf 
+
+Simulate a protein as a fixed body
+----------------------------------
+
+GOMC supports simulating a protein as a fixed body for solvation in complex solvents.  There is experimental support for conformation sampling using the crankshaft and regrowth moves.
+
+    To simulate a rigid protein in GOMC, we need to perform the following steps:
+
+    -   Generate the PDB and PSF files for the system with protein centered in the box.
+
+    -   Ensure the box length is larger than the two times the radius of gyration of the protein in each direction. 
+
+        .. note:: If the protein is 20 angstroms long, the box must be greater than 40x40x40 angstroms. 
+
+    -   Ensure the beta values of all the atoms in the protein are set to 1 (indicating a fixed molecule).
+
+    -   Run your GOMC simulation.
 

@@ -1,259 +1,124 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to? &#8212; GOMC 2.75 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to? &mdash; GOMC 2.75 documentation</title>
+      <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Get Help or Technical Support" href="help.html" />
-    <link rel="prev" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" href="hybrid_MC_MD.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+    <link rel="prev" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" href="hybrid_MC_MD.html" /> 
+</head>
 
-  </head><body>
-
-  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html"><span><img src="_static/logo.png"></span>
-          GOMC</a>
-        <span class="navbar-text navbar-version pull-left"><b></b></span>
-      </div>
-
-        <div class="collapse navbar-collapse nav-collapse">
-          <ul class="nav navbar-nav">
-            
-                <li><a href="http://gomc.eng.wayne.edu/">GOMC Website</a></li>
-            
-            
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="index.html">Section <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GOMC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release 2.75 Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-ensembles">GOMC supported ensembles:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-monte-carlo-moves">GOMC supported Monte Carlo moves:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-force-fields">GOMC supported force fields:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#gomc-supported-molecules">GOMC supported molecules:</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#c-11-compliant-compiler">C++11 Compliant Compiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cmake">CMake</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#cuda-toolkit">CUDA Toolkit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_requirements.html#mpi-optional-for-standard-required-for-multisim">MPI (Optional for Standard; Required for MultiSim)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software_tools.html#packmol">Packmol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_tools.html#vmd">VMD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_tools.html#molecular-simulation-design-framework-mosdef">Molecular Simulation Design Framework (MoSDeF)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="download.html#github">GitHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download.html#website">Website</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="compiling.html#linux">Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiling.html#windows">Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiling.html#configuring-cmake">Configuring CMake</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_requirements.html">Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Recommended Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">How to get the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling GOMC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_acceleration.html">GPU-Accelerated GOMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#pdb-file">PDB File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#psf-file">PSF File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#topology-file">Topology File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#parameter-file">Parameter File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#exotic-or-mie-parameter-file">Exotic or Mie Parameter File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#control-file-conf">Control File (*.conf)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#binary-input-file-types">Binary input file types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#xsc-extended-system-configuration-file-file">XSC (eXtended System Configuration file) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#coor-binary-coordinates-file">COOR (binary coordinates) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#vel-binary-velocity-file">VEL (binary velocity) File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_file.html#chk-checkpoint-file">CHK (checkpoint) File</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#console-output">Console Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#block-output-files">Block Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#pdb-output-files">PDB Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#psf-output-file">PSF Output File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#molecule-distribution-output-file">Molecule Distribution Output File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#histogram-output-file">Histogram Output File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_file.html#free-energy-output-file">Free Energy Output File</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="input_file.html">Input File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">GOMC’s Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="putting_all_together.html">Putting it all together: Running a GOMC Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#exp6">EXP6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#shift">SHIFT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch">SWITCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vdw_energy.html#switch-martini">SWITCH (MARTINI)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#ewald">Ewald</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#exp6">EXP6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#shift">SHIFT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch">SWITCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrostatic.html#switch-martini">SWITCH (MARTINI)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="long_range_correction.html#exp6">EXP6</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#vdw">VDW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#electrostatic">Electrostatic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-vdw">Long-range Correction (VDW)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="free_energy.html#long-range-correction-electrostatic">Long-range Correction (Electrostatic)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#gomc-requirements">GOMC Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#namd-requirements">NAMD Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#dynamic-subvolumes-for-dual-control-volume-molecular-dynamics">Dynamic Subvolumes for Dual Control Volume Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_MC_MD.html#run-a-hybrid-monte-carlo-molecular-dynamics-sim">Run a Hybrid Monte Carlo-Molecular Dynamics Sim</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="vdw_energy.html">Intermolecular Energy and Virial Function (Van der Waals)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrostatic.html">Intermolecular Energy and Virial Function (Electrostatic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="long_range_correction.html">Long-range Correction (Energy and Virial)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="free_energy.html">Coupling Interaction with <span class="math notranslate nohighlight">\(\lambda\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_MC_MD.html">Hybrid Monte Carlo-Molecular Dynamics (MCMD)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#simulate-rigid-molecule">Simulate rigid molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#regular-molecule">Regular molecule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#molecule-with-dummy-atoms">Molecule with dummy atoms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-rigid-molecule">Simulate rigid molecule</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-rigid-molecule">Setup rigid  molecule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#restart-the-simulation-with-restart">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restart-the-simulation-with-checkpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-pdb-and-psf-file">Build PDB and PSF file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adsorption-in-gcmc">Adsorption in GCMC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adsorption-in-npt-gemc">Adsorption in NPT-GEMC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-simulation-files">Setup Simulation Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-gomc-free-energy-outputs">Process GOMC Free Energy Outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate-a-protein-as-a-fixed-body">Simulate a protein as a fixed body</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help.html">Get Help or Technical Support</a></li>
 </ul>
-</ul>
-</li>
-              
-                <li class="dropdown">
-  <a role="button"
-     id="dLabelLocalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Sub-section <b class="caret"></b></a>
-  <ul class="dropdown-menu localtoc"
-      role="menu"
-      aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">How to?</a><ul>
-<li><a class="reference internal" href="#visualizing-simulation">Visualizing Simulation</a></li>
-<li><a class="reference internal" href="#build-molecule-and-topology-file">Build molecule and topology file</a><ul>
-<li><a class="reference internal" href="#regular-molecule">Regular molecule</a></li>
-<li><a class="reference internal" href="#molecule-with-dummy-atoms">Molecule with dummy atoms</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#simulate-rigid-molecule">Simulate rigid molecule</a><ul>
-<li><a class="reference internal" href="#setup-rigid-molecule">Setup rigid  molecule</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#restart-the-simulation">Restart the simulation</a><ul>
-<li><a class="reference internal" href="#restart-the-simulation-with-restart">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code></a></li>
-<li><a class="reference internal" href="#restart-the-simulation-with-checkpoint">Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#recalculate-the-energy">Recalculate the energy</a></li>
-<li><a class="reference internal" href="#simulate-adsorption">Simulate adsorption</a><ul>
-<li><a class="reference internal" href="#build-pdb-and-psf-file">Build PDB and PSF file</a></li>
-<li><a class="reference internal" href="#adsorption-in-gcmc">Adsorption in GCMC</a></li>
-<li><a class="reference internal" href="#adsorption-in-npt-gemc">Adsorption in NPT-GEMC</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#calculate-solvation-free-energy">Calculate Solvation Free Energy</a><ul>
-<li><a class="reference internal" href="#setup-simulation-files">Setup Simulation Files</a></li>
-<li><a class="reference internal" href="#process-gomc-free-energy-outputs">Process GOMC Free Energy Outputs</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#run-a-multi-sim">Run a Multi-Sim</a></li>
-</ul>
-</li>
-</ul>
-</ul>
-</li>
-              
-            
-            
-              
-                
-  <li>
-    <a href="hybrid_MC_MD.html" title="Previous Chapter: Hybrid Monte Carlo-Molecular Dynamics (MCMD)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Hybrid Monte ...</span>
-    </a>
-  </li>
-  <li>
-    <a href="help.html" title="Next Chapter: Get Help or Technical Support"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Get Help or T... &raquo;</span>
-    </a>
-  </li>
-              
-            
-            
-            
-            
-          </ul>
 
-          
-            
-<form class="navbar-form navbar-right" action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-          
         </div>
-    </div>
-  </div>
+      </div>
+    </nav>
 
-<div class="container">
-  <div class="row">
-    <div class="body col-md-12 content" role="main">
-      
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GOMC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>How to?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="sources/howto.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="section" id="how-to">
-<h1>How to?<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+<h1>How to?<a class="headerlink" href="#how-to" title="Permalink to this headline"></a></h1>
 <p>In this section, we are providing a summary of what actions or modification need to be done in order to answer your simulation problem.</p>
 <div class="section" id="visualizing-simulation">
-<h2>Visualizing Simulation<a class="headerlink" href="#visualizing-simulation" title="Permalink to this headline">¶</a></h2>
+<h2>Visualizing Simulation<a class="headerlink" href="#visualizing-simulation" title="Permalink to this headline"></a></h2>
 <p>If <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code> is enabled in configuration file, GOMC will output the molecule coordinates every
 specified stpes. The PDB and PSF output (merging of atom entries) has already been mentioned/explained in
 previous sections. To recap: The PDB file’s ATOM entries’ occupancy is used to represent the box the molecule
@@ -283,12 +148,12 @@ PDB frames are written as standard PDBs to consecutive file frames.</p>
 </div>
 </div>
 <div class="section" id="build-molecule-and-topology-file">
-<h2>Build molecule and topology file<a class="headerlink" href="#build-molecule-and-topology-file" title="Permalink to this headline">¶</a></h2>
+<h2>Build molecule and topology file<a class="headerlink" href="#build-molecule-and-topology-file" title="Permalink to this headline"></a></h2>
 <p>There are many open-source software that can build a molecule for you, such as <a class="reference external" href="https://avogadro.cc/docs/getting-started/drawing-molecules/">Avagadro</a> ,
 <a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/plugins/molefacture/">molefacture</a> in VMD and more. Here we use molefacture features to not only build a molecule,
 but also creating the topology file.</p>
 <div class="section" id="regular-molecule">
-<h3>Regular molecule<a class="headerlink" href="#regular-molecule" title="Permalink to this headline">¶</a></h3>
+<h3>Regular molecule<a class="headerlink" href="#regular-molecule" title="Permalink to this headline"></a></h3>
 <p>First, make sure that VMD is installed on your computer. Then, to learn how to build a single PDB file and topology file for united atom butane molecule,
 please refer to this <a class="reference external" href="https://github.com/GOMC-WSU/Workshop/blob/master/NVT/butane/build/Molefacture.pdf">document</a> .</p>
 <p>We encourage to try to go through our workshop materials:</p>
@@ -310,7 +175,7 @@ $ <span class="nb">cd</span>   Workshop
 </ul>
 </div>
 <div class="section" id="molecule-with-dummy-atoms">
-<h3>Molecule with dummy atoms<a class="headerlink" href="#molecule-with-dummy-atoms" title="Permalink to this headline">¶</a></h3>
+<h3>Molecule with dummy atoms<a class="headerlink" href="#molecule-with-dummy-atoms" title="Permalink to this headline"></a></h3>
 <p>To simulate a molecule that includes one or more atoms with electrostatic interaction only and no LJ interaction (i.e. dummy atom near of the oxygen along
 the bisector of the HOH angle in <a class="reference external" href="http://dx.doi.org/10.1063/1.2121687">TIP4P water model</a>), we must perform the following steps
 to define the dummy atom/atoms:</p>
@@ -395,7 +260,7 @@ OH      0.000000    -0.18521    1.772873    0.0     0.0         0.0
 </div>
 </div>
 <div class="section" id="simulate-rigid-molecule">
-<h2>Simulate rigid molecule<a class="headerlink" href="#simulate-rigid-molecule" title="Permalink to this headline">¶</a></h2>
+<h2>Simulate rigid molecule<a class="headerlink" href="#simulate-rigid-molecule" title="Permalink to this headline"></a></h2>
 <p>Currently, GOMC can simulate rigid molecules for any molecular topology in NVT and NPT ensemble, if none of the Monte Carlo moves that lead to change in
 molecular configuration (e.g. <code class="docutils literal notranslate"><span class="pre">Regrowth</span></code>, <code class="docutils literal notranslate"><span class="pre">Crankshaft</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraSwap</span></code>, and etc.) was used.</p>
 <p>In general, GOMC can simulate rigid molecules in all ensembles for the following molecular topology:</p>
@@ -411,7 +276,7 @@ molecular configuration (e.g. <code class="docutils literal notranslate"><span c
 </ol>
 </div>
 <div class="section" id="setup-rigid-molecule">
-<h3>Setup rigid  molecule<a class="headerlink" href="#setup-rigid-molecule" title="Permalink to this headline">¶</a></h3>
+<h3>Setup rigid  molecule<a class="headerlink" href="#setup-rigid-molecule" title="Permalink to this headline"></a></h3>
 <p>To simulate the rigid molecules in GOMC, we need to perform the following steps:</p>
 <ol class="arabic simple">
 <li><p>Define all bonds in topology file and use <strong>AUTOGENERATE ANGLES DIHEDRALS</strong> in topology file to specify all angles and dihedral in PSF files.</p></li>
@@ -425,18 +290,20 @@ the <span class="math notranslate nohighlight">\(C_n\)</span> to zero. <strong>F
 </div>
 </div>
 <div class="section" id="restart-the-simulation">
-<h2>Restart the simulation<a class="headerlink" href="#restart-the-simulation" title="Permalink to this headline">¶</a></h2>
+<h2>Restart the simulation<a class="headerlink" href="#restart-the-simulation" title="Permalink to this headline"></a></h2>
 <div class="section" id="restart-the-simulation-with-restart">
-<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code><a class="headerlink" href="#restart-the-simulation-with-restart" title="Permalink to this headline">¶</a></h3>
+<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code><a class="headerlink" href="#restart-the-simulation-with-restart" title="Permalink to this headline"></a></h3>
 <p>If you intend to start a new simulation from previous simulation state, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Restart</span></code> <strong>would not</strong> result in
-an identitcal outcome, as if previous simulation was continued.
+an identical outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.pdb)
-and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
+and restart PSF file file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0_restart.psf) were printed.</p>
 <p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
 <li><p>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</p></li>
-<li><p>Use the dumped restart PDB file to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
-<li><p>Use the dumped merged PSF file to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
+<li><p>Use the restart PDB file/files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the restart PSF file/files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for each box.</p></li>
+<li><p>Use the restart xsc file/files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for each box.</p></li>
+<li><p>Use the restart coor file/files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for each box.</p></li>
 <li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
 the cell basis information with the cell basis data from restart PDB file/files.</p></li>
 <li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
@@ -450,6 +317,10 @@ Restart         true
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
 
 Structure       0   dimethylether_NVT_BOX_0_restart.psf
+
+extendedSystem  0   dimethylether_NVT_BOX_0_restart.xsc
+
+binCoordinates  0   dimethylether_NVT_BOX_0_restart.coor
 
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
@@ -470,6 +341,12 @@ Coordinates     1   dimethylether_NVT_BOX_1_restart.pdb
 Structure       0   dimethylether_NVT_BOX_0_restart.psf
 Structure       1   dimethylether_NVT_BOX_1_restart.psf
 
+extendedSystem  0   dimethylether_NVT_BOX_0_restart.xsc
+extendedSystem  1   dimethylether_NVT_BOX_1_restart.xsc
+
+binCoordinates  0   dimethylether_NVT_BOX_0_restart.coor
+binCoordinates  1   dimethylether_NVT_BOX_1_restart.coor
+
 #CellBasisVector1   0       45.00   0.00    0.00
 #CellBasisVector2   0       0.00    55.00   0.00
 #CellBasisVector3   0       0.00    0.00    45.00
@@ -483,18 +360,21 @@ OutputName          dimethylether_NPT_GEMC
 </div>
 </div>
 <div class="section" id="restart-the-simulation-with-checkpoint">
-<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-checkpoint" title="Permalink to this headline">¶</a></h3>
+<h3>Restart the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code><a class="headerlink" href="#restart-the-simulation-with-checkpoint" title="Permalink to this headline"></a></h3>
 <p>If you intend to continue your simulation from previous simulation, you can use this option. Restarting the simulation with <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> would result in an
-identitcal outcome, as if previous simulation was continued.
+identical outcome, as if previous simulation was continued.
 Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code> was activated and the restart PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.pdb)
-, restart PSF file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.psf), binary coodinate file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.coor), XSC file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.xsc) , and checkpoint file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_restart.chk) were printed.</p>
+, restart PSF file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.psf), binary coodinate file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.coor), XSC file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_N_restart.xsc) was printed.</p>
+<p>Make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> was activated and the checkpoint file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_restart.chk) was printed.</p>
+<p>Make sure that in the <code class="docutils literal notranslate"><span class="pre">CheckpointFreq</span></code> equals the <code class="docutils literal notranslate"><span class="pre">RestartFreq</span></code>.</p>
 <p>In order to restart the simulation from previous simulation we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> to True.</p></li>
 <li><p>Set the <code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code> to True and provide the Checkpoint file.</p></li>
-<li><p>Use the dumped restart PDB files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
-<li><p>Use the dumped restart PSF files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for both boxes.</p></li>
-<li><p>Use the dumped restart xsc files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for both boxes.</p></li>
-<li><p>Use the dumped restart coor files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for both boxes.</p></li>
+<li><p>Use the restart PDB file/files to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code> for each box.</p></li>
+<li><p>Use the restart PSF file/files to set the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> for each box.</p></li>
+<li><p>Use the restart xsc file/files to set the <code class="docutils literal notranslate"><span class="pre">extendedSystem</span></code> for each box.</p></li>
+<li><p>Use the restart coor file/files to set the <code class="docutils literal notranslate"><span class="pre">binCoordinates</span></code> for each box.</p></li>
 <li><p>It is a good practice to comment out the <code class="docutils literal notranslate"><span class="pre">CellBasisVector</span></code> by adding ‘#’ at the beginning of each cell basis vector. However, GOMC will override
 the cell basis information with the cell basis data from XSC file/files.</p></li>
 <li><p>Use the different <code class="docutils literal notranslate"><span class="pre">OutputName</span></code> to avoid overwriting the output files.</p></li>
@@ -503,6 +383,8 @@ the cell basis information with the cell basis data from XSC file/files.</p></li
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
+Restart         true
+
 Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
@@ -524,6 +406,8 @@ OutputName          dimethylether_NPT
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>########################################################
 # Parameters need to be modified
 ########################################################
+Restart         true
+
 Checkpoint   true   dimethylether_NVT_restart.chk
 
 Coordinates     0   dimethylether_NVT_BOX_0_restart.pdb
@@ -556,7 +440,7 @@ OutputName          dimethylether_NPT_GEMC
 </div>
 </div>
 <div class="section" id="recalculate-the-energy">
-<h2>Recalculate the energy<a class="headerlink" href="#recalculate-the-energy" title="Permalink to this headline">¶</a></h2>
+<h2>Recalculate the energy<a class="headerlink" href="#recalculate-the-energy" title="Permalink to this headline"></a></h2>
 <p>GOMC is capable of recalculate the energy of previous simulation snapshot, with same or different force field. Simulation snapshot is the printed molecule’s
 coordinates at specific steps, which controls by <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code>. First, we need to make sure that in the previous simulation config file, the flag <code class="docutils literal notranslate"><span class="pre">CoordinatesFreq</span></code>
 was activated and the coordinates PDB file/files (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_BOX_0.pdb) and merged PSF file (<code class="docutils literal notranslate"><span class="pre">OutputName</span></code>_merged.psf) were printed.</p>
@@ -590,11 +474,11 @@ OutputName          Recalculate
 </div>
 </div>
 <div class="section" id="simulate-adsorption">
-<h2>Simulate adsorption<a class="headerlink" href="#simulate-adsorption" title="Permalink to this headline">¶</a></h2>
+<h2>Simulate adsorption<a class="headerlink" href="#simulate-adsorption" title="Permalink to this headline"></a></h2>
 <p>GOMC is capable of simulating gas adsorption in rigid framework using GCMC and NPT-GEMC simulation. In this section, we discuss how to generate PDB and PSF file,
 how to modify the configuration file to simulate adsorption.</p>
 <div class="section" id="build-pdb-and-psf-file">
-<h3>Build PDB and PSF file<a class="headerlink" href="#build-pdb-and-psf-file" title="Permalink to this headline">¶</a></h3>
+<h3>Build PDB and PSF file<a class="headerlink" href="#build-pdb-and-psf-file" title="Permalink to this headline"></a></h3>
 <p>Generating PDB and PSF file for reservoir is similar to generating PDB and PSF file for isobutane, explained before. Here, we are focusing on how to generate
 PDB and PSF file for adsorbent.
 As mensioned before, GOMC can only read PDB and PSF file as input file. If you are using “*.cif” file for your adsorbent, you need to perform few steps
@@ -696,7 +580,7 @@ to set the <code class="docutils literal notranslate"><span class="pre">Beta</sp
 </ol>
 </div>
 <div class="section" id="adsorption-in-gcmc">
-<h3>Adsorption in GCMC<a class="headerlink" href="#adsorption-in-gcmc" title="Permalink to this headline">¶</a></h3>
+<h3>Adsorption in GCMC<a class="headerlink" href="#adsorption-in-gcmc" title="Permalink to this headline"></a></h3>
 <p>To simulate adsorption using GCMC ensemble, we need to perform the following steps to modify the config file:</p>
 <ol class="arabic simple">
 <li><p>Use the generated PDB files for adsorbent and adsorbate to set the <code class="docutils literal notranslate"><span class="pre">Coordinates</span></code>.</p></li>
@@ -749,7 +633,7 @@ Fugacity    ZN      0.0
 </div>
 </div>
 <div class="section" id="adsorption-in-npt-gemc">
-<h3>Adsorption in NPT-GEMC<a class="headerlink" href="#adsorption-in-npt-gemc" title="Permalink to this headline">¶</a></h3>
+<h3>Adsorption in NPT-GEMC<a class="headerlink" href="#adsorption-in-npt-gemc" title="Permalink to this headline"></a></h3>
 <p>To simulate adsorption using NPT-GEMC ensemble, simulaiton box 0 is used for adsorbent with fixed volume and simulaiton box 1 is used for adsorbate, where
 volume of this box is fluctuating at imposed pressure. To simulation adsorption in NPT-GEMC ensemble we need to perform the following steps to modify the
 config file:</p>
@@ -791,13 +675,13 @@ FixVolBox0  true
 </div>
 </div>
 <div class="section" id="calculate-solvation-free-energy">
-<h2>Calculate Solvation Free Energy<a class="headerlink" href="#calculate-solvation-free-energy" title="Permalink to this headline">¶</a></h2>
+<h2>Calculate Solvation Free Energy<a class="headerlink" href="#calculate-solvation-free-energy" title="Permalink to this headline"></a></h2>
 <p>GOMC is capable of calcutating absolute solvation free energy in NVT or NPT ensemble. Here
 we are focusing how to setup the GOMC simulation files to calculate absolute solvation free energy.</p>
 <p>GOMC outputs the required informations (<span class="math notranslate nohighlight">\(\frac{dE_{\lambda}}{d\lambda}\)</span>, <span class="math notranslate nohighlight">\(\Delta E_{\lambda}\)</span>)
 to calculate solvation free energy with various estimators, such as TI, BAR, MBAR, and more.</p>
 <div class="section" id="setup-simulation-files">
-<h3>Setup Simulation Files<a class="headerlink" href="#setup-simulation-files" title="Permalink to this headline">¶</a></h3>
+<h3>Setup Simulation Files<a class="headerlink" href="#setup-simulation-files" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><p><strong>Using FreeEnergy BASH Script</strong></p>
 <p>GOMC development group created a BASH script combined with Tcl scripting to automatically
@@ -866,7 +750,7 @@ LambdaCoulomb  0.00 0.00 0.00 0.00 0.00 0.25 0.50 0.75 1.00
 </ol>
 </div>
 <div class="section" id="process-gomc-free-energy-outputs">
-<h3>Process GOMC Free Energy Outputs<a class="headerlink" href="#process-gomc-free-energy-outputs" title="Permalink to this headline">¶</a></h3>
+<h3>Process GOMC Free Energy Outputs<a class="headerlink" href="#process-gomc-free-energy-outputs" title="Permalink to this headline"></a></h3>
 <p>I free energy perturbation method, the free energy difference between two states A
 (<span class="math notranslate nohighlight">\(\lambda = 0.0\)</span>) and B (<span class="math notranslate nohighlight">\(\lambda = 1.0\)</span>), with N - 2 intermediate states is given by:</p>
 <div class="math notranslate nohighlight">
@@ -885,8 +769,8 @@ the energy different between current lambda state and all other neighboring lamb
 (<span class="math notranslate nohighlight">\(\Delta E_{\lambda}\)</span>), which is essential to calculate solvation free energy
 with various estimators, such as TI, BAR, MBAR, and more.</p>
 <div class="figure align-default" id="id1">
-<img alt="_images/FE-snapshot.png" src="_images/FE-snapshot.png" />
-<p class="caption"><span class="caption-text">Snapshot of GOMC free energy output file (Free_Energy_BOX_0_ <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>.dat).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<img alt="images/FE-snapshot.png" src="images/FE-snapshot.png" />
+<p class="caption"><span class="caption-text">Snapshot of GOMC free energy output file (Free_Energy_BOX_0_ <code class="docutils literal notranslate"><span class="pre">OutputName</span></code>.dat).</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
 <p>There are variety of tools developed to caclulate free energy difference, including
 <a class="reference external" href="https://github.com/alchemistry/alchemlyb">alchemlyb</a> and
@@ -937,7 +821,7 @@ $ sudo python setup.py install
 </div>
 </div>
 <div class="section" id="run-a-multi-sim">
-<h2>Run a Multi-Sim<a class="headerlink" href="#run-a-multi-sim" title="Permalink to this headline">¶</a></h2>
+<h2>Run a Multi-Sim<a class="headerlink" href="#run-a-multi-sim" title="Permalink to this headline"></a></h2>
 <p>GOMC can automatically generate independent simulations with varying temperatures from one input file.
 This allows the user to sample a wider seach space.  To do so GOMC must be compiled in MPI mode,
 and a couple of parameters must be added to the conf file.</p>
@@ -987,31 +871,61 @@ There must be an equal amount of openMP threads assigned to each process.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="simulate-a-protein-as-a-fixed-body">
+<h2>Simulate a protein as a fixed body<a class="headerlink" href="#simulate-a-protein-as-a-fixed-body" title="Permalink to this headline"></a></h2>
+<p>GOMC supports simulating a protein as a fixed body for solvation in complex solvents.  There is experimental support for conformation sampling using the crankshaft and regrowth moves.</p>
+<blockquote>
+<div><p>To simulate a rigid protein in GOMC, we need to perform the following steps:</p>
+<ul>
+<li><p>Generate the PDB and PSF files for the system with protein centered in the box.</p></li>
+<li><p>Ensure the box length is larger than the two times the radius of gyration of the protein in each direction.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the protein is 20 angstroms long, the box must be greater than 40x40x40 angstroms.</p>
+</div>
+</li>
+<li><p>Ensure the beta values of all the atoms in the protein are set to 1 (indicating a fixed molecule).</p></li>
+<li><p>Run your GOMC simulation.</p></li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 
 
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hybrid_MC_MD.html" class="btn btn-neutral float-left" title="Hybrid Monte Carlo-Molecular Dynamics (MCMD)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="help.html" class="btn btn-neutral float-right" title="Get Help or Technical Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-      
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, GOMC.</p>
   </div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="_sources/howto.rst.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2022, GOMC.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
-    </p>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">&copy; Copyright 2020, GOMC.</div>
   </div>
 </footer>
-  </body>
+
+
+</body>
 </html>
