@@ -1267,26 +1267,30 @@ Exclude       1-4
 </li>
 </ul>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">Ewald</span></code></dt><dd><p>Considers standard Ewald summation method for electrostatic calculation. This function will be discussed further in the Intermolecular energy and Virial calculation section.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">Ewald</span></code></dt><dd><p>Implements the standard Ewald summation method for electrostatic calculation. This function will be discussed further in the Intermolecular energy and Virial calculation section.</p>
 <ul>
 <li><p>Value 1: Double - True if Ewald summation calculation needs to be considered and false if not.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">ElectroStatic</span></code> will be set to true if Ewald summation method was used to calculate coulomb interaction.</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">ElectroStatic</span></code> will be set to true if the Ewald summation method was used to calculate coulomb interaction.</p>
 </div>
 </li>
 </ul>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code></dt><dd><p>Considers storing the reciprocal terms for Ewald summation calculation in order to improve the code performance. This option would increase the code performance with the cost of memory usage.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code></dt><dd><p>Stores the reciprocal terms for Ewald summation calculation to improve code performance. This option increases code performance at the cost of more memory usage. The effects of this option depend on the system size and the value of RcutCoulomb, as the number of k-vectors increases with the value of RcutCoulomb. Small systems may see no or minimal change in performance and memory usage.</p>
 <ul>
-<li><p>Value 1: Boolean - True to store reciprocal terms of Ewald summation calculation and false if not.</p>
+<li><p>Value 1: Boolean - True to store reciprocal terms of Ewald summation calculation for reuse and false to not store them.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code> will be set to true if not value was set.</p>
+<p>The default, the value of <code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code> is set to true.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code> option is ignored when running on the GPU.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Monte Carlo moves, such as <code class="docutils literal notranslate"><span class="pre">MEMC-1</span></code>, <code class="docutils literal notranslate"><span class="pre">MEMC-2</span></code>, <code class="docutils literal notranslate"><span class="pre">MEMC-3</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraMEMC-1</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraMEMC-2</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraMEMC-3</span></code> does not support <code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code>.</p>
+<p>Monte Carlo moves, such as <code class="docutils literal notranslate"><span class="pre">MEMC-1</span></code>, <code class="docutils literal notranslate"><span class="pre">MEMC-2</span></code>, <code class="docutils literal notranslate"><span class="pre">MEMC-3</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraMEMC-1</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraMEMC-2</span></code>, <code class="docutils literal notranslate"><span class="pre">IntraMEMC-3</span></code> do not support <code class="docutils literal notranslate"><span class="pre">CachedFourier</span></code>.</p>
 </div>
 </li>
 </ul>
@@ -1297,8 +1301,8 @@ Exclude       1-4
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>A reasonable value for te accuracy is 0.00001.</p></li>
-<li><p>If “Ewald” was chosen and no value was set for Tolerance, the program will be terminated.</p></li>
+<li><p>A reasonable value for the accuracy is 0.00001.</p></li>
+<li><p>If “Ewald” was chosen and no value was set for Tolerance, the program will terminate.</p></li>
 </ul>
 </div>
 </li>
